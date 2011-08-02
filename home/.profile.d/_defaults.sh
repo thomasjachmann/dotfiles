@@ -5,7 +5,7 @@ export COPYFILE_DISABLE=true
 export PATH=$PATH:~/bin
 
 # for aliases/functions - print out command before executing it
-function say-and-exit() {
+function say-and-execute() {
   echo "=> $*"
   $*
 }

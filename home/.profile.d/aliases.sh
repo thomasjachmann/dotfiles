@@ -14,5 +14,5 @@ alias lh="ls -lah"
 alias l="lh"
 alias t="term -t"
 
-alias reload="say-and-exit source ~/.profile"
-alias edit="say-and-exit mate ~/.profile.d"
+alias reload="say-and-execute source ~/.profile"
+alias edit="say-and-execute mate ~/.profile.d"

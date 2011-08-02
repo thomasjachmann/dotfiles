@@ -6,28 +6,28 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 alias git-diff="git diff | mate"
-alias git-ignored="say-and-exit git ls-files --others -i --exclude-standard"
-alias git-ignored-all="say-and-exit git ls-files --others"
+alias git-ignored="say-and-execute git ls-files --others -i --exclude-standard"
+alias git-ignored-all="say-and-execute git ls-files --others"
 
 alias git-stash-tmp="git add . && git stash save 'tmp'"
 alias git-unstash-tmp="git stash pop"
 
-alias gs="say-and-exit git status"
-alias gpull="say-and-exit git pull";              alias gpl="gpull"
-alias gpr="say-and-exit git pull --rebase"
-alias grebase="say-and-exit git rebase";          alias gr="grebase"
-alias gpush="say-and-exit git push";              alias gps="gpush"
-alias gsvn="say-and-exit git svn"
-alias gsvnrebase="say-and-exit git svn rebase";   alias gsvnr="gsvnrebase"
-alias gsvndcommit="say-and-exit git svn dcommit"; alias gsvnd="gsvndcommit"
-alias gsl="say-and-exit git stash list"
+alias gs="say-and-execute git status"
+alias gpull="say-and-execute git pull";              alias gpl="gpull"
+alias gpr="say-and-execute git pull --rebase"
+alias grebase="say-and-execute git rebase";          alias gr="grebase"
+alias gpush="say-and-execute git push";              alias gps="gpush"
+alias gsvn="say-and-execute git svn"
+alias gsvnrebase="say-and-execute git svn rebase";   alias gsvnr="gsvnrebase"
+alias gsvndcommit="say-and-execute git svn dcommit"; alias gsvnd="gsvndcommit"
+alias gsl="say-and-execute git stash list"
 
 function gss() {
   VERSION=$1
   if [ "$VERSION" == "" ]; then
     VERSION=0
   fi
-  say-and-exit git stash show -v stash@{$VERSION}
+  say-and-execute git stash show -v stash@{$VERSION}
 }
 
 function git-rebase-master() {
