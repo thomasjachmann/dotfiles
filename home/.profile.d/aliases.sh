@@ -15,4 +15,4 @@ alias l="lh"
 alias t="term -t"
 
 alias reload="say-and-exit source ~/.profile"
-alias edit="say-and-exit mate ~/bin/profile"
+alias edit="say-and-exit mate ~/.profile.d"
