@@ -10,4 +10,5 @@ function say-and-execute() {
   $*
 }
 
-export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+# export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+export EDITOR="mate -w"
