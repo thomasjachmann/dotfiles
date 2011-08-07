@@ -12,6 +12,7 @@ alias git-ignored-all="say-and-execute git ls-files --others"
 alias git-stash-tmp="git add . && git stash save 'tmp'"
 alias git-unstash-tmp="git stash pop"
 
+alias gf="say-and-execute git fetch"
 alias gs="say-and-execute git status"
 alias gpull="say-and-execute git pull";              alias gpl="gpull"
 alias gpr="say-and-execute git pull --rebase"
