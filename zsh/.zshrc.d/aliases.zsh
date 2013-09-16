@@ -13,7 +13,6 @@ alias ll="ls -l"
 alias la="ls -la"
 alias lh="ls -lah"
 alias l="lh"
-alias t="term -t"
 
 alias reload="say-and-execute source ~/.zshrc"
 function edit() {
