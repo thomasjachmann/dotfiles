@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Hyper Key</name>
+
+    <item>
+      <name>Right Control to Hyper and Escape</name>
+      <appendix>This one acts on the right control key</appendix>
+      <appendix>which doesn't exist physically on mobile apple keyboards,</appendix>
+      <appendix>so use PCKeyboardHack to map anything you want to that key, eg caps lock).</appendix>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <appendix>Single press just sends ESC</appendix>
+      <identifier>private.hyper_key</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::CONTROL_R,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::ESCAPE
+      </autogen>
+      <!-- single press
+        doesn't work yet, would overlay modifier use - maybe modifier use should be
+        mapped as simultaneous key press with all other modifiable keys
+        <autogen>
+          --KeyToKey--
+          KeyCode::CONTROL_R,
+          KeyCode::ESCAPE
+        </autogen>
+        <autogen>
+          --KeyToKey--
+          KeyCode::T, ModifierFlag::CONTROL_R,
+          KeyCode::T, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+        </autogen>
+      -->
+      <!-- modifier use
+        only modifies right control key to the hyper key
+        <autogen>
+          --KeyToKey--
+          KeyCode::CONTROL_R,
+          KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+        </autogen>
+      -->
+    </item>
+
+    <item>
+      <name>Space to Hyper and Space</name>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <appendix>Single press just sends Space</appendix>
+      <identifier>private.hyper_space_key</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SPACE,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::SPACE
+      </autogen>
+    </item>
+
+    <item>
+      <name>Hyper hjkl to arrow keys (VIM bindings)</name>
+      <identifier>private.hyper_vim_arrows</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::H, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::J, ModifierFlag::COMMAND_L| ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_DOWN
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::K, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_UP
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_RIGHT
+      </autogen>
+    </item>
+
+    <item>
+      <name>Hyper arrow keys to arrow keys</name>
+      <identifier>private.hyper_arrows</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L| ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_DOWN
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_UP
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_RIGHT
+      </autogen>
+    </item>
+
+    <!--item>
+      <name>Left/right tab navigation</name>
+      <identifier>private.left_right_tab_navigation</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_R,
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_R,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L
+      </autogen>
+    </item-->
+
+  </item>
+</root>
