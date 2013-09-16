@@ -1,8 +1,8 @@
 # for tar: exclude ._ files (Mac OS X extended attributes)
-export COPYFILE_DISABLE=true
+COPYFILE_DISABLE=true
 
 # for local executables
-export PATH=$PATH:~/bin
+PATH=~/bin:$PATH
 
 # for aliases/functions - print out command before executing it
 function say-and-execute() {
@@ -10,5 +10,8 @@ function say-and-execute() {
   $*
 }
 
-# export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
-export EDITOR="mate -w"
+function find-broken-links() {
+  for i in `find . -type l`; do
+    [ -e $i ] || echo symbolic link $i is broken
+  done
+}

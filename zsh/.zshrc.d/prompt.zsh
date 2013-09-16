@@ -139,4 +139,3 @@ function current-path() {
 
 PROMPT='$(return-code)$(current-time)$(current-user)$(current-path)
 $(git-prompt)$ '
-RPROMPT='%{%F{$light}%}$(chruby-version)%{%b%f%k%}'

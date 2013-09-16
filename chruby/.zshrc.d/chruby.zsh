@@ -10,3 +10,6 @@ function chruby-version() {
   fi
   echo $ruby_version
 }
+
+local light=7 # see prompt.zsh
+RPROMPT='%{%F{$light}%}$(chruby-version)%{%b%f%k%}'
