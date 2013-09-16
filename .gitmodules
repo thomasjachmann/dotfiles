@@ -24,7 +24,7 @@
 	url = https://github.com/jistr/vim-nerdtree-tabs.git
 [submodule "sublime_text/Library/Application Support/Sublime Text 3/Packages/ApplySyntax"]
 	path = sublime_text/Library/Application Support/Sublime Text 3/Packages/ApplySyntax
-	url = git://github.com/facelessuser/ApplySyntax.git
+	url = git://github.com/thomasjachmann/ApplySyntax.git
 [submodule "sublime_text/Library/Application Support/Sublime Text 3/Packages/Git"]
 	path = sublime_text/Library/Application Support/Sublime Text 3/Packages/Git
 	url = git://github.com/kemayo/sublime-text-2-git.git
