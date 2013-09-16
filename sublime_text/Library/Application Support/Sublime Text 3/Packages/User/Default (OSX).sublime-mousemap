@@ -1,0 +1,9 @@
+[
+    {
+        // this just opens the file under the curser but doesn't set it to the
+        // click location first
+        "button": "button1", "count": 1, "modifiers": ["shift", "ctrl", "super", "alt"],
+        "command": "open_search_result",
+        "scope": "source.ruby"
+    }
+]

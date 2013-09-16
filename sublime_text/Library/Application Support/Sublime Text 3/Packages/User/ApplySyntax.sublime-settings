@@ -1,0 +1,17 @@
+{
+	"syntaxes": [
+    {
+      "name": "Ruby",
+      "rules": [
+        {"file_name": ".*\\Termfile$"},
+        {"file_name": ".*\\.appspec$"}
+      ]
+    },
+    {
+      "name": "Default/Find Results",
+      "rules": [
+        {"file_name": ".*\\Find Results.*$"}
+      ]
+    }
+	]
+}

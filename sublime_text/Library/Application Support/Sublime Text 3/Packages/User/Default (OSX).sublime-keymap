@@ -1,0 +1,14 @@
+[
+    {"keys": ["ctrl+super+r"], "command": "reveal_in_side_bar"},
+    {"keys": ["ctrl+super+w"], "command": "close_all"},
+    {"keys": ["ctrl+shift+<"], "command": "erb" },
+    {"keys": ["super+shift+r"], "command": "ruby_exec"},
+    {"keys": ["super+shift+g", "super+shift+c"], "command": "show_commit_in_github"},
+    {"keys": ["super+shift+t"], "command": "goto_tab"},
+    {"keys": ["super+shift+o"], "command": "open_search_result"},
+    {"keys": ["command+alt+i"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+    // {"keys": ["super+shift+h"], "command": "insert_date", "format": "[thomas %d/%m/%Y]"}
+    // {"keys": ["ctrl+alt+super+w"], "command": "close_others_by_index", "args": { "group": -1, "index": -1 }},
+    // {"keys": ["super+shift+t,super+g,super+b"], "command": "git_blame"},
+    // {"keys": ["ctrl+super+2"], "command": "toggle_quotes"}
+]
