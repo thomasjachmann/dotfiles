@@ -1,3 +1,24 @@
 [submodule "oh-my-zsh/.oh-my-zsh"]
 	path = oh-my-zsh/.oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule "vim/.vim/bundle/FuzzyFinder"]
+	path = vim/.vim/bundle/FuzzyFinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
+[submodule "vim/.vim/bundle/L9"]
+	path = vim/.vim/bundle/L9
+	url = git://github.com/vim-scripts/L9.git
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/vim-colors-solarized"]
+	path = vim/.vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/.vim/bundle/vim-gitgutter"]
+	path = vim/.vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "vim/.vim/bundle/vim-monokai"]
+	path = vim/.vim/bundle/vim-monokai
+	url = https://github.com/sickill/vim-monokai
+[submodule "vim/.vim/bundle/vim-nerdtree-tabs"]
+	path = vim/.vim/bundle/vim-nerdtree-tabs
+	url = https://github.com/jistr/vim-nerdtree-tabs.git
