@@ -1,0 +1,132 @@
+[user]
+	name = Thomas Jachmann
+	email = self@thomasjachmann.com
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+
+[alias]
+	# status stuff
+	s = status --short --branch
+	st = status
+	ignored-all = ls-files --others
+	ignored = ls-files --others -i --exclude-standard
+	conflicts = !git s | grep -e '^[A-Z][A-Z]' | echo 'no conflicts'
+
+	# log stuff
+	graph = log --graph --decorate --abbrev-commit --all --oneline --date-order
+	# cannot be used, since the branch colors aren't as diverse as with decorate
+	# --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'--date=relative
+
+	# stash stuff
+	ss = stash save
+	sl = stash list
+	sa = stash apply
+	sp = stash pop
+	sd = stash drop
+	ssh = stash show
+	sdrop = !sh -c 'git stash drop stash@{$1}' -
+	sshow = !sh -c 'git stash show -v stash@{$1}' -
+	su = stash save --keep-index
+	tmp = stash save --include-untracked 'tmp'
+	untmp = stash pop
+
+	# checkout/commit stuff
+	co = checkout
+	ci = commit
+	cia = commit -a
+	amend = commit --amend
+	ap = add -p
+  uncommit = reset HEAD^1
+
+	# from http://blog.blindgaenger.net/advanced_git_aliases.html
+	r  = !git ls-files -z --deleted | xargs -0 git rm
+
+	# branch stuff
+	b = branch
+	cp = cherry-pick
+	# taken from http://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
+	oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
+
+	# merge stuff
+	m = merge
+	ms = merge --squash
+	mdt = !sh -c 'git diff :1:$1 :3:$1' -
+	mdo = !sh -c 'git diff :1:$1 :2:$1' -
+	mst = !sh -c 'git show :3:$1' -
+	mso = !sh -c 'git show :2:$1' -
+	mst = !sh -c 'git show :3:$1' -
+	mso = !sh -c 'git show :2:$1' -
+	mcot = !sh -c 'git show :3:$1 > $1' -
+	mcoo = !sh -c 'git show :2:$1 > $1' -
+
+	# rebase stuff
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	rewrite = rebase --interactive origin/master
+	rbdt = !sh -c 'git diff :1:$1 :2:$1' -
+	rbdo = !sh -c 'git diff :1:$1 :3:$1' -
+	rbst = !sh -c 'git show :2:$1' -
+	rbso = !sh -c 'git show :3:$1' -
+	rbst = !sh -c 'git show :2:$1' -
+	rbso = !sh -c 'git show :3:$1' -
+	rbcot = !sh -c 'git show :2:$1 > $1' -
+	rbcoo = !sh -c 'git show :3:$1 > $1' -
+
+	# remote stuff
+	f = fetch
+	pl = pull
+	pr = pull --rebase
+	ps = push
+	gh = !sh -c 'git remote -v show | grep @github.com | grep \"(fetch)\" | head -n 1 | sed \"s/^.*@github.com:\\(.*\\)\\(\\.git\\).*$/\\1/\"' -
+	ghf = !sh -c 'git gh | xargs -I {} open https://github.com/{}/blob/`git rev-parse --abbrev-ref HEAD`/$1' -
+	ghc = !sh -c 'git gh | xargs -I {} open https://github.com/{}/commit/$1' -
+
+	# miscellany
+	fs = !git fetch && git s
+	fsx = !git fetch && git s && gitx
+	rdiff = log -p master..origin/master
+	pbcopy = !sh -c 'echo $1 | pbcopy' -
+	# -z -0 are needed to handle file names with spaces properly
+	open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
+
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	sh = auto
+
+[merge]
+	tool = opendiff
+
+[push]
+	default = tracking
+
+[pager]
+	stash = false
+
+[tig]
+	show-changes = false					# don't show changes at top of main view
+	show-date = relative
+  author-width = 3
+	# show-author = abbreviated
+	line-graphics = utf-8					# nice graphics in graph
+	tab-size = 2
+	split-view-height = 80%
+	horizontal-scroll = 33%
+
+[tig "bind"]
+	generic = F !git fetch
+	generic = Escape view-close
+	main = Escape none
+	main = c !@git pbcopy %(commit)
+	main = g !@git ghc %(commit) # masking revision graph toggling
+	log = c !@git pbcopy %(commit)
+	log = g !@git ghc %(commit) # masking revision graph toggling
+	status = a !git commit --amend
+
+[tig "color"]
+	cursor = black default underline

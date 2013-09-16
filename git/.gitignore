@@ -1,0 +1,40 @@
+# Mac OS X
+.DS_Store
+
+# Ruby Version
+.ruby-version
+
+# Bundler
+.bundle/
+
+# RVM
+.rvmrc
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# TextMate
+*.tmproj
+
+# IntelliJ IDEA
+*.iml
+.idea
+
+# XCode
+build/
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+xcuserdata
+*~.nib
+
+# other RCSs 
+.svn
+CVS
+
+# *.swp
