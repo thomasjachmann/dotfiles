@@ -78,6 +78,7 @@ function bindToHyper(mappings, modal_key) {
 
 bindToHyper({
   // alphanumeric keys (mainly app shortcuts)
+  0: app('TickTrack SSB'),    // tt for ticktrack
   1: app('1Password'),
   b: app('Safari'),           // b for browser
   c: app('Google Chrome'),
