@@ -54,7 +54,7 @@ function singleDouble(single, double) {
   return function(win) {
     var now = new Date().getTime(),
         last = singleDoubleTimes[key];
-    if (last && (now - last) < 1000) {
+    if (last && (now - last) < 500) {
       double(win);
     } else {
       single(win);
