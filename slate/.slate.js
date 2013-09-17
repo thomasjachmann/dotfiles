@@ -80,6 +80,7 @@ bindToHyper({
   // alphanumeric keys (mainly app shortcuts)
   0: app('TickTrack SSB'),    // tt for ticktrack
   1: app('1Password'),
+  a: app('Adium'),
   b: app('Safari'),           // b for browser
   c: app('Google Chrome'),
   d: app('Sequel Pro'),       // d for database
