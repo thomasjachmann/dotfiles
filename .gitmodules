@@ -43,3 +43,6 @@
 [submodule "vim/.vim/bundle/file-line"]
 	path = vim/.vim/bundle/file-line
 	url = git://github.com/bogado/file-line.git
+[submodule "vim/.vim/bundle/ctrlp"]
+	path = vim/.vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
