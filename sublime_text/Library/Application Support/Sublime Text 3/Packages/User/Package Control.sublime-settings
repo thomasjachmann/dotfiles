@@ -3,19 +3,15 @@
 	"installed_packages":
 	[
 		"All Autocomplete",
-		"ApplySyntax",
 		"CoffeeScript",
 		"CSV",
 		"ERB Insert and Toggle Commands",
-		"Git",
 		"GitGutter",
 		"Goto Tab",
 		"InsertDate",
 		"Package Control",
 		"Plist Binary",
 		"RubyTest",
-		"Sass",
-		"SideBarEnhancements",
-		"Theme - Flatland"
+		"Sass"
 	]
 }
