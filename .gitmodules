@@ -55,3 +55,9 @@
 [submodule "vim/.vim/bundle/vim-multiple-cursors"]
 	path = vim/.vim/bundle/vim-multiple-cursors
 	url = git@github.com:terryma/vim-multiple-cursors.git
+[submodule "fonts/powerline"]
+	path = fonts/powerline
+	url = git@github.com:Lokaltog/powerline-fonts.git
+[submodule "vim/.vim/bundle/vimproc.vim"]
+	path = vim/.vim/bundle/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim.git
