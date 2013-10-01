@@ -65,6 +65,9 @@ set showcmd
 " uses context for navigation (scroll early)
 set so=5
 
+" let buffers with unsaved changes be hidden (switching to another buffer)
+set hidden
+
 set nobackup                           " Just don't backup
 set nowritebackup                      " No write backups
 set noswapfile                         " And no swap files
