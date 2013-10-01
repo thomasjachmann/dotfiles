@@ -120,17 +120,18 @@ local red=196
 # ⮀
 # ↩
 # ⚡
+# 
 
 function return-code() {
-  echo "%(?.%{%K{$green}%} %{%F{$green}%K{$mid}%}⮀.%{%F{$white}%K{$red}%} ⚡ %? %{%F{$red}%K{$mid}%}⮀)%{%b%f%k%}"
+  echo "%(?.%{%K{$green}%} %{%F{$green}%K{$mid}%}.%{%F{$white}%K{$red}%} ⚡ %? %{%F{$red}%K{$mid}%})%{%b%f%k%}"
 }
 
 function current-time() {
-  echo "%{%F{$offwhite}%K{$mid}%} %* %{%F{$mid}%K{$light}%}⮀%{%b%f%k%}"
+  echo "%{%F{$offwhite}%K{$mid}%} %* %{%F{$mid}%K{$light}%}%{%b%f%k%}"
 }
 
 function current-user() {
-  echo "%{%F{$green}%K{$light}%} %n@%m %{%F{$light}%k%}⮀%{%b%f%k%}"
+  echo "%{%F{$green}%K{$light}%} %n@%m %{%F{$light}%k%}%{%b%f%k%}"
 }
 
 function current-path() {

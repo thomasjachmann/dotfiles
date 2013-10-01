@@ -32,7 +32,7 @@
 		"*.gz",
 		"Icon?"
 	],
-	"font_face": "Source Code Pro",
+	"font_face": "Sauce Code Powerline",
 	"font_size": 14.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
