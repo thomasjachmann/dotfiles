@@ -17,6 +17,31 @@ let mapleader=","
 " CHANGE ME
 " adds nerdtree tab toggle
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+" configure airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+set laststatus=2 " needed for airline to also show up when only one window is present
+
+" configure unity
+" see http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
+" file searching TODO make this search in the current dir not in git's root
+" repository or user's home (whatever is used right now)
+nnoremap <C-p> :Unite file_rec/async<cr>
+" content searching
+nnoremap <space>/ :Unite grep:.<cr>
+" yank history searching
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite history/yank<cr>
+" buffer searching/switching
+nnoremap <space>s :Unite -quick-match buffer<cr>
+
+" prevent multiple-cursors to lose the selections when exiting from visual
+" and insert modes
+let g:multi_cursor_exit_from_visual_mode = 0
+let g:multi_cursor_exit_from_insert_mode = 0
+
 
 " sets window size in gui
 if has("gui_running")
