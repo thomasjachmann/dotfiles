@@ -19,6 +19,10 @@ let mapleader=","
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeWinSize = 40
 
+" let ctrlp only work on the current directory, not some kind of root (eg git
+" root)
+let g:ctrlp_working_path_mode = ''
+
 " configure airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
