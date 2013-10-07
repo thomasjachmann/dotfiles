@@ -103,6 +103,8 @@ set shiftwidth=2                       " set tab width when using retab
 set expandtab                          " expand tabs to spaces
 set smarttab                           " also delete all spaces on <BS>
 
+set cursorline                         " highlight the line with the cursor
+
 " color the desired end of the first line of git commit messages
 " so that it's easier to know how much space is left
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51
