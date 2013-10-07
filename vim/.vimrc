@@ -43,6 +43,7 @@ let g:NERDTreeShowHidden = 1
 " let ctrlp only work on the current directory, not some kind of root (eg git
 " root)
 let g:ctrlp_working_path_mode = ''
+let g:ctrlp_follow_symlinks = 1
 
 " configure airline
 let g:airline#extensions#tabline#enabled = 1
