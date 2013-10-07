@@ -22,6 +22,12 @@ nmap <C-v>r :source ~/.vimrc<CR>
 map <C-y> "*y
 map <C-p> "*p
 
+" close current (w) or all (W) buffers
+map <Leader>w :bd<CR>
+map <Leader>W :1,999bd<CR>
+map <Leader>b :b
+map <Leader>bb :b#<CR>
+nmap <Tab> :bn<CR>
 " project wide search
 map <Leader>F :Ag<Space>
 
