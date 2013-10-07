@@ -31,6 +31,9 @@ nmap <Tab> :bn<CR>
 " project wide search
 map <Leader>F :Ag<Space>
 
+" ctrlp mapping
+map <Leader>t :CtrlP<CR>
+
 " CHANGE ME
 " adds nerdtree tab toggle
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
