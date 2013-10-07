@@ -14,6 +14,10 @@ colorscheme monokai
 " defines the leader
 let mapleader=","
 
+" edit and reload .vimrc
+nmap <C-v>e :e ~/.vimrc<CR>
+nmap <C-v>r :source ~/.vimrc<CR>
+
 " project wide search
 map <Leader>F :Ag<Space>
 
