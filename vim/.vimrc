@@ -18,6 +18,7 @@ let mapleader=","
 " adds nerdtree tab toggle
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeWinSize = 40
+let g:NERDTreeShowHidden = 1
 
 " let ctrlp only work on the current directory, not some kind of root (eg git
 " root)
