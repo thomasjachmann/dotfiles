@@ -61,3 +61,6 @@
 [submodule "vim/.vim/bundle/vimproc.vim"]
 	path = vim/.vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "vim/.vim/bundle/ag.vim"]
+	path = vim/.vim/bundle/ag.vim
+	url = git@github.com:rking/ag.vim.git
