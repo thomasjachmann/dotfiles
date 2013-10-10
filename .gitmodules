@@ -4,9 +4,6 @@
 [submodule "vim/.vim/bundle/nerdtree"]
 	path = vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/.vim/bundle/vim-colors-solarized"]
-	path = vim/.vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/.vim/bundle/vim-gitgutter"]
 	path = vim/.vim/bundle/vim-gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
