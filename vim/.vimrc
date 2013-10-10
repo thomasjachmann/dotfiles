@@ -1,7 +1,43 @@
+" The following settings are taken from the example .vimrc (see end of file)
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
 " enables pathogen
 call pathogen#infect()
 syntax on
 filetype plugin indent on
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+" 
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file
+" endif
+" set history=50		" keep 50 lines of command line history
+" set ruler		" show the cursor position all the time
+" set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+" 
+" " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+" " let &guioptions = substitute(&guioptions, "t", "", "g")
+" 
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+"   syntax on
+  set hlsearch
+endif
+
+" let custom tja settings begin
 
 " sets colorscheme
 " set background=light
@@ -157,9 +193,9 @@ runtime! config/**/*
 " inoremap <C-U> <C-G>u<C-U>
 " 
 " " In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
+" if has('mouse')
+"   set mouse=a
+" endif
 " 
 " " Switch syntax highlighting on, when the terminal has colors
 " " Also switch on highlighting the last used search pattern.
