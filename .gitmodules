@@ -1,12 +1,6 @@
 [submodule "oh-my-zsh/.oh-my-zsh"]
 	path = oh-my-zsh/.oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/.vim/bundle/FuzzyFinder"]
-	path = vim/.vim/bundle/FuzzyFinder
-	url = git://github.com/vim-scripts/FuzzyFinder.git
-[submodule "vim/.vim/bundle/L9"]
-	path = vim/.vim/bundle/L9
-	url = git://github.com/vim-scripts/L9.git
 [submodule "vim/.vim/bundle/nerdtree"]
 	path = vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
