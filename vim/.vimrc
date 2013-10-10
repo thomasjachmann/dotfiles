@@ -54,9 +54,6 @@ let mapleader=","
 nmap <C-v>e :e ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
 
-" make copying into system clipboard more accessible
-map <C-y> "*y
-map <C-p> "*p
 
 " close current (w) or all (W) buffers
 map <Leader>w :bd<CR>
