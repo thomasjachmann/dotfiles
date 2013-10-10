@@ -127,6 +127,7 @@
 	log = c !@git pbcopy %(commit)
 	log = g !@git ghc %(commit) # masking revision graph toggling
 	status = a !git commit --amend
+  stage = C !git commit
 
 [tig "color"]
 	cursor = black default underline
