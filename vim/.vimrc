@@ -133,7 +133,9 @@ set cursorline                         " highlight the line with the cursor
 
 " color the desired end of the first line of git commit messages
 " so that it's easier to know how much space is left
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51
+" also define <C-c> to delete the whole buffer, save and exit
+" to abort the commit
+autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
 
 " load everything else in its own config file
 runtime! config/**/*
