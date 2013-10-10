@@ -54,6 +54,11 @@ let mapleader=","
 nmap <C-v>e :e ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
 
+" 'smooth' scrolling both in normal and insert mode (taken from tips.txt)
+nmap <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+nmap <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+imap <C-U> <Esc><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>i
+imap <C-D> <Esc><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>i
 
 " close current (w) or all (W) buffers
 map <Leader>w :bd<CR>
