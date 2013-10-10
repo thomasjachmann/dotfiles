@@ -10,6 +10,7 @@ alias gut="git"
 alias it="git"
 
 alias tiga="tig --all"
+alias tigs="tig status"
 
 function gss() {
   local version=$1
