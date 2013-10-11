@@ -4,27 +4,17 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" enables pathogen
+" enable pathogen
 call pathogen#infect()
 syntax on
 filetype plugin indent on
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" 
-" if has("vms")
-"   set nobackup		" do not keep a backup file, use versions instead
-" else
-"   set backup		" keep a backup file
-" endif
-" set history=50		" keep 50 lines of command line history
-" set ruler		" show the cursor position all the time
-" set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-" 
-" " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" " let &guioptions = substitute(&guioptions, "t", "", "g")
-" 
+
+set backspace=indent,eol,start                    " allow backspacing over everything in insert mode
+set ruler		                                      " show the cursor position all the time
+set showcmd		                                    " display incomplete commands
+set incsearch		                                  " do incremental searching
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
@@ -39,16 +29,9 @@ endif
 
 " let custom tja settings begin
 
-" sets colorscheme
-" set background=light
-" if !has("gui_running")
-"   let g:solarized_termcolors=256
-" end
-" colorscheme solarized
 colorscheme monokai
 
-" defines the leader
-let mapleader=","
+let mapleader=","                                 " defines the leader
 
 " edit and reload .vimrc
 nmap <C-v>e :e ~/.vimrc<CR>
@@ -107,12 +90,6 @@ set number
 
 " shows mode in status bar
 set showmode
-
-" shows where you are in a file
-set ruler
-
-" shows the current (uncompleted) command
-set showcmd
 
 " uses context for navigation (scroll early)
 set so=5
