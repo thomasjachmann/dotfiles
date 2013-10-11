@@ -12,6 +12,28 @@ alias it="git"
 alias tiga="tig --all"
 alias tigs="tig status"
 
+function git-upgrade-submodules() {
+  local old_ifs=$IFS
+  IFS=$(echo -en "\n\b")
+  for submodule in $(git submodule | sed -E "s/^.[a-z0-9]+ (.*) \(.*\)$/\1/"); do
+    while true; do
+      echo -n "Do you wish to upgrade submodule $submodule? [Yn] "
+      read -sk answer
+      echo
+      case ${answer//[[:space:]]/y} in
+        Y|y)
+          pushd "$submodule"
+          git pull origin master
+          popd
+          break;;
+        N|n)
+          break;;
+      esac
+    done
+  done
+  IFS=$old_ifs
+}
+
 function gss() {
   local version=$1
   if [[ "$version" == "" ]]; then
