@@ -33,6 +33,10 @@ colorscheme monokai
 
 let mapleader=","                                 " defines the leader
 
+" make auto completion more zsh like instead of completing the first match
+set wildmenu
+set wildmode=list:longest
+
 " edit and reload .vimrc
 nmap <C-v>e :e ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
