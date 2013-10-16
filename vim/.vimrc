@@ -33,6 +33,8 @@ colorscheme monokai
 
 let mapleader=","                                 " defines the leader
 
+runtime macros/matchit.vim        " Load the matchit plugin.
+
 " make auto completion more zsh like instead of completing the first match
 set wildmenu
 set wildmode=list:longest
