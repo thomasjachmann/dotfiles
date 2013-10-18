@@ -114,6 +114,10 @@ bindToHyper({
   v: toggleVpn('qype')
 }, 'z'); // y for yelp stuff - this is a bug: https://github.com/jigish/slate/issues/198
 
+// since this file is in version control and used on multiple computers,
+// allow to customize slate for a local machine by creating .slate.local.js
+slate.source('~/.slate.local.js');
+
 // function echo(message) {
 //   slate.shell('/usr/bin/say "' + message + '"', true);
 // }
