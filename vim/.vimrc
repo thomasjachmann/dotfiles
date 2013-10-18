@@ -51,6 +51,9 @@ set listchars=tab:▸\ ,extends:>,precedes:<
 highlight NonText ctermbg=none
 highlight SpecialKey ctermbg=none
 
+" add two spaces before soft wrapped line continuations
+set showbreak=\ \ 
+
 " edit and reload .vimrc
 nmap <C-v>e :e ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
