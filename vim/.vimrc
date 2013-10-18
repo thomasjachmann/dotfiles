@@ -64,6 +64,8 @@ nmap <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E
 imap <C-U> <Esc><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>i
 imap <C-D> <Esc><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>i
 
+map <Leader>q :qall<CR>
+
 " close current (w) or all (W) buffers
 map <Leader>w :bd<CR>
 map <Leader>W :1,999bd<CR>
