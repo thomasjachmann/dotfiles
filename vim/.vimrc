@@ -43,6 +43,14 @@ runtime macros/matchit.vim        " Load the matchit plugin.
 set wildmenu
 set wildmode=list:longest
 
+" highlight invisible characters
+" (NonText: eol/extends/precedes, SpecialKey: nbsp/tab/trail)
+" see http://vimcasts.org/episodes/show-invisibles/
+set list
+set listchars=tab:▸\ ,extends:>,precedes:<
+highlight NonText ctermbg=none
+highlight SpecialKey ctermbg=none
+
 " edit and reload .vimrc
 nmap <C-v>e :e ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
