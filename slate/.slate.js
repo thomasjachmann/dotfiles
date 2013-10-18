@@ -101,11 +101,11 @@ bindToHyper({
   // r: app('Rested'),
   s: app('Skype'),
   t: app('iTerm'),            // t for terminal
-  w: S.opstr('hide current'),
+  w: slate.opstr('hide current'),
 
   // control keys
-  esc: S.op('relaunch'),
-  tab: S.opstr('grid 1440x900:6,6')
+  esc: slate.op('relaunch'),
+  tab: slate.opstr('grid 1440x900:6,6')
 });
 
 bindToHyper({
