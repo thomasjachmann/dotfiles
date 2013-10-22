@@ -10,6 +10,6 @@ function bcd() {
 
 function bcp() {
   local dir=`dirname $1`
-  mkdir -p "$HOME/platform/ruby/apps/oisi2/$dir"
-  cp -r "$HOME/platform/ruby/apps/oisi/$1" "$HOME/platform/ruby/apps/oisi2/$dir"
+  mkdir -p "$HOME/platform/ruby/apps/csc/$dir"
+  cp -r "$HOME/platform/ruby/apps/oisi/$1" "$HOME/platform/ruby/apps/csc/$dir"
 }
