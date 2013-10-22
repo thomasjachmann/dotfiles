@@ -5,7 +5,7 @@ export NLS_LANG="AMERICAN_AMERICA.UTF8"
 export PATH=$PATH:$DYLD_LIBRARY_PATH
 
 function bcd() {
-  cd ~/platform/ruby/apps/$1
+  cd ~/platform/ruby/apps/$1 &>/dev/null || cd ~/platform/ruby/gems/$1
 }
 
 function bcp() {
