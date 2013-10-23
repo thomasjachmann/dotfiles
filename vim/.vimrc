@@ -65,6 +65,7 @@ imap <C-U> <Esc><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y
 imap <C-D> <Esc><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>i
 
 map <Leader>q :qall<CR>
+map <Leader>/ :noh<CR>
 
 " close current (w) or all (W) buffers
 map <Leader>w :bd<CR>
