@@ -71,7 +71,8 @@ map <Leader>/ :noh<CR>
 map <Leader>w :bd<CR>
 map <Leader>W :1,999bd<CR>
 map <Leader>bb :b#<CR>
-nmap <Tab> :bn<CR>
+nmap <Tab> gt
+nmap <S-Tab> gT
 " project wide search
 map <Leader>F :Ag<Space>
 
