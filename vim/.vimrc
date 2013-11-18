@@ -73,6 +73,7 @@ map <Leader>W :1,999bd<CR>
 map <Leader>bb :b#<CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
+nmap <Leader><Leader> :b#<CR>
 " project wide search
 map <Leader>F :Ag<Space>
 
