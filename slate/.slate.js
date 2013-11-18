@@ -5,6 +5,10 @@ slate.configAll({
   //resizePercentOf: 'screenSize',
 });
 
+// function echo(message) {
+//   slate.shell('/usr/bin/say "' + message + '"', true);
+// }
+
 function appscript(cmds, wait) {
   return slate.shell('/usr/bin/osascript -e \'' + cmds.join('\' -e \'') + '\'', wait);
 }
@@ -142,47 +146,3 @@ bindToHyper({
 // since this file is in version control and used on multiple computers,
 // allow to customize slate for a local machine by creating .slate.local.js
 slate.source('~/.slate.local.js');
-
-// function echo(message) {
-//   slate.shell('/usr/bin/say "' + message + '"', true);
-// }
-
-// function hyper(key, whatToDo) {
-//   slate.bind(key + ':ctrl;shift;alt;cmd', whatToDo);
-// }
-
-// function hyperApp(key, app) {
-//   hyper(key, function(win) { activate(app); });
-// }
-
-// Direct Access To Applications
-// Note: hjkl are already mapped to arrow keys by KeyRemap4MacBook
-// hyperApp('1', '1Password');
-// hyperApp('b', 'Safari');          // b for browser
-// hyperApp('c', 'Google Chrome');
-// hyperApp('d', 'Sequel Pro');      // d for database
-// hyperApp('e', 'Sublime Text 2');  // e for editor
-// hyperApp('f', 'Finder');
-// hyperApp('g', 'GitX');
-// hyperApp('i', 'Textual');
-// hyperApp('m', 'Mail');
-// hyperApp('n', 'Echofon');         // n for noise
-// hyperApp('r', 'Rested');
-// hyperApp('s', 'Skype');
-// hyperApp('t', 'iTerm');           // t for terminal
-// hyperApp('z', 'Yelp Mail');       // y for yelp mail - this is a bug: https://github.com/jigish/slate/issues/198
-
-// Experiment with double presses
-// var singleDoubleTimes = {};
-// function singleDouble(key) {
-//   hyper(key, function(win) {
-//     var now = new Date().getTime(),
-//         last = singleDoubleTimes[key];
-//     if (last && (now - last) < 1000) {
-//       slate.log("double " + key);
-//     } else {
-//       slate.log("single " + key);
-//     }
-//     singleDoubleTimes[key] = now;
-//   });
-// }
