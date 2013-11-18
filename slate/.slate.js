@@ -1,4 +1,9 @@
-slate.config('modalEscapeKey', 'esc');
+slate.configAll({
+  modalEscapeKey: 'esc',
+  defaultToCurrentScreen: true,
+  //nudgePercentOf: 'screenSize',
+  //resizePercentOf: 'screenSize',
+});
 
 function appscript(cmds, wait) {
   return slate.shell('/usr/bin/osascript -e \'' + cmds.join('\' -e \'') + '\'', wait);
@@ -46,6 +51,15 @@ function activate(app) {
 
 function app(app) {
   return function(win) { activate(app); };
+}
+
+function move(x, y, w, h) {
+  return slate.operation('move', {
+    x: 'screenOriginX+screenSizeX*' + x,
+    y: 'screenOriginY+screenSizeY*' + y,
+    width: 'screenSizeX*' + w,
+    height: 'screenSizeY*' + h
+  });
 }
 
 var singleDoubleTimes = {};
@@ -105,7 +119,18 @@ bindToHyper({
 
   // control keys
   esc: slate.op('relaunch'),
-  tab: slate.opstr('grid 1440x900:6,6')
+  tab: slate.opstr('grid 1440x900:6,6'),
+  '`': slate.operation('chain', {
+    operations: [
+      move(0,   0,   1,   1),   // fullscreen
+      move(0,   0,   0.5, 1),   // left half
+      move(0.5, 0,   0.5, 1),   // right half
+      move(0,   0,   0.5, 0.5), // top left quarter
+      move(0.5, 0,   0.5, 0.5), // top right quarter
+      move(0,   0.5, 0.5, 0.5), // bottom left quarter
+      move(0.5, 0.5, 0.5, 0.5)  // bottom right quarter
+    ]
+  })                          // < for cycling through window placements
 });
 
 bindToHyper({
