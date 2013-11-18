@@ -123,7 +123,7 @@ bindToHyper({
 
   // control keys
   esc: slate.op('relaunch'),
-  tab: slate.opstr('grid 1440x900:6,6'),
+  tab: slate.opstr('grid 1440x900:6,6 2560x1440:6,6'),
   '`': slate.operation('chain', {
     operations: [
       move(0,   0,   1,   1),   // fullscreen
