@@ -47,9 +47,9 @@ set wildmode=list:longest
 " (NonText: eol/extends/precedes, SpecialKey: nbsp/tab/trail)
 " see http://vimcasts.org/episodes/show-invisibles/
 set list
-set listchars=tab:▸\ ,extends:>,precedes:<
-highlight NonText ctermbg=none
-highlight SpecialKey ctermbg=none
+set listchars=tab:▸\ ,extends:>,precedes:<,eol:¬
+highlight NonText ctermfg=237 ctermbg=none
+highlight SpecialKey ctermfg=237 ctermbg=none
 
 " add two spaces before soft wrapped line continuations
 set showbreak=\ \ 
