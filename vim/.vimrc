@@ -54,6 +54,15 @@ highlight SpecialKey ctermfg=237 ctermbg=none
 " add two spaces before soft wrapped line continuations
 set showbreak=\ \ 
 
+" highlight trailing spaces
+" see http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+"highlight ExtraWhitespace ctermbg=196 guibg=196
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
+
 " edit and reload .vimrc
 nmap <C-v>e :e ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
