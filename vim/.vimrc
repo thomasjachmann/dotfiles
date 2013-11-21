@@ -144,6 +144,10 @@ set expandtab                          " expand tabs to spaces
 set smarttab                           " also delete all spaces on <BS>
 
 set cursorline                         " highlight the line with the cursor
+highlight clear CursorLine             " only highlight the line number since
+augroup CLClear
+  autocmd! ColorScheme * highlight clear CursorLine
+augroup END
 
 " color the desired end of the first line of git commit messages
 " so that it's easier to know how much space is left
