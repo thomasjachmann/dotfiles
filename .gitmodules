@@ -22,9 +22,6 @@
 [submodule "sublime_text/Library/Application Support/Sublime Text 3/Packages/OpenSearchResult"]
 	path = sublime_text/Library/Application Support/Sublime Text 3/Packages/OpenSearchResult
 	url = git://github.com/abrookins/OpenSearchResult.git
-[submodule "sublime_text/Library/Application Support/Sublime Text 3/Packages/Package Control"]
-	path = sublime_text/Library/Application Support/Sublime Text 3/Packages/Package Control
-	url = https://github.com/wbond/sublime_package_control.git
 [submodule "sublime_text/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements"]
 	path = sublime_text/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements
 	url = git://github.com/titoBouzout/SideBarEnhancements.git
