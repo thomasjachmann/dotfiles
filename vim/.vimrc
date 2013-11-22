@@ -47,7 +47,7 @@ set wildmode=list:longest
 " (NonText: eol/extends/precedes, SpecialKey: nbsp/tab/trail)
 " see http://vimcasts.org/episodes/show-invisibles/
 set list
-set listchars=tab:▸\ ,extends:>,precedes:<,eol:¬
+set listchars=tab:▸\ ,extends:>,precedes:<,trail:•,eol:¬
 highlight NonText ctermfg=237 ctermbg=none
 highlight SpecialKey ctermfg=237 ctermbg=none
 
