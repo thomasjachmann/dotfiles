@@ -73,9 +73,6 @@
 [submodule "vim/.vim/bundle/vim-fugitive"]
 	path = vim/.vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
-[submodule "vim/.vim/bundle/vim-tmux-navigator"]
-	path = vim/.vim/bundle/vim-tmux-navigator
-	url = git@github.com:christoomey/vim-tmux-navigator.git
 [submodule "vim/.vim/bundle/indentLine"]
 	path = vim/.vim/bundle/indentLine
 	url = git@github.com:Yggdroot/indentLine.git
