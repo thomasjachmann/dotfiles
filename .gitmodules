@@ -79,3 +79,6 @@
 [submodule "vim/.vim/bundle/vim-markdown"]
 	path = vim/.vim/bundle/vim-markdown
 	url = git@github.com:tpope/vim-markdown.git
+[submodule "vim/.vim/bundle/vim-signify"]
+	path = vim/.vim/bundle/vim-signify
+	url = git@github.com:mhinz/vim-signify.git
