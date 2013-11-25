@@ -4,6 +4,15 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'file-line')
+call add(g:pathogen_disabled, 'greplace')
+call add(g:pathogen_disabled, 'vim-airline')
+call add(g:pathogen_disabled, 'vim-endwise')
+call add(g:pathogen_disabled, 'vim-multiple-cursors')
+call add(g:pathogen_disabled, 'vim-nerdtree-tabs')
+call add(g:pathogen_disabled, 'vim-signify')
+
 " enable pathogen
 call pathogen#infect()
 syntax on
