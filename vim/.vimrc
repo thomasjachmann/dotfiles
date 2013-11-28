@@ -121,6 +121,8 @@ map <Leader>F :Ag<Space>
 " ctrlp mapping
 map <Leader>t :CtrlP<CR>
 map <Leader>T :CtrlPBuffer<CR>
+map <Leader>r :CtrlPBufTag<CR>
+map <Leader>R :CtrlPTag<CR>
 
 " CHANGE ME
 " adds nerdtree tab toggle
