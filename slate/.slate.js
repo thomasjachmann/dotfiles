@@ -102,7 +102,7 @@ bindToHyper({
   b: app('Safari'),           // b for browser
   c: app('Google Chrome'),
   d: app('Sequel Pro'),       // d for database
-  e: app('Sublime Text'),     // e for editor
+  e: app('MacVim'),           // e for editor
   f: app('Finder'),
   g: app('GitX'),
   i: app('/Applications/Textual.app'), // i for irc, Textual somehow isn't startable without the path, since path to application "Textual" fails
