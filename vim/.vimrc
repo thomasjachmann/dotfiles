@@ -132,6 +132,12 @@ let g:NERDTreeShowHidden = 1
 " root)
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 'r' " open newly created file in current window
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|bundle)$',
+  \ }
+
 
 " configure airline
 let g:airline#extensions#tabline#enabled = 1
