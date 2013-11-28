@@ -24,6 +24,11 @@ set ruler		                                      " show the cursor position all 
 set showcmd		                                    " display incomplete commands
 set incsearch		                                  " do incremental searching
 
+" try some performance improvements
+set noshowcmd
+set lazyredraw
+set ttyfast
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
@@ -129,6 +134,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 " sets window size in gui
 if has("gui_running")
   set lines=50 columns=140
+  set showcmd
 end
 
 " shows line numbers
