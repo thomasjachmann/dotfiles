@@ -29,6 +29,7 @@ set incsearch		                                  " do incremental searching
 set noshowcmd
 set lazyredraw
 set ttyfast
+set synmaxcol=255 " only syntax highlight the first 255 lines, should be sufficient for most cases
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
