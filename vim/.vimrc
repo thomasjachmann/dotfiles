@@ -108,6 +108,12 @@ nmap <Leader><Leader> :b#<CR>
 " git stuff
 map <Leader>gb :Gblame<CR>
 
+" window navigation (see http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily)
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+
 " project wide search
 map <Leader>F :Ag<Space>
 
