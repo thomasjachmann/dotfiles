@@ -135,6 +135,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 " sets window size in gui
 if has("gui_running")
   set lines=50 columns=140
+  set guioptions=egm " default: egmrL, see :help guioptions - remove everything so there are no scrollbars
   set showcmd
 end
 
