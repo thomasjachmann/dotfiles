@@ -85,3 +85,4 @@
 [submodule "vim/.vim/bundle/YouCompleteMe"]
 	path = vim/.vim/bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+	ignore = dirty
