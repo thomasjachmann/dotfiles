@@ -104,6 +104,10 @@ map <Leader>bb :b#<CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
 nmap <Leader><Leader> :b#<CR>
+
+" git stuff
+map <Leader>gb :Gblame<CR>
+
 " project wide search
 map <Leader>F :Ag<Space>
 
