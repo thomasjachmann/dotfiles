@@ -82,3 +82,6 @@
 [submodule "vim/.vim/bundle/vim-signify"]
 	path = vim/.vim/bundle/vim-signify
 	url = git@github.com:mhinz/vim-signify.git
+[submodule "vim/.vim/bundle/YouCompleteMe"]
+	path = vim/.vim/bundle/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
