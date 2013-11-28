@@ -108,7 +108,7 @@ map <Leader>T :CtrlPBuffer<CR>
 
 " CHANGE ME
 " adds nerdtree tab toggle
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
 let g:NERDTreeShowHidden = 1
 
