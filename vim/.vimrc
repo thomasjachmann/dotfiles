@@ -47,6 +47,7 @@ colorscheme monokai
 
 " for the character, see http://www.unicode.org/charts/PDF/U2500.pdf (u2502)
 let g:indentLine_color_term = 237
+let g:indentLine_color_gui = '#3a3a3a' " see https://gist.github.com/MicahElliott/719710
 let g:indentLine_char = '│'
 
 let mapleader=","                                 " defines the leader
@@ -62,8 +63,8 @@ set wildmode=list:longest
 " see http://vimcasts.org/episodes/show-invisibles/
 set list
 set listchars=tab:▸\ ,extends:>,precedes:<,trail:•,eol:¬
-highlight NonText ctermfg=237 ctermbg=none
-highlight SpecialKey ctermfg=237 ctermbg=none
+highlight NonText ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
+highlight SpecialKey ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 
 " add two spaces before soft wrapped line continuations
 set showbreak=\ \ 
