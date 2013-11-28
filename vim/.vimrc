@@ -99,7 +99,7 @@ map <Leader>s :w<CR>
 
 " close current (w) or all (W) buffers
 map <Leader>w :bd<CR>
-map <Leader>W :1,999bd<CR>
+map <Leader>W :tabclose<CR>
 map <Leader>bb :b#<CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
