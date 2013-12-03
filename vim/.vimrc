@@ -107,6 +107,7 @@ nmap <S-Tab> gT
 nmap <Leader><Leader> :b#<CR>
 
 " git stuff
+map <Leader>gs :Gstatus<CR>
 map <Leader>gb :Gblame<CR>
 
 " window navigation (see http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily)
