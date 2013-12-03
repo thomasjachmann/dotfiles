@@ -3,3 +3,5 @@
 
 # vanilla vim
 alias vvim='vim -u NONE -N'
+
+alias v='mvim'
