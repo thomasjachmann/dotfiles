@@ -20,6 +20,7 @@ syntax on
 filetype plugin indent on
 
 set visualbell
+set pastetoggle=<Leader>p
 
 set backspace=indent,eol,start                    " allow backspacing over everything in insert mode
 set ruler		                                      " show the cursor position all the time
