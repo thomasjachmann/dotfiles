@@ -115,6 +115,8 @@ nmap <Leader><Leader> :b#<CR>
 " git stuff
 map <Leader>gs :Gstatus<CR>
 map <Leader>gb :Gblame<CR>
+map <Leader>gco :Gread<CR>
+map <Leader>ga :Gwrite<CR>
 
 " window navigation (see http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily)
 map <C-H> <C-W>h
