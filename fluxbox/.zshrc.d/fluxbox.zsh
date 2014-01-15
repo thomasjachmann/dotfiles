@@ -16,10 +16,6 @@ function backup() {
   backup-dump
 }
 
-function backup-import() {
-  backup-directory /Users/thomas/Pictures/Import/ /Volumes/Macintosh\ HD/Backup/Import
-}
-
 # see
 # http://www.thegeekstuff.com/2010/09/rsync-command-examples/
 # http://www.mikerubel.org/computers/rsync_snapshots/
