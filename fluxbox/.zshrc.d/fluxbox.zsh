@@ -30,6 +30,6 @@ function log-mail() {
   inbox=`osascript -e 'tell application "Mail" to count of messages of inbox'`
   inbox_unread=`osascript -e 'tell application "Mail" to unread count of inbox'`
   sent=`osascript -e 'tell application "Mail" to count of messages of sent mailbox'`
-  echo "`date +"%Y-%m-%d %H:%M"`, $inbox, $inbox_unread, $sent" >> ~/Desktop/mail-cleanup.log
+  echo "`date +"%Y-%m-%d %H:%M"`, $inbox, $inbox_unread, $sent, $*" >> ~/Desktop/mail-cleanup.log
   cat ~/Desktop/mail-cleanup.log
 }
