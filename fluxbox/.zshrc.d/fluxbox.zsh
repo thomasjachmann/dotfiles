@@ -1,11 +1,9 @@
-# TODO ignore Lightroom previews in Previews.lrdata
-
 function backup-directory() {
-  rsync --archive --hard-links --extended-attributes --verbose --human-readable --itemize-changes $1 $2
+  rsync --archive --hard-links --extended-attributes --verbose --human-readable --itemize-changes $*
 }
 
 function backup-photos() {
-  backup-directory /Volumes/RedPiglet/Photos/ /Volumes/RedBackup/Photos
+  backup-directory --exclude 'Backups' --exclude 'Photos Previews.lrdata' /Volumes/RedPiglet/Photos/ /Volumes/RedBackup/Photos
   backup-directory /Volumes/RedPiglet/Ultraschall/ /Volumes/RedBackup/Ultraschall
 }
 
