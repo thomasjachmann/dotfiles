@@ -4,4 +4,4 @@
 # vanilla vim
 alias vvim='vim -u NONE -N'
 
-alias v='mvim'
+alias v='mvim -c "set fullscreen"'
