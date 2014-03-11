@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <root>
+  <appdef>
+    <appname>ESCAPABLE</appname>
+    <equal>com.apple.Terminal</equal>
+    <equal>iTerm</equal>
+    <equal>net.sourceforge.iTerm</equal>
+    <equal>com.googlecode.iterm2</equal>
+    <equal>org.vim.MacVim</equal>
+  </appdef>
+
   <item>
     <name>Hyper Key</name>
 
@@ -9,6 +18,7 @@
       <appendix>Modifier use acts as always.</appendix>
       <appendix>Single press just sends ESC.</appendix>
       <identifier>private.command_to_command_and_escape</identifier>
+      <only>ESCAPABLE</only>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_L,
