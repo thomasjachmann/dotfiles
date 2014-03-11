@@ -31,7 +31,7 @@ set incsearch		                                  " do incremental searching
 set noshowcmd
 set lazyredraw
 set ttyfast
-set synmaxcol=255 " only syntax highlight the first 255 lines, should be sufficient for most cases
+set synmaxcol=255 " only syntax highlight the first 255 characters of a line, should be sufficient for most cases
 
 let g:signify_disable_by_default = 1
 let g:signify_vcs_list = ['git']
