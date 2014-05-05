@@ -206,6 +206,14 @@ highlight ColorColumn ctermbg=236 guibg='#2a2a2a'
 " to abort the commit
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
 
+function InitDir()
+  tabnew
+  tabonly
+  Wipeout
+  NERDTreeTabsToggle
+endfunction
+command InitDir call InitDir()
+
 " load everything else in its own config file
 runtime! config/**/*
 

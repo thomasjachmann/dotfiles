@@ -1,5 +1,5 @@
-export EDITOR="subl --new-window --wait"
-export BUNDLER_EDITOR="subl --new-window"
+#export EDITOR="subl --new-window --wait"
+#export BUNDLER_EDITOR="subl --new-window"
 
 alias slime="say-and-execute subl --new-window"
 
