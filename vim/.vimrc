@@ -83,6 +83,9 @@ set ruler		                                      " show the cursor position all 
 set showcmd		                                    " display incomplete commands
 set incsearch		                                  " do incremental searching
 
+set splitright
+set splitbelow
+
 " try some performance improvements
 set noshowcmd
 set lazyredraw
