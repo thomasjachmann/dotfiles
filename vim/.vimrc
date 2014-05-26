@@ -3,21 +3,77 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
-let g:pathogen_disabled = []
-"call add(g:pathogen_disabled, 'YouCompleteMe')
-call add(g:pathogen_disabled, 'file-line')
-call add(g:pathogen_disabled, 'greplace')
-"call add(g:pathogen_disabled, 'vim-airline')
-call add(g:pathogen_disabled, 'vim-endwise')
-call add(g:pathogen_disabled, 'vim-multiple-cursors')
-call add(g:pathogen_disabled, 'vim-nerdtree-tabs')
-"call add(g:pathogen_disabled, 'vim-signify')
-
-" enable pathogen
-call pathogen#infect()
 syntax on
 filetype plugin indent on
+
+" taken from https://github.com/MarcWeber/vim-addon-manager#recommended-setup-checking-out-vam-
+fun! SetupVAM()
+  let c = get(g:, 'vim_addon_manager', {})
+  let g:vim_addon_manager = c
+  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
+  " most used options you may want to use:
+  " let c.log_to_buf = 1
+  " let c.auto_install = 0
+  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
+    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
+        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
+  endif
+  call vam#ActivateAddons([], {'auto_install' : 0})
+endfun
+call SetupVAM()
+
+" colorschemes
+VAMActivate github:sickill/vim-monokai
+
+" visuals
+VAMActivate github:Yggdroot/indentLine
+VAMActivate github:bling/vim-airline
+VAMActivate github:ap/vim-css-color
+VAMActivate github:bronson/vim-trailing-whitespace
+
+" navigation
+VAMActivate github:kien/ctrlp.vim
+VAMActivate github:FelikZ/ctrlp-py-matcher
+VAMActivate github:mattn/ctrlp-register
+VAMActivate github:scrooloose/nerdtree
+VAMActivate github:jistr/vim-nerdtree-tabs
+VAMActivate github:artnez/vim-wipeout
+"VAMActivate github:bogado/file-line
+"VAMActivate github:moll/vim-bbye " :Bdelete that doesn't close the window when closing a buffer
+
+" search
+VAMActivate github:rking/ag.vim
+VAMActivate github:skwp/greplace.vim " :Gsearch/:Greplace for search/replace in a result buffer
+VAMActivate github:Valloric/YouCompleteMe
+
+" editing
+VAMActivate github:scrooloose/nerdcommenter
+VAMActivate github:tpope/vim-surround
+VAMActivate github:terryma/vim-multiple-cursors
+VAMActivate github:tpope/vim-repeat
+VAMActivate github:tpope/vim-endwise " insert end statements wisely in ruby
+VAMActivate github:p0deje/vim-ruby-interpolation
+VAMActivate github:ecomba/vim-ruby-refactoring
+
+" syntaxes
+VAMActivate github:cakebaker/scss-syntax.vim
+VAMActivate github:kchmck/vim-coffee-script
+VAMActivate github:tpope/vim-haml
+VAMActivate github:pangloss/vim-javascript
+VAMActivate github:tpope/vim-markdown
+VAMActivate github:mustache/vim-mustache-handlebars
+VAMActivate github:tpope/vim-rails
+VAMActivate github:vim-ruby/vim-ruby
+"VAMActivate github:stephpy/vim-yaml
+
+" version control
+VAMActivate github:tpope/vim-fugitive
+VAMActivate github:mhinz/vim-signify
+
+" other
+"VAMActivate github:tpope/vim-abolish " tpope's multi variants abbreviation/substitution plugin
+"VAMActivate github:reedes/vim-pencil " various prose modes
 
 set visualbell
 set pastetoggle=<Leader>p
