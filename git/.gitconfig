@@ -109,9 +109,12 @@
 	stash = false
 
 [tig]
+  refresh-mode = auto
 	show-changes = false					# don't show changes at top of main view
-	show-date = relative
-  author-width = 3
+  ;set date view column options
+	;show-date = relative
+  ;set author view column options
+  ;author-width = 3
 	# show-author = abbreviated
 	line-graphics = utf-8					# nice graphics in graph
 	tab-size = 2
@@ -120,8 +123,9 @@
 
 [tig "bind"]
 	generic = F !git fetch
-	generic = Escape view-close
-	main = Escape none
+  ;find out how to map ESC
+	;generic = <Esc> view-close
+	;main = <Esc> none
 	main = c !@git pbcopy %(commit)
 	main = g !@git ghc %(commit) # masking revision graph toggling
 	log = c !@git pbcopy %(commit)
