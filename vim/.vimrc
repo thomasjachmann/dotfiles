@@ -193,6 +193,14 @@ map <Leader>gb :Gblame<CR>
 map <Leader>gco :Gread<CR>
 map <Leader>ga :Gwrite<CR>
 
+function! OpenGitModified()
+  let modifiedFiles = system("git status --porcelain | grep -v '/$' | awk '{print $2}'")
+  for file in split(modifiedFiles, '\n')
+    execute 'tabe ' . file
+  endfor
+endfunction
+map <Leader>gm :call OpenGitModified()<CR>
+
 " window navigation (see http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily)
 map <C-H> <C-W>h
 map <C-J> <C-W>j
