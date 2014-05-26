@@ -35,7 +35,7 @@ FONT_SIZE="60"           # Font size in points
 FONT_STYLE="Normal"      # Font style (Any, Italic, Normal, Oblique)
 # Font path
 # FONT="$HOME/.bash/resources/SimpleLife.ttf"
-FAMILY="Scribble Box"
+FONT="$HOME/Library/Fonts/Homestead-Display.otf"
 
 HOSTNAME=`echo $@ | sed -e "s/.*@//" -e "s/ .*//"`
 
@@ -72,7 +72,7 @@ trap on_exit EXIT
 
 convert \
   -size "$DIMENSIONS" xc:"$BG_COLOR" -gravity "$GRAVITY" -fill "$FG_COLOR" \
-  -family "$FAMILY" -style "$FONT_STYLE" -pointsize "$FONT_SIZE" -antialias \
+  -font "$FONT" -style "$FONT_STYLE" -pointsize "$FONT_SIZE" -antialias \
   -draw "text $OFFSET1 '${RESOLVED_HOSTNAME:-$HOSTNAME}'" \
   -pointsize 30 -draw "text $OFFSET2 '${RESOLVED_IP:-}'" \
   "/tmp/iTermBG.$$.png"
