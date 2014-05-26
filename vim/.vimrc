@@ -145,6 +145,8 @@ highlight SpecialKey ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 " add two spaces before soft wrapped line continuations
 set showbreak=\ \ 
 
+set showmatch " blink matching opening brackets when typing a closing bracket
+
 " highlight trailing spaces
 " see http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 "highlight ExtraWhitespace ctermbg=196 guibg=196
