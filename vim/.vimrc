@@ -197,11 +197,15 @@ map <Leader>T :CtrlPBuffer<CR>
 map <Leader>r :CtrlPBufTag<CR>
 map <Leader>R :CtrlPTag<CR>
 
-" CHANGE ME
 " adds nerdtree tab toggle
-map <Leader>n :NERDTreeToggle<CR>
+map <Leader>nt :NERDTreeToggle<CR>
+map <Leader>nT :NERDTreeTabsToggle<CR>
+map <Leader>nn :NERDTree<CR>
+map <Leader>nf :NERDTreeFind<CR>
 let g:NERDTreeWinSize = 40
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeHijackNetrw = 0
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " let ctrlp only work on the current directory, not some kind of root (eg git
 " root)
