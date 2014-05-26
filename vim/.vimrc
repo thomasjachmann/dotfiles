@@ -250,6 +250,8 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
   \ }
 
+" see https://github.com/FelikZ/ctrlp-py-matcher/blob/master/doc/pymatcher.txt
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " configure airline
 let g:airline_powerline_fonts = 1
