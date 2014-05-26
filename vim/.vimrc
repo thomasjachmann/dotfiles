@@ -164,16 +164,27 @@ nmap <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E
 imap <C-U> <Esc><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>i
 imap <C-D> <Esc><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>i
 
-map <Leader>q :qall<CR>
+" close current buffer
+map <Leader>qb :bd<CR>
+" close current window
+map <Leader>qw :q\|Wipeout<CR>
+" close current tab
+map <Leader>qt :tabclose\|Wipeout<CR>
+" close all tabs (opening a new one)
+map <Leader>qW :tabnew\|tabonly\|Wipeout<CR>
+map <Leader>qT :tabnew\|tabonly\|Wipeout<CR>
+" close everyting (exiting)
+map <Leader>qq :qall<CR>
+" close everything without saving (exiting)
+map <Leader>qQ :q!<CR>
 map <Leader>/ :noh<CR>
 map <Leader>w :w<CR>
 
-" close current (w) or all (W) buffers
-map <Leader>w :bd<CR>
-map <Leader>W :tabclose<CR>
-map <Leader>bb :b#<CR>
+" tab navigation
 nmap <Tab> gt
 nmap <S-Tab> gT
+
+" switching current window back to previous buffer
 nmap <Leader><Leader> :b#<CR>
 
 " git stuff
