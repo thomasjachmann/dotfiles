@@ -201,6 +201,14 @@ function! OpenGitModified()
 endfunction
 map <Leader>gm :call OpenGitModified()<CR>
 
+function! StartProse()
+  setlocal textwidth=80
+  setlocal formatoptions=tcroqa1j
+  setlocal autoindent
+endfunction
+command StartProse call StartProse()
+autocmd Filetype markdown call StartProse()
+
 " window navigation (see http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily)
 map <C-H> <C-W>h
 map <C-J> <C-W>j
