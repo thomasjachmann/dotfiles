@@ -97,7 +97,31 @@ function bindToHyper(mappings, modal_key) {
 bindToHyper({
   // alphanumeric keys (mainly app shortcuts)
   0: app('TickTrack SSB'),    // tt for ticktrack
-  1: app('1Password'),
+  //1: app('1Password'),
+  1: move(0, 0, 1, 1),        // fullscreen
+  2: slate.operation('chain', {
+    operations: [
+      move(0,   0, 0.5, 1),   // left half
+      move(0.5, 0, 0.5, 1)    // right half
+    ]
+  }),
+  3: slate.operation('chain', {
+    operations: [
+      move(0,   0, 1/3, 1),   // left third
+      move(0,   0, 2/3, 1),   // left two thirds
+      move(1/3, 0, 1/3, 1),   // middle third
+      move(1/3, 0, 2/3, 1),   // right two thirds
+      move(2/3, 0, 1/3, 1)    // right third
+    ]
+  }),
+  4: slate.operation('chain', {
+    operations: [
+      move(0,   0,   0.5, 0.5), // top left quarter
+      move(0.5, 0,   0.5, 0.5), // top right quarter
+      move(0,   0.5, 0.5, 0.5), // bottom left quarter
+      move(0.5, 0.5, 0.5, 0.5)  // bottom right quarter
+    ]
+  }),
   a: app('Adium'),
   b: app('Safari'),           // b for browser
   c: app('Google Chrome'),
@@ -123,18 +147,7 @@ bindToHyper({
 
   // control keys
   esc: slate.op('relaunch'),
-  tab: slate.opstr('grid 1440x900:6,6 2560x1440:6,6'),
-  '`': slate.operation('chain', {
-    operations: [
-      move(0,   0,   1,   1),   // fullscreen
-      move(0,   0,   0.5, 1),   // left half
-      move(0.5, 0,   0.5, 1),   // right half
-      move(0,   0,   0.5, 0.5), // top left quarter
-      move(0.5, 0,   0.5, 0.5), // top right quarter
-      move(0,   0.5, 0.5, 0.5), // bottom left quarter
-      move(0.5, 0.5, 0.5, 0.5)  // bottom right quarter
-    ]
-  })                          // < for cycling through window placements
+  tab: slate.opstr('grid 1440x900:6,6 2560x1440:6,6')
 });
 
 bindToHyper({
