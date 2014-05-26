@@ -179,6 +179,7 @@ map <Leader>qT :tabnew\|tabonly\|Wipeout<CR>
 map <Leader>qq :qall<CR>
 " close everything without saving (exiting)
 map <Leader>qQ :q!<CR>
+
 map <Leader>/ :noh<CR>
 map <Leader>w :w<CR>
 
@@ -274,6 +275,7 @@ if has("gui_running")
   set guifont=Source\ Code\ Pro\ for\ Powerline:h14
   set guioptions=egm " default: egmrL, see :help guioptions - remove everything so there are no scrollbars
   set showcmd
+  set showtabline=2 " always show tabs
 end
 
 " shows line numbers
