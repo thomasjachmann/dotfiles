@@ -224,6 +224,7 @@ map <Leader>t :CtrlP<CR>
 map <Leader>T :CtrlPBuffer<CR>
 map <Leader>r :CtrlPBufTag<CR>
 map <Leader>R :CtrlPTag<CR>
+map <Leader>y :CtrlPRegister<CR>
 
 " adds nerdtree tab toggle
 map <Leader>nt :NERDTreeToggle<CR>
