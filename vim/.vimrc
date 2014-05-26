@@ -245,6 +245,10 @@ let g:ctrlp_open_new_file = 'r' " open newly created file in current window
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](tmp|\.(git|hg|svn|bundle))$',
   \ }
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<c-t>'],
+  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+  \ }
 
 
 " configure airline
