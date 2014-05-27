@@ -303,6 +303,7 @@ augroup CLClear
 augroup END
 set colorcolumn=81,82,83,84,85
 highlight ColorColumn ctermbg=236 guibg='#3a3a3a'
+au BufReadPost quickfix set colorcolumn=
 
 " color the desired end of the first line of git commit messages
 " so that it's easier to know how much space is left
