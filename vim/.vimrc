@@ -72,7 +72,7 @@ VAMActivate github:tpope/vim-fugitive
 VAMActivate github:mhinz/vim-signify
 
 " other
-"VAMActivate github:tpope/vim-abolish " tpope's multi variants abbreviation/substitution plugin
+VAMActivate github:tpope/vim-abolish " tpope's multi variants abbreviation/substitution plugin
 "VAMActivate github:reedes/vim-pencil " various prose modes
 
 set visualbell
