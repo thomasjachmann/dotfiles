@@ -238,7 +238,7 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_open_new_file = 'r' " open newly created file in current window
+let g:ctrlp_open_new_file = 't' " open newly created file in new tab
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](tmp|\.(git|hg|svn|bundle))$',
   \ }
