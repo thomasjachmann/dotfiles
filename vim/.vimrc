@@ -178,7 +178,7 @@ map <Leader>qT :tabnew\|tabonly\|Wipeout<CR>
 " close everyting (exiting)
 map <Leader>qq :qall<CR>
 " close everything without saving (exiting)
-map <Leader>qQ :q!<CR>
+map <Leader>qQ :qall!<CR>
 
 map <Leader>/ :noh<CR>
 map <Leader>w :w<CR>
