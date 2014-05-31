@@ -7,8 +7,8 @@
 # Bundler
 .bundle/
 
-# RVM
-.rvmrc
+# Support dir (for local notes and such)
+.support
 
 # Sublime Text
 *.sublime-project
@@ -33,7 +33,7 @@ build/
 xcuserdata
 *~.nib
 
-# other RCSs 
+# other RCSs
 .svn
 CVS
 
