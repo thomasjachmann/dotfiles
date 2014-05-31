@@ -209,7 +209,7 @@ function! StartProse()
   setlocal formatoptions=tcroqa1j
   setlocal autoindent
 endfunction
-command StartProse call StartProse()
+command! StartProse call StartProse()
 autocmd Filetype markdown call StartProse()
 
 " window navigation (see http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily)
@@ -311,13 +311,13 @@ au BufReadPost quickfix set colorcolumn=
 " to abort the commit
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
 
-function InitDir()
+function! InitDir()
   tabnew
   tabonly
   Wipeout
   NERDTreeTabsToggle
 endfunction
-command InitDir call InitDir()
+command! InitDir call InitDir()
 
 " load everything else in its own config file
 runtime! config/**/*
