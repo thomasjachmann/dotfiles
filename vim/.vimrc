@@ -251,10 +251,6 @@ let g:ctrlp_open_new_file = 't' " open newly created file in new tab
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](tmp|\.(git|hg|svn|bundle|DS_Store)|node_modules)$',
   \ }
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<c-t>'],
-  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-  \ }
 
 " see https://github.com/FelikZ/ctrlp-py-matcher/blob/master/doc/pymatcher.txt
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
