@@ -90,6 +90,8 @@ set backspace=indent,eol,start                    " allow backspacing over every
 set ruler		                                      " show the cursor position all the time
 set showcmd		                                    " display incomplete commands
 set incsearch		                                  " do incremental searching
+set ignorecase                                    " do case insensitive search
+set smartcase                                     " except for when I include uppercase characters
 
 set splitright
 set splitbelow
