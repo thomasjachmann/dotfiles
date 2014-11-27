@@ -248,7 +248,7 @@ let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 't' " open newly created file in new tab
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](tmp|\.(git|hg|svn|bundle))$',
+  \ 'dir':  '\v[\/](tmp|\.(git|hg|svn|bundle|DS_Store)|node_modules)$',
   \ }
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<c-t>'],
