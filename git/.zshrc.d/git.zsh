@@ -11,6 +11,7 @@ alias it="git"
 
 alias tiga="tig --all"
 alias tigs="tig status"
+alias tigt='tig $(git rev-parse --abbrev-ref HEAD)..$(git tracking)'
 
 function git-upgrade-submodules() {
   git submodule foreach "
