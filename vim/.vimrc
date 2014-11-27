@@ -116,7 +116,7 @@ endif
 
 " let custom tja settings begin
 
-colorscheme monokai
+colorscheme Tomorrow-Night
 
 " for the character, see http://www.unicode.org/charts/PDF/U2500.pdf (u2502)
 let g:indentLine_color_term = 237
@@ -259,6 +259,7 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " configure airline
+let g:airline_theme = 'molokai'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -274,7 +275,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 
 " sets window size in gui
 if has("gui_running")
-  set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h12
   set guioptions=egm " default: egmrL, see :help guioptions - remove everything so there are no scrollbars
   set showcmd
   set showtabline=2 " always show tabs
