@@ -14,6 +14,7 @@
 	ignored-all = ls-files --others
 	ignored = ls-files --others -i --exclude-standard
 	conflicts = !git s | grep -e '^[A-Z][A-Z]' | echo 'no conflicts'
+  tags = tag --list --sort=version:refname
 
 	# log stuff
 	graph = log --graph --decorate --abbrev-commit --all --oneline --date-order
