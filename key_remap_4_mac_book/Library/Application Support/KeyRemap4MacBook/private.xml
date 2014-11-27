@@ -35,6 +35,25 @@
     </item>
 
     <item>
+      <name>Command-Comma to Command Comma</name>
+      <appendix>Cmd-, just sends a Cmd and comma to prevent accidental</appendix>
+      <appendix>preference pane display in MacVim when doing</appendix>
+      <appendix>Cmd (aka Esc) ,w for writing a file</appendix>
+      <identifier>private.command_comma_to_comma</identifier>
+      <only>ESCAPABLE</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMA, ModifierFlag::COMMAND_L,
+        KeyCode::COMMAND_L, KeyCode::COMMA
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMA, ModifierFlag::COMMAND_R,
+        KeyCode::COMMAND_R, KeyCode::COMMA
+      </autogen>
+    </item>
+
+    <item>
       <name>Right Control to Hyper</name>
       <appendix>This one acts on the right control key</appendix>
       <appendix>which doesn't exist physically on mobile apple keyboards,</appendix>
