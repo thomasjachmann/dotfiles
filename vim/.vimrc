@@ -254,6 +254,27 @@ let g:ctrlp_custom_ignore = {
 
 " see https://github.com/FelikZ/ctrlp-py-matcher/blob/master/doc/pymatcher.txt
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_abbrev = {
+  \ 'gmode': 'i',
+  \ 'abbrevs': [
+    \ {
+      \ 'pattern': 'ac ',
+      \ 'expanded': 'app/controllers/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ {
+      \ 'pattern': 'am ',
+      \ 'expanded': 'app/models/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ {
+      \ 'pattern': 'av ',
+      \ 'expanded': 'app/views/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ ]
+  \ }
+
 
 " configure airline
 let g:airline_theme = 'molokai'
