@@ -133,6 +133,7 @@
   ;find out how to map ESC
 	;generic = <Esc> view-close
 	;main = <Esc> none
+  main = B !@git branch "%(prompt)" %(commit)
 	main = c !@git pbcopy %(commit)
 	main = g !@git ghc %(commit) # masking revision graph toggling
 	log = c !@git pbcopy %(commit)
