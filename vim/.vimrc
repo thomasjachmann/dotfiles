@@ -42,7 +42,7 @@ VAMActivate github:bronson/vim-trailing-whitespace
 
 " navigation
 VAMActivate github:kien/ctrlp.vim
-VAMActivate github:FelikZ/ctrlp-py-matcher
+VAMActivate github:JazzCore/ctrlp-cmatcher
 VAMActivate github:mattn/ctrlp-register
 VAMActivate github:scrooloose/nerdtree
 VAMActivate github:jistr/vim-nerdtree-tabs
@@ -256,7 +256,7 @@ let g:ctrlp_prompt_mappings = {
   \ }
 
 " see https://github.com/FelikZ/ctrlp-py-matcher/blob/master/doc/pymatcher.txt
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " configure airline
 let g:airline_theme = 'molokai'
