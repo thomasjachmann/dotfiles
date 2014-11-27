@@ -86,6 +86,8 @@
 	pl = pull
 	pr = pull --rebase
 	ps = push
+  pso = !sh -c 'git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
+  finish = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "master" ]] && git push -u origin $BRANCH && hub pull-request -o && git co master && git b -d $BRANCH'
 	gh = !sh -c 'git remote -v show | grep @github.com | grep \"(fetch)\" | head -n 1 | sed \"s/^.*@github.com:\\(.*\\)\\(\\.git\\).*$/\\1/\"' -
 	ghf = !sh -c 'git gh | xargs -I {} open https://github.com/{}/blob/`git rev-parse --abbrev-ref HEAD`/$1' -
 	ghc = !sh -c 'git gh | xargs -I {} open https://github.com/{}/commit/$1' -

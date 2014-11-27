@@ -304,6 +304,7 @@ au BufReadPost quickfix set colorcolumn=
 " also define <C-c> to delete the whole buffer, save and exit
 " to abort the commit
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
+autocmd BufNewFile,BufRead PULLREQ_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
 
 function! InitDir()
   tabnew
