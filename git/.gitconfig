@@ -120,10 +120,10 @@
   ;set author view column options
   ;author-width = 3
 	# show-author = abbreviated
-	line-graphics = utf-8					# nice graphics in graph
 	tab-size = 2
 	split-view-height = 80%
 	horizontal-scroll = 33%
+  mouse = yes
 
 [tig "bind"]
 	generic = F !git fetch
@@ -138,4 +138,3 @@
   stage = C !git commit
 
 [tig "color"]
-	cursor = black default underline
