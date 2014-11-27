@@ -45,7 +45,6 @@ VAMActivate github:kien/ctrlp.vim
 VAMActivate github:JazzCore/ctrlp-cmatcher
 VAMActivate github:mattn/ctrlp-register
 VAMActivate github:scrooloose/nerdtree
-VAMActivate github:jistr/vim-nerdtree-tabs
 VAMActivate github:artnez/vim-wipeout
 "VAMActivate github:bogado/file-line
 "VAMActivate github:moll/vim-bbye " :Bdelete that doesn't close the window when closing a buffer
@@ -232,14 +231,13 @@ map <Leader>R :CtrlPTag<CR>
 map <Leader>y :CtrlPRegister<CR>
 
 " adds nerdtree tab toggle
+" adds nerdtree toggle
 map <Leader>nt :NERDTreeToggle<CR>
-map <Leader>nT :NERDTreeTabsToggle<CR>
 map <Leader>nn :NERDTree<CR>
 map <Leader>nf :NERDTreeFind<CR>
 let g:NERDTreeWinSize = 40
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeHijackNetrw = 0
-let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " let ctrlp only work on the current directory, not some kind of root (eg git
 " root)
@@ -338,7 +336,7 @@ function! InitDir()
   tabnew
   tabonly
   Wipeout
-  NERDTreeTabsToggle
+  NERDTreeToggle
 endfunction
 command! InitDir call InitDir()
 
