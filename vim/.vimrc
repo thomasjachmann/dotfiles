@@ -136,6 +136,10 @@ let g:ycm_seed_identifiers_with_syntax = 1
 "let g:ycm_autoclose_preview_window_after_insertion = 1
 highlight Pmenu ctermfg=250 ctermbg=242 guifg=#aaaaaa guibg=#555555
 
+" configure greplace to use ag
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
 let mapleader=","                                 " defines the leader
 
 runtime macros/matchit.vim        " Load the matchit plugin.
