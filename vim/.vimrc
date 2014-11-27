@@ -25,6 +25,14 @@ call SetupVAM()
 
 " colorschemes
 VAMActivate github:sickill/vim-monokai
+VAMActivate github:altercation/vim-colors-solarized
+VAMActivate github:w0ng/vim-hybrid
+VAMActivate github:BlakeWilliams/vim-tomorrow
+VAMActivate github:chriskempson/vim-tomorrow-theme
+VAMActivate github:therubymug/vim-pyte
+VAMActivate github:vim-scripts/buttercream.vim
+VAMActivate github:jgdavey/vim-railscasts
+VAMActivate github:29decibel/codeschool-vim-theme
 
 " visuals
 VAMActivate github:Yggdroot/indentLine
