@@ -40,7 +40,6 @@
 	cia = commit -a
 	amend = commit --amend
 	ap = add -p
-  uncommit = reset HEAD^1
 
 	# from http://blog.blindgaenger.net/advanced_git_aliases.html
 	r  = !git ls-files -z --deleted | xargs -0 git rm
