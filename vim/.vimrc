@@ -62,6 +62,7 @@ VAMActivate github:tpope/vim-repeat
 VAMActivate github:tpope/vim-endwise " insert end statements wisely in ruby
 VAMActivate github:p0deje/vim-ruby-interpolation
 VAMActivate github:ecomba/vim-ruby-refactoring
+VAMActivate github:junegunn/vim-easy-align
 
 " syntaxes
 VAMActivate github:cakebaker/scss-syntax.vim
@@ -148,6 +149,9 @@ set list
 set listchars=tab:▸\ ,extends:>,precedes:<,trail:•,eol:¬
 highlight NonText ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 highlight SpecialKey ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
+
+vmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>r <Plug>(EasyAlign)
 
 " add two spaces before soft wrapped line continuations
 set showbreak=\ \ 
