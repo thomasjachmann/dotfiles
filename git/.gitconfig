@@ -40,6 +40,7 @@
 	cia = commit -a
 	amend = commit --amend
 	ap = add -p
+  wip = !sh -c 'git add . && git ci -m WIP'
 
 	# from http://blog.blindgaenger.net/advanced_git_aliases.html
 	r  = !git ls-files -z --deleted | xargs -0 git rm
