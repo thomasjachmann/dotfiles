@@ -6,4 +6,12 @@ export BUNDLER_EDITOR='mvim -c "InitDir"'
 # vanilla vim
 alias vvim='vim -u NONE -N'
 
-alias v='mvim -c "set titlestring=`pwd`"'
+function v() {
+  if [ $# -eq 1 ]; then
+    pushd $1 > /dev/null
+    mvim
+    popd > /dev/null
+  else
+    mvim
+  fi
+}

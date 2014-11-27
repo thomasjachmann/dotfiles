@@ -270,6 +270,7 @@ if has("gui_running")
   set guioptions=egm " default: egmrL, see :help guioptions - remove everything so there are no scrollbars
   set showcmd
   set showtabline=2 " always show tabs
+  set titlestring=%{$PWD}
 end
 
 " shows line numbers
