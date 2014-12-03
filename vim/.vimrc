@@ -190,7 +190,12 @@ map <Leader>qb :bd<CR>
 " close current window
 map <Leader>qw :q\|Wipeout<CR>
 " close current tab
-map <Leader>qt :tabclose\|Wipeout<CR>
+" TODO go to last tab on tabclose: http://stackoverflow.com/questions/2119754/switch-to-last-active-tab-in-vim
+function! CloseCurrentTab()
+  exec tabpagenr('$') == 1 ? 'tabnew|tabonly' : 'tabclose'
+  Wipeout
+endfunction
+map <Leader>qt :call CloseCurrentTab()<CR>
 " close all tabs (opening a new one)
 map <Leader>qW :tabnew\|tabonly\|Wipeout<CR>
 map <Leader>qT :tabnew\|tabonly\|Wipeout<CR>
