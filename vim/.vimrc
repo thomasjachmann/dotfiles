@@ -102,6 +102,8 @@ set lazyredraw
 set ttyfast
 set synmaxcol=255 " only syntax highlight the first 255 characters of a line, should be sufficient for most cases
 
+set spelllang= "empty for now to prevent spell checking, later: en,de
+
 let g:signify_vcs_list = ['git']
 
 " In many terminal emulators the mouse works just fine, thus enable it.
