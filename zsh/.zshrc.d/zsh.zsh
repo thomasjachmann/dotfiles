@@ -6,3 +6,8 @@ function edit() {
     say-and-execute mvim -p ~/.dotfiles -c "InitDir"
   fi
 }
+
+# http://www.danielmiessler.com/blog/enhancements-to-shell-and-vim-productivity#capslock
+# http://geminstallthat.wordpress.com/2008/10/19/adding-vi-keybindings-to-irb-scriptconsole-mysql/
+bindkey -v
+bindkey '^R' history-incremental-search-backward
