@@ -11,3 +11,7 @@ function edit() {
 # http://geminstallthat.wordpress.com/2008/10/19/adding-vi-keybindings-to-irb-scriptconsole-mysql/
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+function mkcd() {
+  mkdir -p $1 && cd $1
+}
