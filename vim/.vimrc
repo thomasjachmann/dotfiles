@@ -71,6 +71,7 @@ ActivateAddons github:kchmck/vim-coffee-script
 ActivateAddons github:tpope/vim-haml
 ActivateAddons github:pangloss/vim-javascript
 "ActivateAddons github:tpope/vim-markdown
+ActivateAddons github:gabrielelana/vim-markdown
 "ActivateAddons github:mustache/vim-mustache-handlebars
 ActivateAddons github:tpope/vim-rails
 ActivateAddons github:vim-ruby/vim-ruby
