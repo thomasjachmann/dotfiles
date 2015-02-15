@@ -82,7 +82,9 @@ ActivateAddons github:rust-lang/rust.vim
 
 " version control
 ActivateAddons github:tpope/vim-fugitive
+ActivateAddons github:gregsexton/gitv
 ActivateAddons github:mhinz/vim-signify
+ActivateAddons github:Xuyuanp/nerdtree-git-plugin
 
 " other
 ActivateAddons github:tpope/vim-abolish " tpope's multi variants abbreviation/substitution plugin
