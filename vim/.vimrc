@@ -128,7 +128,7 @@ endif
 
 " let custom tja settings begin
 
-colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night-Eighties
 
 " for the character, see http://www.unicode.org/charts/PDF/U2500.pdf (u2502)
 let g:indentLine_color_term = 237
