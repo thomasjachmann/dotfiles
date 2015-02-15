@@ -360,6 +360,9 @@ nmap <Leader>d :Dash<CR>
 " to abort the commit
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
 autocmd BufNewFile,BufRead PULLREQ_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
+autocmd BufEnter NERD_tree_\d\+ set scrolloff=0
+autocmd BufLeave NERD_tree_\d\+ set scrolloff=2
+set scrolloff=2
 
 function! InitDir()
   tabnew
