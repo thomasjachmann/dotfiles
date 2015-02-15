@@ -248,8 +248,8 @@ command! StartProse call StartProse()
 autocmd Filetype markdown call StartProse()
 
 " project wide search
-map <Leader>F :Ag!<Space>
-map <Leader>f :Ag!<Space>-i<Space>
+map <Leader>f :Ag!<Space>
+map <Leader>F :Ag!<Space>-i<Space>
 
 " ctrlp mapping
 map <Leader>t :CtrlP<CR>
