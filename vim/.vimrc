@@ -213,6 +213,7 @@ map <Leader>qq :qall<CR>
 map <Leader>qQ :qall!<CR>
 
 map <Leader>/ :noh<CR>
+map <Leader>7 :noh<CR>
 map <Leader>w :w<CR>
 
 " tab navigation
