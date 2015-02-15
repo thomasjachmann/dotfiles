@@ -88,6 +88,7 @@ ActivateAddons github:Xuyuanp/nerdtree-git-plugin
 
 " other
 ActivateAddons github:tpope/vim-abolish " tpope's multi variants abbreviation/substitution plugin
+ActivateAddons github:rizzatti/dash.vim " integration with Dash.app
 "ActivateAddons github:reedes/vim-pencil " various prose modes
 
 set visualbell
@@ -348,6 +349,7 @@ augroup END
 set colorcolumn=81,82,83,84,85
 highlight ColorColumn ctermbg=236 guibg='#3a3a3a'
 au BufReadPost quickfix set colorcolumn=
+nmap <Leader>d :Dash<CR>
 
 " color the desired end of the first line of git commit messages
 " so that it's easier to know how much space is left
