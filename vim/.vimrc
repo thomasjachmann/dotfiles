@@ -78,6 +78,7 @@ ActivateAddons github:vim-ruby/vim-ruby
 "ActivateAddons github:stephpy/vim-yaml
 ActivateAddons github:ekalinin/Dockerfile.vim
 ActivateAddons github:chakrit/upstart.vim
+ActivateAddons github:rust-lang/rust.vim
 
 " version control
 ActivateAddons github:tpope/vim-fugitive
