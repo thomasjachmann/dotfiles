@@ -76,6 +76,7 @@ ActivateAddons github:gabrielelana/vim-markdown
 ActivateAddons github:tpope/vim-rails
 ActivateAddons github:vim-ruby/vim-ruby
 "ActivateAddons github:stephpy/vim-yaml
+ActivateAddons github:ekalinin/Dockerfile.vim
 
 " version control
 ActivateAddons github:tpope/vim-fugitive
