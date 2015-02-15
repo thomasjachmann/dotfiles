@@ -215,6 +215,8 @@ map <Leader>qQ :qall!<CR>
 map <Leader>/ :noh<CR>
 map <Leader>7 :noh<CR>
 map <Leader>w :w<CR>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+map <Leader>W :w !sudo tee > /dev/null %<CR>
 
 " tab navigation
 nmap <Tab> gt
