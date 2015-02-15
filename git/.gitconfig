@@ -86,7 +86,7 @@
 	# remote stuff
 	f = fetch
 	pl = pull
-	pr = pull --rebase
+	plr = pull --rebase
 	ps = push
   pso = !sh -c 'git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
   finish = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "master" ]] && git push -u origin $BRANCH && hub pull-request -o && git co master && git b -d $BRANCH'
