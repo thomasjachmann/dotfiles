@@ -172,7 +172,7 @@ set showmatch " blink matching opening brackets when typing a closing bracket
 "autocmd BufWinLeave * call clearmatches()
 
 " edit and reload .vimrc
-nmap <C-v>e :e ~/.vimrc<CR>
+nmap <C-v>e :tabe ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
 
 " 'smooth' scrolling both in normal and insert mode (taken from tips.txt)
