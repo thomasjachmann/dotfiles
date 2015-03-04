@@ -128,6 +128,7 @@
 	# show-author = abbreviated
 	tab-size = 2
 	split-view-height = 80%
+  split-view-width = 80%
 	horizontal-scroll = 33%
   mouse = yes
 
