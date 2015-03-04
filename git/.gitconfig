@@ -145,5 +145,7 @@
   status = O !git mdo %(file)
   status = T !git mdt %(file)
   stage = C !git commit
+  diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
+  main = 7 !git diff --ignore-space-change %(commit)^ %(commit)
 
 [tig "color"]
