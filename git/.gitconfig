@@ -96,6 +96,7 @@
 
 	# miscellany
 	fs = !git fetch && git s
+  sniff = !git fs && tig --first-parent $(git rev-parse --abbrev-ref HEAD)..$(git tracking)
 	fsx = !git fetch && git s && gitx
 	rdiff = log -p master..origin/master
 	pbcopy = !sh -c 'echo $1 | pbcopy' -
