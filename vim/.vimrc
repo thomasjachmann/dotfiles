@@ -286,6 +286,16 @@ let g:ctrlp_abbrev = {
       \ 'expanded': 'app/views/',
       \ 'mode': 'pfrz',
     \ },
+    \ {
+      \ 'pattern': 'tc ',
+      \ 'expanded': 'test/controllers/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ {
+      \ 'pattern': 'tm ',
+      \ 'expanded': 'test/models/',
+      \ 'mode': 'pfrz',
+    \ },
     \ ]
   \ }
 
