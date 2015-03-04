@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'vim-scripts/buttercream.vim'
 "Plug 'jgdavey/vim-railscasts'
 "Plug '29decibel/codeschool-vim-theme'
+Plug 'freeo/vim-kalisi'
 
 " visuals
 Plug 'Yggdroot/indentLine'
@@ -114,7 +115,8 @@ endif
 
 " let custom tja settings begin
 
-colorscheme Tomorrow-Night-Eighties
+colorscheme kalisi
+set background=dark
 
 " for the character, see http://www.unicode.org/charts/PDF/U2500.pdf (u2502)
 let g:indentLine_color_term = 237
@@ -289,7 +291,7 @@ let g:ctrlp_abbrev = {
 
 
 " configure airline
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'kalisi'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
