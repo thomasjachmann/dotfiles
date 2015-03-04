@@ -6,90 +6,76 @@ set nocompatible
 syntax on
 filetype plugin indent on
 
-" taken from https://raw.github.com/MarcWeber/vim-addon-manager/master/doc/vim-addon-manager-getting-started.txt
-fun! SetupVAM()
-  let c = get(g:, 'vim_addon_manager', {})
-  let g:vim_addon_manager = c
-  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
-  let c.log_to_buf = 1
-  let c.auto_install = 1
-  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
-  " let g:vim_addon_manager = { your config here see "commented version" example and help
-  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
-    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
-                \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
-  endif
-  call vam#ActivateAddons([], {'auto_install' : 0})
-  " Also See "plugins-per-line" below
-endfun
-call SetupVAM()
+call plug#begin('~/.vim/plugged')
 
 " colorschemes
-" ActivateAddons github:sickill/vim-monokai
-" ActivateAddons github:altercation/vim-colors-solarized
-" ActivateAddons github:w0ng/vim-hybrid
-" ActivateAddons github:BlakeWilliams/vim-tomorrow
-ActivateAddons github:chriskempson/vim-tomorrow-theme
-" ActivateAddons github:therubymug/vim-pyte
-" ActivateAddons github:vim-scripts/buttercream.vim
-" ActivateAddons github:jgdavey/vim-railscasts
-" ActivateAddons github:29decibel/codeschool-vim-theme
+"Plug 'sickill/vim-monokai'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'BlakeWilliams/vim-tomorrow'
+"Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'therubymug/vim-pyte'
+"Plug 'vim-scripts/buttercream.vim'
+"Plug 'jgdavey/vim-railscasts'
+"Plug '29decibel/codeschool-vim-theme'
 
 " visuals
-ActivateAddons github:Yggdroot/indentLine
-ActivateAddons github:bling/vim-airline
-ActivateAddons github:ap/vim-css-color
-ActivateAddons github:bronson/vim-trailing-whitespace
+Plug 'Yggdroot/indentLine'
+Plug 'bling/vim-airline'
+Plug 'ap/vim-css-color'
+Plug 'bronson/vim-trailing-whitespace'
 
 " navigation
-ActivateAddons github:kien/ctrlp.vim
-ActivateAddons github:JazzCore/ctrlp-cmatcher
-ActivateAddons github:mattn/ctrlp-register
-ActivateAddons github:scrooloose/nerdtree
-ActivateAddons github:artnez/vim-wipeout
-"ActivateAddons github:bogado/file-line
-"ActivateAddons github:moll/vim-bbye " :Bdelete that doesn't close the window when closing a buffer
+Plug 'kien/ctrlp.vim'
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+Plug 'mattn/ctrlp-register'
+Plug 'scrooloose/nerdtree'
+Plug 'artnez/vim-wipeout'
+"Plug 'bogado/file-line'
+"Plug 'moll/vim-bbye' " :Bdelete that doesn't close the window when closing a buffer
 
 " search
-ActivateAddons github:rking/ag.vim
-ActivateAddons github:skwp/greplace.vim " :Gsearch/:Greplace for search/replace in a result buffer
-ActivateAddons github:Valloric/YouCompleteMe
+Plug 'rking/ag.vim'
+Plug 'skwp/greplace.vim' " :Gsearch/:Greplace for search/replace in a result buffer
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 
 " editing
-ActivateAddons github:scrooloose/nerdcommenter
-ActivateAddons github:tpope/vim-surround
-ActivateAddons github:terryma/vim-multiple-cursors
-ActivateAddons github:tpope/vim-repeat
-ActivateAddons github:tpope/vim-endwise " insert end statements wisely in ruby
-"ActivateAddons github:p0deje/vim-ruby-interpolation
-ActivateAddons github:ecomba/vim-ruby-refactoring
-ActivateAddons github:junegunn/vim-easy-align
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise' " insert end statements wisely in ruby
+"Plug 'p0deje/vim-ruby-interpolation'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'junegunn/vim-easy-align'
 
 " syntaxes
-ActivateAddons github:cakebaker/scss-syntax.vim
-ActivateAddons github:kchmck/vim-coffee-script
-ActivateAddons github:tpope/vim-haml
-ActivateAddons github:pangloss/vim-javascript
-"ActivateAddons github:tpope/vim-markdown
-ActivateAddons github:gabrielelana/vim-markdown
-"ActivateAddons github:mustache/vim-mustache-handlebars
-ActivateAddons github:tpope/vim-rails
-ActivateAddons github:vim-ruby/vim-ruby
-"ActivateAddons github:stephpy/vim-yaml
-ActivateAddons github:ekalinin/Dockerfile.vim
-ActivateAddons github:chakrit/upstart.vim
-ActivateAddons github:rust-lang/rust.vim
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-haml'
+Plug 'pangloss/vim-javascript'
+"Plug 'tpope/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
+"Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+"Plug 'stephpy/vim-yaml'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'chakrit/upstart.vim'
+Plug 'rust-lang/rust.vim'
 
 " version control
-ActivateAddons github:tpope/vim-fugitive
-ActivateAddons github:gregsexton/gitv
-ActivateAddons github:mhinz/vim-signify
-ActivateAddons github:Xuyuanp/nerdtree-git-plugin
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+Plug 'mhinz/vim-signify'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " other
-ActivateAddons github:tpope/vim-abolish " tpope's multi variants abbreviation/substitution plugin
-ActivateAddons github:rizzatti/dash.vim " integration with Dash.app
-"ActivateAddons github:reedes/vim-pencil " various prose modes
+Plug 'tpope/vim-abolish' " tpope's multi variants abbreviation/substitution plugin
+Plug 'rizzatti/dash.vim' " integration with Dash.app
+"Plug 'reedes/vim-pencil' " various prose modes
+
+call plug#end()
 
 set visualbell
 set pastetoggle=<Leader>p
