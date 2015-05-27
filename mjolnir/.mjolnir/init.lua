@@ -1,6 +1,7 @@
 local apps = require "apps"
 local bind = require "bind"
 local grid = require "grid"
+local scrn = require "scrn"
 
 local mail = require "apps.mail"
 
@@ -8,6 +9,8 @@ grid.init(12, 12)
 
 bind.hyper({
   ["+"] = apps.launch("Google Plus"),
+  ["tab"] = scrn.movetonext(),
+
   ["1"] = grid.move({{x=0,y=0,w=12,h=12}}),
   ["2"] = grid.move({{x=0,y=0,w=6,h=12}, {x=6,y=0,w=6,h=12}}),
   ["3"] = grid.move({{x=0,y=0,w=4,h=12}, {x=0,y=0,w=8,h=12}, {x=4,y=0,w=4,h=12}, {x=4,y=0,w=8,h=12}, {x=8,y=0,w=4,h=12}}),
