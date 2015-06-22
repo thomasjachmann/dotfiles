@@ -43,4 +43,20 @@ function grid.move(grids)
   end
 end
 
+function grid.nudge(x, y)
+  return function()
+    local win = window.focusedwindow()
+    if (win) then
+      local cell = bggrid.get(win)
+      if x ~= nil then
+        cell.x = math.max(0, math.min(cell.x + x, bggrid.GRIDWIDTH))
+      end
+      if y ~= nil then
+        cell.y = math.max(0, math.min(cell.y + y, bggrid.GRIDHEIGHT))
+      end
+      bggrid.set(win, cell, win:screen())
+    end
+  end
+end
+
 return grid
