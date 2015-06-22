@@ -49,10 +49,10 @@ function grid.nudge(x, y)
     if (win) then
       local cell = bggrid.get(win)
       if x ~= nil then
-        cell.x = math.max(0, math.min(cell.x + x, bggrid.GRIDWIDTH))
+        cell.x = cell.x + x
       end
       if y ~= nil then
-        cell.y = math.max(0, math.min(cell.y + y, bggrid.GRIDHEIGHT))
+        cell.y = cell.y + y
       end
       bggrid.set(win, cell, win:screen())
     end
