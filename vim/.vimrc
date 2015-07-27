@@ -28,7 +28,7 @@ Plug 'bronson/vim-trailing-whitespace'
 
 " navigation
 Plug 'kien/ctrlp.vim'
-Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh' }
 Plug 'mattn/ctrlp-register'
 Plug 'scrooloose/nerdtree'
 Plug 'artnez/vim-wipeout'
