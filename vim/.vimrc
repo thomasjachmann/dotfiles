@@ -56,6 +56,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
 "Plug 'tpope/vim-markdown'
+" this seems to be better for github flavored markdown but fails miserable
+" for automatic list formatting/word wrap - check tpope's plugin flp setting
 Plug 'gabrielelana/vim-markdown'
 "Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-rails'
