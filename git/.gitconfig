@@ -139,8 +139,10 @@
 	;main = <Esc> none
   main = B !@git branch "%(prompt)" %(commit)
 	main = c !@git pbcopy %(commit)
+  main = I !git rebase --interactive %(commit)^
 	main = g !@git ghc %(commit) # masking revision graph toggling
 	log = c !@git pbcopy %(commit)
+  log = I !git rebase --interactive %(commit)^
 	log = g !@git ghc %(commit) # masking revision graph toggling
 	status = a !git commit --amend
   status = O !git mdo %(file)
