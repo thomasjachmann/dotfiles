@@ -29,7 +29,6 @@ bind.hyper({
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
-  --d = apps.launch("Sequel Pro"),           -- d for database
   e = apps.launch("MacVim"),               -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
