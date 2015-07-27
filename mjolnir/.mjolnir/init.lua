@@ -7,8 +7,11 @@ local mail = require "apps.mail"
 
 grid.init(12, 12)
 
+-- switching languages makes Mjolnir crash when it's controlled by Bartender (Seil and Karabiner as well?)
+-- binding + produces error on English keyboard layout
 bind.hyper({
-  ["+"] = apps.launch("Google Plus"),
+  --["+"] = apps.launch("Google Plus"),
+
   ["tab"] = scrn.movetonext(),
 
   ["1"] = grid.move({{x=0,y=0,w=12,h=12}}),
