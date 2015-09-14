@@ -3,6 +3,7 @@ local bind = require "bind"
 local grid = require "grid"
 local scrn = require "scrn"
 
+local tmux = require "apps.tmux"
 
 grid.init(12, 12)
 
@@ -28,7 +29,7 @@ bind.hyper({
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
-  e = apps.launch("MacVim"),               -- e for editor
+  e = tmux.launch("nvim"),                 -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
@@ -37,7 +38,7 @@ bind.hyper({
   o = apps.launch("Opera Next"),
   p = apps.launch("Trello"),               -- p for project management
   s = apps.launch("Skype"),
-  t = apps.launch("iTerm"),                -- t for terminal
+  t = tmux.launch("zsh"),                  -- t for terminal
   x = apps.launch("xScope"),
 
   w = apps.hidecurrent,
