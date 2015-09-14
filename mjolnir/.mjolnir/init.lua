@@ -3,7 +3,6 @@ local bind = require "bind"
 local grid = require "grid"
 local scrn = require "scrn"
 
-local mail = require "apps.mail"
 
 grid.init(12, 12)
 
@@ -33,7 +32,7 @@ bind.hyper({
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
-  m = apps.launch("Mail", mail.init),
+  m = apps.launch("Thunderbird"),
   n = apps.launch("Echofon"),              -- n for noise
   o = apps.launch("Opera Next"),
   p = apps.launch("Trello"),               -- p for project management
