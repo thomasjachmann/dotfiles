@@ -15,3 +15,9 @@ bindkey '^R' history-incremental-search-backward
 function mkcd() {
   mkdir -p $1 && cd $1
 }
+
+function beep() {
+  local message=$1
+  [[ "$message" == "" ]] && message="beeeeeeeeeep"
+  osascript -e "tell application \"LaunchBar\" to display in large type \"$message\""
+}
