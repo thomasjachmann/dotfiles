@@ -3,7 +3,7 @@ COPYFILE_DISABLE=true
 
 # for aliases/functions - print out command before executing it
 function say-and-execute() {
-  echo "=> $*"
+  >&2 echo "=> $*"
   $*
 }
 
