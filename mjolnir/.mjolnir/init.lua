@@ -37,6 +37,7 @@ bind.hyper({
   n = apps.launch("Echofon"),              -- n for noise
   o = apps.launch("Opera Next"),
   p = apps.launch("Trello"),               -- p for project management
+  r = tmux.launch("ruby"),                 -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = tmux.launch("zsh"),                  -- t for terminal
   x = apps.launch("xScope"),
