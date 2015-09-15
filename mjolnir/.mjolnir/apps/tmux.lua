@@ -47,17 +47,45 @@ function tmux.launch(cmd)
     local _, activetty = applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
     local panes = {}
     local total = 0
-    local active = 0
+    local active = nil
+    local bestmatches = {nil, nil, nil, nil, nil}
     for line in (found .. "\n"):gmatch('([^\n]*)\n') do
       total = total + 1
       panes[total] = line
       if line:find(activetty .. ":11") == 1 then
         active = total
+      elseif bestmatches[1] == nil and line:find(activetty .. ":10") == 1 then
+        -- active session, active window, another pane
+        bestmatches[1] = total
+      elseif bestmatches[2] == nil and line:find(activetty) == nil and line:find(":11") ~= nil then
+        -- another session, active window, active pane
+        bestmatches[2] = total
+      elseif bestmatches[3] == nil and line:find(activetty) == nil and line:find(":10") ~= nil then
+        -- another session, active window, another pahe
+        bestmatches[3] = total
+      elseif bestmatches[4] == nil and line:find(activetty .. ":01") == 1 then
+        -- active session, another window, active pane
+        bestmatches[4] = total
+      elseif bestmatches[5] == nil and line:find(activetty .. ":00") == 1 then
+        -- active session, another window, another pane
+        bestmatches[5] = total
       end
     end
 
-    if active == 0 then
-      active = 1
+    if active == nil then
+      if bestmatches[1] ~= nil then
+        active = bestmatches[1]
+      elseif bestmatches[2] ~= nil then
+        active = bestmatches[2]
+      elseif bestmatches[3] ~= nil then
+        active = bestmatches[3]
+      elseif bestmatches[4] ~= nil then
+        active = bestmatches[4]
+      elseif bestmatches[5] ~= nil then
+        active = bestmatches[5]
+      else
+        active = 1
+      end
     else
       local win = window.focusedwindow()
       if win ~= nil and win:application():title() == "iTerm" then
