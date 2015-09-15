@@ -44,7 +44,7 @@ function tmux.launch(cmd)
       return
     end
 
-    local erg, activetty = applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
+    local _, activetty = applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
     local panes = {}
     local total = 0
     local active = 0
