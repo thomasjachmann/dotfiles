@@ -39,8 +39,9 @@ bind.hyper({
   p = apps.launch("Trello"),               -- p for project management
   r = tmux.launch("ruby"),                 -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
-  t = tmux.launch("zsh"),                  -- t for terminal
+  t = apps.launch("iTerm"),                -- t for terminal
   x = apps.launch("xScope"),
+  z = tmux.launch("zsh"),
 
   w = apps.hidecurrent,
 
