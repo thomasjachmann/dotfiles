@@ -4,7 +4,7 @@
 
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
+	editor = nvim
 	precomposeunicode = true # for Mac OS X
 
 [alias]
