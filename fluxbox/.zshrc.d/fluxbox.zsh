@@ -5,6 +5,7 @@ function backup-directory() {
 function backup-photos() {
   backup-directory --exclude 'Backups' --exclude 'Photos Previews.lrdata' /Volumes/RedPiglet/Photos/ /Volumes/RedBackup/Photos
   backup-directory /Volumes/RedPiglet/Ultraschall/ /Volumes/RedBackup/Ultraschall
+  backup-directory /Volumes/RedPiglet/Susen/ /Volumes/RedBackup/Susen
 }
 
 function backup-dump() {
