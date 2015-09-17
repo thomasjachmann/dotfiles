@@ -1,0 +1,14 @@
+#!/bin/bash
+
+file_or_dir=$(realpath $1) # realpath requires brew package coreutils
+
+tmux_opts=(-n $(basename $1))
+vim_opts=()
+if [[ -d $file_or_dir ]]; then
+  tmux_opts=("${tmux_opts[@]}" -c $file_or_dir)            # set working directory to directory
+  vim_opts=("${vim_opts[@]}" -c "InitDir")                 # init vim for a directory, eg show NERDTree
+else
+  tmux_opts=("${tmux_opts[@]}" -c $(dirname $file_or_dir)) # set working directory to file's directory
+fi
+
+tmux new-window ${tmux_opts[@]} vim ${vim_opts[@]} $file_or_dir

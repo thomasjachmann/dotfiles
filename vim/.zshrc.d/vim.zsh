@@ -1,7 +1,7 @@
 # export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
 # export EDITOR='mvim -f -c "au VimLeave * maca hide:"'
 export EDITOR='vim -f'
-export BUNDLER_EDITOR='mvim -c "InitDir"'
+export BUNDLER_EDITOR='tabvim'
 
 # vanilla vim
 alias vvim='vim -u NONE -N'
