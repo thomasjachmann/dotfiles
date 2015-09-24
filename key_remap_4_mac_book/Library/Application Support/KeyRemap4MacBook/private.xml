@@ -9,6 +9,53 @@
     <equal>org.vim.MacVim</equal>
     <equal>com.github.atom</equal>
   </appdef>
+  <appdef>
+    <appname>TMUX</appname>
+    <equal>iTerm</equal>
+    <equal>net.sourceforge.iTerm</equal>
+    <equal>com.googlecode.iterm2</equal>
+  </appdef>
+
+  <item>
+    <name>Shift Keys</name>
+
+    <item>
+      <name>Shift to tab navigation (except tmux)</name>
+      <identifier>private.left_shift_to_tab_navigation</identifier>
+      <not>TMUX</not>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_L, ModifierFlag::SHIFT_L,
+        KeyCode::SHIFT_L,
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_R, ModifierFlag::SHIFT_R,
+        KeyCode::SHIFT_R,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Shift to tab navigation (tmux)</name>
+      <identifier>private.left_shift_to_window_navigation</identifier>
+      <only>TMUX</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_L, ModifierFlag::SHIFT_L,
+        KeyCode::SHIFT_L,
+        KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::P
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_R, ModifierFlag::SHIFT_R,
+        KeyCode::SHIFT_R,
+        KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::N
+      </autogen>
+    </item>
+  </item>
+
 
   <item>
     <name>Hyper Key</name>
