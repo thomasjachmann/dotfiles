@@ -367,6 +367,10 @@ set shiftwidth=2                       " set tab width when using retab
 set expandtab                          " expand tabs to spaces
 set smarttab                           " also delete all spaces on <BS>
 
+" eliminate delay in switching to normal mode
+" see http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=0
+
 set cursorline                         " highlight the line with the cursor
 highlight clear CursorLine             " only highlight the line number since
 augroup CLClear
