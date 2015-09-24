@@ -126,7 +126,6 @@ let g:indentLine_color_gui = '#3a3a3a' " see https://gist.github.com/MicahElliot
 let g:indentLine_char = '│'
 
 " configure YouCompleteMe to complete from/into strings/comments
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
