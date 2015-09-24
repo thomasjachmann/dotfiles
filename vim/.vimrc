@@ -245,11 +245,16 @@ map <Leader>f :Ag!<Space>
 map <Leader>F :Ag!<Space>-i<Space>
 
 " ctrlp mapping
+" files
+map <Leader>tf :CtrlP<CR>
 map <Leader>t :CtrlP<CR>
-map <Leader>T :CtrlPBuffer<CR>
-map <Leader>r :CtrlPBufTag<CR>
-map <Leader>R :CtrlPTag<CR>
-map <Leader>y :CtrlPRegister<CR>
+" buffers
+map <Leader>tb :CtrlPBuffer<CR>
+" tags (local/global)
+map <Leader>tt :CtrlPBufTag<CR>
+map <Leader>tT :CtrlPTag<CR>
+" yank registers
+map <Leader>ty :CtrlPRegister<CR>
 
 " adds nerdtree tab toggle
 " adds nerdtree toggle
