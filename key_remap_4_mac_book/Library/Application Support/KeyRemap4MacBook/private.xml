@@ -101,16 +101,34 @@
     </item>
 
     <item>
-      <name>Right Control to Hyper</name>
+      <name>Right Control to Hyper (except in tmux)</name>
       <appendix>This one acts on the right control key</appendix>
       <appendix>which doesn't exist physically on mobile apple keyboards,</appendix>
       <appendix>so use PCKeyboardHack to map anything you want to that key, eg caps lock).</appendix>
       <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
       <identifier>private.control_r_to_hyper</identifier>
+      <not>TMUX</not>
       <autogen>
         __KeyToKey__
         KeyCode::CONTROL_R,
         KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Control to Hyper and Ctrl-B (for tmux)</name>
+      <appendix>This one acts on the right control key</appendix>
+      <appendix>which doesn't exist physically on mobile apple keyboards,</appendix>
+      <appendix>so use PCKeyboardHack to map anything you want to that key, eg caps lock).</appendix>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <appendix>Single press just sends Ctrl-B.</appendix>
+      <identifier>private.control_r_to_hyper_and_ctrl_b</identifier>
+      <only>TMUX</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::CONTROL_R,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::B, ModifierFlag::CONTROL_L
       </autogen>
     </item>
 
