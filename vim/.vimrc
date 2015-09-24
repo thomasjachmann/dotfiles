@@ -50,6 +50,10 @@ Plug 'tpope/vim-endwise' " insert end statements wisely in ruby
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'junegunn/vim-easy-align'
 
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " syntaxes
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'kchmck/vim-coffee-script'
@@ -79,6 +83,11 @@ Plug 'rizzatti/dash.vim' " integration with Dash.app
 "Plug 'reedes/vim-pencil' " various prose modes
 
 call plug#end()
+
+let g:UltiSnipsExpandTrigger='<C-l>'
+let g:UltiSnipsJumpForwardTrigger='<Tab>'
+let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
+let g:UltiSnipsEditSplit='vertical'
 
 set visualbell
 set pastetoggle=<Leader>p
