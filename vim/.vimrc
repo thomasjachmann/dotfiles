@@ -175,6 +175,8 @@ set showmatch " blink matching opening brackets when typing a closing bracket
 " edit and reload .vimrc
 nmap <C-v>e :tabe ~/.vimrc<CR>
 nmap <C-v>r :source ~/.vimrc<CR>
+" When vimrc is edited, reload it
+autocmd! BufWritePost .vimrc source %
 
 " 'smooth' scrolling both in normal and insert mode (taken from tips.txt)
 nmap <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
