@@ -262,12 +262,19 @@ let g:NERDTreeHijackNetrw = 0
 " root)
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_switch_buffer = ''
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 't' " open newly created file in new tab
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](tmp|\.(git|hg|svn|bundle|DS_Store)|node_modules)$',
-  \ }
+
+" taken from http://blog.patspam.com/2014/super-fast-ctrlp
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+  \ --ignore tmp
+  \ --ignore .git
+  \ --ignore .hg
+  \ --ignore .svn
+  \ --ignore .bundle
+  \ --ignore .DS_Store
+  \ --ignore node_modules
+  \ --ignore "**/*.pyc"
+  \ -g ""'
 
 " see https://github.com/FelikZ/ctrlp-py-matcher/blob/master/doc/pymatcher.txt
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
