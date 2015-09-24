@@ -275,6 +275,11 @@ let g:ctrlp_abbrev = {
   \ 'gmode': 'i',
   \ 'abbrevs': [
     \ {
+      \ 'pattern': 'a ',
+      \ 'expanded': 'app/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ {
       \ 'pattern': 'ac ',
       \ 'expanded': 'app/controllers/',
       \ 'mode': 'pfrz',
@@ -287,6 +292,11 @@ let g:ctrlp_abbrev = {
     \ {
       \ 'pattern': 'av ',
       \ 'expanded': 'app/views/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ {
+      \ 'pattern': 't ',
+      \ 'expanded': 'test/',
       \ 'mode': 'pfrz',
     \ },
     \ {
