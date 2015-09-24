@@ -376,12 +376,6 @@ highlight clear CursorLine             " only highlight the line number since
 augroup CLClear
   autocmd! ColorScheme * highlight clear CursorLine
 augroup END
-highlight OverLength ctermbg=237 guibg=#592929
-match OverLength /\%>80v.\+/
-autocmd BufWinEnter * match OverLength /\%>80v.\+/
-autocmd InsertEnter * match OverLength /\%>80v.\+/
-autocmd InsertLeave * match OverLength /\%>80v.\+/
-autocmd BufWinLeave * call clearmatches()
 
 nmap <Leader>d :Dash<CR>
 
