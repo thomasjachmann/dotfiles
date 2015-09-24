@@ -334,10 +334,8 @@ set laststatus=2 " needed for airline to also show up when only one window is pr
 let g:multi_cursor_exit_from_visual_mode = 0
 let g:multi_cursor_exit_from_insert_mode = 0
 
-
-" sets window size in gui
 if has("gui_running")
-  set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+  set guifont=Hack:h11
   set guioptions=egm " default: egmrL, see :help guioptions - remove everything so there are no scrollbars
   set showcmd
   set showtabline=2 " always show tabs
