@@ -158,6 +158,8 @@ highlight SpecialKey ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 vmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>r <Plug>(EasyAlign)
 
+" define how soft wrapping works
+set linebreak " wrap lines at characters in breakat instead of on line length, supposed not to work with list set, but does
 " add two spaces before soft wrapped line continuations
 set showbreak=\ \ 
 
