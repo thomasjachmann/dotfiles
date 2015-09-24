@@ -376,9 +376,7 @@ highlight clear CursorLine             " only highlight the line number since
 augroup CLClear
   autocmd! ColorScheme * highlight clear CursorLine
 augroup END
-set colorcolumn=81,82,83,84,85
-highlight ColorColumn ctermbg=236 guibg='#3a3a3a'
-au BufReadPost quickfix set colorcolumn=
+
 nmap <Leader>d :Dash<CR>
 
 " color the desired end of the first line of git commit messages
