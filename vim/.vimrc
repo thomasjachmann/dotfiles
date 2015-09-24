@@ -178,12 +178,6 @@ nmap <C-v>r :source ~/.vimrc<CR>
 " When vimrc is edited, reload it
 autocmd! BufWritePost .vimrc source %
 
-" 'smooth' scrolling both in normal and insert mode (taken from tips.txt)
-nmap <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-nmap <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
-imap <C-U> <Esc><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>i
-imap <C-D> <Esc><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>i
-
 " screen line navigation as standard
 nnoremap j gj
 nnoremap k gk
