@@ -11,4 +11,4 @@ else
   tmux_opts=("${tmux_opts[@]}" -c $(dirname $file_or_dir)) # set working directory to file's directory
 fi
 
-tmux new-window ${tmux_opts[@]} nvim ${nvim_opts[@]} $file_or_dir
+tmux new-window ${tmux_opts[@]} reattach-to-user-namespace nvim ${nvim_opts[@]} $file_or_dir
