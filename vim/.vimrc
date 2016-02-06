@@ -22,7 +22,8 @@ Plug 'freeo/vim-kalisi'
 
 " visuals
 Plug 'Yggdroot/indentLine'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'bronson/vim-trailing-whitespace'
 
