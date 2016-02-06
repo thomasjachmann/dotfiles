@@ -32,7 +32,7 @@ bind.hyper({
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
-  e = tmux.launch("nvim"),                 -- e for editor
+  e = tmux.activate("nvim"),               -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
@@ -40,11 +40,11 @@ bind.hyper({
   n = apps.launch("Echofon"),              -- n for noise
   o = apps.launch("Opera Next"),
   p = apps.launch("Trello"),               -- p for project management
-  r = tmux.launch("ruby"),                 -- r anything that's running ruby (rails server, guard, formeman, rails console)
+  r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("iTerm"),                -- t for terminal
   x = apps.launch("xScope"),
-  z = tmux.launch("zsh"),
+  z = tmux.activate("zsh"),
 
   w = apps.hidecurrent,
 

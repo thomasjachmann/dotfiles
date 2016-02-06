@@ -35,13 +35,16 @@ function find(cmd)
   end)
 end
 
-function tmux.launch(cmd)
-  return function()
+function tmux.activate(cmd)
+  return function(silent)
     local found = find(cmd)
     if found == "" then
       -- no panes with the specified command found => just activate/launch iTerm
       apps.launch("iTerm")()
-      return
+      if silent ~= true then
+        exec("/usr/local/bin/tmux display-message 'process \"" .. cmd .. "\" not found, switched to first iTerm pane'")
+      end
+      return false
     end
 
     local _, activetty = applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
@@ -100,6 +103,8 @@ function tmux.launch(cmd)
       exec("/usr/bin/osascript apps/tmux-activate.scpt " .. tty)
       exec("/usr/local/bin/tmux select-window -t '" .. windowid .. "' && /usr/local/bin/tmux select-pane -t '" .. paneid .. "'")
     end)
+
+    return true
   end
 end
 
