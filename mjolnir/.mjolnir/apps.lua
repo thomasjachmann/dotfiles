@@ -3,6 +3,7 @@ local apps = {}
 local appfinder = require "mjolnir.cmsj.appfinder"
 local application = require "mjolnir.application"
 local window = require "mjolnir.window"
+local alert = require "mjolnir.alert"
 
 function apps.launch(app, fn)
   return function()
@@ -28,6 +29,16 @@ end
 function apps.hidecurrent()
   local win = window.focusedwindow()
   if (win) then; win:application():hide(); end
+end
+
+function apps.showcurrenttitle()
+  local win = window.focusedwindow()
+  if (win) then; alert.show(win:application():title()); end
+end
+
+function apps.showcurrentbundleid()
+  local win = window.focusedwindow()
+  if (win) then; alert.show(win:application():bundleid()); end
 end
 
 return apps

@@ -12,6 +12,9 @@ grid.init(12, 12)
 bind.hyper({
   --["+"] = apps.launch("Google Plus"),
 
+  f1 = apps.showcurrenttitle,
+  f2 = apps.showcurrentbundleid,
+
   ["tab"] = scrn.movetonext(),
 
   ["1"] = grid.move({{x=0,y=0,w=12,h=12}}),
