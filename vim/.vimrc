@@ -143,6 +143,19 @@ let g:ycm_seed_identifiers_with_syntax = 1
 "let g:ycm_add_preview_to_completeopt = 1
 "let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'unite' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
+"taken out:
+"      \ 'markdown' : 1,
+"      \ 'text' : 1,
 highlight Pmenu ctermfg=250 ctermbg=242 guifg=#aaaaaa guibg=#555555
 
 " configure greplace to use ag
