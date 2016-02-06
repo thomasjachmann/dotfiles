@@ -61,7 +61,7 @@ function tmux.launch(cmd)
         -- another session, active window, active pane
         bestmatches[2] = total
       elseif bestmatches[3] == nil and line:find(activetty) == nil and line:find(":10") ~= nil then
-        -- another session, active window, another pahe
+        -- another session, active window, another pane
         bestmatches[3] = total
       elseif bestmatches[4] == nil and line:find(activetty .. ":01") == 1 then
         -- active session, another window, active pane
