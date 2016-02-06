@@ -37,7 +37,7 @@ bind.hyper({
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
   m = apps.launch("Thunderbird"),
-  n = apps.launch("Echofon"),              -- n for noise
+  n = apps.launch("Twitter"),              -- n for noise
   o = apps.launch("Opera Next"),
   p = apps.launch("Trello"),               -- p for project management
   r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
