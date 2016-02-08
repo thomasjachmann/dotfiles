@@ -1,10 +1,8 @@
 local bind = {}
 
-local hotkey = require "mjolnir.hotkey"
-
 function bind.hyper(mappings)
   for key, fn in pairs(mappings) do
-    hotkey.bind({"cmd", "alt", "ctrl", "shift"}, key, fn)
+    hs.hotkey.bind("cmd alt ctrl shift", key, nil, fn)
   end
 end
 

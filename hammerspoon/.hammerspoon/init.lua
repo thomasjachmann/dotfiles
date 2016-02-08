@@ -1,5 +1,5 @@
 --local apps = require "apps"
---local bind = require "bind"
+local bind = require "bind"
 --local grid = require "grid"
 --local scrn = require "scrn"
 
@@ -9,7 +9,7 @@
 
 -- switching languages makes Mjolnir crash when it's controlled by Bartender (Seil and Karabiner as well?)
 -- binding + produces error on English keyboard layout
---bind.hyper({
+bind.hyper({
   --["+"] = apps.launch("Google Plus"),
 
   --f1 = apps.showcurrenttitle,
@@ -49,8 +49,8 @@
 
   --w = apps.hidecurrent,
 
-  --escape = function()
-  --  mjolnir.openconsole()
-  --  mjolnir.reload()
-  --end
---})
+  escape = function()
+    hs.openConsole()
+    hs.reload()
+  end
+})
