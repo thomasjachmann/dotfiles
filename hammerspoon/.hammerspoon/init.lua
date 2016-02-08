@@ -1,11 +1,9 @@
 --local apps = require "apps"
 local bind = require "bind"
---local grid = require "grid"
+local grid = require "grid"
 --local scrn = require "scrn"
 
 --local tmux = require "apps.tmux"
-
---grid.init(12, 12)
 
 -- switching languages makes Mjolnir crash when it's controlled by Bartender (Seil and Karabiner as well?)
 -- binding + produces error on English keyboard layout
@@ -17,15 +15,15 @@ bind.hyper({
 
   --["tab"] = scrn.movetonext(),
 
-  --["1"] = grid.move({{x=0,y=0,w=12,h=12}}),
-  --["2"] = grid.move({{x=0,y=0,w=6,h=12}, {x=6,y=0,w=6,h=12}}),
-  --["3"] = grid.move({{x=0,y=0,w=4,h=12}, {x=0,y=0,w=8,h=12}, {x=4,y=0,w=4,h=12}, {x=4,y=0,w=8,h=12}, {x=8,y=0,w=4,h=12}}),
-  --["4"] = grid.move({{x=0,y=0,w=6,h=6}, {x=6,y=0,w=6,h=6}, {x=6,y=6,w=6,h=6}, {x=0,y=6,w=6,h=6}}),
+  ["1"] = grid.move({"0,0,12x12"}),
+  ["2"] = grid.move({"0,0,6x12", "6,0,6x12"}),
+  ["3"] = grid.move({"0,0,4x12", "0,0,8x12", "4,0,4x12", "4,0,8x12", "8,0,4x12"}),
+  ["4"] = grid.move({"0,0,6x6", "6,0,6x6", "6,6,6x6", "0,6,6x6"}),
 
-  --["6"] = grid.nudge(-1, nil),
-  --["7"] = grid.nudge(nil, 1),
-  --["8"] = grid.nudge(nil, -1),
-  --["9"] = grid.nudge(1, nil),
+  ["6"] = hs.grid.pushWindowLeft,
+  ["7"] = hs.grid.pushWindowDown,
+  ["8"] = hs.grid.pushWindowUp,
+  ["9"] = hs.grid.pushWindowRight,
 
   --["0"] = apps.launch("TickTrack SSB"),
   --a = apps.launch("Adium"),
