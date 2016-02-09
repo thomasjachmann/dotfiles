@@ -5,9 +5,9 @@ local scrn = require "scrn"
 
 local tmux = require "apps.tmux"
 
--- switching languages makes Mjolnir crash when it's controlled by Bartender (Seil and Karabiner as well?)
--- binding + produces error on English keyboard layout
 bind.hyper({
+  -- binding + produces error on English keyboard layout
+  -- if bound on German and then executed on English, it works
   --["+"] = apps.launch("Google Plus"),
 
   f2 = apps.showCurrentTitle,
