@@ -1,7 +1,7 @@
 --local apps = require "apps"
 local bind = require "bind"
 local grid = require "grid"
---local scrn = require "scrn"
+local scrn = require "scrn"
 
 --local tmux = require "apps.tmux"
 
@@ -13,7 +13,7 @@ bind.hyper({
   --f1 = apps.showcurrenttitle,
   --f2 = apps.showcurrentbundleid,
 
-  --["tab"] = scrn.movetonext(),
+  ["tab"] = scrn.moveToNext,
 
   ["^"] = grid.show,
   ["1"] = grid.move({"0,0,12x12"}),
