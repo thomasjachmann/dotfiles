@@ -2,9 +2,6 @@ local tmux = {}
 
 local apps = require "apps"
 
-local applescript = require "mjolnir._asm.hydra.applescript"
-local window = require "mjolnir.window"
-
 -- Executes a shell command and returns the result (without trailing whitespace)
 function exec(cmd)
   local handle = io.popen(cmd, "r")
@@ -26,12 +23,12 @@ end
 function find(cmd)
   local found = exec("/usr/local/bin/tmux list-panes -a -F '#{session_id}:#{window_active}#{pane_active} #{window_id} #{pane_id} #{pane_current_command}' | grep " .. cmd)
 
-  sessionttys = {}
-  return found:gsub("($%d+)", function(sessionid)
-    if sessionttys[sessionid] == nil then
-      sessionttys[sessionid] = exec("/usr/local/bin/tmux list-clients -t '" .. sessionid .. "' -F '#{client_tty}'")
+  sessionTTYs = {}
+  return found:gsub("($%d+)", function(sessionID)
+    if sessionTTYs[sessionID] == nil then
+      sessionTTYs[sessionID] = exec("/usr/local/bin/tmux list-clients -t '" .. sessionID .. "' -F '#{client_tty}'")
     end
-    return sessionttys[sessionid]
+    return sessionTTYs[sessionID]
   end)
 end
 
@@ -47,50 +44,50 @@ function tmux.activate(cmd)
       return false
     end
 
-    local _, activetty = applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
+    local _, activeTTY = hs.applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
     local panes = {}
     local total = 0
     local active = nil
-    local bestmatches = {nil, nil, nil, nil, nil}
+    local bestMatches = {nil, nil, nil, nil, nil}
     for line in (found .. "\n"):gmatch('([^\n]*)\n') do
       total = total + 1
       panes[total] = line
-      if line:find(activetty .. ":11") == 1 then
+      if line:find(activeTTY .. ":11") == 1 then
         active = total
-      elseif bestmatches[1] == nil and line:find(activetty .. ":10") == 1 then
+      elseif bestMatches[1] == nil and line:find(activeTTY .. ":10") == 1 then
         -- active session, active window, another pane
-        bestmatches[1] = total
-      elseif bestmatches[2] == nil and line:find(activetty) == nil and line:find(":11") ~= nil then
+        bestMatches[1] = total
+      elseif bestMatches[2] == nil and line:find(activeTTY) == nil and line:find(":11") ~= nil then
         -- another session, active window, active pane
-        bestmatches[2] = total
-      elseif bestmatches[3] == nil and line:find(activetty) == nil and line:find(":10") ~= nil then
+        bestMatches[2] = total
+      elseif bestMatches[3] == nil and line:find(activeTTY) == nil and line:find(":10") ~= nil then
         -- another session, active window, another pane
-        bestmatches[3] = total
-      elseif bestmatches[4] == nil and line:find(activetty .. ":01") == 1 then
+        bestMatches[3] = total
+      elseif bestMatches[4] == nil and line:find(activeTTY .. ":01") == 1 then
         -- active session, another window, active pane
-        bestmatches[4] = total
-      elseif bestmatches[5] == nil and line:find(activetty .. ":00") == 1 then
+        bestMatches[4] = total
+      elseif bestMatches[5] == nil and line:find(activeTTY .. ":00") == 1 then
         -- active session, another window, another pane
-        bestmatches[5] = total
+        bestMatches[5] = total
       end
     end
 
     if active == nil then
-      if bestmatches[1] ~= nil then
-        active = bestmatches[1]
-      elseif bestmatches[2] ~= nil then
-        active = bestmatches[2]
-      elseif bestmatches[3] ~= nil then
-        active = bestmatches[3]
-      elseif bestmatches[4] ~= nil then
-        active = bestmatches[4]
-      elseif bestmatches[5] ~= nil then
-        active = bestmatches[5]
+      if bestMatches[1] ~= nil then
+        active = bestMatches[1]
+      elseif bestMatches[2] ~= nil then
+        active = bestMatches[2]
+      elseif bestMatches[3] ~= nil then
+        active = bestMatches[3]
+      elseif bestMatches[4] ~= nil then
+        active = bestMatches[4]
+      elseif bestMatches[5] ~= nil then
+        active = bestMatches[5]
       else
         active = 1
       end
     else
-      local win = window.focusedwindow()
+      local win = hs.window.focusedWindow()
       if win ~= nil and win:application():title() == "iTerm" then
         active = active + 1
       end
@@ -99,12 +96,24 @@ function tmux.activate(cmd)
       end
     end
 
-    panes[active]:gsub("(.*):[01][01] (@[0-9]+) (%%[0-9]+)", function(tty, windowid, paneid)
+    panes[active]:gsub("(.*):[01][01] (@[0-9]+) (%%[0-9]+)", function(tty, windowID, paneID)
       exec("/usr/bin/osascript apps/tmux-activate.scpt " .. tty)
-      exec("/usr/local/bin/tmux select-window -t '" .. windowid .. "' && /usr/local/bin/tmux select-pane -t '" .. paneid .. "'")
+      exec("/usr/local/bin/tmux select-window -t '" .. windowID .. "' && /usr/local/bin/tmux select-pane -t '" .. paneID .. "'")
     end)
 
     return true
+  end
+end
+
+function tmux.launch(cmd)
+  local activate = tmux.activate(cmd)
+  return function()
+    local active = activate(true)
+    if not active then
+      -- TODO doesn't work yet, doesn't even create a new window
+      hs.applescript.applescript('tell application "iTerm" to create window with default profile')
+      hs.applescript.applescript('tell application "iTerm" to write text "' .. cmd .. '"')
+    end
   end
 end
 

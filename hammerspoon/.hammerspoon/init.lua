@@ -3,7 +3,7 @@ local bind = require "bind"
 local grid = require "grid"
 local scrn = require "scrn"
 
---local tmux = require "apps.tmux"
+local tmux = require "apps.tmux"
 
 -- switching languages makes Mjolnir crash when it's controlled by Bartender (Seil and Karabiner as well?)
 -- binding + produces error on English keyboard layout
@@ -31,7 +31,7 @@ bind.hyper({
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
-  --e = tmux.launch("nvim"),               -- e for editor
+  e = tmux.activate("nvim"),               -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
@@ -40,11 +40,11 @@ bind.hyper({
   o = apps.launch("Opera Next"),
   --p = apps.launch("Trello"),               -- p for project management
   p = apps.launch("Opera Next"),           -- p for project management (temporary until I've figured out how to do working SSBs)
-  --r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
+  r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("iTerm"),                -- t for terminal
   x = apps.launch("xScope"),
-  --z = tmux.activate("zsh"),
+  z = tmux.activate("zsh"),
 
   w = apps.hideCurrent,
 
