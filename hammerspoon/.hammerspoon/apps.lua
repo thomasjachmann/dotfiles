@@ -1,19 +1,14 @@
 local apps = {}
 
-local appfinder = require "mjolnir.cmsj.appfinder"
-local application = require "mjolnir.application"
-local window = require "mjolnir.window"
-local alert = require "mjolnir.alert"
-
-function apps.launch(app, fn)
+function apps.launch(appName, fn)
   return function()
-    launchedapp = appfinder.app_from_name(app)
-    if (launchedapp) then
-      windows = launchedapp:visiblewindows()
+    app = hs.application.get(appName)
+    if (app) then
+      windows = app:visibleWindows()
       if (#windows > 1) then
-        focused = window.focusedwindow()
+        focusedWindow = hs.window.focusedWindow()
         for _, window in pairs(windows) do
-          if (window == focused) then
+          if (window == focusedWindow) then
             windows[#windows]:focus()
             if (fn) then; fn(); end
             return
@@ -21,24 +16,24 @@ function apps.launch(app, fn)
         end
       end
     end
-    application.launchorfocus(app)
+    hs.application.launchOrFocus(appName)
     if (fn) then; fn(); end
   end
 end
 
-function apps.hidecurrent()
-  local win = window.focusedwindow()
-  if (win) then; win:application():hide(); end
+function apps.hideCurrent()
+  local app = hs.application.frontmostApplication()
+  if (app) then; app:hide(); end
 end
 
-function apps.showcurrenttitle()
-  local win = window.focusedwindow()
-  if (win) then; alert.show(win:application():title()); end
+function apps.showCurrentTitle()
+  local app = hs.application.frontmostApplication()
+  if (app) then; hs.alert(app:title()); end
 end
 
-function apps.showcurrentbundleid()
-  local win = window.focusedwindow()
-  if (win) then; alert.show(win:application():bundleid()); end
+function apps.showCurrentBundleID()
+  local app = hs.application.frontmostApplication()
+  if (app) then; hs.alert(app:bundleID()); end
 end
 
 return apps

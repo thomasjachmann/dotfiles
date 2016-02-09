@@ -1,4 +1,4 @@
---local apps = require "apps"
+local apps = require "apps"
 local bind = require "bind"
 local grid = require "grid"
 local scrn = require "scrn"
@@ -10,8 +10,8 @@ local scrn = require "scrn"
 bind.hyper({
   --["+"] = apps.launch("Google Plus"),
 
-  --f1 = apps.showcurrenttitle,
-  --f2 = apps.showcurrentbundleid,
+  f2 = apps.showCurrentTitle,
+  f3 = apps.showCurrentBundleID,
 
   ["tab"] = scrn.moveToNext,
 
@@ -26,27 +26,27 @@ bind.hyper({
   ["8"] = hs.grid.pushWindowUp,
   ["9"] = hs.grid.pushWindowRight,
 
-  --["0"] = apps.launch("TickTrack SSB"),
-  --a = apps.launch("Adium"),
-  --b = apps.launch("Safari"),               -- b for browser
-  --c = apps.launch("Google Chrome"),
-  --d = apps.launch("Calendar"),             -- d for dates
+  ["0"] = apps.launch("TickTrack SSB"),
+  a = apps.launch("Adium"),
+  b = apps.launch("Safari"),               -- b for browser
+  c = apps.launch("Google Chrome"),
+  d = apps.launch("Calendar"),             -- d for dates
   --e = tmux.launch("nvim"),               -- e for editor
-  --f = apps.launch("Finder"),
-  --g = apps.launch("GitX"),
-  --i = apps.launch("Textual"),              -- i for irc
-  --m = apps.launch("Thunderbird"),
-  --n = apps.launch("Twitter"),              -- n for noise
-  --o = apps.launch("Opera Next"),
-  ----p = apps.launch("Trello"),               -- p for project management
-  --p = apps.launch("Opera Next"),           -- p for project management (temporary until I've figured out how to do working SSBs)
+  f = apps.launch("Finder"),
+  g = apps.launch("GitX"),
+  i = apps.launch("Textual"),              -- i for irc
+  m = apps.launch("Thunderbird"),
+  n = apps.launch("Twitter"),              -- n for noise
+  o = apps.launch("Opera Next"),
+  --p = apps.launch("Trello"),               -- p for project management
+  p = apps.launch("Opera Next"),           -- p for project management (temporary until I've figured out how to do working SSBs)
   --r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
-  --s = apps.launch("Skype"),
-  --t = apps.launch("iTerm"),                -- t for terminal
-  --x = apps.launch("xScope"),
+  s = apps.launch("Skype"),
+  t = apps.launch("iTerm"),                -- t for terminal
+  x = apps.launch("xScope"),
   --z = tmux.activate("zsh"),
 
-  --w = apps.hidecurrent,
+  w = apps.hideCurrent,
 
   escape = function()
     hs.openConsole()
