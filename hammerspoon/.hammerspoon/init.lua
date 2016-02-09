@@ -15,6 +15,7 @@ bind.hyper({
 
   --["tab"] = scrn.movetonext(),
 
+  ["^"] = grid.show,
   ["1"] = grid.move({"0,0,12x12"}),
   ["2"] = grid.move({"0,0,6x12", "6,0,6x12"}),
   ["3"] = grid.move({"0,0,4x12", "0,0,8x12", "4,0,4x12", "4,0,8x12", "8,0,4x12"}),
