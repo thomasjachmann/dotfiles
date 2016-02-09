@@ -1,3 +1,5 @@
+hs.hotkey.setLogLevel("warning")
+
 local apps = require "apps"
 local bind = require "bind"
 local grid = require "grid"
