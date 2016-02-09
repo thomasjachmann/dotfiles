@@ -6,6 +6,7 @@ local grid = require "grid"
 local scrn = require "scrn"
 
 local tmux = require "apps.tmux"
+local ticktrack = require "apps.ticktrack"
 
 bind.hyper({
   -- binding + produces error on English keyboard layout
@@ -28,7 +29,8 @@ bind.hyper({
   ["8"] = hs.grid.pushWindowUp,
   ["9"] = hs.grid.pushWindowRight,
 
-  ["0"] = apps.launch("TickTrack SSB"),
+  ["0"] = ticktrack.toggle,
+
   a = apps.launch("Adium"),
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
