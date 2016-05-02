@@ -81,14 +81,10 @@ ZSH_THEME_GIT_PROMPT_MODIFIED=" %{${fg[yellow]}%}modified%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_ADDED=" %{${fg[green]}%}added%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{${fg[white]}%}untracked%{$reset_color%}"
 
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
-}
-
 function git-prompt() {
-  ref=$(current_branch) || return # may not be local or return doesn't work
-  echo "%{%F{$light}%}± git on $ref at $(git_prompt_short_sha)$(git_prompt_status)
+  gitstatus=$(git status --short --branch 2> /dev/null) || return
+  gitstatus=$(echo $gitstatus | head -n 1)
+  echo "%{%F{$light}%}± git on ${gitstatus/\#\# /} at $(git_prompt_short_sha)$(git_prompt_status)
 %{%b%f%k%}"
 }
 
