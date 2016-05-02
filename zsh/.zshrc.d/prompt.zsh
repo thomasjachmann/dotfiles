@@ -100,7 +100,7 @@ function git-prompt() {
 # color 28 7
 
 local blue=4
-local light=7
+local light=245
 local mid=8
 local dark=8
 local offwhite=7
