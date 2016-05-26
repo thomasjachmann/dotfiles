@@ -36,8 +36,8 @@
 
 	# checkout/commit stuff
 	co = checkout
-  cod = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "$1" ]] && git co $1 && git b -d $BRANCH' -
-  codd = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "$1" ]] && git co $1 && git b -D $BRANCH' -
+  cod = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "$1" ]] && git co $1 && git b -d $BRANCH || git co $BRANCH' -
+  codd = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "$1" ]] && git co $1 && git b -D $BRANCH || git co $BRANCH' -
 	ci = commit
 	cia = commit -a
 	amend = commit --amend
