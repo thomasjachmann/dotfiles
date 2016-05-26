@@ -103,7 +103,7 @@
 	changes = !git diff --name-status $(git rev-parse --abbrev-ref HEAD) $(git tracking) | cat
 	fsx = !git fetch && git s && gitx
 	rdiff = log -p master..origin/master
-	pbcopy = !sh -c 'echo $1 | pbcopy' -
+	pbcopy = !sh -c 'printf "$1" | pbcopy' -
 	# -z -0 are needed to handle file names with spaces properly
 	open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
 
