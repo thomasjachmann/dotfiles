@@ -44,7 +44,7 @@ function tmux.activate(cmd)
       return false
     end
 
-    local _, activeTTY = hs.applescript.applescript('tell application "iTerm" to tty of current session of current terminal')
+    local _, activeTTY = hs.applescript.applescript('tell application "iTerm" to tty of current session of current tab of current window')
     local panes = {}
     local total = 0
     local active = nil
@@ -110,9 +110,7 @@ function tmux.launch(cmd)
   return function()
     local active = activate(true)
     if not active then
-      -- TODO doesn't work yet, doesn't even create a new window
-      hs.applescript.applescript('tell application "iTerm" to create window with default profile')
-      hs.applescript.applescript('tell application "iTerm" to write text "' .. cmd .. '"')
+      hs.applescript.applescript('tell application "iTerm" to create window with default profile command "/usr/local/bin/zsh -l -c ' .. cmd .. '"')
     end
   end
 end
