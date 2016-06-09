@@ -35,7 +35,7 @@ bind.hyper({
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
-  e = tmux.activate("nvim"),               -- e for editor
+  e = tmux.launch("nvim"),                 -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
