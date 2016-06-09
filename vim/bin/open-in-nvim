@@ -1,0 +1,14 @@
+#!/usr/bin/osascript
+
+on run(filename)
+  set cmd to "/usr/local/bin/zsh -l -c \"/usr/local/bin/nvim"
+  if (filename as string) is not equal to "" then
+    set myPath to POSIX path of (filename as string)
+    set cmd to cmd & " " & quote & myPath & quote
+  end if
+  set cmd to cmd & "\""
+  tell application "iTerm"
+    activate
+    create window with default profile command cmd
+  end tell
+end run
