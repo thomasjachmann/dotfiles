@@ -127,6 +127,9 @@ endif
 
 " let custom tja settings begin
 
+" activate true color, see https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 colorscheme kalisi
 set background=dark
 
