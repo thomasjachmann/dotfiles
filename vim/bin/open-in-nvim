@@ -4,7 +4,7 @@ on run(filename)
   set cmd to "/usr/local/bin/zsh -l -c \"/usr/local/bin/nvim"
   if (filename as string) is not equal to "" then
     set myPath to POSIX path of (filename as string)
-    set cmd to cmd & " " & quote & myPath & quote
+    set cmd to cmd & " '" & myPath & "'"
   end if
   set cmd to cmd & "\""
   tell application "iTerm"
