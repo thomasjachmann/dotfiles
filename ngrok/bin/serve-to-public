@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -e
+
+port=$1
+[ -z $port ] && (echo "usage: $0 <port to serve to the public>" 1>&2; exit 1)
+
+OPTS=()
+
+unset username
+prompt="Enter Basic Auth User (empty for unprotected): "
+read -p "$prompt" username
+
+if [ ! -z $username ]; then
+  password=""
+  echo -n "Enter Basic Auth Password: "
+  while IFS= read -p "$prompt" -r -s -n 1 char
+  do
+    # Enter - accept password
+    if [[ $char == $'\0' ]] ; then
+      break
+    fi
+    # Backspace
+    if [[ $char == $'\177' ]] ; then
+      if [[ "$password" == "" ]]; then
+        prompt=''
+      else
+        prompt=$'\b \b'
+        password="${password%?}"
+      fi
+    elif [[ $char != $'\177' ]]; then
+      prompt='*'
+      password+="$char"
+    fi
+  done
+  echo
+  OPTS=("${OPTS[@]}" -auth="$username:$password")
+fi
+
+ngrok http -bind-tls=true -region=eu "${OPTS[@]}" $port
