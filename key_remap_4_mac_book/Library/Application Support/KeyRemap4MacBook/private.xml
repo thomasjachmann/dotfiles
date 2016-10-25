@@ -75,11 +75,11 @@
     </item>
 
     <item>
-      <name>Command to Command and Escape</name>
-      <appendix>This one acts on both command keys.</appendix>
+      <name>Left Command to Left Command and Escape</name>
+      <appendix>This one acts on the left command key.</appendix>
       <appendix>Modifier use acts as always.</appendix>
       <appendix>Single press just sends ESC.</appendix>
-      <identifier>private.command_to_command_and_escape</identifier>
+      <identifier>private.command_l_to_command_l_and_escape</identifier>
       <only>ESCAPABLE</only>
       <autogen>
         __KeyOverlaidModifier__
@@ -87,10 +87,19 @@
         KeyCode::COMMAND_L,
         KeyCode::ESCAPE
       </autogen>
+    </item>
+
+    <item>
+      <name>Right Command to Left Control and Escape</name>
+      <appendix>This one acts on the right command key.</appendix>
+      <appendix>Modifier use acts as if the left control key was pressed.</appendix>
+      <appendix>Single press just sends ESC.</appendix>
+      <identifier>private.command_r_to_control_l_and_escape</identifier>
+      <only>ESCAPABLE</only>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_R,
-        KeyCode::COMMAND_R,
+        KeyCode::CONTROL_L,
         KeyCode::ESCAPE
       </autogen>
     </item>
