@@ -56,6 +56,109 @@
     </item>
   </item>
 
+  <item>
+    <name>Alternative Hyper Key</name>
+
+    <!--
+         Caps Lock can be just Escape - maybe a second hyper key?
+         Left Alt and Cmd are just that
+         Right Cmd is Ctrl
+         Right Alt is Hyper
+         Ctrl is?!
+    -->
+
+    <item>
+      <name>Right Control to Escape</name>
+      <appendix>This one acts on the right control key</appendix>
+      <appendix>which doesn't exist physically on mobile apple keyboards,</appendix>
+      <appendix>so use PCKeyboardHack to map anything you want to that key, eg caps lock).</appendix>
+      <identifier>private.control_r_to_escape</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CONTROL_R,
+        KeyCode::ESCAPE
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Command to Left Control</name>
+      <appendix>This one acts on the right command key.</appendix>
+      <appendix>Modifier use acts as if the left control key was pressed.</appendix>
+      <identifier>private.command_r_to_control_l</identifier>
+      <only>ESCAPABLE</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_R,
+        KeyCode::CONTROL_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Alt to Hyper (except in tmux)</name>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <identifier>private.option_r_to_hyper</identifier>
+      <not>TMUX</not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Alt to Hyper and Ctrl-B (for tmux)</name>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <appendix>Single press just sends Ctrl-B.</appendix>
+      <identifier>private.option_r_to_hyper_and_ctrl_b</identifier>
+      <only>TMUX</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::OPTION_R,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::B, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Alt to Left Control</name>
+      <appendix>This one acts on the right alt key.</appendix>
+      <appendix>Modifier use acts as if the left control key was pressed.</appendix>
+      <identifier>private.option_r_to_control_l</identifier>
+      <only>ESCAPABLE</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R,
+        KeyCode::CONTROL_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Command to Hyper (except in tmux)</name>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <identifier>private.command_r_to_hyper</identifier>
+      <not>TMUX</not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_R,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Right Command to Hyper and Ctrl-B (for tmux)</name>
+      <appendix>Modifier use acts as if all modifiers (ctrl+option+cmd+shift) were pressed.</appendix>
+      <appendix>Single press just sends Ctrl-B.</appendix>
+      <identifier>private.command_r_to_hyper_and_ctrl_b</identifier>
+      <only>TMUX</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_R,
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::B, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
+  </item>
 
   <item>
     <name>Hyper Key</name>
