@@ -105,11 +105,14 @@ function tmux.activate(cmd)
   end
 end
 
-function tmux.launch(cmd)
+function tmux.launch(cmd, startcmd)
   local activate = tmux.activate(cmd)
   return function()
     local active = activate(true)
     if not active then
+      if startcmd then
+        cmd = startcmd
+      end
       hs.applescript.applescript('tell application "iTerm" to create window with default profile command "/usr/local/bin/zsh -l -c ' .. cmd .. '"')
     end
   end
