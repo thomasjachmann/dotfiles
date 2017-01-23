@@ -6,7 +6,7 @@ set nocompatible
 syntax on
 filetype plugin indent on
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " colorschemes
 "Plug 'sickill/vim-monokai'
