@@ -136,6 +136,7 @@
 	# show-author = abbreviated
 	tab-size = 2
 	split-view-height = 90%
+  split-view-width = 75%
 	horizontal-scroll = 33%
   mouse = yes
   vertical-split = no # always use horizontal split for viewing a commit's diff
@@ -155,6 +156,8 @@
 	status = a !git commit --amend
   status = O !git mdo %(file)
   status = T !git mdt %(file)
+  status = S :toggle vertical-split
+  stage = S :toggle vertical-split
   stage = C !git commit
   status = D !rm -i %(file)
   stage = D !rm -i %(file)
