@@ -39,7 +39,8 @@ bind.hyper({
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
-  m = apps.launch("Thunderbird"),
+  --m = apps.launch("Thunderbird"),
+  m = apps.launch("Google Mail"),
   n = apps.launch("Tweetbot"),             -- n for noise
   o = apps.launch("Opera Next"),
   --p = apps.launch("Trello"),               -- p for project management
