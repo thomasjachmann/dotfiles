@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# This is just named git-remote since it's the base script used by my custom
+# git-* commands that act with remotes (eg github/bitbucket). It doesn't mask
+# the default git remote command. And it shouldn't be called directly.
+#
+# It should be called with a few environment variables:
+# * GIT_REMOTE_NAME
+# * GIT_REMOTE_REMOTE
+# * GIT_REMOTE_OPEN_COMMIT_URL
+# * GIT_REMOTE_OPEN_FILE_URL
+# * GIT_REMOTE_CREATE_PULL_REQUEST_URL
+
+set -e
+
+usage() {
+  cat << EOF
+usage: git $GIT_REMOTE_NAME command [command arg]
+
+COMMANDS:
+  remote                show the $GIT_REMOTE_NAME username/repository of the current workdir (the first $GIT_REMOTE_NAME remote if more than one are configured)
+  open-commit,commit,c  open the given commit in the $GIT_REMOTE_NAME web UI
+  open-file,file,f      open the given file in the $GIT_REMOTE_NAME web UI (at the current commit)
+  finish,fin            finishes a feature branch:
+                        * push to remote "origin"
+                        * open the web UI to create a pull-request
+                        * checkout branch "master"
+                        * delete the feature branch
+EOF
+}
+
+function remote() {
+  # need to set this here again for subshell use
+  set -e
+  # just to make sure we're inside a git repository and exit accordingly if not
+  git remote -v show > /dev/null
+  local remote=$(git remote -v show | grep "@$GIT_REMOTE_REMOTE.* (fetch)$" | head -n 1 | sed "s/^.*@$GIT_REMOTE_REMOTE:\(.*\)\(\.git\).*$/\1/")
+  [ -z "$remote" ] && (echo "fatal: No remote pointing to $GIT_REMOTE_REMOTE:" 1>&2; git remote -v show 1>&2; exit 1)
+  echo $remote
+}
+
+case $1 in
+remote)
+  remote
+  ;;
+
+open-commit|commit|c)
+  url=$GIT_REMOTE_OPEN_COMMIT_URL
+
+  remote=$(remote)
+  url=${url/\$remote/$remote}
+
+  # check if the provided commit is a real commit
+  sha1=$(git rev-parse $2)
+  url=${url/\$sha1/$sha1}
+
+  open $url
+  ;;
+
+open-file|file|f)
+  url=$GIT_REMOTE_OPEN_FILE_URL
+
+  remote=$(remote)
+  url=${url/\$remote/$remote}
+
+  # TODO let sha1 be specified as second parameter in order to let tig determine the version it's currently displaying instead of always using the HEAD version?
+  sha1=$(git rev-parse HEAD)
+  url=${url/\$sha1/$sha1}
+
+  # get real repository relative path
+  path=$(git ls-tree --full-name --name-only HEAD $2)
+  [ -z "$path" ] && (echo "fatal: $2 is not known to git" 1>&2; exit 1)
+  url=${url/\$path/$path}
+
+  open $url
+  ;;
+
+finish|fin)
+  url=${GIT_REMOTE_CREATE_PULL_REQUEST_URL/\$target/master}
+
+  remote=$(remote)
+  url=${url/\$remote/$remote}
+
+  branch=$(git rev-parse --abbrev-ref HEAD)
+  [ "$branch" == "master" ] && (echo "fatal: cannot create pull request from master branch" 1>&2; exit 1)
+  url=${url/\source/$branch}
+
+  # TODO prepopulate title, description and maybe some more?
+  # TODO don't use origin but the name of the found remote, maybe use (push) in
+  # detection?
+  git push -u origin $branch
+  open $url
+
+  git checkout master
+  git branch -d $branch || git checkout $branch
+  ;;
+
+help|-h)
+  usage
+  ;;
+
+*)
+  echo "$(usage)" 1>&2
+  exit 1
+  ;;
+esac

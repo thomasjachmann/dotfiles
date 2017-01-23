@@ -1,0 +1,7 @@
+#!/bin/bash
+GIT_REMOTE_NAME=bitbucket \
+GIT_REMOTE_REMOTE=bitbucket.org \
+GIT_REMOTE_OPEN_COMMIT_URL='https://bitbucket.org/$remote/commits/$sha1' \
+GIT_REMOTE_OPEN_FILE_URL='https://bitbucket.org/$remote/src/$sha1/$path' \
+GIT_REMOTE_CREATE_PULL_REQUEST_URL='https://bitbucket.org/$remote/pull-requests/new?source=$remote%3A%3A$source&dest=$remote%3A%3A$target' \
+$(dirname $0)/git-remote "$@"

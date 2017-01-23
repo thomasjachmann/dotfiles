@@ -94,9 +94,9 @@
   ps-f = push --force-with-lease
   pso = !sh -c 'git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
   finish = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "master" ]] && git push -u origin $BRANCH && hub pull-request -o && git co master && git b -d $BRANCH'
-	gh = !sh -c 'git remote -v show | grep @github.com | grep \"(fetch)\" | head -n 1 | sed \"s/^.*@github.com:\\(.*\\)\\(\\.git\\).*$/\\1/\"' -
-	ghf = !sh -c 'git gh | xargs -I {} open https://github.com/{}/blob/`git rev-parse --abbrev-ref HEAD`/$1' -
-	ghc = !sh -c 'git gh | xargs -I {} open https://github.com/{}/commit/$1' -
+  open-commit = !sh -c 'git github open-commit $0 || git bitbucket open-commit $0'
+  # open-file doesn't work yet
+  open-file = !sh -c 'git github open-file $0 || git bitbucket open-file $0'
 
 	# miscellany
 	fs = !git fetch && git s
@@ -109,6 +109,10 @@
 	pbcopy = !sh -c 'printf "$1" | pbcopy' -
 	# -z -0 are needed to handle file names with spaces properly
 	open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
+
+  # custom command integration
+  bb = bitbucket
+  gh = github
 
 [color]
 	status = auto
@@ -146,13 +150,14 @@
 	;generic = <Esc> view-close
 	;main = <Esc> none
   main = B !@git branch "%(prompt)" %(commit)
+  main = W !git diff --color-words %(commit)^1..%(commit)
 	main = c !@git pbcopy %(commit)
-	main = g !@git ghc %(commit) # masking revision graph toggling
 	log = c !@git pbcopy %(commit)
 	diff = c !@git pbcopy %(commit)
   main = I !git rebase --interactive %(commit)^
   log = I !git rebase --interactive %(commit)^
-	log = g !@git ghc %(commit) # masking revision graph toggling
+	main = g !@git open-commit %(commit) # masking revision graph toggling
+	log = g !@git open-commit %(commit) # masking revision graph toggling
 	status = a !git commit --amend
 	stage = a !git commit --amend
   status = O !git mdo %(file)
