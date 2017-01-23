@@ -336,6 +336,11 @@ let g:ctrlp_abbrev = {
       \ 'mode': 'pfrz',
     \ },
     \ {
+      \ 'pattern': 'ah ',
+      \ 'expanded': 'app/helpers/',
+      \ 'mode': 'pfrz',
+    \ },
+    \ {
       \ 'pattern': 'av ',
       \ 'expanded': 'app/views/',
       \ 'mode': 'pfrz',
@@ -355,17 +360,24 @@ let g:ctrlp_abbrev = {
       \ 'expanded': 'test/models/',
       \ 'mode': 'pfrz',
     \ },
+    \ {
+      \ 'pattern': 'th ',
+      \ 'expanded': 'test/helpers/',
+      \ 'mode': 'pfrz',
+    \ },
     \ ]
   \ }
 
 
 " configure airline
 let g:airline_theme = 'kalisi'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_left_alt_sep = '│'
 let g:airline_right_alt_sep = '│'
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
 set laststatus=2 " needed for airline to also show up when only one window is present
 
 " prevent multiple-cursors to lose the selections when exiting from visual
