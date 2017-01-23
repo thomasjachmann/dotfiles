@@ -427,11 +427,21 @@ nmap <Leader>d :Dash<CR>
 " so that it's easier to know how much space is left
 " also define <C-c> to delete the whole buffer, save and exit
 " to abort the commit
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
-autocmd BufNewFile,BufRead PULLREQ_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
-autocmd BufEnter NERD_tree_\d\+ set scrolloff=0
-autocmd BufLeave NERD_tree_\d\+ set scrolloff=2
+" see http://learnvimscriptthehardway.stevelosh.com/chapters/14.html for augroup
+augroup git_messages
+  autocmd!
+  autocmd BufNewFile,BufRead COMMIT_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
+  autocmd BufNewFile,BufRead PULLREQ_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
+augroup END
+
+augroup nerd_tree_scrolloff
+  autocmd!
+  autocmd BufEnter NERD_tree_\d\+ set scrolloff=0
+  autocmd BufLeave NERD_tree_\d\+ set scrolloff=2
+augroup END
 set scrolloff=2
+
+au BufReadPost Jenkinsfile set ft=groovy
 
 function! InitDir()
   tabnew
