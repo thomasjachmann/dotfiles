@@ -148,20 +148,23 @@
 	;main = <Esc> none
   main = B !@git branch "%(prompt)" %(commit)
 	main = c !@git pbcopy %(commit)
-  main = I !git rebase --interactive %(commit)^
 	main = g !@git ghc %(commit) # masking revision graph toggling
 	log = c !@git pbcopy %(commit)
+	diff = c !@git pbcopy %(commit)
+  main = I !git rebase --interactive %(commit)^
   log = I !git rebase --interactive %(commit)^
 	log = g !@git ghc %(commit) # masking revision graph toggling
 	status = a !git commit --amend
+	stage = a !git commit --amend
   status = O !git mdo %(file)
   status = T !git mdt %(file)
   status = S :toggle vertical-split
   stage = S :toggle vertical-split
+  status = C !git commit
   stage = C !git commit
   status = D !rm -i %(file)
   stage = D !rm -i %(file)
-  diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
   main = 7 !git diff --ignore-space-change %(commit)^ %(commit)
+  diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
 
 [tig "color"]
