@@ -3,12 +3,21 @@
 on run(filename)
   set cmd to "/usr/local/bin/zsh -l -c \"/usr/local/bin/nvim"
   if (filename as string) is not equal to "" then
+    # TODO handle non absolute paths properly
     set myPath to POSIX path of (filename as string)
     set cmd to cmd & " '" & myPath & "'"
   end if
   set cmd to cmd & "\""
-  tell application "iTerm"
-    activate
-    create window with default profile command cmd
-  end tell
+  #tell application "Launchbar" to display in large type cmd
+  #if application "iTerm" is running then
+    tell application "iTerm"
+      create window with default profile command cmd
+      activate
+    end tell
+  #else
+  #  tell application "iTerm"
+  #    write "exit"
+  #    create window with default profile command cmd
+  #  end tell
+  #end if
 end run

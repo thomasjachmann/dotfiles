@@ -27,19 +27,30 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'bronson/vim-trailing-whitespace'
 
+" ASYNC stuff: http://hew.tools/blog/posts/asynchronous-neovim-in-2016/
+
 " navigation
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim' " maybe see https://github.com/junegunn/fzf as an async alternative?
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh' }
 Plug 'mattn/ctrlp-register'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim
 Plug 'scrooloose/nerdtree'
+"Plug 'tpope/vim-vinegar'
 Plug 'artnez/vim-wipeout'
 "Plug 'bogado/file-line'
 "Plug 'moll/vim-bbye' " :Bdelete that doesn't close the window when closing a buffer
 
 " search
 Plug 'rking/ag.vim'
+" Deprecated: See [this comment](https://github.com/rking/ag.vim/issues/124#issuecomment-227038003) for more info. Maybe try [ack.vim](https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this) as an alternative. ##
+
+" fast, but opens first search result in currently active window - eg NerdTREE d'oh!
+Plug 'tjennings/git-grep-vim'
+" no - doesn't seem to populate quickfix window, but does add motions which is nice
+"Plug 'teoljungberg/vim-grep'
 Plug 'skwp/greplace.vim' " :Gsearch/:Greplace for search/replace in a result buffer
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
 
 " editing
 Plug 'scrooloose/nerdcommenter'
@@ -50,6 +61,9 @@ Plug 'tpope/vim-endwise' " insert end statements wisely in ruby
 "Plug 'p0deje/vim-ruby-interpolation'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'junegunn/vim-easy-align'
+Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+Plug 'mbbill/undotree'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -64,6 +78,7 @@ Plug 'pangloss/vim-javascript'
 " this seems to be better for github flavored markdown but fails miserable
 " for automatic list formatting/word wrap - check tpope's plugin flp setting
 Plug 'gabrielelana/vim-markdown'
+let g:markdown_mapping_switch_status = '<Leader><Space>'
 "Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -71,19 +86,82 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'chakrit/upstart.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'vim-scripts/applescript.vim'
+Plug 'vim-scripts/nginx.vim'
+Plug 'vim-scripts/groovy.vim'
 
 " version control
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
-Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify' " async alternative: https://github.com/airblade/vim-gitgutter
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " other
 Plug 'tpope/vim-abolish' " tpope's multi variants abbreviation/substitution plugin
 Plug 'rizzatti/dash.vim' " integration with Dash.app
+"Plug 'nelstrom/vim-markdown-preview'
+"Plug 'wikimatze/hammer.vim' " alternative to the above? needs installed gems, though
 "Plug 'reedes/vim-pencil' " various prose modes
+"Plug 'mikewest/vimroom'
+"Plug 'vitalk/vim-simple-todo'
+"Plug 'skalnik/vim-vroom' " ruby test runner
+"let g:vroom_use_spring=1
+"let g:vroom_test_unit_command="ruby -Ikonect_core/test"
+
+" modify cursor shape based on mode
+" TODO fix it for vim
+"if exists('$TMUX')
+"    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+"    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+"else
+"    let &t_SI = "\e[5 q"
+"    let &t_EI = "\e[2 q"
+"endif
+
+if !has("gui_running")
+  Plug 'benmills/vimux' " tmux integration
+
+  "doesn't work in neovim due to it's lack of ruby support
+  "Plug 'pgr0ss/vimux-ruby-test' " ruby test runner (requires tmux)
+  "let g:vimux_ruby_cmd_unit_test = "bundle exec ruby"
+
+  "doesn't work with nested projects inside workspace and uses :line syntax
+  "which minitest doesn't understand
+  "Plug 'skalnik/vim-vroom'
+  "let g:vroom_use_vimux = 1
+  "let g:vroom_test_unit_command = 'ruby -Itest ../'
+
+  "doesn't work at all...
+  "Plug 'jgdavey/vim-turbux'
+
+  nmap <Leader>r call VimuxRunCommand("bundle exec ruby -Itest " . expand('%:p') . " -l " . line("."))<CR>
+  nmap <Leader>R call VimuxRunCommand("bundle exec ruby -Itest " . expand('%:p'))<CR>
+endif
 
 call plug#end()
+
+function! MakeIt(startline, endline)
+  if &filetype == "coffee"
+    exec a:startline.",".a:endline."CoffeeCompile vertical"
+  elseif &filetype == "ruby"
+    call VimuxRunCommand("bundle exec ruby -Itest " . expand('%:p') . " -l " . line("."))
+  else
+    echo "don't know how to make files of type '".&filetype."'"
+  endif
+endfunction
+nmap <Leader>m :call MakeIt(0, '$')<CR>
+vmap <Leader>m :call MakeIt("'<", "'>")<CR>
+
+"function! s:MakeIt(startline, endline)
+"  if &filetype == "coffee"
+"    exec a:startline.",".a:endline."CoffeeCompile vertical"
+"  else
+"    echo "don't know how to make files of type '".&filetype."'"
+"  endif
+"endfunction
+"command! -buffer -range=% -bar -complete=customlist,s:MakeIt MakeIt call s:MakeIt(<line1>, <line2>)
+"nmap <Leader>m :MakeIt<CR>
+"vmap <Leader>m :MakeIt<CR>
 
 let g:UltiSnipsExpandTrigger='<C-l>'
 let g:UltiSnipsJumpForwardTrigger='<Tab>'
@@ -143,6 +221,9 @@ set background=dark
 let g:indentLine_color_term = 237
 let g:indentLine_color_gui = '#3a3a3a' " see https://gist.github.com/MicahElliott/719710
 let g:indentLine_char = '│'
+" without this, conceallevel is set to 2 which messes with json files
+" but with this, the indentlines aren't shown any more - d'oh
+let g:indentLine_conceallevel = 0
 
 " configure YouCompleteMe to complete from/into strings/comments
 let g:ycm_complete_in_comments = 1
@@ -168,8 +249,10 @@ let g:ycm_filetype_blacklist = {
 highlight Pmenu ctermfg=250 ctermbg=242 guifg=#aaaaaa guibg=#555555
 
 " configure greplace to use ag
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
+"set grepprg=ag
+"let g:grep_cmd_opts = '--line-numbers --noheading'
+set grepprg=/usr/local/bin/rg
+let g:grep_cmd_options = '--vimgrep'
 
 let mapleader=","                                 " defines the leader
 
@@ -183,12 +266,18 @@ set wildmode=list:longest
 " (NonText: eol/extends/precedes, SpecialKey: nbsp/tab/trail)
 " see http://vimcasts.org/episodes/show-invisibles/
 set list
-set listchars=tab:▸\ ,extends:>,precedes:<,trail:•,eol:¬
+set listchars=tab:▸\ ,extends:>,precedes:<,trail:•
 highlight NonText ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 highlight SpecialKey ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 
 vmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>r <Plug>(EasyAlign)
+
+" session storage/restorage
+" default: sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,unix,winsize
+"nmap <Leader>ss :mksession! ~/.vimsession.vim<CR>
+"nmap <Leader>sl :source ~/.vimsession.vim<CR>
 
 " define how soft wrapping works
 set linebreak " wrap lines at characters in breakat instead of on line length, supposed not to work with list set, but does
@@ -196,15 +285,6 @@ set linebreak " wrap lines at characters in breakat instead of on line length, s
 set showbreak=\ \ 
 
 set showmatch " blink matching opening brackets when typing a closing bracket
-
-" highlight trailing spaces
-" see http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-"highlight ExtraWhitespace ctermbg=196 guibg=196
-"match ExtraWhitespace /\s\+$/
-"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"autocmd BufWinLeave * call clearmatches()
 
 " edit and reload .config/nvim/init.vim
 nmap <C-v>e :tabe ~/.config/nvim/init.vim<CR>
@@ -217,6 +297,17 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+
+" Space toggle folds
+nnoremap <Space> za
+vnoremap <Space> za
+
+" formatting, see :help fo-table and :help formatoptions
+"set formatoptions+=a1
+set formatoptions=crqnlj
+
+" display long last line partially
+set display=lastline
 
 " close current buffer
 map <Leader>qb :bd<CR>
@@ -255,6 +346,7 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>gb :Gblame<CR>
 map <Leader>gco :Gread<CR>
 map <Leader>ga :Gwrite<CR>
+map <Leader>gh :Gbrowse<CR>
 
 function! OpenGitModified()
   let modifiedFiles = system("git status --porcelain | grep -v '/$' | awk '{print $2}'")
@@ -264,22 +356,63 @@ function! OpenGitModified()
 endfunction
 map <Leader>gm :call OpenGitModified()<CR>
 
+" TODO: expand strings with wildcards
+function! TabOpen(...)
+  for file in a:000
+    execute 'tabe ' . file
+  endfor
+endfunction
+command! -nargs=* Tabo call TabOpen(<f-args>)
+
 function! StartProse()
   setlocal textwidth=80
-  setlocal formatoptions=tcroqa1j
+  setlocal formatoptions=tcrqan1j
   setlocal autoindent
 endfunction
 command! StartProse call StartProse()
-autocmd Filetype markdown call StartProse()
+"autocmd Filetype markdown call StartProse()
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+" taken from https://github.com/linhmtran168/mac_dotfiles/blob/master/.vimrc#L353
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <D-j> <M-j>
+nmap <D-k> <M-k>
+vmap <D-j> <M-j>
+vmap <D-k> <M-k>
+
+" Remap indentation shortcuts to keep selection
+vnoremap > >gv
+vnoremap < <gv
+vnoremap = =gv
 
 " project wide search
-map <Leader>f :Ag!<Space>
-map <Leader>F :Ag!<Space>-i<Space>
+"map <Leader>f :Ag!<Space>
+"map <Leader>F :Ag!<Space>-i<Space>
+map <Leader>f :GitGrep<Space>
+map <Leader>F :GitGrep<Space>-i<Space>
+let g:ag_highlight=1
+
+" FZF configuration
+" use ag for FZF file list input, because ag is configured to ignore all
+" .gitignore'd files
+" see https://github.com/junegunn/fzf.vim/issues/121
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit',
+      \ 'ctrl-t': 'tabe'
+      \ }
 
 " ctrlp mapping
 " files
-map <Leader>tf :CtrlP<CR>
-map <Leader>t :CtrlP<CR>
+map <Leader>Tf :CtrlP<CR>
+map <Leader>T :CtrlP<CR>
+map <Leader>tf :FZF --preview="cat -e {}"<CR>
+map <Leader>t :FZF --preview="cat -e {}"<CR>
 " buffers
 map <Leader>tb :CtrlPBuffer<CR>
 " tags (local/global)
@@ -288,7 +421,13 @@ map <Leader>tT :CtrlPTag<CR>
 " yank registers
 map <Leader>ty :CtrlPRegister<CR>
 
-" adds nerdtree tab toggle
+" quickfix settings
+"DAMMIT they clash with NERDCommenter
+"map <Leader>co :copen<CR>
+"map <Leader>cc :cclose<CR>
+"map <Leader>ch :colder<CR>
+"map <Leader>cl :cnewer<CR>
+
 " adds nerdtree toggle
 map <Leader>nt :NERDTreeToggle<CR>
 map <Leader>nn :NERDTree<CR>
@@ -317,6 +456,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 
 " see https://github.com/FelikZ/ctrlp-py-matcher/blob/master/doc/pymatcher.txt
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
 let g:ctrlp_abbrev = {
   \ 'gmode': 'i',
   \ 'abbrevs': [
@@ -391,6 +532,8 @@ if has("gui_running")
   set showcmd
   set showtabline=2 " always show tabs
   set titlestring=%{$PWD}
+else
+  execute 'silent !echo -ne "\e]1;${PWD\#\#*/}\a"'
 end
 
 " shows line numbers
@@ -405,6 +548,8 @@ set hidden
 set nobackup                           " Just don't backup
 set nowritebackup                      " No write backups
 set noswapfile                         " And no swap files
+" hm... doesn't work?
+"set autoread                           " Automatically read unchanged buffers when corresponding file changes on disk
 
 set tabstop=2                          " set tab width when pressing tab
 set shiftwidth=2                       " set tab width when using retab
@@ -415,11 +560,35 @@ set smarttab                           " also delete all spaces on <BS>
 " see http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set timeoutlen=1000 ttimeoutlen=0
 
-set cursorline                         " highlight the line with the cursor
-highlight clear CursorLine             " only highlight the line number since
-augroup CLClear
-  autocmd! ColorScheme * highlight clear CursorLine
-augroup END
+" allow me to comment stuff, see https://github.com/amix/vimrc
+iab meee <c-r>=strftime("[thomas, %Y-%m-%d]")<cr>
+
+" switch off cursorline since it slows down ruby syntax highlighting: http://stackoverflow.com/questions/22949067/macvim-quite-slow-when-syntax-is-set-to-ruby
+"set cursorline                         " highlight the line with the cursor
+"highlight clear CursorLine             " only highlight the line number since
+"augroup CLClear
+"  autocmd! ColorScheme * highlight clear CursorLine
+"augroup END
+
+" insert mode cursor for console based vim
+" https://www.iterm2.com/documentation-escape-codes.html
+" http://sts10.github.io/blog/2015/10/24/true-hex-colors-with-neovim-and-iterm2/#post-2632598645
+"if $TERM_PROGRAM =~ "iTerm"
+"  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+"  "let &t_SI = "\<esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+"  "let &t_EI = "\<esc>]50;CursorShape=0\x7" " Block in normal mode
+"  if exists('$TMUX')
+"    let &t_SI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=2\x7\<esc>\\"
+"    let &t_EI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=0\x7\<esc>\\"
+"    " https://gist.github.com/andyfowler/1195581#gistcomment-532290
+"    "let &t_SI = "\<Esc>[2 q"
+"    "let &t_EI = "\<Esc>[0 q"
+"  else
+"    let &t_SI = "\<esc>]50;CursorShape=1\x7"
+"    let &t_EI = "\<esc>]50;CursorShape=0\x7"
+"  endif
+"endif
+" https://github.com/neovim/neovim/issues/2475#issuecomment-212010187
 
 nmap <Leader>d :Dash<CR>
 

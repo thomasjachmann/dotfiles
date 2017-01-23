@@ -151,6 +151,7 @@
 	;main = <Esc> none
   main = B !@git branch "%(prompt)" %(commit)
   main = W !git diff --color-words %(commit)^1..%(commit)
+  # TODO https://github.com/jonas/tig/issues/65 no need for git pbcopy anymore?
 	main = c !@git pbcopy %(commit)
 	log = c !@git pbcopy %(commit)
 	diff = c !@git pbcopy %(commit)

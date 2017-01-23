@@ -1,5 +1,8 @@
 local apps = {}
 
+-- TODO Allow to specify multiple apps that are cycled:
+-- * cycle through all the windows if active
+-- * switch to the most recently active of the apps if inactive
 function apps.launch(appName, fn)
   return function()
     app = hs.application.get(appName)

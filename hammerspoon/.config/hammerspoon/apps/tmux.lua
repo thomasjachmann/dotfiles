@@ -4,6 +4,7 @@ local apps = require "apps"
 
 -- Executes a shell command and returns the result (without trailing whitespace)
 function exec(cmd)
+  -- TODO use hs.task
   local handle = io.popen(cmd, "r")
   local output = handle:read("*a")
   handle:close()
@@ -89,6 +90,7 @@ function tmux.activate(cmd)
     else
       local win = hs.window.focusedWindow()
       if win ~= nil and win:application():title() == "iTerm" then
+        -- TODO doesn't cycle through panes, just switches to first one and that's it
         active = active + 1
       end
       if active > total then
