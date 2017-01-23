@@ -1,0 +1,13 @@
+#!/bin/bash
+
+line=
+while IFS= read -r -n 1 char; do
+  line=$line$char
+  if [[ $line == *"$1"* ]]; then
+    /usr/bin/osascript -e "tell application \"LaunchBar\" to display in large type \"$1\""
+    line=
+  fi
+  if [[ $char == "" ]]; then
+    line=
+  fi
+done

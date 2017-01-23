@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then
+  # stop watching for text
+  /usr/local/bin/tmux pipe-pane
+  /usr/local/bin/tmux display-message "stopped watching"
+else
+  # start watching for text
+  /usr/local/bin/tmux pipe-pane "$(dirname $0)/tmux-pipe-notify \"$1\""
+  /usr/local/bin/tmux display-message "watching for \"$1\""
+fi
