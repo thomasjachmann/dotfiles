@@ -21,6 +21,8 @@
 	# cannot be used, since the branch colors aren't as diverse as with decorate
 	# --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'--date=relative
   worklog = log --pretty=format:'%Cgreen%ai %Cblue%h %Creset%s' --author='Thomas Jachmann' --author-date-order
+  # taken from http://git-wt-commit.rubyforge.org (git rank-contributors: http://git-wt-commit.rubyforge.org/git-rank-contributors)
+  contributors = shortlog -s -n --no-merges
 
 	# stash stuff
 	ss = stash save
