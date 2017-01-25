@@ -1,6 +1,6 @@
-# source all files in ~/.zshrc.d (sorted alphabetically, no . files)
-for FILE in ~/.zshrc.d/*; do
-  source $FILE
+# source all files in ~/.config/zsh (sorted alphabetically, no . files)
+for file in ~/.config/zsh/*; do
+  source $file
 done
 
 # see http://stackoverflow.com/questions/564648/zsh-tab-completion-for-cd

@@ -1,9 +1,9 @@
 alias reload="say-and-execute source ~/.zshrc"
 function edit() {
-  if [[ "$1" != "" && -f ~/.zshrc.d/$1.zsh ]]; then
-    say-and-execute mvim ~/.zshrc.d/$1.zsh
+  if [[ "$1" != "" && -f ~/.config/zsh/$1.zsh ]]; then
+    say-and-execute vi ~/.config/zsh/$1.zsh
   else
-    say-and-execute mvim -p ~/.dotfiles -c "InitDir"
+    say-and-execute vi -p $(dirname $(grealpath $(which dotfiles)))/../.. -c "InitDir"
   fi
 }
 
