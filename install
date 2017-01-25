@@ -1,0 +1,23 @@
+#!/bin/bash
+
+source $(dirname $0)/_colors.zsh
+
+# check/install homebrew, we need this for installing software
+if [ -x "$(command -v brew)" ]; then
+  green "homebrew is already installed"
+else
+  yellow "homebrew is missing, installing..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# this is done here since bin/dotfiles uses grealpath to cd into the dotfiles
+# source/root dir
+brew install coreutils
+
+$(dirname $0)/zsh/bin/dotfiles install zsh homebrew
+
+if [ "$SHELL" == "/usr/local/bin/zsh" ]; then
+  green "done"
+else
+  yellow "you need to switch your shell to /usr/local/bin/zsh now"
+fi

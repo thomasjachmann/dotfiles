@@ -1,0 +1,48 @@
+#!/bin/bash
+
+cd $(dirname $(grealpath $0))/../..
+
+command=$1
+shift
+
+case $command in
+
+install)
+  for package in "$@"; do
+    [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
+    stow \
+      --dir=. \
+      --target=$HOME \
+      --ignore=.gitignore \
+      --ignore=Brewfile \
+      --ignore=install \
+      --restow \
+      "$package"
+    [ -x ./$package/install ] && ./$package/install
+  done
+  ;;
+
+uninstall)
+  for package in "$@"; do
+    stow \
+      --dir=. \
+      --target=$HOME \
+      --delete \
+      "$package"
+  done
+  ;;
+
+*)
+  echo "usage: $0 command [package]
+
+available commands:
+* install [package]
+  installs given package(s), first installing dependencies via Brewfile,
+  symlinking all of the package's files and then running a custom install
+  script if present
+* uninstall [package]
+  uninstalls given package(s), this doesn't remove dependencies installed via
+  Brewfile or changes done via a custom install script"
+  exit 1
+
+esac

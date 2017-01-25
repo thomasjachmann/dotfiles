@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source $(dirname $0)/../_colors.zsh
+
+# check availability of zsh as login shell
+if grep --quiet -e "^/usr/local/bin/zsh$" /etc/shells; then
+  green "zsh is already available as login shell"
+else
+  yellow "zsh is not available as login shell, adding it to /etc/shells"
+  echo -e "\n# make current zsh installed via homebrew available as login shell\n/usr/local/bin/zsh" \
+    | sudo tee -a /etc/shells > /dev/null
+fi
