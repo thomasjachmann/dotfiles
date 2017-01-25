@@ -3,8 +3,8 @@
 	email = self@thomasjachmann.com
 
 [core]
-	excludesfile = ~/.gitignore
-	editor = nvim
+	excludesfile = ~/.config/git/ignore
+	editor = vi
 	precomposeunicode = true # for Mac OS X
 
 [alias]
