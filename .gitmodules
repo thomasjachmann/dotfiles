@@ -16,6 +16,3 @@
 [submodule "sublime_text/Library/Application Support/Sublime Text 3/Packages/Theme - Flatland"]
 	path = sublime_text/Library/Application Support/Sublime Text 3/Packages/Theme - Flatland
 	url = git://github.com/thomasjachmann/flatland.git
-[submodule "fonts/powerline"]
-	path = fonts/powerline
-	url = git@github.com:Lokaltog/powerline-fonts.git
