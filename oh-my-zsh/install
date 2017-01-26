@@ -1,3 +1,10 @@
 #!/bin/bash
 
-git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.config/oh-my-zsh
+source $(dirname $0)/../_colors.zsh
+
+if [ -d ~/.config/oh-my-zsh ]; then
+  green "oh-my-zsh is already installed"
+else
+  yellow "oh-my-zsh is missing, cloning"
+  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.config/oh-my-zsh
+fi
