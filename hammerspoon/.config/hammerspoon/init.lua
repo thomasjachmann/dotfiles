@@ -8,6 +8,11 @@ local scrn = require "scrn"
 local tmux = require "apps.tmux"
 local ticktrack = require "apps.ticktrack"
 
+bind.alias('h', 'left')
+bind.alias('j', 'down')
+bind.alias('k', 'up')
+bind.alias('l', 'right')
+
 bind.hyper({
   -- binding + produces error on English keyboard layout
   -- if bound on German and then executed on English, it works
@@ -59,3 +64,9 @@ bind.hyper({
     hs.reload()
   end
 })
+
+hs.hotkey.bind({}, "F19", function()
+  if (hs.application.frontmostApplication():name() == "iTerm2") then
+    hs.eventtap.keyStroke("ctrl", "b")
+  end
+end)
