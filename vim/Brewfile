@@ -1,0 +1,5 @@
+brew "python"
+brew "python3"
+
+tap "neovim/neovim"
+brew "neovim"

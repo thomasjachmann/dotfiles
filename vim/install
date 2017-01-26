@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pip install neovim
+pip3 install neovim
+
+nvim -c PlugInstall -c qall
