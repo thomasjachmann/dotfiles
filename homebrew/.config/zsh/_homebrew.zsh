@@ -1,5 +1,5 @@
-# extend path for homebrew
-PATH=/usr/local/bin:/usr/local/sbin:$PATH
+# extend path for homebrew (/usr/local/bin is already in)
+PATH=/usr/local/sbin:$PATH
 
 # and for brew's npm
 PATH=/usr/local/share/npm/bin:$PATH
