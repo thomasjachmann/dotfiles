@@ -6,7 +6,7 @@
             "simple_modifications": {
                 "caps_lock": "f20",
                 "right_command": "right_control",
-                "right_option": "f19"
+                "right_option": "escape"
             }
         }
     ]

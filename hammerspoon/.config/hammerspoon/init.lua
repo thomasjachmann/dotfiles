@@ -64,9 +64,3 @@ bind.hyper({
     hs.reload()
   end
 })
-
-hs.hotkey.bind({}, "F19", function()
-  if (hs.application.frontmostApplication():name() == "iTerm2") then
-    hs.eventtap.keyStroke("ctrl", "b")
-  end
-end)

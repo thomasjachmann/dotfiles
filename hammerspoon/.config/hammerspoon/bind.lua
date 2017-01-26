@@ -10,8 +10,11 @@ end
 
 releasedHyper = function()
   hyper:exit()
-  if not hyper.triggered then
-    hs.eventtap.keyStroke({}, "ESCAPE")
+  if not hyper.triggered and hs.application.frontmostApplication():name() == "iTerm2" then
+    local _, activeTTY = hs.applescript.applescript('tell application "iTerm" to tty of current session of current tab of current window')
+    if os.execute("/usr/local/bin/tmux list-clients -F '#{client_tty}' | grep '^" .. activeTTY .. "$'") then
+      hs.eventtap.keyStroke("ctrl", "b")
+    end
   end
 end
 
