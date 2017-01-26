@@ -206,11 +206,11 @@ set showmatch " blink matching opening brackets when typing a closing bracket
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 "autocmd BufWinLeave * call clearmatches()
 
-" edit and reload .vimrc
-nmap <C-v>e :tabe ~/.vimrc<CR>
-nmap <C-v>r :source ~/.vimrc<CR>
+" edit and reload .config/nvim/init.vim
+nmap <C-v>e :tabe ~/.config/nvim/init.vim<CR>
+nmap <C-v>r :source ~/.config/nvim/init.vim<CR>
 " When vimrc is edited, reload it
-autocmd! BufWritePost .vimrc source %
+autocmd! BufWritePost init.vim source %
 
 " screen line navigation as standard
 nnoremap j gj
