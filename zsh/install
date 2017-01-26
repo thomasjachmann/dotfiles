@@ -10,3 +10,10 @@ else
   echo -e "\n# make current zsh installed via homebrew available as login shell\n/usr/local/bin/zsh" \
     | sudo tee -a /etc/shells > /dev/null
 fi
+
+# check user's shell
+if [ "$SHELL" == "/usr/local/bin/zsh" ]; then
+  green "your user already uses zsh"
+else
+  yellow "you should set your user's shell to use zsh: chsh -s /usr/local/bin/zsh"
+fi
