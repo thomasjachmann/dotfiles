@@ -1,6 +1,17 @@
 #!/bin/bash
 
-cd $(dirname $(grealpath $0))/../..
+dotfiles=$(dirname $(grealpath $0))/../..
+
+function stowpackage {
+  stow \
+    --dir=. \
+    --target=$HOME \
+    --ignore=.gitignore \
+    --ignore=Brewfile \
+    --ignore=install \
+    --restow \
+    "$1"
+}
 
 command=$1
 shift
@@ -8,21 +19,16 @@ shift
 case $command in
 
 install)
+  cd $dotfiles
   for package in "$@"; do
     [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
-    stow \
-      --dir=. \
-      --target=$HOME \
-      --ignore=.gitignore \
-      --ignore=Brewfile \
-      --ignore=install \
-      --restow \
-      "$package"
+    stowpackage $package
     [ -x ./$package/install ] && ./$package/install
   done
   ;;
 
 uninstall)
+  cd $dotfiles
   for package in "$@"; do
     stow \
       --dir=. \
@@ -30,6 +36,20 @@ uninstall)
       --delete \
       "$package"
   done
+  ;;
+
+add)
+  package=$1
+  [ -z "$package" ] && $(echo "you need to specify a package to add the file to" 1>&2) && exit 1
+  file=$2
+  [ -z "$file" ] && $(echo "you need to specify a file to add to the package" 1>&2) && exit 1
+
+  dir=$(dirname "$file")
+  mkdir -p "$dotfiles/$package/$dir"
+
+  mv "$2" "$dotfiles/$package/$file" # this might leave an empty directory behind that affects symlinking by stow
+
+  $0 install $package
   ;;
 
 *)
@@ -42,7 +62,9 @@ available commands:
   script if present
 * uninstall [package]
   uninstalls given package(s), this doesn't remove dependencies installed via
-  Brewfile or changes done via a custom install script"
+  Brewfile or changes done via a custom install script
+* add package file
+  adds a file to a package (converting a real file to a symlinked file)"
   exit 1
 
 esac
