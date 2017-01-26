@@ -4,7 +4,6 @@
 
 [core]
 	excludesfile = ~/.config/git/ignore
-	editor = vi
 	precomposeunicode = true # for Mac OS X
 
 [alias]
