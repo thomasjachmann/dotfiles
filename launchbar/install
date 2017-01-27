@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source $(dirname $0)/../_helpers.zsh
+
+loginitem "LaunchBar" "/Applications/LaunchBar.app"
