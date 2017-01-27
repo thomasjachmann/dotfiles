@@ -15,6 +15,7 @@ bind.alias('l', 'right')
 
 bind.restoreOldHyperKey('v')
 bind.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
+bind.restoreOldHyperKey(27) -- this is the ß key used for Dash
 
 bind.hyper({
   -- binding + produces error on English keyboard layout
