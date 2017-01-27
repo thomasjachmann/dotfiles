@@ -8,6 +8,7 @@ function stowpackage {
   stow \
     --dir=. \
     --target=$HOME \
+    --ignore=support \
     --ignore=.gitignore \
     --ignore=Brewfile \
     --ignore=install \

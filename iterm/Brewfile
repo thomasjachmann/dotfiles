@@ -1,0 +1,6 @@
+brew "coreutils" # just for using grealpath in ./install
+
+cask "iterm2"
+
+tap "caskroom/fonts"
+cask "font-hack"
