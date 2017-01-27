@@ -13,6 +13,8 @@ bind.alias('j', 'down')
 bind.alias('k', 'up')
 bind.alias('l', 'right')
 
+bind.restoreOldHyperKey('v')
+
 bind.hyper({
   -- binding + produces error on English keyboard layout
   -- if bound on German and then executed on English, it works

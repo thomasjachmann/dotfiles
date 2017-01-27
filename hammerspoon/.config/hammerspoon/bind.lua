@@ -36,6 +36,13 @@ function bind.alias(key, alias)
   bind.bind(key, callback, nil, callback)
 end
 
+function bind.restoreOldHyperKey(key)
+  callback = function()
+    hs.eventtap.keyStroke("ctrl alt shift cmd", key)
+  end
+  bind.bind(key, callback, nil, callback)
+end
+
 function bind.hyper(mappings)
   for key, fn in pairs(mappings) do
     bind.bind(key, fn)
