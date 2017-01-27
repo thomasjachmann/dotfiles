@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/_colors.zsh
+source $(dirname $0)/_helpers.zsh
 
 # check/install homebrew, we need this for installing software
 if [ -x "$(command -v brew)" ]; then

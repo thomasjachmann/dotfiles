@@ -2,7 +2,7 @@
 
 dotfiles=$(dirname $(grealpath $0))/../..
 
-source $dotfiles/_colors.zsh
+source $dotfiles/_helpers.zsh
 
 function stowpackage {
   stow \
