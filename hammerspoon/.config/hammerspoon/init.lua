@@ -14,6 +14,7 @@ bind.alias('k', 'up')
 bind.alias('l', 'right')
 
 bind.restoreOldHyperKey('v')
+bind.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
 
 bind.hyper({
   -- binding + produces error on English keyboard layout
