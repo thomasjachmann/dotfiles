@@ -2,6 +2,8 @@
 
 dotfiles=$(dirname $(grealpath $0))/../..
 
+source $dotfiles/_colors.zsh
+
 function stowpackage {
   stow \
     --dir=. \
@@ -24,7 +26,11 @@ install)
     [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
     stowpackage $package
     [ -x ./$package/install ] && ./$package/install
+    echo $package >> ~/.local/dotfiles
+    sort --unique ~/.local/dotfiles > ~/.local/dotfiles.new
+    mv ~/.local/dotfiles.new ~/.local/dotfiles
   done
+  green "installed packages $*"
   ;;
 
 uninstall)
@@ -35,7 +41,21 @@ uninstall)
       --target=$HOME \
       --delete \
       "$package"
+    sed "/^$package$/d" ~/.local/dotfiles > ~/.local/dotfiles.new
+    mv ~/.local/dotfiles.new ~/.local/dotfiles
   done
+  green "uninstalled packages $*"
+  yellow "be aware that none of the Brewfile dependencies or custom install steps have been uninstalled or reverted"
+  ;;
+
+list)
+  cd $dotfiles
+  cat ~/.local/dotfiles
+  ;;
+
+reinstall)
+  packages=$(perl -pe 's/\n/ / unless eof' ~/.local/dotfiles)
+  $0 install $packages
   ;;
 
 add)
@@ -63,6 +83,10 @@ available commands:
 * uninstall [package]
   uninstalls given package(s), this doesn't remove dependencies installed via
   Brewfile or changes done via a custom install script
+* list
+  lists all installed packages
+* reinstall
+  reinstall everything that has been installed (see list command)
 * add package file
   adds a file to a package (converting a real file to a symlinked file)"
   exit 1
