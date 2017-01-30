@@ -13,7 +13,7 @@ function ticktrack.toggle()
     webview:windowStyle({"titled", "closable", "resizable"}) --, "fullSizeContentView"})
   end
 
-  win = webview:asHSWindow()
+  win = webview:hswindow()
   if win and win:application():isFrontmost() then
     webview:hide()
   else
