@@ -8,7 +8,7 @@ function ticktrack.toggle()
     rect.x = rect.w - 370
     rect.w = 370
     webview = hs.webview.new(rect)
-    webview:url("http://ticktrack.herokuapp.com")
+    webview:url("https://ticktrack.herokuapp.com")
     webview:allowTextEntry(true)
     webview:windowStyle({"titled", "closable", "resizable"}) --, "fullSizeContentView"})
   end
