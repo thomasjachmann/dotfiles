@@ -51,9 +51,9 @@ bind.hyper({
   --m = apps.launch("Thunderbird"),
   m = apps.launch("Google Mail"),
   n = apps.launch("Tweetbot"),             -- n for noise
-  o = apps.launch("Opera Next"),
+  o = apps.launch("Opera"),
   --p = apps.launch("Trello"),               -- p for project management
-  p = apps.launch("Opera Next"),           -- p for project management (temporary until I've figured out how to do working SSBs)
+  p = apps.launch("Opera"),                -- p for project management (temporary until I've figured out how to do working SSBs)
   r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("iTerm"),                -- t for terminal
