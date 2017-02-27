@@ -1,5 +1,6 @@
 brew "python"
 brew "python3"
+brew "ctags"
 
 tap "neovim/neovim"
 brew "neovim"
