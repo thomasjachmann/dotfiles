@@ -1,3 +1,4 @@
 brew "git"
 brew "git-extras"
 brew "tig"
+brew "hub"
