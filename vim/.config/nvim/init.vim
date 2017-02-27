@@ -33,7 +33,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'ctrlpvim/ctrlp.vim' " maybe see https://github.com/junegunn/fzf as an async alternative?
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh' }
 Plug 'mattn/ctrlp-register'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim
 Plug 'scrooloose/nerdtree'
 "Plug 'tpope/vim-vinegar'
