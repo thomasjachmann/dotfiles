@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -n "$TMUX" ]; then
+  # We need reattach-to-user-namespace for UseKeychain to work since Sierra
+  /usr/local/bin/reattach-to-user-namespace /usr/bin/ssh-add "$@"
+else
+  /usr/bin/ssh-add "$@"
+fi
