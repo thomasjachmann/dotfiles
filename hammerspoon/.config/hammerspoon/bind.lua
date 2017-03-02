@@ -21,7 +21,13 @@ end
 hs.hotkey.bind({}, "F20", pressedHyper, releasedHyper)
 
 function bind.bind(key, pressed, released, repeated)
-  hyper:bind({}, key, function()
+  if type(key) == "table" then
+    mods = key[1]
+    key = key[2]
+  else
+    mods = {}
+  end
+  hyper:bind(mods, key, function()
     hyper.triggered = true
     if (pressed) then
       pressed()
