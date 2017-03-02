@@ -5,15 +5,19 @@ dotfiles=$(dirname $(grealpath $0))/../..
 source $dotfiles/_helpers.zsh
 
 function stowpackage {
+  local action=$1
+  local dir=$(dirname $2)
+  local pkg=$(basename $2)
+
   stow \
-    --dir=. \
+    --dir=$dir \
     --target=$HOME \
     --ignore=support \
     --ignore=.gitignore \
     --ignore=Brewfile \
     --ignore=install \
-    --restow \
-    "$1"
+    $action \
+    "$pkg"
 }
 
 command=$1
@@ -25,7 +29,7 @@ install)
   cd $dotfiles
   for package in "$@"; do
     [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
-    stowpackage $package
+    stowpackage --restow $package
     [ -x ./$package/install ] && ./$package/install
     echo $package >> ~/.local/dotfiles
     sort --unique ~/.local/dotfiles > ~/.local/dotfiles.new
@@ -37,12 +41,8 @@ install)
 uninstall)
   cd $dotfiles
   for package in "$@"; do
-    stow \
-      --dir=. \
-      --target=$HOME \
-      --delete \
-      "$package"
-    sed "/^$package$/d" ~/.local/dotfiles > ~/.local/dotfiles.new
+    stowpackage --delete $package
+    sed "/^${package//\//\\/}$/d" ~/.local/dotfiles > ~/.local/dotfiles.new
     mv ~/.local/dotfiles.new ~/.local/dotfiles
   done
   green "uninstalled packages $*"
