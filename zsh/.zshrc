@@ -13,5 +13,3 @@ unsetopt correct_all
 # I rarely used extended globbing, but it hindered me in using stuff like
 # git reset HEAD^
 unsetopt extendedglob
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
