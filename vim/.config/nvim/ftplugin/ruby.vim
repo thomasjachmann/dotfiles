@@ -1,2 +1,2 @@
-"setlocal foldmethod=syntax
-"setlocal foldlevel=99
+setlocal foldlevel=99
+setlocal foldmethod=syntax
