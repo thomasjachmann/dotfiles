@@ -13,7 +13,7 @@ bind.alias('j', 'down')
 bind.alias('k', 'up')
 bind.alias('l', 'right')
 
-bind.restoreOldHyperKey('v')
+bind.restoreOldHyperKey('v') -- this is used by Launchbar to display the multi clipboard paste menu
 bind.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
 bind.restoreOldHyperKey(27) -- this is the ß key used for Dash
 
