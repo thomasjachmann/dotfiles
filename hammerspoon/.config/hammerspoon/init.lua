@@ -65,7 +65,7 @@ bind.hyper({
   s = apps.launch("Skype"),
   t = apps.launch("iTerm"),                -- t for terminal
   x = apps.launch("xScope"),
-  y = apps.launch("HipChat"),              -- y for whatever, this space gets crowded!! y is next to s which has a similar function, I need multikey shortcuts!
+  y = apps.launch("Mattermost"),           -- y for whatever, this space gets crowded!! y is next to s which has a similar function, I need multikey shortcuts!
   z = tmux.activate("zsh"),
 
   w = apps.hideCurrent,
