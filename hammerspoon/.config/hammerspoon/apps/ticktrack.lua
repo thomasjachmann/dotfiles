@@ -5,8 +5,8 @@ local webview = nil
 function ticktrack.toggle()
   if webview == nil then
     rect = hs.screen.primaryScreen():frame()
-    rect.x = rect.w - 370
-    rect.w = 370
+    rect.x = rect.w - 560
+    rect.w = 560
     webview = hs.webview.new(rect)
     webview:url("https://ticktrack.herokuapp.com")
     --webview:url("http://localhost:3000")
