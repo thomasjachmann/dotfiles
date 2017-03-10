@@ -10,30 +10,48 @@ hs.grid.ui.textSize = 100
 hs.grid.ui.showExtraKeys = false
 hs.window.animationDuration = 0
 
-local frames = {}
+local dataByWindowId = {}
+
+function focusedWindowData()
+  local win = hs.window.focusedWindow()
+  if win:isStandard() then
+    data = dataByWindowId[win:id()]
+    if not data then
+      data = {
+        win           = win,
+        originalFrame = nil,
+        lastGridFrame = nil,
+        grids         = nil,
+        index         = 0
+      }
+      dataByWindowId[win:id()] = data
+    end
+    return data
+  end
+end
 
 function grid.move(grids)
   return function()
-    local win = hs.window.focusedWindow()
-    if (win) then
-      local nextGridIndex = -1
-      local currentGrid = hs.grid.get(win)
-      for i = 1, #grids do
-        if hs.geometry.rect(grids[i]) == currentGrid then
-          nextGridIndex = i + 1
-          break
-        end
+    local data = focusedWindowData()
+    if (data) then
+      -- determine what to do
+      if grids ~= data.grids or data.index == 0 or data.win:frame() ~= data.lastGridFrame then
+        data.originalFrame = data.win:frame()
+        data.grids = grids
+        data.index = 1
+      elseif data.index >= #grids then
+        data.index = 0
+      else
+        data.index = data.index + 1
       end
-      if nextGridIndex == -1 then
-        frames[win:id()] = win:frame()
-        nextGridIndex = 1
+
+      -- do it
+      if data.index == 0 then
+        data.win:setFrame(data.originalFrame)
+      else
+        hs.grid.set(data.win, grids[data.index], data.win:screen())
+        data.lastGridFrame = data.win:frame()
       end
-      if nextGridIndex > #grids then
-        local frame = frames[win:id()]
-        if (frame) then; win:setFrame(frame); end
-        return
-      end
-      hs.grid.set(win, grids[nextGridIndex], win:screen())
     end
   end
 end
