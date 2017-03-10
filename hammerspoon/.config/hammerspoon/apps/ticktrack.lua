@@ -20,7 +20,7 @@ function ticktrack.toggle()
   else
     webview:show()
     hs.application.get("Hammerspoon"):activate()
-    webview:evaluateJavaScript("$('input:first').focus();") -- TODO this is too early when opening view for the first time
+    webview:evaluateJavaScript("$('.navigation-item:first').click();window.setTimeout(function() { $('input:first').focus(); }, 100);") -- TODO this is too early when opening view for the first time
   end
 end
 
