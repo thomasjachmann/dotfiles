@@ -14,7 +14,7 @@ local dataByWindowId = {}
 
 function focusedWindowData()
   local win = hs.window.focusedWindow()
-  if win:isStandard() then
+  if win ~= hs.window:desktop() then
     data = dataByWindowId[win:id()]
     if not data then
       data = {
