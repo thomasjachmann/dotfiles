@@ -1,5 +1,5 @@
-source `brew --prefix chruby`/share/chruby/chruby.sh
-source `brew --prefix chruby`/share/chruby/auto.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 function chruby-version() {
   chruby_auto
