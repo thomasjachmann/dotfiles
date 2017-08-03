@@ -102,7 +102,7 @@
 	# miscellany
 	fs = !git fetch && git s
   ftp = fetch --tags --prune
-	sniff = !git fs && git snif
+	sniff = !git ftp && git snif
 	snif = !tig --first-parent $(git rev-parse --abbrev-ref HEAD)..$(git tracking) || echo "no changes to review"
 	changes = !git diff --name-status $(git rev-parse --abbrev-ref HEAD) $(git tracking) | cat
 	fsx = !git fetch && git s && gitx
