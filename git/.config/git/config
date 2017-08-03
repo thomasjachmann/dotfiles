@@ -45,6 +45,7 @@
 	amend = commit --amend
 	ap = add -p
   wip = !sh -c 'git add . && git ci -m WIP'
+  unwip = !sh -c '[[ "$(git log --format=%B -n 1 HEAD)" == "WIP" ]] && git undo || echo "last commit was no WIP commit" 1>&2'
 
 	# from http://blog.blindgaenger.net/advanced_git_aliases.html
 	r  = !git ls-files -z --deleted | xargs -0 git rm
