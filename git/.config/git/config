@@ -140,11 +140,10 @@
   ;author-width = 3
 	# show-author = abbreviated
 	tab-size = 2
-	split-view-height = 90%
-  split-view-width = 75%
+	split-view-height = 65%
+  split-view-width = 65%
 	horizontal-scroll = 33%
   mouse = yes
-  vertical-split = no # always use horizontal split for viewing a commit's diff
 
 [tig "bind"]
 	generic = F !git fetch
