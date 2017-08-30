@@ -1,2 +1,2 @@
 brew "tmux"
-brew "reattach-to-user-namespace", args: ['wrap-pbcopy-and-pbpaste']
+brew "reattach-to-user-namespace"
