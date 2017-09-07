@@ -47,6 +47,9 @@ zle-line-init () {
 }
 zle -N zle-line-init
 
+# activate zmv mass renaming
+autoload -U zmv
+
 # Reactivate Ctrl-R search in vi mode
 bindkey '^R' history-incremental-search-backward
 
