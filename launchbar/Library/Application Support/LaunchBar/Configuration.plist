@@ -19,96 +19,129 @@
 	</dict>
 	<key>disabledItems</key>
 	<array>
-		<string>ODLBURLItem:http://www.versiontracker.com/php/qs.php?str=*</string>
+		<string>ODLBSearchTemplateItem:http://web.ask.com/web?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.openthesaurus.de/overview.php?search=1&amp;word=*</string>
+		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?songTerm=*</string>
+		<string>ODLBSearchTemplateItem:http://tinyurl.com/create.php?url=*</string>
+		<string>ODLBSearchTemplateItem:http://ja.wikipedia.org/?search=*</string>
+		<string>ODLBSearchTemplateItem:http://developer.apple.com/cgi-bin/search.pl?q=*</string>
 		<string>ODLBPathItem:~/Library</string>
-		<string>ODLBURLItem:http://audio.search.yahoo.com/search/audio?p=*</string>
-		<string>ODLBURLItem:http://www.altavista.com/image/results?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.oanda.com/convert/classic?exch=EUR&amp;expr=USD&amp;value=*</string>
+		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=img&amp;q=*</string>
 		<string>ODLBPathItem:~/Sites</string>
-		<string>ODLBURLItem:http://images.search.yahoo.com/search/images?p=*</string>
-		<string>ODLBURLItem:http://search.msn.com/news/results.aspx?q=*</string>
-		<string>ODLBURLItem:http://www.google.co.jp/search?q=*</string>
-		<string>ODLBURLItem:http://www.meriam-webster.com/cgi-bin/dictionary?book=Dictionary&amp;va=*</string>
-		<string>ODLBURLItem:http://www.alltheweb.com/search?cat=mp3&amp;q=*</string>
-		<string>ODLBURLItem:http://www.google.com/search?btnI&amp;q=*</string>
-		<string>ODLBURLItem:http://images.google.com/images?imgtype=face&amp;q=*</string>
-		<string>ODLBURLItem:http://search.lycos.com/?query=*</string>
-		<string>ODLBURLItem:http://groups.google.com/groups?q=*</string>
-		<string>ODLBURLItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/search?term=*</string>
-		<string>ODLBURLItem:http://finance.yahoo.com/q?s=*</string>
-		<string>ODLBURLItem:http://www.amazon.com/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
-		<string>ODLBURLItem:http://www.altavista.com/audio/results?q=*</string>
-		<string>ODLBURLItem:http://www.alltheweb.com/search?cat=vid&amp;q=*</string>
-		<string>ODLBURLItem:http://vivisimo.com/search?query=*</string>
-		<string>ODLBURLItem:http://www.amazon.de/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
-		<string>ODLBURLItem:http://www.amazon.com/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
-		<string>ODLBURLItem:http://www.alltheweb.com/search?cat=web&amp;q=*</string>
-		<string>ODLBURLItem:http://search.msn.com/results.aspx?q=*</string>
-		<string>ODLBURLItem:http://www.macosxhints.com/search.php?query=*&amp;type=stories&amp;mode=search&amp;keyType=all</string>
-		<string>ODLBURLItem:http://msxml.excite.com/info.xcite/search/web/*</string>
+		<string>ODLBSearchTemplateItem:http://www.flickr.com/search/?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.cuil.com/search?q=*</string>
+		<string>ODLBSearchTemplateItem:x-man-page://*</string>
+		<string>ODLBSearchTemplateItem:http://ja.wiktionary.org/?search=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.last.fm/music/?q=*</string>
+		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?albumTerm=*</string>
+		<string>ODLBSearchTemplateItem:http://search.msn.com/news/results.aspx?q=*</string>
+		<string>ODLBSearchTemplateItem:x-launchbar:select?abbreviation=*</string>
+		<string>ODLBSearchTemplateItem:http://groups.google.com/groups?q=*</string>
+		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?composerTerm=*</string>
+		<string>ODLBSearchTemplateItem:http://search.yahoo.co.jp/search?ei=UTF-8&amp;p=*</string>
+		<string>ODLBSearchTemplateItem:http://www.technorati.com/tags/*</string>
+		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/search?term=*</string>
+		<string>ODLBSearchTemplateItem:http://images.google.com/images?imgtype=face&amp;q=*</string>
+		<string>ODLBSearchTemplateItem:http://search.msn.com/results.aspx?q=*</string>
+		<string>ODLBSearchTemplateItem:x-launchbar:select?file=*</string>
 		<string>ODLBPathItem:~/make</string>
-		<string>ODLBURLItem:http://www.technorati.com/search/*</string>
-		<string>ODLBURLItem:http://video.google.com/videosearch?q=*</string>
-		<string>ODLBURLItem:http://video.search.yahoo.com/search/video?p=*</string>
-		<string>ODLBURLItem:http://search.ebay.com/*</string>
-		<string>ODLBURLItem:http://www.amazon.de/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
-		<string>ODLBURLItem:http://www.amazon.com/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
-		<string>ODLBURLItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?composerTerm=*</string>
 		<string>ODLBPathItem:~/bin</string>
-		<string>ODLBURLItem:http://www.altavista.com/web/results?q=*</string>
-		<string>ODLBURLItem:http://search.yahoo.co.jp/search?ei=UTF-8&amp;p=*</string>
-		<string>ODLBURLItem:http://dict.leo.org/?search=*</string>
-		<string>ODLBURLItem:http://www.cuil.com/search?q=*</string>
-		<string>ODLBURLItem:x-launchbar:select?abbreviation=*</string>
-		<string>ODLBURLItem:http://web.ask.com/web?q=*</string>
-		<string>ODLBURLItem:http://www.cocoabuilder.com/search/archive/cocoa?words=*</string>
-		<string>ODLBURLItem:x-man-page://*</string>
+		<string>ODLBSearchTemplateItem:http://translate.google.de/#de|en|*</string>
+		<string>ODLBSearchTemplateItem:http://www.php.net/*</string>
 		<string>ODLBPathItem:~/Desktop</string>
-		<string>ODLBURLItem:http://developer.apple.com/cgi-bin/search.pl?q=*</string>
-		<string>ODLBURLItem:http://www.openthesaurus.de/overview.php?search=1&amp;word=*</string>
-		<string>ODLBURLItem:http://www.cocoabuilder.com/search/archive/xcode?words=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.macupdate.com/search.php?keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://images.search.yahoo.com/search/images?p=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.meriam-webster.com/cgi-bin/thesaurus?book=Thesaurus&amp;va=*</string>
+		<string>ODLBSearchTemplateItem:http://www.meriam-webster.com/cgi-bin/dictionary?book=Dictionary&amp;va=*</string>
 		<string>ODLBPathItem:~/Pictures</string>
-		<string>ODLBURLItem:http://www.amazon.com/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
-		<string>ODLBURLItem:http://www.meriam-webster.com/cgi-bin/thesaurus?book=Thesaurus&amp;va=*</string>
+		<string>ODLBSearchTemplateItem:http://search.lycos.com/?query=*</string>
+		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=vid&amp;q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.technorati.com/explore/*</string>
+		<string>ODLBSearchTemplateItem:http://www.cocoabuilder.com/search/archive/cocoa?words=*</string>
 		<string>ODLBPathItem:~/backup-test</string>
 		<string>ODLBPathItem:~/iPhone</string>
-		<string>ODLBURLItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?songTerm=*</string>
-		<string>ODLBURLItem:x-launchbar:select?file=*</string>
-		<string>ODLBURLItem:http://tinyurl.com/create.php?url=*</string>
-		<string>ODLBURLItem:http://www.technorati.com/tags/*</string>
-		<string>ODLBURLItem:http://translate.google.de/#de|en|*</string>
-		<string>ODLBURLItem:http://blogsearch.google.com/blogsearch?q=*</string>
-		<string>ODLBURLItem:http://www.amazon.de/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
-		<string>ODLBURLItem:http://ja.wikipedia.org/?search=*</string>
-		<string>ODLBURLItem:http://www.youtube.com/results?search_query=*</string>
+		<string>ODLBSearchTemplateItem:afp://*.local</string>
+		<string>ODLBSearchTemplateItem:http://www.google.com/search?q=%22*%22</string>
+		<string>ODLBSearchTemplateItem:http://www.altavista.com/audio/results?q=*</string>
+		<string>ODLBSearchTemplateItem:http://search.ebay.com/*</string>
+		<string>ODLBSearchTemplateItem:http://msxml.excite.com/info.xcite/search/web/*</string>
+		<string>ODLBSearchTemplateItem:http://www.google.co.jp/search?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.a9.com/*</string>
+		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm=*</string>
 		<string>ODLBPathItem:~/Music</string>
-		<string>ODLBURLItem:http://www.oanda.com/convert/classic?exch=EUR&amp;expr=USD&amp;value=*</string>
-		<string>ODLBURLItem:http://www.a9.com/*</string>
-		<string>ODLBURLItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm=*</string>
-		<string>ODLBURLItem:http://www.oanda.com/convert/classic?exch=USD&amp;expr=EUR&amp;value=*</string>
-		<string>ODLBURLItem:http://www.alltheweb.com/search?cat=img&amp;q=*</string>
-		<string>ODLBURLItem:http://www.flickr.com/search/?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.google.com/search?btnI&amp;q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.oanda.com/convert/classic?exch=USD&amp;expr=EUR&amp;value=*</string>
+		<string>ODLBSearchTemplateItem:http://translate.google.de/#en|de|*</string>
+		<string>ODLBSearchTemplateItem:http://www.cocoabuilder.com/search/archive/xcode?words=*</string>
+		<string>ODLBSearchTemplateItem:http://search.msn.com/images/results.aspx?q=*</string>
+		<string>ODLBSearchTemplateItem:http://audio.search.yahoo.com/search/audio?p=*</string>
 		<string>ODLBPathItem:/Volumes/Macintosh HD</string>
-		<string>ODLBURLItem:http://www.macupdate.com/search.php?keywords=*</string>
-		<string>ODLBURLItem:http://www.php.net/*</string>
-		<string>ODLBURLItem:http://ja.wiktionary.org/?search=*</string>
-		<string>ODLBURLItem:http://search.msn.com/images/results.aspx?q=*</string>
-		<string>ODLBURLItem:afp://*.local</string>
-		<string>ODLBURLItem:http://www.last.fm/music/?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.technorati.com/blogs/*</string>
+		<string>ODLBSearchTemplateItem:http://video.search.yahoo.com/search/video?p=*</string>
+		<string>ODLBSearchTemplateItem:http://www.macosxhints.com/search.php?query=*&amp;type=stories&amp;mode=search&amp;keyType=all</string>
+		<string>ODLBSearchTemplateItem:http://video.google.com/videosearch?q=*</string>
+		<string>ODLBSearchTemplateItem:http://vivisimo.com/search?query=*</string>
+		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=web&amp;q=*</string>
+		<string>ODLBSearchTemplateItem:http://blogsearch.google.com/blogsearch?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.youtube.com/results?search_query=*</string>
+		<string>ODLBSearchTemplateItem:http://search.yahoo.com/search?p=*</string>
+		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=mp3&amp;q=*</string>
 		<string>ODLBPathItem:~/swap</string>
-		<string>ODLBURLItem:http://translate.google.de/#en|de|*</string>
-		<string>ODLBURLItem:http://www.amazon.de/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
-		<string>ODLBURLItem:http://www.google.com/search?q=%22*%22</string>
-		<string>ODLBURLItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?albumTerm=*</string>
-		<string>ODLBURLItem:http://www.technorati.com/explore/*</string>
-		<string>ODLBURLItem:http://search.yahoo.com/search?p=*</string>
-		<string>ODLBURLItem:http://www.technorati.com/blogs/*</string>
+		<string>ODLBSearchTemplateItem:http://finance.yahoo.com/q?s=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.altavista.com/web/results?q=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.versiontracker.com/php/qs.php?str=*</string>
+		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:http://www.technorati.com/search/*</string>
+		<string>ODLBSearchTemplateItem:http://dict.leo.org/?search=*</string>
+		<string>ODLBSearchTemplateItem:http://www.altavista.com/image/results?q=*</string>
 		<string>ODLBPathItem:~/Movies</string>
 	</array>
+	<key>itemIdentifierVersion</key>
+	<integer>5</integer>
 	<key>rules</key>
 	<array>
 		<dict>
 			<key>className</key>
-			<string>ODLBCloudDocumentsRule</string>
+			<string>ODLBCyberduckRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>aliasName</key>
+			<string>Unix Directories</string>
+			<key>className</key>
+			<string>ODLBListRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>list</key>
+			<array>
+				<string>/bin</string>
+				<string>/etc</string>
+				<string>/sbin</string>
+				<string>/tmp</string>
+				<string>/usr</string>
+				<string>/usr/bin</string>
+				<string>/usr/local</string>
+				<string>/usr/local/bin</string>
+				<string>/usr/sbin</string>
+				<string>/var</string>
+			</array>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBSafariReadingListRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBListRule</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
@@ -117,184 +150,12 @@
 			<string>ODLBFolderContentsRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
-			<key>skipQualifierProperties</key>
+			<key>skipQualifiers</key>
 			<array>
 				<string>iTunes Music</string>
 			</array>
 			<key>typeCollectionIdentifier</key>
 			<string>@audio</string>
-		</dict>
-		<dict>
-			<key>aliasName</key>
-			<string>TJ Search Templates (UTF-8)</string>
-			<key>className</key>
-			<string>ODLBSearchTemplatesRule</string>
-			<key>templates</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>Amazon MP3</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.de/s?ie=UTF8&amp;url=search-alias%3Ddigital-music&amp;field-keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Translate DE-&gt;EN</string>
-					<key>templateURL</key>
-					<string>http://translate.google.de/#de|en|*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Translate EN-&gt;DE</string>
-					<key>templateURL</key>
-					<string>http://translate.google.de/#en|de|*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Man Page (Bwana)</string>
-					<key>templateURL</key>
-					<string>man://*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>railsapi 2.3.4</string>
-					<key>templateURL</key>
-					<string>http://railsapi.com/doc/rails-v2.3.4/?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>RubyGems.org (exact)</string>
-					<key>templateURL</key>
-					<string>https://rubygems.org/gems/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>RubyGems.org (search)</string>
-					<key>templateURL</key>
-					<string>https://rubygems.org/search?utf8=✓&amp;query=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>The Ruby Toolbox</string>
-					<key>templateURL</key>
-					<string>https://www.ruby-toolbox.com/search?utf8=✓&amp;q=*</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Projects</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBFrameworksRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBPhotoRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBListRule</string>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Library/Application Support/Firefox/Profiles/yjcz0f8o.default/places.sqlite</string>
-			<key>aliasName</key>
-			<string>Firefox History</string>
-			<key>className</key>
-			<string>ODLBHistoryRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Library/Application Support/Firefox/Profiles/yjcz0f8o.default/places.sqlite</string>
-			<key>aliasName</key>
-			<string>Firefox Bookmarks</string>
-			<key>className</key>
-			<string>ODLBBookmarksRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>aliasName</key>
-			<string>Unix Executables</string>
-			<key>className</key>
-			<string>ODLBListRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>list</key>
-			<array>
-				<string>/usr/bin/cal</string>
-				<string>/bin/date</string>
-				<string>/usr/bin/dig</string>
-				<string>/usr/bin/ftp</string>
-				<string>/usr/bin/host</string>
-				<string>/usr/bin/hostinfo</string>
-				<string>/usr/bin/man</string>
-				<string>/usr/sbin/netstat</string>
-				<string>/sbin/ping</string>
-				<string>/usr/bin/sftp</string>
-				<string>/usr/bin/ssh</string>
-				<string>/usr/bin/su</string>
-				<string>/usr/bin/telnet</string>
-				<string>/usr/bin/top</string>
-				<string>/usr/sbin/traceroute</string>
-				<string>/usr/bin/uptime</string>
-			</array>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBServicesRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Movies</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>typeCollectionIdentifier</key>
-			<string>@movie</string>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Library/Safari/Bookmarks.plist</string>
-			<key>className</key>
-			<string>ODLBBookmarksRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Desktop</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBDockRule</string>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBSnippetsRule</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
@@ -306,29 +167,15 @@
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
-			<string>/Applications/Address Book.app</string>
+			<string>_safariHistoryPath</string>
 			<key>className</key>
-			<string>ODLBContactsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>includeBuddies</key>
-			<integer>1</integer>
-			<key>includeEmailAddresses</key>
-			<integer>1</integer>
-			<key>includeInternetLocations</key>
-			<integer>1</integer>
-			<key>includePhoneNumbers</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBCyberduckRule</string>
+			<string>ODLBHistoryRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>className</key>
-			<string>ODLBMountedVolumesRule</string>
+			<string>ODLBCloudDocumentsRule</string>
 		</dict>
 		<dict>
 			<key>className</key>
@@ -336,49 +183,21 @@
 		</dict>
 		<dict>
 			<key>className</key>
-			<string>ODLBCalendarsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
+			<string>ODLBActionsRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBSnippetsRule</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
-			<string>~/Pictures</string>
+			<string>_safariBookmarksPath</string>
 			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
+			<string>ODLBBookmarksRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
-			<key>excludeQualifierProperties</key>
-			<array>
-				<string>iPhoto Library</string>
-			</array>
-			<key>skipQualifierProperties</key>
-			<array>
-				<string>iPhoto Library</string>
-			</array>
-			<key>typeCollectionIdentifier</key>
-			<string>@image</string>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBWorkflowsRule</string>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Documents</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>skipQualifierProperties</key>
-			<array>
-				<string>iTunes Music</string>
-			</array>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBScriptsRule</string>
-			<key>includeLaunchBarScripts</key>
-			<integer>0</integer>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>aliasName</key>
@@ -470,12 +289,6 @@
 					<string>Go to</string>
 					<key>templateURL</key>
 					<string>x-launchbar:select?file=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google</string>
-					<key>templateURL</key>
-					<string>http://www.google.com/search?q=*</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -677,12 +490,6 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Wikipedia</string>
-					<key>templateURL</key>
-					<string>http://en.wikipedia.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
 					<string>Wikipedia Deutsch</string>
 					<key>templateURL</key>
 					<string>http://de.wikipedia.org/?search=*</string>
@@ -763,32 +570,38 @@
 		</dict>
 		<dict>
 			<key>className</key>
-			<string>ODLBMusicRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
+			<string>ODLBThemesRule</string>
 		</dict>
 		<dict>
-			<key>aliasName</key>
-			<string>Unix Directories</string>
 			<key>className</key>
-			<string>ODLBListRule</string>
+			<string>ODLBTagsRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBCategoriesRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
-			<key>list</key>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>_firefoxBookmarksPath</string>
+			<key>aliasName</key>
+			<string>Firefox Bookmarks</string>
+			<key>className</key>
+			<string>ODLBBookmarksRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedSpecificPlaces</key>
 			<array>
-				<string>/bin</string>
-				<string>/etc</string>
-				<string>/sbin</string>
-				<string>/tmp</string>
-				<string>/usr</string>
-				<string>/usr/bin</string>
-				<string>/usr/local</string>
-				<string>/usr/local/bin</string>
-				<string>/usr/sbin</string>
-				<string>/var</string>
+				<string>/Applications</string>
+				<string>/System/Library/CoreServices</string>
+				<string>~/Applications</string>
+				<string>~/Library/Printers</string>
 			</array>
+			<key>className</key>
+			<string>ODLBApplicationsRule</string>
 		</dict>
 		<dict>
 			<key>className</key>
@@ -889,13 +702,13 @@
 					<key>name</key>
 					<string>Merriam-Webster Dictionary</string>
 					<key>templateURL</key>
-					<string>http://www.meriam-webster.com/cgi-bin/dictionary?book=Dictionary&amp;va=*</string>
+					<string>http://www.merriam-webster.com/cgi-bin/dictionary?book=Dictionary&amp;va=*</string>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Merriam-Webster Thesaurus</string>
 					<key>templateURL</key>
-					<string>http://www.meriam-webster.com/cgi-bin/thesaurus?book=Thesaurus&amp;va=*</string>
+					<string>http://www.merriam-webster.com/cgi-bin/thesaurus?book=Thesaurus&amp;va=*</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -918,52 +731,101 @@
 			</array>
 		</dict>
 		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Library/Safari/History.plist</string>
 			<key>className</key>
-			<string>ODLBHistoryRule</string>
+			<string>ODLBEmojiRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBContactsRule</string>
+			<key>includeBuddies</key>
+			<integer>1</integer>
+			<key>includeEmailAddresses</key>
+			<integer>1</integer>
+			<key>includeInternetLocations</key>
+			<integer>1</integer>
+			<key>includePhoneNumbers</key>
+			<integer>1</integer>
+			<key>includePhoneticName</key>
+			<integer>1</integer>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBMusicRule</string>
 			<key>enabled</key>
+			<integer>0</integer>
+			<key>includeLovedSongsInBestOfLists</key>
+			<integer>0</integer>
+			<key>removeFormationFromArtistName</key>
+			<integer>0</integer>
+			<key>removeParenthesizedTextFromArtistName</key>
+			<integer>0</integer>
+			<key>splitArtists</key>
 			<integer>0</integer>
 			<key>subsearchOnly</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>className</key>
+			<string>ODLBNetworkLocationsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBReminderListsRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBCalendarsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBWorkflowsRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
 			<string>ODLBUserAccountsRule</string>
 		</dict>
 		<dict>
-			<key>abbreviatedSpecificPlaces</key>
-			<array>
-				<string>/Applications</string>
-				<string>/System/Library/CoreServices</string>
-				<string>~/Applications</string>
-				<string>~/Library/Printers</string>
-			</array>
 			<key>className</key>
-			<string>ODLBApplicationsRule</string>
+			<string>ODLBDockRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBPhotoRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
-			<string>/Users/Shared</string>
+			<string>~/Pictures</string>
 			<key>className</key>
 			<string>ODLBFolderContentsRule</string>
-			<key>subfolderLevels</key>
-			<integer>0</integer>
-			<key>typeCollectionIdentifier</key>
-			<string>@folder</string>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBKindRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
+			<key>excludeQualifiers</key>
+			<array>
+				<string>iPhoto Library</string>
+			</array>
+			<key>skipQualifiers</key>
+			<array>
+				<string>iPhoto Library</string>
+			</array>
+			<key>typeCollectionIdentifier</key>
+			<string>@image</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
 			<string>~</string>
 			<key>className</key>
 			<string>ODLBFolderContentsRule</string>
-			<key>skipQualifierProperties</key>
+			<key>skipQualifiers</key>
 			<array>
 				<string>./backup-test</string>
 				<string>./Pictures</string>
@@ -983,30 +845,174 @@
 			</array>
 		</dict>
 		<dict>
+			<key>abbreviatedPath</key>
+			<string>/Users/Shared</string>
 			<key>className</key>
-			<string>ODLBNetworkLocationsRule</string>
+			<string>ODLBFolderContentsRule</string>
+			<key>subfolderLevels</key>
+			<integer>0</integer>
+			<key>typeCollectionIdentifier</key>
+			<string>@folder</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBDevelopmentResourcesRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBSafariCloudTabsRule</string>
+		</dict>
+		<dict>
+			<key>aliasName</key>
+			<string>Unix Executables</string>
+			<key>className</key>
+			<string>ODLBListRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>list</key>
+			<array>
+				<string>/usr/bin/cal</string>
+				<string>/bin/date</string>
+				<string>/usr/bin/dig</string>
+				<string>/usr/bin/ftp</string>
+				<string>/usr/bin/host</string>
+				<string>/usr/bin/hostinfo</string>
+				<string>/usr/bin/man</string>
+				<string>/usr/sbin/netstat</string>
+				<string>/sbin/ping</string>
+				<string>/usr/bin/sftp</string>
+				<string>/usr/bin/ssh</string>
+				<string>/usr/bin/su</string>
+				<string>/usr/bin/telnet</string>
+				<string>/usr/bin/top</string>
+				<string>/usr/sbin/traceroute</string>
+				<string>/usr/bin/uptime</string>
+			</array>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBServicesRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Desktop</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Projects</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Movies</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>typeCollectionIdentifier</key>
+			<string>@movie</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBMountedVolumesRule</string>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>_firefoxHistoryPath</string>
+			<key>aliasName</key>
+			<string>Firefox History</string>
+			<key>className</key>
+			<string>ODLBHistoryRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBSafariTopSitesRule</string>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Documents</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>skipQualifiers</key>
+			<array>
+				<string>iTunes Music</string>
+			</array>
+		</dict>
+		<dict>
+			<key>aliasName</key>
+			<string>TJ Search Templates (UTF-8)</string>
+			<key>className</key>
+			<string>ODLBSearchTemplatesRule</string>
+			<key>templates</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Amazon MP3</string>
+					<key>templateURL</key>
+					<string>http://www.amazon.de/s?ie=UTF8&amp;url=search-alias%3Ddigital-music&amp;field-keywords=*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Google Translate DE-&gt;EN</string>
+					<key>templateURL</key>
+					<string>http://translate.google.de/#de|en|*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Google Translate EN-&gt;DE</string>
+					<key>templateURL</key>
+					<string>http://translate.google.de/#en|de|*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Man Page (Bwana)</string>
+					<key>templateURL</key>
+					<string>man://*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>railsapi 2.3.4</string>
+					<key>templateURL</key>
+					<string>http://railsapi.com/doc/rails-v2.3.4/?q=*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>RubyGems.org (exact)</string>
+					<key>templateURL</key>
+					<string>https://rubygems.org/gems/*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>RubyGems.org (search)</string>
+					<key>templateURL</key>
+					<string>https://rubygems.org/search?utf8=✓&amp;query=*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>The Ruby Toolbox</string>
+					<key>templateURL</key>
+					<string>https://www.ruby-toolbox.com/search?utf8=✓&amp;q=*</string>
+				</dict>
+			</array>
 		</dict>
 	</array>
 	<key>typeCollections</key>
 	<array>
-		<dict>
-			<key>definition</key>
-			<string>c, cpp, h, java, m, nib, php, php3, php4, pl</string>
-			<key>identifier</key>
-			<string>2</string>
-			<key>name</key>
-			<string>Source Files</string>
-		</dict>
-		<dict>
-			<key>definition</key>
-			<string>'RTF ', 'SLD8', 'TEXT', 'W6BN', 'W8BN', 'WDBN', 'XLS8', doc, docx, pps, ppsx, ppt, pptx, rtf, txt, xls, xlsx</string>
-			<key>identifier</key>
-			<string>4</string>
-			<key>name</key>
-			<string>MS Office Documents</string>
-		</dict>
 		<dict>
 			<key>definition</key>
 			<string>htm, html, htmld</string>
@@ -1017,14 +1023,30 @@
 		</dict>
 		<dict>
 			<key>definition</key>
+			<string>c, cpp, h, java, m, nib, php, php3, php4, pl</string>
+			<key>identifier</key>
+			<string>2</string>
+			<key>name</key>
+			<string>Source Files</string>
+		</dict>
+		<dict>
+			<key>definition</key>
 			<string>'CWWP', cwk</string>
 			<key>identifier</key>
 			<string>3</string>
 			<key>name</key>
 			<string>AppleWorks Documents</string>
 		</dict>
+		<dict>
+			<key>definition</key>
+			<string>'RTF ', 'SLD8', 'TEXT', 'W6BN', 'W8BN', 'WDBN', 'XLS8', doc, docx, pps, ppsx, ppt, pptx, rtf, txt, xls, xlsx</string>
+			<key>identifier</key>
+			<string>4</string>
+			<key>name</key>
+			<string>MS Office Documents</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<integer>9</integer>
+	<integer>18</integer>
 </dict>
 </plist>
