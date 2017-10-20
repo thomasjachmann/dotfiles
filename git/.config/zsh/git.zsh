@@ -84,3 +84,9 @@ function git-share() {
   git config branch.master.remote origin
   git config branch.master.merge refs/heads/master
 }
+
+# establish branch autocompletion for complex git aliases where this cannot be
+# determined automatically
+# see https://coderwall.com/p/d2w7oa/auto-completion-within-complex-git-alias
+function _git_cod() { _git_branch }
+function _git_codd() { _git_branch }
