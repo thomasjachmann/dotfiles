@@ -22,6 +22,9 @@ Icon
 *.iml
 .idea
 
+# Visual Studio Code
+.vscode/
+
 # XCode
 build/
 *.mode1
