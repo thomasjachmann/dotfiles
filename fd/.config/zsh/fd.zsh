@@ -1,0 +1,1 @@
+alias fd="noglob fd"
