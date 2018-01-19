@@ -5,6 +5,7 @@
 [core]
 	excludesfile = ~/.config/git/ignore
 	precomposeunicode = true # for Mac OS X
+	pager = less -FX
 
 [alias]
 	# status stuff
