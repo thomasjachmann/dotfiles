@@ -182,3 +182,5 @@
   diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
 
 [tig "color"]
+  # taken vom vim-kalisi/colors/kalisi.vim (search: "Normal ctermGB")
+  default = 252 238
