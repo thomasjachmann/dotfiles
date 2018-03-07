@@ -13,9 +13,13 @@ alias vim-upgrade="nvim -c PlugUpgrade -c qall && nvim -c PlugUpdate"
 
 function v() {
   if [ $# -eq 1 ]; then
-    pushd $1 > /dev/null
-    vim
-    popd > /dev/null
+    if [ -d $1 ]; then
+      pushd $1 > /dev/null
+      vim
+      popd > /dev/null
+    else
+      vim $1
+    fi
   else
     vim
   fi
