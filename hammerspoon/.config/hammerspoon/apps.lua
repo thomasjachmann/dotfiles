@@ -17,6 +17,9 @@ function apps.launch(appName, fn)
             return
           end
         end
+      elseif #windows == 1 and app == hs.application.frontmostApplication() then
+        app:hide()
+        return
       end
     end
     hs.application.launchOrFocus(appName)
