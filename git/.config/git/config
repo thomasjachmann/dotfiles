@@ -170,8 +170,10 @@
 	stage = a !git commit --amend
   status = O !git mdo %(file)
   status = T !git mdt %(file)
+  main = S :toggle vertical-split
   status = S :toggle vertical-split
   stage = S :toggle vertical-split
+  diff = S :toggle vertical-split
   status = C !git commit
   stage = C !git commit
   status = D !rm -i %(file)
