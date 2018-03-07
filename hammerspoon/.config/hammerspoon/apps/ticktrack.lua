@@ -7,11 +7,8 @@ function ticktrack.toggle()
     rect = hs.screen.primaryScreen():frame()
     rect.x = rect.w - 560
     rect.w = 560
-    webview = hs.webview.new(rect)
+    webview = hs.webview.newBrowser(rect)
     webview:url("https://ticktrack.herokuapp.com")
-    --webview:url("http://localhost:3000")
-    webview:allowTextEntry(true)
-    webview:windowStyle({"titled", "closable", "resizable"}) --, "fullSizeContentView"})
   end
 
   win = webview:hswindow()
@@ -19,7 +16,7 @@ function ticktrack.toggle()
     webview:hide()
   else
     webview:show()
-    hs.application.get("Hammerspoon"):activate()
+    webview:hswindow():application():activate()
     webview:evaluateJavaScript("$('.navigation-item:first').click();window.setTimeout(function() { $('input:first').focus(); }, 100);") -- TODO this is too early when opening view for the first time
   end
 end
