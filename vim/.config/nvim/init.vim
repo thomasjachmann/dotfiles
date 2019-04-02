@@ -51,7 +51,9 @@ Plug 'tjennings/git-grep-vim'
 "Plug 'teoljungberg/vim-grep'
 Plug 'skwp/greplace.vim' " :Gsearch/:Greplace for search/replace in a result buffer
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
-Plug 'junegunn/vim-slash'
+" THIS is the source of the wrap problem!
+" see https://github.com/junegunn/vim-slash/issues/18
+" Plug 'junegunn/vim-slash'
 
 " editing
 Plug 'scrooloose/nerdcommenter'
