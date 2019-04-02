@@ -92,6 +92,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/applescript.vim'
 Plug 'vim-scripts/nginx.vim'
 Plug 'vim-scripts/groovy.vim'
+Plug 'sirtaj/vim-openscad'
 
 " version control
 Plug 'tpope/vim-fugitive'
