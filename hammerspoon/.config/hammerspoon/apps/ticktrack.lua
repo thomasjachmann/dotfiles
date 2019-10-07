@@ -7,7 +7,7 @@ function ticktrack.toggle()
     rect = hs.screen.primaryScreen():frame()
     rect.x = rect.w - 560
     rect.w = 560
-    webview = hs.webview.newBrowser(rect)
+    webview = hs.webview.newBrowser(rect, {developerExtrasEnabled=true})
     webview:url("https://ticktrack.herokuapp.com")
   end
 
