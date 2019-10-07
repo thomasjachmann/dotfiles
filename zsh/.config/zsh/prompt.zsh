@@ -134,9 +134,9 @@ function current-path() {
   echo "%{%F{$blue}%B%} %~%u%{%b%f%k%}"
 }
 
-ZSH_THEME_MODE_PROMPT_NORMAL="%{%F{$white}%K{$red}%} NORMAL %{%b%f%k%}"
+local zsh_theme_mode_prompt_normal="%{%F{$white}%K{$red}%} NORMAL %{%b%f%k%}"
 function mode-prompt() {
-  echo "${${KEYMAP/vicmd/$ZSH_THEME_MODE_PROMPT_NORMAL}/(main|viins)/}"
+  echo "${${KEYMAP/vicmd/$zsh_theme_mode_prompt_normal}/(main|viins)/}"
 }
 
 PROMPT='$(return-code)$(current-time)$(current-user)$(current-path)
