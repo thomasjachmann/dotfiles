@@ -8,6 +8,7 @@
 alias git="LANG=C git"
 alias gti="git"
 alias gut="git"
+alias got="git"
 alias it="git"
 
 alias tiga="tig --all"
