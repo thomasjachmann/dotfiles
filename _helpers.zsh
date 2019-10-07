@@ -7,8 +7,9 @@ function red    { color "0;31" "$1"; }
 function loginitem {
   local name=$1
   local path=$2
+  local hidden=${3:-false}
   if [ -n "$name" ] && [ -n "$path" ]; then
-    osascript -e "tell application \"System Events\" to make login item at end with properties {name:\"$name:\", path:\"$path\", hidden:false}"
+    osascript -e "tell application \"System Events\" to make login item at end with properties {name:\"$name:\", path:\"$path\", hidden:$hidden}"
     open -a $path
   fi
 }
