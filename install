@@ -10,9 +10,13 @@ else
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# this is done here since bin/dotfiles uses grealpath to cd into the dotfiles
-# source/root dir
-brew install coreutils
+# bin/dotfiles needs grealpath to determine the dotfiles home dir
+if [ -x "$(command -v grealpath)" ]; then
+  green "coreutils (grealpath) is already installed"
+else
+  yelow "coreutils (grealpath) is missing, installing..."
+  brew install coreutils
+fi
 
 yellow "installing zsh and homebrew dotfile packages"
 $dotfiles_dir/zsh/bin/dotfiles install homebrew zsh
