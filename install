@@ -14,6 +14,7 @@ fi
 # source/root dir
 brew install coreutils
 
-$(dirname $0)/zsh/bin/dotfiles install zsh homebrew
+yellow "installing zsh and homebrew dotfile packages"
+$dotfiles_dir/zsh/bin/dotfiles install homebrew zsh
 
 green "done"
