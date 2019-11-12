@@ -16,8 +16,4 @@ brew install coreutils
 
 $(dirname $0)/zsh/bin/dotfiles install zsh homebrew
 
-if [ "$SHELL" == "/usr/local/bin/zsh" ]; then
-  green "done"
-else
-  yellow "you need to switch your shell to /usr/local/bin/zsh now"
-fi
+green "done"
