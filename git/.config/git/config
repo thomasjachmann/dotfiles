@@ -158,7 +158,7 @@
   ;find out how to map ESC
 	;generic = <Esc> view-close
 	;main = <Esc> none
-  main = B !@git branch "%(prompt)" %(commit)
+  main = B !@git branch "%(promptBranchname:)" %(commit)
   main = W !git diff --color-words %(commit)^1..%(commit)
   # TODO https://github.com/jonas/tig/issues/65 no need for git pbcopy anymore?
 	main = c !@git pbcopy %(commit)
