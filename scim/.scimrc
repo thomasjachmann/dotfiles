@@ -1,0 +1,7 @@
+set half_page_scroll=1
+set overlap=1
+
+nmap ",w" ":w<CR>"
+nmap "ZZ" ":x<CR>"
+nmap "<C-u>" "<PGUP>"
+nmap "<C-d>" "<PGDOWN>"
