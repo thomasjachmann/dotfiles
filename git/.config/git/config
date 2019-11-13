@@ -6,6 +6,9 @@
 	excludesfile = ~/.config/git/ignore
 	precomposeunicode = true # for Mac OS X
 
+[rebase]
+  instructionFormat = "%s (%an <%ae>)"
+
 [alias]
 	# status stuff
 	s = status --short --branch
