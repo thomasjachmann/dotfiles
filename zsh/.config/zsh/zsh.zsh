@@ -72,6 +72,18 @@ function beep() {
   osascript -e "tell application \"LaunchBar\" to display in large type \"$message\""
 }
 
+function hide() {
+  for file in "$@"; do
+    mv $file $(dirname $file)/.$(basename $file)
+  done
+}
+
+function unhide() {
+  for file in "$@"; do
+    mv $file $(dirname $file)/${$(basename $file)#.}
+  done
+}
+
 # taken from the homebrew zsh install info
 unalias run-help
 autoload run-help
