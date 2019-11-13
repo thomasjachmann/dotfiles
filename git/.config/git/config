@@ -154,7 +154,7 @@
   mouse = yes
 
 [tig "bind"]
-	generic = F !git fetch
+	generic = F !git ftp
   ;find out how to map ESC
 	;generic = <Esc> view-close
 	;main = <Esc> none
