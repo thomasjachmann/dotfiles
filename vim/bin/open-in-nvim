@@ -1,11 +1,18 @@
 #!/usr/bin/osascript
 
-on run(filename)
+on run(arg)
+  set arg to arg as string
   set cmd to "/usr/local/bin/zsh -l -c \"/usr/local/bin/nvim"
-  if (filename as string) is not equal to "" then
-    # TODO handle non absolute paths properly
-    set myPath to POSIX path of (filename as string)
-    set cmd to cmd & " '" & myPath & "'"
+  if arg is not equal to "" then
+    # TODO handle non absolute paths properly when called from shell in non-home directory
+    tell application "Finder"
+      if exists file (arg) then # a file, use real path
+        set myPath to POSIX path of arg
+        set cmd to cmd & " '" & myPath & "'"
+      else # some other argument for nvim, pass it unchanged
+        set cmd to cmd & " " & arg
+      end if
+    end tell
   end if
   set cmd to cmd & "\""
   #tell application "Launchbar" to display in large type cmd
