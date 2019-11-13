@@ -60,3 +60,7 @@ package):
    `install` script but which should not be symlinke to the home directory
 
 All of these are optional.
+
+## Copyright
+
+Copyright © 2019 Thomas Jachmann. See LICENSE for details.
