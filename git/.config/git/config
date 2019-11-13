@@ -186,6 +186,7 @@
   main = 7 !git diff --ignore-space-change %(commit)^ %(commit)
   diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
   status = A !git add --intent-to-add %(file)
+  stash = D ![[ "%(promptDrop-y/n:)" == "y" ]] && echo %(stash)
 
 [tig "color"]
   # taken vom vim-kalisi/colors/kalisi.vim (search: "Normal ctermGB")
