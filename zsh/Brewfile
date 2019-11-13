@@ -1,3 +1,4 @@
 brew "zsh"
 brew "stow"
 brew "coreutils"
+brew "zsh-syntax-highlighting"
