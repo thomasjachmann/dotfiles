@@ -25,7 +25,7 @@ dotfiles remove java
 ```
 
 ## Caveats
-`
+
 Currently, this is macOS based. You most likely can use most of the dotfiles on
 Linux as well, but of course not the macOS app settings. The `dotfiles` utility
 should work as long as you've got a `brew` command available.
