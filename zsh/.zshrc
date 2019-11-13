@@ -1,6 +1,14 @@
-# source all files in ~/.config/zsh (sorted alphabetically, no . files)
-for file in ~/.config/zsh/*; do
+# TODO: Check of fzf-cd-widget can be activated somehow.
+
+# source all zsh files in ~/.config/zsh (sorted alphabetically, no . files)
+for file in ~/.config/zsh/*.zsh; do
   source $file
+done
+
+# eval all eval files in ~/.config/zsh (sorted alphabetically, no . files)
+for file in ~/.config/zsh/*.eval; do
+  # eval cannot handle commented lines - there must be a better way...
+  eval $(cat $file | grep -v '^#')
 done
 
 # see http://stackoverflow.com/questions/564648/zsh-tab-completion-for-cd
