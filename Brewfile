@@ -78,7 +78,6 @@
 
 # really faster? brew "diskus" # fast du -sh
 # brew install "fff" # shell filemanager
-# brew install "git-absorb" # spread fixes across past commits (eg for merge request changes)
 
 # OPTIONAL: cask "ultimaker-cura"
 # OPTIONAL: cask "meshmixer"

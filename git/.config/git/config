@@ -86,6 +86,8 @@
 	rbso = !sh -c 'git show :3:$1' -
 	rbcot = !sh -c 'git show :2:$1 > $1' -
 	rbcoo = !sh -c 'git show :3:$1 > $1' -
+  # used after git absorb
+  reabsorb = rebase -i --autosquash
 
 	# remote stuff
 	f = fetch

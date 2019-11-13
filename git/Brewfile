@@ -1,4 +1,5 @@
 brew "git"
+brew "git-absorb"
 brew "git-extras"
 brew "tig"
 brew "hub"
