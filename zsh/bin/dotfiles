@@ -59,6 +59,17 @@ reinstall)
   $0 install $packages
   ;;
 
+adopt)
+  red "this will adopt changes made outside of this directory (eg by overwriting the stowed symlinks) by overwriting the local files - please make sure you don't have any local changes"
+  confirm
+  cd $dotfiles
+  for package in "$@"; do
+    stowpackage --adopt $package
+  done
+  green "adopted changes from packages $*"
+  yellow "please check if there are any changes that should be commited to version control"
+  ;;
+
 add)
   package=$1
   [ -z "$package" ] && $(echo "you need to specify a package to add the file to" 1>&2) && exit 1
@@ -77,18 +88,21 @@ add)
   echo "usage: $0 command [package]
 
 available commands:
-* install [package]
+* install [package(s)]
   installs given package(s), first installing dependencies via Brewfile,
   symlinking all of the package's files and then running a custom install
   script if present
-* uninstall [package]
+* uninstall [package(s)]
   uninstalls given package(s), this doesn't remove dependencies installed via
   Brewfile or changes done via a custom install script
 * list
   lists all installed packages
 * reinstall
   reinstall everything that has been installed (see list command)
-* add package file
+* adopt [package(s)]
+  adopt changes made to the given package(s) outside of the dotfiles directory,
+  eg after someone replaced the symlink with a new file
+* add [package] [file]
   adds a file to a package (converting a real file to a symlinked file)"
   exit 1
 

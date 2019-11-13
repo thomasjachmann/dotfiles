@@ -3,6 +3,13 @@ function green  { color "0;32" "$1"; }
 function yellow { color "1;33" "$1"; }
 function red    { color "0;31" "$1"; }
 
+function confirm {
+  read -p "Continue (Y/n)? " choice
+  if [ "$choice" == "n" ] || [ "$choice" == "N" ]; then
+    exit 1
+  fi
+}
+
 # see http://hints.macworld.com/article.php?story=20111226075701552
 function loginitem {
   local name=$1
