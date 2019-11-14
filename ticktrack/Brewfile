@@ -1,1 +1,1 @@
-brew "heroku"
+brew "heroku/brew/heroku"
