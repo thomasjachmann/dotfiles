@@ -60,7 +60,7 @@ function grid.show()
   grid = hs.grid.getGrid()
   hs.grid.hide() -- in case it was open already, but only after we got our current grid size
 
-  if grid._w == 12 or grid._w == 3 then
+  if grid._w == 12 or (grid._w == 3 and grid._h == 4) then
     hs.grid.setGrid("4x4")
     hs.grid.HINTS = {
       {"0", "0", "0", "0"}, -- this is ignored
@@ -69,11 +69,29 @@ function grid.show()
       {"F", "G", "H", "J"},
       {"V", "B", "N", "M"}
     }
-  elseif grid._w == 4 then
+  elseif grid._w == 4 and grid._h == 4 then
     hs.grid.setGrid("3x3")
     hs.grid.HINTS = {
       {"0", "0", "0"}, -- this is ignored
       {"0", "0", "0"}, -- this is ignored
+      {"R", "T", "Z"},
+      {"F", "G", "H"},
+      {"V", "B", "N"}
+    }
+  elseif grid._w == 3 and grid._h == 3 then
+    hs.grid.setGrid("4x3")
+    hs.grid.HINTS = {
+      {"0", "0", "0", "0"}, -- this is ignored
+      {"0", "0", "0", "0"}, -- this is ignored
+      {"R", "T", "Z", "U"},
+      {"F", "G", "H", "J"},
+      {"V", "B", "N", "M"}
+    }
+  elseif grid._w == 4 and grid._h == 3 then
+    hs.grid.setGrid("3x4")
+    hs.grid.HINTS = {
+      {"0", "0", "0"}, -- this is ignored
+      {"4", "5", "6"}, -- this is ignored
       {"R", "T", "Z"},
       {"F", "G", "H"},
       {"V", "B", "N"}
