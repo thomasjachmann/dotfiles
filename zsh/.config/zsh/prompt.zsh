@@ -134,6 +134,7 @@ function current-path() {
   echo "%{%F{$blue}%B%} %~%u%{%b%f%k%}"
 }
 
+# TODO: check https://github.com/woefe/vi-mode.zsh
 local zsh_theme_mode_prompt_normal="%{%F{$white}%K{$red}%} NORMAL %{%b%f%k%}"
 function mode-prompt() {
   echo "${${KEYMAP/vicmd/$zsh_theme_mode_prompt_normal}/(main|viins)/}"

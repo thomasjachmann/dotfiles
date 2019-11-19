@@ -2,6 +2,8 @@ local tmux = {}
 
 local apps = require "apps"
 
+-- TODO: Use python to script iTerm2: https://iterm2.com/python-api/
+
 -- Executes a shell command and returns the result (without trailing whitespace)
 function exec(cmd)
   -- TODO use hs.task

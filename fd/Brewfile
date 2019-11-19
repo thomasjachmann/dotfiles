@@ -1,1 +1,3 @@
 brew "fd"
+
+# TODO https://github.com/sharkdp/fd#using-fd-with-fzf

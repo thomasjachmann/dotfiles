@@ -141,6 +141,7 @@
   branch = less -FX
 
 [tig]
+  ; TODO make tig use ~/.config/tig/history instead of ~/.tig_history
   refresh-mode = auto
 	show-changes = false					# don't show changes at top of main view
   ;set date view column options
