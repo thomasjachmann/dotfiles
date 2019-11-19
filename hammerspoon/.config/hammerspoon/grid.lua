@@ -12,6 +12,17 @@ hs.window.animationDuration = 0
 
 local dataByWindowId = {}
 
+function cleanupWindowData()
+  for id, data in pairs(dataByWindowId) do
+    if data.win:role() == '' then
+      -- this window seems to have been closed
+      hs.alert.show(data.win:application():name())
+      dataByWindowId[id] = nil
+    end
+  end
+end
+hs.timer.doEvery(60, cleanupWindowData)
+
 function focusedWindowData()
   local win = hs.window.focusedWindow()
   if win ~= hs.window:desktop() then
