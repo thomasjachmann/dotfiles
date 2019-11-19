@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfiles=$(dirname $(grealpath $0))/../..
+dotfiles=$(grealpath $(dirname $(grealpath $0))/../..)
 
 source $dotfiles/_helpers.zsh
 
@@ -24,6 +24,10 @@ command=$1
 shift
 
 case $command in
+
+home)
+  echo $dotfiles
+  ;;
 
 install)
   cd $dotfiles
@@ -88,6 +92,8 @@ add)
   echo "usage: $0 command [package]
 
 available commands:
+* home
+  displays the home of this dotfiles install
 * install [package(s)]
   installs given package(s), first installing dependencies via Brewfile,
   symlinking all of the package's files and then running a custom install
