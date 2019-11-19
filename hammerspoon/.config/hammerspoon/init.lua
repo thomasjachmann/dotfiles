@@ -66,10 +66,10 @@ bind.hyper({
   p = apps.launch("Opera"),                -- p for project management (temporary until I've figured out how to do working SSBs)
   r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
-  t = apps.launch("iTerm"),                -- t for terminal
   x = apps.launch("xScope"),
   y = apps.launch("Mattermost"),           -- y for whatever, this space gets crowded!! y is next to s which has a similar function, I need multikey shortcuts!
   z = tmux.activate("zsh"),
+  t = apps.launch("iTerm", {noToggle=true}), -- t for terminal
 
   w = apps.hideCurrent,
 
