@@ -29,3 +29,12 @@ include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
+default.command=list
+weekstart=Monday
+
+alias.tomorrow=add due:tomorrow scheduled:tomorrow
+alias.tmrw=tomorrow
+alias.monday=add due:monday scheduled:monday
+alias.mnd=monday
+alias.postpone=modify wait:monday scheduled:monday
+alias.pstpn=postpone
