@@ -38,3 +38,6 @@ alias.monday=add due:monday scheduled:monday
 alias.mnd=monday
 alias.postpone=modify wait:monday scheduled:monday
 alias.pstpn=postpone
+
+uda.notes.type=string
+uda.notes.label=Notes

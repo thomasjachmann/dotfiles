@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+return if ARGV.empty?
+
+require "json"
+require "tempfile"
+
+def read_tasks(args)
+  JSON.parse(`task #{args} export`)
+end
+
+data = read_tasks(ARGV.map {|arg| "\"#{arg}\""}.join(" "))
+
+data.each do |task|
+  notes = task["notes"] || ""
+
+  file = Tempfile.new(["task_notes_#{task["uuid"]}", ".md"])
+  begin
+    header = "#{task["id"]}: #{task["description"]}\n----\n"
+    IO.write(file.path, "#{header}#{notes}")
+    system "$EDITOR #{file.path}"
+
+    new_notes = IO.read(file.path).sub(header, '')
+    if new_notes != notes
+      # reload to not overwrite parallel changes
+      task = read_tasks("uuid:#{task["uuid"]}").first
+      task["notes"] = new_notes
+      IO.write(file.path, task.to_json)
+      `task import #{file.path}`
+    end
+  ensure
+    file.close
+    file.unlink
+  end
+end
