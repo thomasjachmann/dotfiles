@@ -26,7 +26,7 @@ if (($piped)); then
   dotfiles_dir=${dotfiles_dir:-~/.config/dotfiles}
 
   brew install git
-  git clone git@github.com:thomasjachmann/dotfiles.git $dotfiles_dir
+  git clone https://github.com/thomasjachmann/dotfiles.git $dotfiles_dir
 else
   dotfiles_dir=$(dirname $0)
 fi
