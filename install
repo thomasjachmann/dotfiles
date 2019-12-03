@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # check whether we were run on a local copy or curled and piped into a shell
 [ -t 0 ] && piped=0 || piped=1
 

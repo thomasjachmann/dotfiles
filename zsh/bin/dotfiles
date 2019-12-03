@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 dotfiles=$(grealpath $(dirname $(grealpath $0))/../..)
 
 source $dotfiles/_helpers.zsh

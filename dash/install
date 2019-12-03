@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 source $(dirname $0)/../_helpers.zsh
 
 loginitem "Dash" "/Applications/Dash.app"
