@@ -15,30 +15,31 @@ else
   source $helpers_file
 fi
 
-# check/install homebrew, we need this for installing software
-if [ -x "$(command -v brew)" ]; then
-  green "homebrew is already installed"
-else
-  yellow "homebrew is missing, installing..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+function available() {
+  if [ -x "$(command -v $1)" ]; then
+    green "$1 is available"
+    return 0
+  else
+    yellow "$1 is missing, installing..."
+    return 1
+  fi
+}
+
+# we need homebrew for installing software
+available brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# bin/dotfiles needs grealpath to determine the dotfiles home dir
+available grealpath || brew install coreutils
+# bin/dotfiles needs stow to symlink config files
+available stow || brew install stow
 
 if (($piped)); then
   read -p "where to install homebrew to [~/.config/dotfiles]: " dotfiles_dir
   dotfiles_dir=${dotfiles_dir:-~/.config/dotfiles}
 
-  brew install git
+  brew ls --versions git > /dev/null || brew install git
   git clone https://github.com/thomasjachmann/dotfiles.git $dotfiles_dir
 else
   dotfiles_dir=$(dirname $0)
-fi
-
-# bin/dotfiles needs grealpath to determine the dotfiles home dir
-if [ -x "$(command -v grealpath)" ]; then
-  green "coreutils (grealpath) is already installed"
-else
-  yelow "coreutils (grealpath) is missing, installing..."
-  brew install coreutils
 fi
 
 yellow "installing zsh and homebrew dotfile packages"
