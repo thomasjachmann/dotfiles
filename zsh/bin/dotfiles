@@ -17,6 +17,7 @@ function stowpackage {
     --ignore=support \
     --ignore=.gitignore \
     --ignore=Brewfile \
+    --ignore=Brewfile.lock.json \
     --ignore=install \
     $action \
     "$pkg"
