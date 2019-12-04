@@ -62,6 +62,7 @@
   # oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
   # taken from http://stackoverflow.com/questions/171550/find-out-which-remote-branch-a-local-branch-is-tracking#answer-9753364
   tracking = !sh -c 'git for-each-ref --format=\"%(upstream:short)\" $(git symbolic-ref -q HEAD)'
+  brr = branch --sort=-committerdate --format='%(HEAD) %(align:25)%(color:green)%(committerdate:relative)%(color:reset)%(end) %(align:20)%(authorname)%(end) %(color:yellow)%(refname:short)%(color:reset) (%(subject))'
 
 	# merge stuff
 	m = merge
