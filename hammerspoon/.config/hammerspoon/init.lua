@@ -8,11 +8,6 @@ local scrn = require "scrn"
 local tmux = require "apps.tmux"
 local ticktrack = require "apps.ticktrack"
 
-hyper.alias('h', 'left')
-hyper.alias('j', 'down')
-hyper.alias('k', 'up')
-hyper.alias('l', 'right')
-
 hyper.restoreOldHyperKey('v') -- this is used by Launchbar to display the multi clipboard paste menu
 hyper.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
 hyper.restoreOldHyperKey(27) -- this is the ß key used for Dash
