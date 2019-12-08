@@ -9,20 +9,39 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Change alt space (nonbreaking space) to space",
+                        "description": "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "spacebar",
+                                    "key_code": "caps_lock",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "option"
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "spacebar"
+                                        "set_variable": {
+                                            "name": "hyper_modifier",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "key_code": "f20"
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "hyper_modifier",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -30,7 +49,7 @@
                         ]
                     },
                     {
-                        "description": "Change both shifts to caps_lock if alone.",
+                        "description": "Change both shifts together to caps_lock",
                         "manipulators": [
                             {
                                 "from": {
@@ -71,6 +90,27 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Change alt space (nonbreaking space) to space",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -79,26 +119,10 @@
             "simple_modifications": [
                 {
                     "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": {
-                        "key_code": "f20"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "right_command"
                     },
                     "to": {
                         "key_code": "right_control"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "right_option"
-                    },
-                    "to": {
-                        "key_code": "escape"
                     }
                 }
             ]
