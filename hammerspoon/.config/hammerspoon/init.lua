@@ -8,10 +8,6 @@ local scrn = require "scrn"
 local tmux = require "apps.tmux"
 local ticktrack = require "apps.ticktrack"
 
-hyper.restoreOldHyperKey('v') -- this is used by Launchbar to display the multi clipboard paste menu
-hyper.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
-hyper.restoreOldHyperKey(27) -- this is the ß key used for Dash
-
 local hyperMappings = {
   -- binding + produces error on English keyboard layout
   -- if bound on German and then executed on English, it works

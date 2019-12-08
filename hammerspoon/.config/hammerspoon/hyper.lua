@@ -15,13 +15,6 @@ function hyper.bind(key, pressed, released, repeated)
   modal:bind(mods, key, pressed, released, repeated)
 end
 
-function hyper.restoreOldHyperKey(key)
-  callback = function()
-    hs.eventtap.keyStroke("ctrl alt shift cmd", key)
-  end
-  hyper.bind(key, callback, nil, callback)
-end
-
 function hyper.bindAll(mappings)
   for key, fn in pairs(mappings) do
     hyper.bind(key, fn)
