@@ -11,41 +11,45 @@ function exec(cmd)
   return output:match("(.-)%s*$")
 end
 
--- Returns a multiline string where each line is a pane with the requested
+local tmux_cmd = "/usr/local/bin/tmux -L kitty "
+local kitty_cmd = "/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock "
+
+-- Returns a multiline string where each line is a tmux pane with the requested
 -- command as main process in the format:
 --
--- /dev/ttys000:11 @0 %0 zsh
+-- 39233:11 @0 %0 zsh
 --
--- * TTY of the tmux session
+-- * pid of the tmux session's client
 -- * activity indicators for window and pane after the colon
 -- * tmux window ID
 -- * tmux pane ID
 -- * main process
 function find(cmd)
-  local found = exec("/usr/local/bin/tmux list-panes -a -F '#{session_id}:#{window_active}#{pane_active} #{window_id} #{pane_id} #{pane_current_command}' | grep " .. cmd)
+  local found = exec(tmux_cmd .. "list-panes -a -F '#{session_id}:#{window_active}#{pane_active} #{window_id} #{pane_id} #{pane_current_command}' | grep " .. cmd)
 
-  sessionTTYs = {}
+  clientPids = {}
   return found:gsub("($%d+)", function(sessionID)
-    if sessionTTYs[sessionID] == nil then
-      sessionTTYs[sessionID] = exec("/usr/local/bin/tmux list-clients -t '" .. sessionID .. "' -F '#{client_tty}'")
+    if clientPids[sessionID] == nil then
+      clientPids[sessionID] = exec(tmux_cmd .. "list-clients -t '" .. sessionID .. "' -F '#{client_pid}'")
     end
-    return sessionTTYs[sessionID]
+    return clientPids[sessionID]
   end)
 end
 
-function tmux.activate(cmd)
+function tmux.activate(cmd, opts)
+  local opts = opts or {}
   return function(silent)
     local found = find(cmd)
     if found == "" then
-      -- no panes with the specified command found => just activate/launch iTerm
-      apps.launch("iTerm")()
+      -- no panes with the specified command found => just activate/launch kitty
+      apps.launch("kitty", opts)()
       if silent ~= true then
-        exec("/usr/local/bin/tmux display-message 'process \"" .. cmd .. "\" not found, switched to first iTerm pane'")
+        exec(tmux_cmd .. "display-message 'process \"" .. cmd .. "\" not found, switched to first kitty pane'")
       end
       return false
     end
 
-    local _, activeTTY = hs.applescript.applescript('tell application "iTerm" to tty of current session of current tab of current window')
+    activePid = exec(kitty_cmd .. "ls | /usr/local/bin/jq '.[].tabs | .[].windows | map(select(.is_focused)) | .[].pid'")
     local panes = {}
     local total = 0
     local active = nil
@@ -53,21 +57,21 @@ function tmux.activate(cmd)
     for line in (found .. "\n"):gmatch('([^\n]*)\n') do
       total = total + 1
       panes[total] = line
-      if line:find(activeTTY .. ":11") == 1 then
+      if line:find(activePid .. ":11") == 1 then
         active = total
-      elseif bestMatches[1] == nil and line:find(activeTTY .. ":10") == 1 then
+      elseif bestMatches[1] == nil and line:find(activePid .. ":10") == 1 then
         -- active session, active window, another pane
         bestMatches[1] = total
-      elseif bestMatches[2] == nil and line:find(activeTTY) == nil and line:find(":11") ~= nil then
+      elseif bestMatches[2] == nil and line:find(activePid) == nil and line:find(":11") ~= nil then
         -- another session, active window, active pane
         bestMatches[2] = total
-      elseif bestMatches[3] == nil and line:find(activeTTY) == nil and line:find(":10") ~= nil then
+      elseif bestMatches[3] == nil and line:find(activePid) == nil and line:find(":10") ~= nil then
         -- another session, active window, another pane
         bestMatches[3] = total
-      elseif bestMatches[4] == nil and line:find(activeTTY .. ":01") == 1 then
+      elseif bestMatches[4] == nil and line:find(activePid .. ":01") == 1 then
         -- active session, another window, active pane
         bestMatches[4] = total
-      elseif bestMatches[5] == nil and line:find(activeTTY .. ":00") == 1 then
+      elseif bestMatches[5] == nil and line:find(activePid .. ":00") == 1 then
         -- active session, another window, another pane
         bestMatches[5] = total
       end
@@ -89,8 +93,7 @@ function tmux.activate(cmd)
       end
     else
       local win = hs.window.focusedWindow()
-      if win ~= nil and win:application():title() == "iTerm" then
-        -- TODO doesn't cycle through panes, just switches to first one and that's it
+      if win ~= nil and win:application():title() == "kitty" then
         active = active + 1
       end
       if active > total then
@@ -98,24 +101,28 @@ function tmux.activate(cmd)
       end
     end
 
-    panes[active]:gsub("(.*):[01][01] (@[0-9]+) (%%[0-9]+)", function(tty, windowID, paneID)
-      exec("/usr/bin/osascript apps/tmux-activate.scpt " .. tty)
-      exec("/usr/local/bin/tmux select-window -t '" .. windowID .. "' && /usr/local/bin/tmux select-pane -t '" .. paneID .. "'")
+    panes[active]:gsub("(.*):[01][01] (@[0-9]+) (%%[0-9]+)", function(clientPid, windowID, paneID)
+      exec(kitty_cmd .. "focus-window --no-response --match pid:" .. clientPid)
+      exec(tmux_cmd .. "select-window -t '" .. windowID .. "' && " .. tmux_cmd .. "select-pane -t '" .. paneID .. "'")
     end)
 
     return true
   end
 end
 
-function tmux.launch(cmd, startcmd)
-  local activate = tmux.activate(cmd)
+function tmux.launch(cmd, opts)
+  local opts = opts or {}
+  local activate = tmux.activate(cmd, opts)
   return function()
     local active = activate(true)
     if not active then
-      if startcmd then
-        cmd = startcmd
+      if opts.startcmd then
+        cmd = opts.startcmd
       end
-      hs.applescript.applescript('tell application "iTerm" to create window with default profile command "/usr/local/bin/zsh -l -c ' .. cmd .. '"')
+      -- TODO: opening the new window with a command doesn't work yet
+      -- TODO: Also: activate(true) already opened a new window if none was there - we don't need that.
+      --       So what do we do if a) other windows are there b) no windows are there c) kitty isn't even running?
+      -- exec("/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock new-window --window-type=os --no-response /usr/local/bin/zsh -l -c '" .. cmd .. "'")
     end
   end
 end

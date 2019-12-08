@@ -1,1 +1,4 @@
 cask "hammerspoon"
+
+# for determining which is the currently focused kitty window
+brew "jq"

@@ -55,7 +55,7 @@ bind.hyper({
   b = apps.launch("Safari"),               -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
-  e = tmux.launch("nvim", "notes"),        -- e for editor
+  e = tmux.launch("nvim", {noToggle=true, startcmd="notes"}), -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"),              -- i for irc
@@ -69,7 +69,7 @@ bind.hyper({
   x = apps.launch("xScope"),
   y = apps.launch("Mattermost"),           -- y for whatever, this space gets crowded!! y is next to s which has a similar function, I need multikey shortcuts!
   z = tmux.activate("zsh"),
-  t = apps.launch("iTerm", {noToggle=true}), -- t for terminal
+  t = apps.launch("kitty", {noToggle=true}), -- t for terminal
 
   w = apps.hideCurrent,
 
