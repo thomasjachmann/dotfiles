@@ -1,0 +1,112 @@
+#!/usr/bin/env ruby
+
+class Karabiner
+  CONFIG_FILE_PATH = File.expand_path("../karabiner.json", __FILE__)
+
+  def self.configure(&block)
+    instance = new(&block)
+    instance.instance_eval(&block) if block_given?
+    instance.update_file
+  end
+
+  attr_accessor :rules
+
+  private def initialize(&block)
+    @rules = []
+  end
+
+  def rule(description, *manipulators)
+    rules << {
+      description: description,
+      manipulators: manipulators(*manipulators)
+    }
+  end
+
+  def manipulators(*manipulators)
+    manipulators.map do |manipulator|
+      m = manipulator.merge(
+        type: :basic
+      )
+      m[:conditions] = [m[:conditions]] if m[:conditions]&.is_a?(Hash)
+      m
+    end
+  end
+
+  def from(key_code, mandatory: nil, optional: nil)
+    from = { key_code: key_code }
+    modifiers = {
+      mandatory: mandatory,
+      optional: optional
+    }.compact
+    from[:modifiers] = modifiers if modifiers.any?
+    from
+  end
+
+  def to(*to)
+    to
+  end
+
+  def app_is(bundle_identifiers)
+    {
+      bundle_identifiers: Array(bundle_identifiers),
+      type: :frontmost_application_if
+    }
+  end
+
+  def variable_is(name, value)
+    {
+      name: name,
+      type: :variable_if,
+      value: value
+    }
+  end
+
+  def variable_unless(name, value)
+    {
+      name: name,
+      type: :variable_unless,
+      value: value
+    }
+  end
+
+  def set_variable(name, value)
+    { set_variable: { name: name, value: value } }
+  end
+
+  def update_file
+    require "json"
+
+    json = IO.read(CONFIG_FILE_PATH)
+    config = JSON.load(json)
+
+    config["profiles"][0]["complex_modifications"]["rules"] = rules
+
+    json = JSON.pretty_generate(config, indent: '    ') + "\n"
+    IO.write(CONFIG_FILE_PATH, json)
+
+    json
+  end
+end
+
+class CustomKarabiner < Karabiner
+  def ctrl_b(from_letter, to_letter: from_letter, modifier: nil, optional_any: !modifier)
+    modifiers = modifier || optional_any ? {} : nil
+    modifiers[:mandatory] = [modifier] if modifier
+    modifiers[:optional] = %i[any] if optional_any
+    tos = [{ key_code: :b, modifiers: %i[left_control] }]
+    if to_letter
+      letter_to = { key_code: to_letter }
+      letter_to[:modifiers] = [modifier] if modifier
+      tos << letter_to
+    end
+    {
+      conditions: variable_is(:tmux_modifier, 1),
+      from: from(from_letter, modifiers),
+      to: to(*tos)
+    }
+  end
+end
+
+CustomKarabiner.configure do
+  instance_eval(IO.read(File.expand_path("../rules.rb", __FILE__)))
+end

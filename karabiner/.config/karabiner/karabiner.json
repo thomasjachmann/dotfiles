@@ -263,9 +263,9 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com.googlecode.iterm2",
-                                            "^com.apple.Terminal",
                                             "^net.kovidgoyal.kitty",
                                             "^io.alacritty",
+                                            "^com.apple.Terminal",
                                             "^com.github.atom"
                                         ],
                                         "type": "frontmost_application_if"
@@ -302,6 +302,9 @@
                                         "value": 1
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
@@ -309,9 +312,6 @@
                                             "any"
                                         ]
                                     }
-                                },
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1250,7 +1250,9 @@
             },
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": []
+            "simple_modifications": [
+
+            ]
         }
     ]
 }
