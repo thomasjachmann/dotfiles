@@ -1,0 +1,4 @@
+# maybe better use .rgignore here?
+# also maybe have a look at https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+.git
+.bundle
