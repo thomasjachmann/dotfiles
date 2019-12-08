@@ -92,27 +92,31 @@ add)
   ;;
 
 *)
-  echo "usage: $0 command [package]
+  echo "Usage: $0 command [parameter(s)]
 
-available commands:
-* home
-  displays the home of this dotfiles install
-* install [package(s)]
-  installs given package(s), first installing dependencies via Brewfile,
-  symlinking all of the package's files and then running a custom install
-  script if present
-* uninstall [package(s)]
-  uninstalls given package(s), this doesn't remove dependencies installed via
-  Brewfile or changes done via a custom install script
-* list
-  lists all installed packages
-* reinstall
-  reinstall everything that has been installed (see list command)
-* adopt [package(s)]
-  adopt changes made to the given package(s) outside of the dotfiles directory,
-  eg after someone replaced the symlink with a new file
-* add [package] [file]
-  adds a file to a package (converting a real file to a symlinked file)"
+Available commands:
+
+    home                   displays the home of this dotfiles install
+
+    install [package(s)]   installs given package(s)
+                           1. install dependencies via Brewfile
+                           2. symlink all of the package's files
+                           3. run a custom install script if present
+
+    uninstall [package(s)] uninstalls given package(s)
+                           This doesn't remove dependencies installed via
+                           Brewfile or changes done by the install script!
+
+    list                   lists all installed packages
+
+    reinstall              reinstalls all installed packages (see list command)
+
+    add [package] [file]   adds a file to a package
+                           This converts a real file to a symlinked file.
+
+    adopt [package(s)]     adopt changes made to the given package(s) outside
+                           of the dotfiles directory, eg after someone replaced
+                           the symlink with a new file"
   exit 1
 
 esac
