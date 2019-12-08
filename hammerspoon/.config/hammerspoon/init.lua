@@ -45,16 +45,16 @@ local hyperMappings = {
   a = apps.launch("Adium"),
   b = apps.launch("Firefox"), -- b for browser
   c = apps.launch("Google Chrome"),
-  d = apps.launch("Calendar"),             -- d for dates
+  d = apps.launch("Calendar"), -- d for dates
   e = tmux.launch("nvim", {noToggle=true, startcmd="notes"}), -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
-  i = apps.launch("Textual"),              -- i for irc
+  i = apps.launch("Textual"), -- i for irc
   m = apps.launch("Thunderbird"),
-  n = apps.launch("Tweetbot"),             -- n for noise
+  n = apps.launch("Tweetbot"), -- n for noise
   o = apps.launch("Opera"),
-  r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
   p = apps.launch("Trello"), -- p for project management (temporary until I've figured out how to do working SSBs)
+  r = tmux.activate("ruby"), -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal
   [{"shift", "w"}] = function()
