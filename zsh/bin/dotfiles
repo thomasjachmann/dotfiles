@@ -24,7 +24,7 @@ function stowpackage {
 }
 
 command=$1
-shift
+[ "$#" == "0" ] || shift
 
 case $command in
 
