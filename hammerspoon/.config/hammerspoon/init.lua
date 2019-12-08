@@ -57,6 +57,9 @@ local hyperMappings = {
   p = apps.launch("Trello"), -- p for project management (temporary until I've figured out how to do working SSBs)
   s = apps.launch("Skype"),
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal
+  [{"shift", "w"}] = function()
+    hs.wifi.setPower(hs.wifi.currentNetwork() == nil)
+  end,
   x = apps.launch("X-Lite"),
   y = apps.launch("Rambox"), -- y for whatever, this space gets crowded!! y is next to s which has a similar function, I need multikey shortcuts!
   z = apps.launch("zoom.us", {forceToggle=true}),
