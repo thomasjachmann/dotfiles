@@ -12,6 +12,9 @@
                         "description": "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
                         "manipulators": [
                             {
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -44,45 +47,7 @@
                                         "key_code": "escape"
                                     }
                                 ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change both shifts together to caps_lock",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "caps_lock"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
+                                "to_if_held_down": [
                                     {
                                         "key_code": "caps_lock"
                                     }
