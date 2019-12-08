@@ -3,7 +3,10 @@ TERMINALS = TMUX_TERMINALS + %i[^com.apple.Terminal ^com.github.atom]
 
 rule(
   "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
-  parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
+  parameters: {
+    "basic.to_if_alone_timeout_milliseconds" => 200,
+    "basic.to_if_held_down_threshold_milliseconds" => 2000
+  },
   from: from(:caps_lock, optional: %i[any]),
   to: to(set_variable(:hyper_modifier, 1), key_code: :f20),
   to_after_key_up: to(set_variable(:hyper_modifier, 0)),
