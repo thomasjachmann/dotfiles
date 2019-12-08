@@ -256,6 +256,34 @@
                         ]
                     },
                     {
+                        "description": "Change right_command to left_control in terminals",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^com.apple.Terminal",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_command"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change alt space (nonbreaking space) to space",
                         "manipulators": [
                             {
@@ -280,16 +308,7 @@
             },
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "right_command"
-                    },
-                    "to": {
-                        "key_code": "right_control"
-                    }
-                }
-            ]
+            "simple_modifications": []
         }
     ]
 }
