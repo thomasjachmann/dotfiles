@@ -56,10 +56,10 @@ local hyperMappings = {
   r = tmux.activate("ruby"),               -- r anything that's running ruby (rails server, guard, formeman, rails console)
   p = apps.launch("Trello"), -- p for project management (temporary until I've figured out how to do working SSBs)
   s = apps.launch("Skype"),
-  z = tmux.activate("zsh"),
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal
   x = apps.launch("X-Lite"),
   y = apps.launch("Rambox"), -- y for whatever, this space gets crowded!! y is next to s which has a similar function, I need multikey shortcuts!
+  z = apps.launch("zoom.us", {forceToggle=true}),
 
   w = apps.hideCurrent,
 
