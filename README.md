@@ -56,8 +56,8 @@ package):
    appear here (`Brewfile`, `install` and `support` excluded)
 1. `install` a shell script being executed in order to do some more complex
    setup
-1. `support` a file/directory that can contain stuff you eg need for you
-   `install` script but which should not be symlinke to the home directory
+1. `support` a file/directory that can contain stuff you eg need for your
+   `install` script but which should not be symlinked to the home directory
 
 All of these are optional.
 
