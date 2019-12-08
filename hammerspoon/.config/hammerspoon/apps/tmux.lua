@@ -112,7 +112,8 @@ function tmux.launch(cmd, opts)
   local opts = opts or {}
   local activate = tmux.activate(cmd, opts)
   return function()
-    local active = activate(true)
+    -- TODO: pass in true again after the TODOs below are handled
+    local active = activate(false)
     if not active then
       if opts.startcmd then
         cmd = opts.startcmd
