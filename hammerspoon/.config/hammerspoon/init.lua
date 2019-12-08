@@ -43,7 +43,7 @@ local hyperMappings = {
   ["0"] = ticktrack.toggle,
 
   a = apps.launch("Adium"),
-  b = apps.launch("Safari"),               -- b for browser
+  b = apps.launch("Firefox"), -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"),             -- d for dates
   e = tmux.launch("nvim", {noToggle=true, startcmd="notes"}), -- e for editor
