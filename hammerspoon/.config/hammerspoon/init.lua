@@ -1,23 +1,23 @@
 hs.hotkey.setLogLevel("warning")
 
 local apps = require "apps"
-local bind = require "bind"
 local grid = require "grid"
+local hyper = require "hyper"
 local scrn = require "scrn"
 
 local tmux = require "apps.tmux"
 local ticktrack = require "apps.ticktrack"
 
-bind.alias('h', 'left')
-bind.alias('j', 'down')
-bind.alias('k', 'up')
-bind.alias('l', 'right')
+hyper.alias('h', 'left')
+hyper.alias('j', 'down')
+hyper.alias('k', 'up')
+hyper.alias('l', 'right')
 
-bind.restoreOldHyperKey('v') -- this is used by Launchbar to display the multi clipboard paste menu
-bind.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
-bind.restoreOldHyperKey(27) -- this is the ß key used for Dash
+hyper.restoreOldHyperKey('v') -- this is used by Launchbar to display the multi clipboard paste menu
+hyper.restoreOldHyperKey(42) -- this is the # key used for 1Password browser extensions
+hyper.restoreOldHyperKey(27) -- this is the ß key used for Dash
 
-bind.hyper({
+local hyperMappings = {
   -- binding + produces error on English keyboard layout
   -- if bound on German and then executed on English, it works
   --["+"] = apps.launch("Google Plus"),
@@ -77,4 +77,6 @@ bind.hyper({
     hs.openConsole()
     hs.reload()
   end
-})
+}
+
+hyper.bindAll(hyperMappings)
