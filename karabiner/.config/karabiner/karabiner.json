@@ -12,12 +12,20 @@
                         "description": "Change alt space (nonbreaking space) to space",
                         "manipulators": [
                             {
-                                "type": "basic",
                                 "from": {
                                     "key_code": "spacebar",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
                                 },
-                                "to": [{ "key_code": "spacebar" }]
+                                "to": [
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },
@@ -25,26 +33,42 @@
                         "description": "Change both shifts to caps_lock if alone.",
                         "manipulators": [
                             {
-                                "type": "basic",
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
-                                        "mandatory": ["right_shift"],
-                                        "optional": ["caps_lock"]
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
                                     }
                                 },
-                                "to": [{ "key_code": "caps_lock" }]
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
-                                        "mandatory": ["left_shift"],
-                                        "optional": ["caps_lock"]
+                                        "mandatory": [
+                                            "left_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
                                     }
                                 },
-                                "to": [{ "key_code": "caps_lock" }]
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     }
@@ -52,11 +76,32 @@
             },
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": {
-                "caps_lock": "f20",
-                "right_command": "right_control",
-                "right_option": "escape"
-            }
+            "simple_modifications": [
+                {
+                    "from": {
+                        "key_code": "caps_lock"
+                    },
+                    "to": {
+                        "key_code": "f20"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "right_command"
+                    },
+                    "to": {
+                        "key_code": "right_control"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "right_option"
+                    },
+                    "to": {
+                        "key_code": "escape"
+                    }
+                }
+            ]
         }
     ]
 }
