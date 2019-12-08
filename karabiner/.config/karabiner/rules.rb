@@ -41,10 +41,10 @@ rule(
 end
 
 rule(
-  "Change right_command to left_control in terminals",
+  "Change right_command to right_control in terminals",
   conditions: app_is(TERMINALS),
   from: from(:right_command),
-  to: to(key_code: :left_control)
+  to: to(key_code: :right_control)
 )
 
 rule(
@@ -68,6 +68,33 @@ rule(
   ctrl_b(:v),
   ctrl_b(:v, modifier: :left_control, optional_any: true),
   *%i[h j k l d].map { |letter| ctrl_b(letter) },
+)
+
+def parenthesis(key_code, modifier: nil, to_key_code:, to_modifier:)
+  {
+    conditions: app_is(TERMINALS),
+    from: from(key_code, mandatory: modifier),
+    to: to(key_code: key_code),
+    to_if_alone: to(key_code: to_key_code.to_s, modifiers: [to_modifier])
+  }
+end
+
+rule(
+  "Change left/right_shift to opening/closing parenthesis",
+  parenthesis(:left_shift, to_key_code: 8, to_modifier: :shift),
+  parenthesis(:right_shift, to_key_code: 9, to_modifier: :shift),
+)
+
+rule(
+  "Change left_command + left/right_shift to opening/closing square brackets",
+  parenthesis(:left_shift, modifier: :left_command, to_key_code: 5, to_modifier: :option),
+  parenthesis(:right_shift, modifier: :left_command, to_key_code: 6, to_modifier: :option),
+)
+
+rule(
+  "Change right_command + left/right_shift to opening/closing curly brackets",
+  parenthesis(:left_shift, modifier: :right_control, to_key_code: 8, to_modifier: :option),
+  parenthesis(:right_shift, modifier: :right_control, to_key_code: 9, to_modifier: :option),
 )
 
 rule(

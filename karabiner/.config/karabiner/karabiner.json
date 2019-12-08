@@ -221,7 +221,7 @@
                         ]
                     },
                     {
-                        "description": "Change right_command to left_control in terminals",
+                        "description": "Change right_command to right_control in terminals",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -241,7 +241,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control"
+                                        "key_code": "right_control"
                                     }
                                 ],
                                 "type": "basic"
@@ -1184,6 +1184,219 @@
                                     },
                                     {
                                         "key_code": "d"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change left/right_shift to opening/closing parenthesis",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_shift"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "8",
+                                        "modifiers": [
+                                            "shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_shift"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change left_command + left/right_shift to opening/closing square brackets",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": "left_command"
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "5",
+                                        "modifiers": [
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "mandatory": "left_command"
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "6",
+                                        "modifiers": [
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change right_command + left/right_shift to opening/closing curly brackets",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": "right_control"
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "8",
+                                        "modifiers": [
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "mandatory": "right_control"
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "option"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
