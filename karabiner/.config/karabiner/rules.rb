@@ -76,6 +76,7 @@ rule(
 def parenthesis(key_code, modifier: nil, to_key_code:, to_modifier:)
   {
     conditions: app_is(TERMINALS),
+    parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
     from: from(key_code, mandatory: modifier),
     to: to(key_code: key_code),
     to_if_alone: to(key_code: to_key_code.to_s, modifiers: [to_modifier])

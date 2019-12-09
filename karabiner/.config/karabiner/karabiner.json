@@ -1207,6 +1207,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "left_shift"
                                 },
@@ -1238,6 +1241,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "right_shift"
                                 },
@@ -1274,6 +1280,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
@@ -1308,6 +1317,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
@@ -1347,6 +1359,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
@@ -1381,6 +1396,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
