@@ -1195,18 +1195,6 @@
                         "description": "Change left/right_shift to opening/closing parenthesis",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
@@ -1229,18 +1217,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
@@ -1268,18 +1244,6 @@
                         "description": "Change left_command + left/right_shift to opening/closing square brackets",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
@@ -1305,18 +1269,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
@@ -1347,18 +1299,6 @@
                         "description": "Change right_command + left/right_shift to opening/closing curly brackets",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
@@ -1384,18 +1324,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
