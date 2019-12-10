@@ -1255,7 +1255,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift"
+                                        "key_code": "left_shift",
+                                        "modifiers": "left_command"
                                     }
                                 ],
                                 "to_if_alone": [
@@ -1280,7 +1281,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_shift"
+                                        "key_code": "right_shift",
+                                        "modifiers": "left_command"
                                     }
                                 ],
                                 "to_if_alone": [
@@ -1296,7 +1298,88 @@
                         ]
                     },
                     {
-                        "description": "Change right_command + left/right_shift to opening/closing curly brackets",
+                        "description": "Change right_command + left/right_shift to opening/closing curly brackets in non-terminals",
+                        "manipulators": [
+                            {
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": "right_command"
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": "right_command"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "8",
+                                        "modifiers": [
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                },
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "mandatory": "right_command"
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift",
+                                        "modifiers": "right_command"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change right_control + left/right_shift to opening/closing curly brackets in terminals",
                         "manipulators": [
                             {
                                 "parameters": {
@@ -1310,7 +1393,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift"
+                                        "key_code": "left_shift",
+                                        "modifiers": "right_control"
                                     }
                                 ],
                                 "to_if_alone": [
@@ -1319,6 +1403,18 @@
                                         "modifiers": [
                                             "option"
                                         ]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
                                 "type": "basic"
@@ -1335,7 +1431,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_shift"
+                                        "key_code": "right_shift",
+                                        "modifiers": "right_control"
                                     }
                                 ],
                                 "to_if_alone": [
@@ -1344,6 +1441,18 @@
                                         "modifiers": [
                                             "option"
                                         ]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.googlecode.iterm2",
+                                            "^net.kovidgoyal.kitty",
+                                            "^io.alacritty",
+                                            "^com.apple.Terminal",
+                                            "^com.github.atom"
+                                        ],
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
                                 "type": "basic"

@@ -53,6 +53,13 @@ class Karabiner
     }
   end
 
+  def app_is_not(bundle_identifiers)
+    {
+      bundle_identifiers: Array(bundle_identifiers),
+      type: :frontmost_application_unless
+    }
+  end
+
   def variable_is(name, value)
     {
       name: name,
