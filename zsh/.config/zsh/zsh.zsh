@@ -7,6 +7,13 @@ function edit() {
   fi
 }
 
+# https://github.com/junegunn/fzf/issues/600
+# http://zsh.sourceforge.net/Doc/Release/Options.html
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+# hm, doesn't work? setopt HIST_SAVE_NO_DUPS
+# hm, doesn't work? setopt HIST_IGNORE_SPACE
+
 # Send escape sequence to terminal even if running tmux which usually swallows these
 # http://vi.stackexchange.com/questions/3379/cursor-shape-under-vim-tmux
 #function terminal-escape() {
@@ -23,6 +30,24 @@ function edit() {
 #
 # Activate vi key bindings (with cursor indicator)
 bindkey -v
+
+# see http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
+# and https://dougblack.io/words/zsh-vi-mode.html
+export KEYTIMEOUT=1
+
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+# => see prompt.zsh
+
+# define right prompt, regardless of whether the theme defined it
+# RPS1='$(vi_mode_prompt_info)'
+RPS1=$RPROMPT
+RPS2=$RPS1
 # http://unix.stackexchange.com/questions/547/make-my-zsh-prompt-show-mode-in-vi-mode
 # http://reza.jelveh.me/2011/09/18/zsh-tmux-vi-mode-cursor
 # http://vi.stackexchange.com/questions/3379/cursor-shape-under-vim-tmux
