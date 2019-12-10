@@ -9,10 +9,6 @@ local tmux = require "apps.tmux"
 local ticktrack = require "apps.ticktrack"
 
 local hyperMappings = {
-  -- binding + produces error on English keyboard layout
-  -- if bound on German and then executed on English, it works
-  --["+"] = apps.launch("Google Plus"),
-
   f2 = apps.showCurrentTitle,
   f3 = apps.showCurrentBundleID,
 
