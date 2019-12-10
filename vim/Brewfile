@@ -1,6 +1,9 @@
 brew "python"
 brew "python3"
 brew "ctags"
+brew "fzf"
+brew "fd"
+brew "ripgrep"
 
 brew "cmake" # for ycm
 
