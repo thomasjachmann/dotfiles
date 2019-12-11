@@ -9,12 +9,40 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Change double caps_lock to caps_lock",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "name": "caps_lock_double",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
                         "manipulators": [
                             {
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 2000
+                                    "basic.to_delayed_action_delay_milliseconds": 250
                                 },
                                 "from": {
                                     "key_code": "caps_lock",
@@ -28,6 +56,12 @@
                                     {
                                         "set_variable": {
                                             "name": "hyper_modifier",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "caps_lock_double",
                                             "value": 1
                                         }
                                     },
@@ -48,11 +82,24 @@
                                         "key_code": "escape"
                                     }
                                 ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "caps_lock"
-                                    }
-                                ],
+                                "to_delayed_action": {
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "caps_lock_double",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "caps_lock_double",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
                                 "type": "basic"
                             }
                         ]
