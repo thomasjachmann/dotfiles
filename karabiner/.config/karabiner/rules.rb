@@ -51,6 +51,12 @@ rule(
 )
 
 rule(
+  "Swallow command + w in terminals to prevent accidental window closing",
+  conditions: app_is(TERMINALS),
+  from: from(:w, mandatory: :command)
+)
+
+rule(
   "Change tab to tmux_modifier or tab if pressed alone in tmux terminals",
   conditions: [app_is(TMUX_TERMINALS), variable_unless(:hyper_modifier, 1)],
   parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
