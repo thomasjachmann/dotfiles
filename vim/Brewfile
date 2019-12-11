@@ -2,4 +2,6 @@ brew "python"
 brew "python3"
 brew "ctags"
 
+brew "cmake" # for ycm
+
 brew "neovim"
