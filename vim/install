@@ -2,7 +2,7 @@
 
 set -e
 
-pip install neovim
-pip3 install neovim
+[ -x "$(command -v pip)" ] && pip install neovim
+[ -x "$(command -v pip3)" ] && pip3 install neovim
 
 nvim -c PlugInstall -c qall
