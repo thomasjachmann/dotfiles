@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+source $(dirname $0)/_helpers.zsh
+
+green "changing git remote"
+cd $(dirname 0)
+git remote set-url origin git@github.com:thomasjachmann/dotfiles.git
+git ftp
+
+green "done"
