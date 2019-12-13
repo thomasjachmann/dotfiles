@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+if [ -S /tmp/kitty.sock ]; then
+  /usr/local/bin/kitty @ \
+    --to=unix:/tmp/kitty.sock \
+    new-window \
+    --window-type=os \
+    > /dev/null
+  sleep_time=1
+else
+  open -a kitty
+  sleep_time=2
+fi
+
+if [ "$#" -ne "0" ]; then
+  sleep $sleep_time
+  # start with a blank to prevent command showing up in history
+  /usr/local/bin/tmux -L kitty send-keys " "
+  /usr/local/bin/tmux -L kitty send-keys "exec $*"
+  /usr/local/bin/tmux -L kitty send-keys Enter
+fi

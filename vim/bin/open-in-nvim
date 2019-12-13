@@ -1,30 +1,9 @@
-#!/usr/bin/osascript
+#!/bin/bash
 
-on run(arg)
-  set arg to arg as string
-  set cmd to "/usr/local/bin/zsh -l -c \"/usr/local/bin/nvim"
-  if arg is not equal to "" then
-    # TODO handle non absolute paths properly when called from shell in non-home directory
-    tell application "Finder"
-      if exists file (arg) then # a file, use real path
-        set myPath to POSIX path of arg
-        set cmd to cmd & " '" & myPath & "'"
-      else # some other argument for nvim, pass it unchanged
-        set cmd to cmd & " " & arg
-      end if
-    end tell
-  end if
-  set cmd to cmd & "\""
-  #tell application "Launchbar" to display in large type cmd
-  #if application "iTerm" is running then
-    tell application "iTerm"
-      create window with default profile command cmd
-      activate
-    end tell
-  #else
-  #  tell application "iTerm"
-  #    write "exit"
-  #    create window with default profile command cmd
-  #  end tell
-  #end if
-end run
+if [ "$#" -ne "0" ] && [ -f $1 ]; then
+  args=$(grealpath $@)
+else
+  args=$@
+fi
+
+~/bin/open-in-kitty "/usr/local/bin/nvim $args"

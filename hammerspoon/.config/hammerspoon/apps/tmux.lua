@@ -41,10 +41,8 @@ function tmux.activate(cmd, opts)
   return function(silent)
     local found = find(cmd)
     if found == "" then
-      -- no panes with the specified command found => just activate/launch kitty
-      apps.launch("kitty", opts)()
       if silent ~= true then
-        exec(tmux_cmd .. "display-message 'process \"" .. cmd .. "\" not found, switched to first kitty pane'")
+        hs.alert.show("no process \"" .. cmd .. "\" found")
       end
       return false
     end
@@ -119,10 +117,7 @@ function tmux.launch(cmd, opts)
       if opts.startcmd then
         cmd = opts.startcmd
       end
-      -- TODO: opening the new window with a command doesn't work yet
-      -- TODO: Also: activate(true) already opened a new window if none was there - we don't need that.
-      --       So what do we do if a) other windows are there b) no windows are there c) kitty isn't even running?
-      -- exec("/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock new-window --window-type=os --no-response /usr/local/bin/zsh -l -c '" .. cmd .. "'")
+      exec("~/bin/open-in-kitty " .. cmd)
     end
   end
 end
