@@ -2,6 +2,28 @@
 
 set -e
 
+cmd=
+exit_after=false
+
+while [ "$#" -ne "0" ]; do
+  case $1 in
+    -c|--command)
+      cmd=$2
+      shift
+      ;;
+    -x|--exit-after)
+      exit_after=true
+      ;;
+    *)
+      1>&2 echo "unknown argument: $1"
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+[ $exit_after = true ] && cmd="exec $cmd"
+
 if [ -S /tmp/kitty.sock ]; then
   /usr/local/bin/kitty @ \
     --to=unix:/tmp/kitty.sock \
@@ -14,10 +36,11 @@ else
   sleep_time=2
 fi
 
-if [ "$#" -ne "0" ]; then
+if [ "$cmd" != "" ]; then
   sleep $sleep_time
   # start with a blank to prevent command showing up in history
-  /usr/local/bin/tmux -L kitty send-keys " "
-  /usr/local/bin/tmux -L kitty send-keys "exec $*"
-  /usr/local/bin/tmux -L kitty send-keys Enter
+  /usr/local/bin/kitty @ \
+    --to=unix:/tmp/kitty.sock \
+    send-text " $cmd\n" \
+    > /dev/null
 fi

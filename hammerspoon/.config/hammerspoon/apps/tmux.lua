@@ -117,7 +117,7 @@ function tmux.launch(cmd, opts)
       if opts.startcmd then
         cmd = opts.startcmd
       end
-      exec("~/bin/open-in-kitty " .. cmd)
+      exec("~/bin/open-in-kitty --command '" .. cmd .. "' --exit-after")
     end
   end
 end

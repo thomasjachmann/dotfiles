@@ -6,4 +6,4 @@ else
   args=$@
 fi
 
-~/bin/open-in-kitty "/usr/local/bin/nvim $args"
+~/bin/open-in-kitty --command "/usr/local/bin/nvim $args" --exit-after
