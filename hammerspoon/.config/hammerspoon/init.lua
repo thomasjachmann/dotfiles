@@ -42,7 +42,7 @@ local hyperMappings = {
   b = apps.launch("Firefox"), -- b for browser
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"), -- d for dates
-  e = tmux.launch("nvim", {noToggle=true, startcmd="notes"}), -- e for editor
+  e = tmux.launch("nvim", {noToggle=true}), -- e for editor
   f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"), -- i for irc
