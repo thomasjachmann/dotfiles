@@ -66,6 +66,15 @@ reinstall)
   $0 install $packages
   ;;
 
+resymlink)
+  cd $dotfiles
+  packages=$(perl -pe 's/\n/ / unless eof' ~/.local/dotfiles)
+  for package in $packages; do
+    stowpackage --restow $package
+  done
+  green "symlinked packages $packages"
+  ;;
+
 adopt)
   red "this will adopt changes made outside of this directory (eg by overwriting the stowed symlinks) by overwriting the local files - please make sure you don't have any local changes"
   confirm
@@ -110,6 +119,8 @@ Available commands:
     list                   lists all installed packages
 
     reinstall              reinstalls all installed packages (see list command)
+
+    resymlink              symlink all installed package's files
 
     add [package] [file]   adds a file to a package
                            This converts a real file to a symlinked file.
