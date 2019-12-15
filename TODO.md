@@ -37,3 +37,4 @@ TODO: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 * [ ] system configuration
 * [ ] find a way to configure eg sum.cumo specific stuff in local files/external repos (karabiner/hammerspoon/...)
 * [ ] find out why kitty/tmux now need the -u switch and why this still doesn't display typed umlauts properly
+* [ ] switch to viscosity? https://www.sparklabs.com/support/kb/article/controlling-viscosity-with-applescript-mac/
