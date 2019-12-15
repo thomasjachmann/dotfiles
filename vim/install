@@ -6,3 +6,6 @@ set -e
 [ -x "$(command -v pip3)" ] && pip3 install neovim
 
 nvim -c PlugInstall -c qall
+
+cp -pr $(dirname $0)/support/OpenInNvim.app /Applications
+cp -pr $(dirname $0)/support/VimWiki.app /Applications
