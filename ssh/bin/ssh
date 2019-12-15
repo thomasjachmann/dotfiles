@@ -3,14 +3,14 @@
 # SSH with different color scheme
 
 function reset_style {
-  tmux select-pane -t $TMUX_PANE -P $old_style
+  tmux set $old_style
 }
 
 if [ -n "$TMUX" ]; then
   # This only works if we're running inside tmux
-  old_style=$(tmux select-pane -t $TMUX_PANE -g)
+  old_style=$(tmux show-options -wg window-active-style)
   trap reset_style EXIT
-  tmux select-pane -t $TMUX_PANE -P "bg=#404042,fg=#b5b5b5"
+  tmux set window-active-style "bg=#404042,fg=#b5b5b5"
 
   # We need reattach-to-user-namespace for UseKeychain to work since Sierra
   /usr/local/bin/reattach-to-user-namespace /usr/bin/ssh "$@"
