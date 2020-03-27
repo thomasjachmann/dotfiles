@@ -1,3 +1,5 @@
+LANG=de_DE.UTF-8
+
 # for tar: exclude ._ files (Mac OS X extended attributes)
 COPYFILE_DISABLE=true
 
