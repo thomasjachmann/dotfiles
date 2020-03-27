@@ -90,6 +90,7 @@ let g:vimwiki_list = [
       \ {'path': '~/Projects/sumcumo/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1}
       \]
 let g:vimwiki_hl_cb_checked = 2
+let g:vimwiki_auto_chdir = 1
 " let g:vimwiki_listsyms = '✗○◐●✓'
 " let g:vimwiki_listsym_rejected = '✗'
 " TODO: calendar for diary
