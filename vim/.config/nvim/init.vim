@@ -38,8 +38,9 @@ Plug 'bronson/vim-trailing-whitespace'
 " this should fix error with wrap but doesn't...
 " TODO: check https://github.com/jhawthorn/fzy
 " TODO: check floating windows: https://github.com/junegunn/fzf.vim/issues/664
-set rtp+=/usr/local/opt/fzf
-Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim
+
+Plug '/usr/local/opt/fzf' " set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim or https://github.com/junegunn/fzf/blob/master/README-VIM.md
 Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-vinegar'
 Plug 'artnez/vim-wipeout'
