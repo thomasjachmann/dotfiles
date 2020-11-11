@@ -103,7 +103,7 @@ Plug 'tpope/vim-surround'
 let g:surround_58 = ":\r"
 nmap cs:' csw'X
 nmap cs:" csw"X
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise' " insert end statements wisely in ruby
 "Plug 'p0deje/vim-ruby-interpolation'
@@ -684,11 +684,6 @@ let g:airline#extensions#hunks#enabled = 0
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#show_tab_nr = 1
 set laststatus=2 " needed for airline to also show up when only one window is present
-
-" prevent multiple-cursors to lose the selections when exiting from visual
-" and insert modes
-let g:multi_cursor_exit_from_visual_mode = 0
-let g:multi_cursor_exit_from_insert_mode = 0
 
 if has("gui_running")
   set guifont=Hack:h11
