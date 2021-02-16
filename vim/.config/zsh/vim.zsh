@@ -32,7 +32,7 @@ function wiki() {
   if [ $# -eq 1 ]; then
     vim -c "call vimwiki#base#goto_index($1)"
   else
-    vim -c "VimwikiUISelect"
+    vim -c "call VimwikiOpen()"
   fi
 }
 

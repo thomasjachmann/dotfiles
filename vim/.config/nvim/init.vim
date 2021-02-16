@@ -135,6 +135,13 @@ let g:vimwiki_table_mappings = 0
 " TODO: calendar for diary
 " Plug 'itchyny/calendar.vim'
 " taken from https://blog.mague.com/?p=602
+function! VimwikiOpen()
+  if len(g:vimwiki_list) == 1
+    call vimwiki#base#goto_index(1)
+  else
+    VimwikiUISelect
+  endif
+endfunction
 function! ToggleCalendar()
   execute ":Calendar"
   if exists("g:calendar_open")
