@@ -3,12 +3,12 @@
 # SSH with different color scheme
 
 function reset_style {
-  tmux set $old_style
+  tmux set window-active-style $old_style
 }
 
 if [ -n "$TMUX" ]; then
   # This only works if we're running inside tmux
-  old_style=$(tmux show-options -wg window-active-style)
+  old_style=$(tmux show-options -wgv window-active-style)
   trap reset_style EXIT
   tmux set window-active-style "bg=#404042,fg=#b5b5b5"
 
