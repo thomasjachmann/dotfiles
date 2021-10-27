@@ -269,21 +269,9 @@
                         ]
                     },
                     {
-                        "description": "Change right_command to right_control in terminals",
+                        "description": "Change right_command to right_control",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.googlecode.iterm2",
-                                            "^net.kovidgoyal.kitty",
-                                            "^io.alacritty",
-                                            "^com.apple.Terminal",
-                                            "^com.github.atom"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "right_command"
                                 },

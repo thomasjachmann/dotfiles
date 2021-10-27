@@ -59,8 +59,7 @@ rule(
 end
 
 rule(
-  "Change right_command to right_control in terminals",
-  conditions: app_is(TERMINALS),
+  "Change right_command to right_control",
   from: from(:right_command),
   to: to(key_code: :right_control)
 )
