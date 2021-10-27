@@ -2,9 +2,8 @@ TMUX_TERMINALS = %i[^com.googlecode.iterm2 ^net.kovidgoyal.kitty ^io.alacritty]
 TERMINALS = TMUX_TERMINALS + %i[^com.apple.Terminal ^com.github.atom]
 
 rule(
-  "Change double caps_lock to caps_lock",
-  conditions: variable_is(:caps_lock_double, 1),
-  from: from(:caps_lock, optional: %i[caps_lock]),
+  "Change both shifts + caps_lock to caps_lock",
+  from: from(:caps_lock, mandatory: %i[left_shift right_shift], optional: %i[caps_lock]),
   to: to(key_code: :caps_lock)
 )
 
@@ -13,19 +12,13 @@ rule(
   "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
   from: from(:caps_lock, optional: %i[any]),
   parameters: {
-    "basic.to_delayed_action_delay_milliseconds" => 250,
     "basic.to_if_alone_timeout_milliseconds" => 200
   },
   to: to(
     set_variable(:hyper_modifier, 1),
-    set_variable(:caps_lock_double, 1),
     key_code: :f20
   ),
   to_after_key_up: to(set_variable(:hyper_modifier, 0)),
-  to_delayed_action: {
-    to_if_canceled: to(set_variable(:caps_lock_double, 0)),
-    to_if_invoked: to(set_variable(:caps_lock_double, 0))
-  },
   to_if_alone: to(key_code: :escape)
 )
 

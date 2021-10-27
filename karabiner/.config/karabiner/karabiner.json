@@ -9,19 +9,16 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Change double caps_lock to caps_lock",
+                        "description": "Change both shifts + caps_lock to caps_lock",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "caps_lock_double",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "right_shift"
+                                        ],
                                         "optional": [
                                             "caps_lock"
                                         ]
@@ -49,19 +46,12 @@
                                     }
                                 },
                                 "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 250,
                                     "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
                                         "set_variable": {
                                             "name": "hyper_modifier",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "caps_lock_double",
                                             "value": 1
                                         }
                                     },
@@ -77,24 +67,6 @@
                                         }
                                     }
                                 ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "caps_lock_double",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "caps_lock_double",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
                                 "to_if_alone": [
                                     {
                                         "key_code": "escape"
