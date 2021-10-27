@@ -12,6 +12,13 @@
                         "description": "Change double caps_lock to caps_lock",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "caps_lock_double",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -25,13 +32,6 @@
                                         "key_code": "caps_lock"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "name": "caps_lock_double",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             }
                         ]
@@ -40,10 +40,6 @@
                         "description": "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
                         "manipulators": [
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200,
-                                    "basic.to_delayed_action_delay_milliseconds": 250
-                                },
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -51,6 +47,10 @@
                                             "any"
                                         ]
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 250,
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -77,13 +77,8 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
                                 "to_delayed_action": {
-                                    "to_if_invoked": [
+                                    "to_if_canceled": [
                                         {
                                             "set_variable": {
                                                 "name": "caps_lock_double",
@@ -91,7 +86,7 @@
                                             }
                                         }
                                     ],
-                                    "to_if_canceled": [
+                                    "to_if_invoked": [
                                         {
                                             "set_variable": {
                                                 "name": "caps_lock_double",
@@ -100,6 +95,11 @@
                                         }
                                     ]
                                 },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -341,9 +341,6 @@
                                         "value": 1
                                     }
                                 ],
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
@@ -351,6 +348,9 @@
                                             "any"
                                         ]
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1268,11 +1268,11 @@
                         "description": "Change left/right_shift to opening/closing parenthesis",
                         "manipulators": [
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "left_shift"
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1290,11 +1290,11 @@
                                 "type": "basic"
                             },
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "right_shift"
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1317,14 +1317,14 @@
                         "description": "Change left_command + left/right_shift to opening/closing square brackets",
                         "manipulators": [
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
                                         "mandatory": "left_command"
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1343,14 +1343,14 @@
                                 "type": "basic"
                             },
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
                                         "mandatory": "left_command"
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1374,14 +1374,14 @@
                         "description": "Change right_command + left/right_shift to opening/closing curly brackets in non-terminals",
                         "manipulators": [
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
                                         "mandatory": "right_command"
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1412,14 +1412,14 @@
                                 "type": "basic"
                             },
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
                                         "mandatory": "right_command"
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1455,14 +1455,14 @@
                         "description": "Change right_control + left/right_shift to opening/closing curly brackets in terminals",
                         "manipulators": [
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
                                         "mandatory": "right_control"
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1493,14 +1493,14 @@
                                 "type": "basic"
                             },
                             {
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 200
-                                },
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
                                         "mandatory": "right_control"
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 200
                                 },
                                 "to": [
                                     {
@@ -1557,9 +1557,7 @@
             },
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-
-            ]
+            "simple_modifications": []
         }
     ]
 }

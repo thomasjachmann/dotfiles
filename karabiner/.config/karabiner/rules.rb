@@ -3,30 +3,30 @@ TERMINALS = TMUX_TERMINALS + %i[^com.apple.Terminal ^com.github.atom]
 
 rule(
   "Change double caps_lock to caps_lock",
+  conditions: variable_is(:caps_lock_double, 1),
   from: from(:caps_lock, optional: %i[caps_lock]),
-  to: to(key_code: :caps_lock),
-  conditions: variable_is(:caps_lock_double, 1)
+  to: to(key_code: :caps_lock)
 )
 
 
 rule(
   "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
-  parameters: {
-    "basic.to_if_alone_timeout_milliseconds" => 200,
-    "basic.to_delayed_action_delay_milliseconds" => 250
-  },
   from: from(:caps_lock, optional: %i[any]),
+  parameters: {
+    "basic.to_delayed_action_delay_milliseconds" => 250,
+    "basic.to_if_alone_timeout_milliseconds" => 200
+  },
   to: to(
     set_variable(:hyper_modifier, 1),
     set_variable(:caps_lock_double, 1),
     key_code: :f20
   ),
   to_after_key_up: to(set_variable(:hyper_modifier, 0)),
-  to_if_alone: to(key_code: :escape),
   to_delayed_action: {
-    to_if_invoked: to(set_variable(:caps_lock_double, 0)),
-    to_if_canceled: to(set_variable(:caps_lock_double, 0))
-  }
+    to_if_canceled: to(set_variable(:caps_lock_double, 0)),
+    to_if_invoked: to(set_variable(:caps_lock_double, 0))
+  },
+  to_if_alone: to(key_code: :escape)
 )
 
 rule(
@@ -74,8 +74,8 @@ rule(
 rule(
   "Change tab to tmux_modifier or tab if pressed alone in tmux terminals",
   conditions: [app_is(TMUX_TERMINALS), variable_unless(:hyper_modifier, 1)],
-  parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
   from: from(:tab, optional: %i[any]),
+  parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
   to: to(set_variable(:tmux_modifier, 1)),
   to_after_key_up: to(set_variable(:tmux_modifier, 0)),
   to_if_alone: to(key_code: :tab)
@@ -100,8 +100,8 @@ def parenthesis(key_code, modifier: nil, to_key_code:, to_modifier:, terminals_o
   to_params = { key_code: key_code }
   to_params[:modifiers] = modifier if modifier
   rule = {
-    parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
     from: from(key_code, **from_params),
+    parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
     to: to(**to_params),
     to_if_alone: to(key_code: to_key_code.to_s, modifiers: [to_modifier])
   }

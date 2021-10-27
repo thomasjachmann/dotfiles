@@ -88,7 +88,9 @@ class Karabiner
 
     config["profiles"][0]["complex_modifications"]["rules"] = rules
 
-    json = JSON.pretty_generate(config, indent: '    ') + "\n"
+    json = JSON
+      .pretty_generate(config, indent: '    ')
+      .gsub(/\[\s*\]/, '[]')
     IO.write(CONFIG_FILE_PATH, json)
 
     json
