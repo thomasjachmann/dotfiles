@@ -29,7 +29,7 @@ include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
-default.command=list
+default.command=next
 weekstart=Monday
 
 alias.tomorrow=add due:tomorrow scheduled:tomorrow
