@@ -32,6 +32,9 @@ include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-256.theme
 default.command=next
 weekstart=Monday
 
+regex=on
+search.case.sensitive=false
+
 alias.tomorrow=add due:tomorrow scheduled:tomorrow
 alias.tmrw=tomorrow
 alias.monday=add due:monday scheduled:monday
