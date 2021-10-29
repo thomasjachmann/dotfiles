@@ -39,8 +39,14 @@ alias.tomorrow=add due:tomorrow scheduled:tomorrow
 alias.tmrw=tomorrow
 alias.monday=add due:monday scheduled:monday
 alias.mnd=monday
-alias.postpone=modify wait:monday scheduled:monday
+alias.postpone=modify wait:monday
 alias.pstpn=postpone
+alias.post=postpone
+alias.push=modify wait:tomorrow
+alias.ps=push
+
+alias.a=add
+alias.m=mod
 
 uda.notes.type=string
 uda.notes.label=Notes
