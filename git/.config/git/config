@@ -1,103 +1,103 @@
 [user]
-	name = Thomas Jachmann
-	email = self@thomasjachmann.com
+  name = Thomas Jachmann
+  email = self@thomasjachmann.com
 
 [core]
-	excludesfile = ~/.config/git/ignore
-	precomposeunicode = true # for Mac OS X
+  excludesfile = ~/.config/git/ignore
+  precomposeunicode = true # for Mac OS X
 
 [rebase]
   instructionFormat = "%s (%an <%ae>)"
 
 [alias]
-	# status stuff
-	s = status --short --branch
-	st = status
-	ignored-all = ls-files --others
-	ignored = ls-files --others -i --exclude-standard
-	conflicts = !git s | grep -e '^[A-Z][A-Z]' | echo 'no conflicts'
+  # status stuff
+  s = status --short --branch
+  st = status
+  ignored-all = ls-files --others
+  ignored = ls-files --others -i --exclude-standard
+  conflicts = !git s | grep -e '^[A-Z][A-Z]' | echo 'no conflicts'
   tags = tag --list --sort=version:refname
 
-	# log stuff
-	graph = log --graph --decorate --abbrev-commit --all --oneline --date-order
-	# cannot be used, since the branch colors aren't as diverse as with decorate
-	# --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'--date=relative
+  # log stuff
+  graph = log --graph --decorate --abbrev-commit --all --oneline --date-order
+  # cannot be used, since the branch colors aren't as diverse as with decorate
+  # --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'--date=relative
   worklog = log --pretty=format:'%Cgreen%ai %Cblue%h %Creset%s' --author='Thomas Jachmann' --author-date-order
   # taken from http://git-wt-commit.rubyforge.org (git rank-contributors: http://git-wt-commit.rubyforge.org/git-rank-contributors)
   contributors = shortlog -s -n --no-merges
 
-	# stash stuff
-	ss = stash save
-	sl = stash list
-	sa = stash apply
-	sp = stash pop
-	sd = stash drop
-	ssh = stash show
-	sdrop = !sh -c 'git stash drop stash@{$1}' -
-	sshow = !sh -c 'git stash show -v stash@{$1}' -
-	su = stash save --keep-index
-	tmp = stash save --include-untracked 'tmp'
-	untmp = stash pop
+  # stash stuff
+  ss = stash save
+  sl = stash list
+  sa = stash apply
+  sp = stash pop
+  sd = stash drop
+  ssh = stash show
+  sdrop = !sh -c 'git stash drop stash@{$1}' -
+  sshow = !sh -c 'git stash show -v stash@{$1}' -
+  su = stash save --keep-index
+  tmp = stash save --include-untracked 'tmp'
+  untmp = stash pop
 
-	# checkout/commit stuff
-	co = checkout
+  # checkout/commit stuff
+  co = checkout
   cod = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "$1" ]] && git co $1 && git b -d $BRANCH || git co $BRANCH' -
   codd = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "$1" ]] && git co $1 && git b -D $BRANCH || git co $BRANCH' -
-	ci = commit
-	cia = commit -a
-	amend = commit --amend
-	ap = add -p
+  ci = commit
+  cia = commit -a
+  amend = commit --amend
+  ap = add -p
   wip = !sh -c 'git add . && git ci -m WIP'
   unwip = !sh -c '[[ "$(git log --format=%B -n 1 HEAD)" == "WIP" ]] && git undo || echo "last commit was no WIP commit" 1>&2'
 
-	# from http://blog.blindgaenger.net/advanced_git_aliases.html
-	r  = !git ls-files -z --deleted | xargs -0 git rm
+  # from http://blog.blindgaenger.net/advanced_git_aliases.html
+  r  = !git ls-files -z --deleted | xargs -0 git rm
 
-	# branch stuff
-	b = branch
-	br = branch -vv
-	cp = cherry-pick
-	# taken from http://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
+  # branch stuff
+  b = branch
+  br = branch -vv
+  cp = cherry-pick
+  # taken from http://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
   # NOT NEEDED ANYMORE git merge-base does the same
   # oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
   # taken from http://stackoverflow.com/questions/171550/find-out-which-remote-branch-a-local-branch-is-tracking#answer-9753364
   tracking = !sh -c 'git for-each-ref --format=\"%(upstream:short)\" $(git symbolic-ref -q HEAD)'
   brr = branch --sort=-committerdate --format='%(HEAD) %(align:25)%(color:green)%(committerdate:relative)%(color:reset)%(end) %(align:20)%(authorname)%(end) %(color:yellow)%(refname:short)%(color:reset) (%(subject))'
 
-	# merge stuff
-	m = merge
-	ms = merge --squash
-	mdt = !sh -c 'git diff :1:$1 :3:$1' -
-	mdo = !sh -c 'git diff :1:$1 :2:$1' -
-	mst = !sh -c 'git show :3:$1' -
-	mso = !sh -c 'git show :2:$1' -
-	mst = !sh -c 'git show :3:$1' -
-	mso = !sh -c 'git show :2:$1' -
-	mcot = !sh -c 'git show :3:$1 > $1' -
-	mcoo = !sh -c 'git show :2:$1 > $1' -
+  # merge stuff
+  m = merge
+  ms = merge --squash
+  mdt = !sh -c 'git diff :1:$1 :3:$1' -
+  mdo = !sh -c 'git diff :1:$1 :2:$1' -
+  mst = !sh -c 'git show :3:$1' -
+  mso = !sh -c 'git show :2:$1' -
+  mst = !sh -c 'git show :3:$1' -
+  mso = !sh -c 'git show :2:$1' -
+  mcot = !sh -c 'git show :3:$1 > $1' -
+  mcoo = !sh -c 'git show :2:$1 > $1' -
 
-	# rebase stuff
-	rb = rebase
-	rba = rebase --abort
-	rbc = rebase --continue
-	rbi = rebase --interactive
-	rewrite = rebase --interactive origin/master
-	rbdt = !sh -c 'git diff :1:$1 :2:$1' -
-	rbdo = !sh -c 'git diff :1:$1 :3:$1' -
-	rbst = !sh -c 'git show :2:$1' -
-	rbso = !sh -c 'git show :3:$1' -
-	rbst = !sh -c 'git show :2:$1' -
-	rbso = !sh -c 'git show :3:$1' -
-	rbcot = !sh -c 'git show :2:$1 > $1' -
-	rbcoo = !sh -c 'git show :3:$1 > $1' -
+  # rebase stuff
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase --interactive
+  rewrite = rebase --interactive origin/master
+  rbdt = !sh -c 'git diff :1:$1 :2:$1' -
+  rbdo = !sh -c 'git diff :1:$1 :3:$1' -
+  rbst = !sh -c 'git show :2:$1' -
+  rbso = !sh -c 'git show :3:$1' -
+  rbst = !sh -c 'git show :2:$1' -
+  rbso = !sh -c 'git show :3:$1' -
+  rbcot = !sh -c 'git show :2:$1 > $1' -
+  rbcoo = !sh -c 'git show :3:$1 > $1' -
   # used after git absorb
   reabsorb = rebase -i --autosquash
 
-	# remote stuff
-	f = fetch
-	pl = pull
-	plr = pull --rebase
-	ps = push
+  # remote stuff
+  f = fetch
+  pl = pull
+  plr = pull --rebase
+  ps = push
   ps-f = push --force-with-lease
   pso = !sh -c 'git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD):$(git rev-parse --abbrev-ref HEAD)'
   finish = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "master" ]] && git push -u origin $BRANCH && hub pull-request -o && git co master && git b -d $BRANCH'
@@ -105,76 +105,76 @@
   # open-file doesn't work yet
   open-file = !sh -c 'git github open-file $0 || git bitbucket open-file $0'
 
-	# miscellany
-	fs = !git fetch && git s
+  # miscellany
+  fs = !git fetch && git s
   ftp = fetch --tags --prune
-	sniff = !git ftp && git snif
-	snif = !tig --first-parent $(git rev-parse --abbrev-ref HEAD)..$(git tracking) || echo "no changes to review"
-	chkk = !git ftp && git chk
-	chk = !tig --first-parent $(git tracking)..$(git rev-parse --abbrev-ref HEAD) || echo "no changes to review"
-	changes = !git diff --name-status $(git rev-parse --abbrev-ref HEAD) $(git tracking) | cat
-	fsx = !git fetch && git s && gitx
-	rdiff = log -p master..origin/master
-	pbcopy = !sh -c 'printf "$1" | pbcopy' -
+  sniff = !git ftp && git snif
+  snif = !tig --first-parent $(git rev-parse --abbrev-ref HEAD)..$(git tracking) || echo "no changes to review"
+  chkk = !git ftp && git chk
+  chk = !tig --first-parent $(git tracking)..$(git rev-parse --abbrev-ref HEAD) || echo "no changes to review"
+  changes = !git diff --name-status $(git rev-parse --abbrev-ref HEAD) $(git tracking) | cat
+  fsx = !git fetch && git s && gitx
+  rdiff = log -p master..origin/master
+  pbcopy = !sh -c 'printf "$1" | pbcopy' -
   pbcopymessage = !sh -c 'git log $1 -1 --pretty=%B | pbcopy' -
-	# -z -0 are needed to handle file names with spaces properly
-	open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
+  # -z -0 are needed to handle file names with spaces properly
+  open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
 
   # custom command integration
   bb = bitbucket
   gh = github
 
 [color]
-	status = auto
-	diff = auto
-	branch = auto
-	sh = auto
+  status = auto
+  diff = auto
+  branch = auto
+  sh = auto
 
 [merge]
-	tool = opendiff
+  tool = opendiff
 
 [push]
-	default = tracking
+  default = tracking
 
 [pager]
-	stash = false
+  stash = false
   branch = less -FX
 
 [tig]
   ; TODO make tig use ~/.config/tig/history instead of ~/.tig_history
   refresh-mode = auto
-	show-changes = false					# don't show changes at top of main view
+  show-changes = false          # don't show changes at top of main view
   ;set date view column options
-	;show-date = relative
+  ;show-date = relative
   ;set author view column options
   ;author-width = 3
-	# show-author = abbreviated
-	tab-size = 2
-	split-view-height = 65%
+  # show-author = abbreviated
+  tab-size = 2
+  split-view-height = 65%
   split-view-width = 65%
-	horizontal-scroll = 33%
+  horizontal-scroll = 33%
   mouse = yes
 
 [tig "bind"]
-	generic = F !git ftp
+  generic = F !git ftp
   ;find out how to map ESC
-	;generic = <Esc> view-close
-	;main = <Esc> none
+  ;generic = <Esc> view-close
+  ;main = <Esc> none
   main = B !@git branch "%(promptBranchname:)" %(commit)
   main = W !git diff --color-words %(commit)^1..%(commit)
   # TODO https://github.com/jonas/tig/issues/65 no need for git pbcopy anymore?
-	main = c !@git pbcopy %(commit)
-	log = c !@git pbcopy %(commit)
-	diff = c !@git pbcopy %(commit)
+  main = c !@git pbcopy %(commit)
+  log = c !@git pbcopy %(commit)
+  diff = c !@git pbcopy %(commit)
   main = C !@git pbcopymessage %(commit)
   log = C !@git pbcopymessage %(commit)
   diff = C !@git pbcopymessage %(commit)
   main = I !git rebase --interactive %(commit)^
   log = I !git rebase --interactive %(commit)^
-	main = g !@git open-commit %(commit) # masking revision graph toggling
-	log = g !@git open-commit %(commit) # masking revision graph toggling
-	status = a !git commit --amend
-	stage = a !git commit --amend
+  main = g !@git open-commit %(commit) # masking revision graph toggling
+  log = g !@git open-commit %(commit) # masking revision graph toggling
+  status = a !git commit --amend
+  stage = a !git commit --amend
   status = O !git mdo %(file)
   status = T !git mdt %(file)
   main = S :toggle vertical-split
@@ -194,4 +194,4 @@
   # taken vom vim-kalisi/colors/kalisi.vim (search: "Normal ctermGB")
   default = 252 238
 [init]
-	defaultBranch = main
+  defaultBranch = main
