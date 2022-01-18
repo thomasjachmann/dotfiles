@@ -16,14 +16,15 @@ data.each do |task|
 
   file = Tempfile.new(["task_notes_#{task["uuid"]}", ".md"])
   begin
-    header = "#{task["id"]}: #{task["description"]}\n----\n"
+    header = "#{task["description"]}\n----\n"
     IO.write(file.path, "#{header}#{notes}")
     system "$EDITOR #{file.path}"
 
-    new_notes = IO.read(file.path).sub(header, '')
-    if new_notes != notes
+    new_description, new_notes = IO.read(file.path).split("\n----\n").map(&:strip)
+    if new_description != "" && (new_description != task["description"] || new_notes != notes)
       # reload to not overwrite parallel changes
       task = read_tasks("uuid:#{task["uuid"]}").first
+      task["description"] = new_description
       task["notes"] = new_notes
       IO.write(file.path, task.to_json)
       `task import #{file.path}`
