@@ -28,12 +28,7 @@ function v() {
 
 # vimwiki
 function wiki() {
-  # TODO change cwd to wiki's base dir after select
-  if [ $# -eq 1 ]; then
-    vim -c "call vimwiki#base#goto_index($1)"
-  else
-    vim -c "call VimwikiOpen()"
-  fi
+  vim -c "call VimwikiOpen($1)"
 }
 
 function vimwiki() {

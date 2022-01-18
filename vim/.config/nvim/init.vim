@@ -126,7 +126,6 @@ let g:vimwiki_list = [
       \ {'path': '~/Projects/sumcumo/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1}
       \]
 let g:vimwiki_hl_cb_checked = 2
-let g:vimwiki_auto_chdir = 1
 " disable table mappings (CR and TAB), for TAB collides with COC
 " TODO: find a solution here
 let g:vimwiki_table_mappings = 0
@@ -135,11 +134,21 @@ let g:vimwiki_table_mappings = 0
 " TODO: calendar for diary
 " Plug 'itchyny/calendar.vim'
 " taken from https://blog.mague.com/?p=602
-function! VimwikiOpen()
-  if len(g:vimwiki_list) == 1
-    call vimwiki#base#goto_index(1)
+function! VimwikiOpen(...)
+  " forcing vimwiki to cd into vimwiki dir
+  " * cannot set this globally because opening any MD file would change pwd
+  " * cannot set documented variable g:vimwiki_audo_chdir since this has
+  "   already been interpreted by vimwiki's popuplate_global_variables
+  let g:vimwiki_global_vars["auto_chdir"] = 1
+
+  if a:0 == 0
+    if len(g:vimwiki_list) == 1
+      call vimwiki#base#goto_index(1)
+    else
+      VimwikiUISelect
+    endif
   else
-    VimwikiUISelect
+    call vimwiki#base#goto_index(a:1)
   endif
 endfunction
 function! ToggleCalendar()
