@@ -10,6 +10,11 @@ function ticktrack.toggle()
     webview = hs.webview.newBrowser(rect, {developerExtrasEnabled=true})
     webview:url("https://ticktrack.herokuapp.com")
     webview:behavior(hs.drawing.windowBehaviors.moveToActiveSpace)
+    webview:windowCallback(function(event, webview, state)
+      if event == "focusChange" and state == false then
+        webview:hide()
+      end
+    end)
   end
 
   win = webview:hswindow()
