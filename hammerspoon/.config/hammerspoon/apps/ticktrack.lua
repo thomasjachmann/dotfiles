@@ -9,6 +9,7 @@ function ticktrack.toggle()
     rect.w = 560
     webview = hs.webview.newBrowser(rect, {developerExtrasEnabled=true})
     webview:url("https://ticktrack.herokuapp.com")
+    webview:behavior(hs.drawing.windowBehaviors.moveToActiveSpace)
   end
 
   win = webview:hswindow()
