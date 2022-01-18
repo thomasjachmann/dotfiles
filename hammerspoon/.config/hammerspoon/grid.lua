@@ -101,7 +101,7 @@ function grid.show()
     hs.grid.setGrid("3x4")
     hs.grid.HINTS = {
       {"0", "0", "0"}, -- this is ignored
-      {"4", "5", "6"}, -- this is ignored
+      {"4", "5", "6"},
       {"R", "T", "Z"},
       {"F", "G", "H"},
       {"V", "B", "N"}
