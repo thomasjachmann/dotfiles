@@ -7,6 +7,7 @@ local scrn = require "scrn"
 
 local tmux = require "apps.tmux"
 local ticktrack = require "apps.ticktrack"
+local devdocs = require "apps.devdocs"
 
 local hyperMappings = {
   f2 = apps.showCurrentTitle,
@@ -37,6 +38,7 @@ local hyperMappings = {
   ["9"] = hs.grid.pushWindowRight,
 
   ["0"] = ticktrack.toggle,
+  ["ß"] = devdocs.toggle, -- ? for help
 
   a = apps.launch("Adium"),
   b = apps.launch("Firefox"), -- b for browser
