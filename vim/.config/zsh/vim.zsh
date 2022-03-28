@@ -9,7 +9,7 @@ alias vim='nvim'
 alias vvim='vim -u NONE -N'
 
 # update vim plug and all plugins
-alias vim-upgrade="vim -c PlugUpgrade -c qall && vim -c PlugUpdate"
+alias vim-upgrade="vim -c PlugUpgrade -c qall && vim -c PlugUpdate -c only -c PlugDiff -c CocUpdate"
 
 # open vim w/o parameter, with a file or a directory
 function v() {
