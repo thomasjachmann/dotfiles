@@ -9,6 +9,9 @@
 [rebase]
   instructionFormat = "%s (%an <%ae>)"
 
+[rerere]
+  enabled = true
+
 [alias]
   # status stuff
   s = status --short --branch
