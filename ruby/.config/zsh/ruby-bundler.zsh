@@ -43,7 +43,11 @@ alias bundle='_bundle_command'
 function b() {
   _bundle_command $* | grep -v 'Using '
 }
-alias bi="b install --path=.bundle/gems"
+
+function bi() {
+  _bundle_command config set --local path '.bundle/gems'
+  b install
+}
 alias bu="b update"
 alias bc="_bundle_command console"
 alias be="_bundle_command exec"
