@@ -1,4 +1,4 @@
 cask "kitty"
 
 tap "homebrew/cask-fonts"
-cask "font-hack"
+cask "font-hack-nerd-font"

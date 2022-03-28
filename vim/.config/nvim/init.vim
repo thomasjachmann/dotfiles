@@ -41,8 +41,11 @@ Plug 'bronson/vim-trailing-whitespace'
 
 Plug '/usr/local/opt/fzf' " set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim or https://github.com/junegunn/fzf/blob/master/README-VIM.md
-Plug 'scrooloose/nerdtree'
-" Plug 'tpope/vim-vinegar'
+
+" tree (setup needs https://www.nerdfonts.com/ patched font)
+Plug 'kyazdani42/nvim-web-devicons' " for file icons in nvim-tree
+Plug 'kyazdani42/nvim-tree.lua'
+
 Plug 'artnez/vim-wipeout'
 "Plug 'bogado/file-line'
 "Plug 'moll/vim-bbye' " :Bdelete that doesn't close the window when closing a buffer
@@ -232,7 +235,6 @@ Plug 'gregsexton/gitv'
 Plug 'junegunn/gv.vim'
 "Plug 'mhinz/vim-signify' " signify is asynchronous now, as well, check it!
 Plug 'airblade/vim-gitgutter' " async alternative to vim-signify
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " other
 Plug 'tpope/vim-abolish' " tpope's multi variants abbreviation/substitution plugin
@@ -274,6 +276,83 @@ if !has("gui_running")
 endif
 
 call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"" NVIM TREE CONFIG """"""""""""""""""""""""""""""
+"" https://github.com/kyazdani42/nvim-tree.lua """
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
+let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
+let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+"If 0, do not show the icons for one of 'git' 'folder' and 'files'
+"1 by default, notice that if 'files' is 1, it will only display
+"if nvim-web-devicons is installed and on your runtimepath.
+"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
+"but this will not work when you set indent_markers (because of UI conflict)
+
+" default will show icon by default if no icon is provided
+" default shows no icon by default
+let g:nvim_tree_icons = {
+    \ 'default': "",
+    \ 'symlink': "",
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
+
+" nnoremap <C-n> :NvimTreeToggle<CR>
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
+" More available functions:
+" NvimTreeOpen
+" NvimTreeClose
+" NvimTreeFocus
+" NvimTreeFindFileToggle
+" NvimTreeResize
+" NvimTreeCollapse
+" NvimTreeCollapseKeepBuffers
+
+" set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+
+lua <<EOF
+require'nvim-tree'.setup()
+EOF
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"" END NVIM TREE CONFIG """"""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " yanking
 vmap gy "*y
@@ -674,15 +753,9 @@ augroup quickfix_navigation_mappings
   au FileType qf nnoremap <buffer> <Esc> :ccl<CR>
 augroup END
 
-" adds nerdtree toggle
-map <Leader>nt :NERDTreeToggle<CR>
-map <Leader>nn :NERDTree<CR>
-map <Leader>nf :NERDTreeFind<CR>
-let g:NERDTreeWinSize = 40
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeHijackNetrw = 0
-" see https://medium.com/@victormours/a-better-nerdtree-setup-3d3921abc0b9
-let g:NERDTreeMinimalUI = 1
+" configure nvim_tree mappings
+map <Leader>nt :NvimTreeToggle<CR>
+map <Leader>nf :NvimTreeFindFile<CR>
 
 " see https://shapeshed.com/vim-netrw/
 let g:netrw_liststyle = 3
@@ -786,18 +859,7 @@ augroup git_messages
   autocmd BufNewFile,BufRead PULLREQ_EDITMSG set colorcolumn=51 | map <C-c> <Esc>ggdGZZ
 augroup END
 
-augroup nerd_tree_scrolloff
-  autocmd!
-  autocmd BufEnter NERD_tree_\d\+ set scrolloff=0
-  autocmd BufLeave NERD_tree_\d\+ set scrolloff=2
-augroup END
 set scrolloff=2
-
-" doesn't work yet.. why?
-" augroup nerd_tree_mappings
-"   autocmd!
-"   autocmd FileType nerdtree nnoremap <buffer> <Space> <CR>
-" augroup END
 
 au BufReadPost Jenkinsfile set ft=groovy
 
@@ -805,7 +867,7 @@ function! InitDir()
   tabnew
   tabonly
   Wipeout
-  NERDTreeToggle
+  NvimTreeToggle
 endfunction
 command! InitDir call InitDir()
 
