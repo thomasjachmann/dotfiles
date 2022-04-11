@@ -200,6 +200,7 @@
   status = S :toggle vertical-split
   stage = S :toggle vertical-split
   diff = S :toggle vertical-split
+  status = c !@git pbcopy %(file)
   status = C !git commit
   stage = C !git commit
   status = D !rm -i %(file)
