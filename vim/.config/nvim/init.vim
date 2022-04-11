@@ -759,25 +759,42 @@ let g:qfenter_keymap.hopen = ['<C-s>']
 let g:qfenter_keymap.topen = ['<C-t>']
 
 set tags+=.git/tags
-" fzf mapping
 " files
 " let g:fzf_files_options = '--preview="cat -e {}"' THIS one, if highlight is not installed, dependencies: boost and lua
 let g:fzf_files_options = '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-map <Leader>tf :FzfFiles<CR>
-map <Leader>t :FzfFiles<CR>
-" buffers
+let g:fzf_preview_window = ['right:90%:hidden', 'ctrl-o']
+
+" fzf mapping
+" _f_iles known to git
+map <Leader>tf :FzfGitFiles<CR>
+" _d_dirty files
+map <Leader>td :FzfGitFiles?<CR>
+" all _F_files everywhere (also ignored ones)
+map <Leader>tF :FzfFiles<CR>
+" _l_ines in the current buffer
+map <Leader>tl :FzfBLines<CR>
+" all _L_ines everywhere (all open buffers)
+map <Leader>tL :FzfLines<CR>
+" _b_uffers
 map <Leader>tb :FzfBuffers<CR>
-" tags (local/global)
+" _t_ags in the current buffer
 map <Leader>tt :FzfBTags<CR>
-" TODO: This doesn't work with my ~/.ctags (putting tags in .git/tags)
+" all _T_ags everywhere (ctags)
+map <Leader>tT :FzfTags<CR>
 " https://github.com/junegunn/fzf.vim/blob/364fea3ca09b7c70294e4b856893919b0b689375/autoload/fzf/vim.vim
 " tagfiles is empty (search "Generate?")
 " https://github.com/junegunn/fzf.vim/issues/263
 " https://github.com/junegunn/fzf.vim/pull/127
 " https://github.com/ludovicchabant/vim-gutentags
-map <Leader>tT :FzfTags<CR>
-" git commits
-map <Leader>tc :FzfCommits<CR>
+" _c_ommits of the current file (also works on visual selection)
+map <Leader>tc :FzfBCommits<CR>
+" all _C_ommits of the current repository
+map <Leader>tC :FzfCommits<CR>
+" file types (set the _s_yntax)
+map <Leader>ts :FzfFiletypes<CR>
+" _m_appings (normal mode)
+map <Leader>tm :FzfMaps<CR>
+
 augroup fzf_close_on_blur
 " TODO: make fzf disappear when it's losing focus
 "   au FileType fzf WinLeave <Esc>
