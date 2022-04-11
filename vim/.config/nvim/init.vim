@@ -661,15 +661,15 @@ nmap <Leader><Leader> :b#<CR>
 
 " git stuff
 map <Leader>gs :Gstatus<CR>
-map <Leader>gb :Gblame<CR>
+map <Leader>gb :Git blame<CR>
 map <Leader>gco :Gread<CR>
 map <Leader>ga :Gwrite<CR>
 " open objects on the git remote in the browser
-nmap <Leader>gB :.Gbrowse<CR>
-vmap <Leader>gB :'<,'>Gbrowse<CR>
+nmap <Leader>gB :.GBrowse<CR>
+vmap <Leader>gB :'<,'>GBrowse<CR>
 " copy objects' URL on the git remote to the clipboard
-nmap <Leader>gU :.Gbrowse!<CR>
-vmap <Leader>gU :'<,'>Gbrowse!<CR>
+nmap <Leader>gU :.GBrowse!<CR>
+vmap <Leader>gU :'<,'>GBrowse!<CR>
 
 function! OpenGitModified()
   let modifiedFiles = system("git status --porcelain | grep -v '/$' | awk '{print $2}'")
