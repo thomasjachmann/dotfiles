@@ -62,3 +62,5 @@ report.notes.columns=notes
 report.notes.labels=Notes
 # report.notes.sort=
 # report.notes.filter=notes
+
+news.version=2.6.0
