@@ -560,7 +560,7 @@ set wildmode=list:longest
 " see http://vimcasts.org/episodes/show-invisibles/
 set list
 set listchars=tab:▸\ ,extends:>,precedes:<,trail:•
-highlight NonText ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
+highlight NonText ctermfg=237 ctermbg=none guifg='#666666' guibg=NONE
 highlight SpecialKey ctermfg=237 ctermbg=none guifg='#3a3a3a' guibg=NONE
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -578,7 +578,13 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,unix,winsize
 " define how soft wrapping works
 set linebreak " wrap lines at characters in breakat instead of on line length, supposed not to work with list set, but does
 " add two spaces before soft wrapped line continuations
-set showbreak=\ \ 
+set showbreak=↪
+" make lists be indented properly when soft wrapping
+set breakindent
+set breakindentopt+=sbr
+set breakindentopt+=shift:2
+set breakindentopt+=list:-1
+set wrap
 
 set showmatch " blink matching opening brackets when typing a closing bracket
 
