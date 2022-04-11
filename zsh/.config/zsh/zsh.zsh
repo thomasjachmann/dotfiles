@@ -91,6 +91,12 @@ function mkcd() {
   mkdir -p $1 && cd $1
 }
 
+function touchx() {
+  echo "#!/usr/bin/env bash" >> $1
+  chmod 755 $1
+  echo $1
+}
+
 function beep() {
   local message=$1
   [[ "$message" == "" ]] && message="beeeeeeeeeep"
