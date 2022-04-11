@@ -6,6 +6,21 @@
   excludesfile = ~/.config/git/ignore
   precomposeunicode = true # for Mac OS X
 
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
+  hyperlinks = true
+  light = true
+  side-by-side = true
+
+[diff]
+  colorMoved = default
+
 [rebase]
   instructionFormat = "%s (%an <%ae>)"
 
@@ -135,6 +150,7 @@
 
 [merge]
   tool = opendiff
+  conflictstyle = diff3
 
 [push]
   default = tracking
