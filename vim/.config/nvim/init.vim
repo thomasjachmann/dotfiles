@@ -288,7 +288,7 @@ let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help file
 let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
 let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
 let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
+" let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
 let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
@@ -307,8 +307,8 @@ let g:nvim_tree_show_icons = {
 " default will show icon by default if no icon is provided
 " default shows no icon by default
 let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
+    \ 'default': "",
+    \ 'symlink': "",
     \ 'git': {
     \   'unstaged': "✗",
     \   'staged': "✓",
@@ -348,7 +348,48 @@ let g:nvim_tree_icons = {
 highlight NvimTreeFolderIcon guibg=blue
 
 lua <<EOF
-require'nvim-tree'.setup()
+-- see https://www.youtube.com/watch?v=SpexCBrZ1pQ
+require'nvim-tree'.setup({
+  disable_netrw = true,
+  hijack_netrw = true,
+  open_on_setup = false,
+  -- auto_close = true,
+  open_on_tab = true,
+  hijack_cursor = true,
+  diagnostics = {
+    enable = true,
+    -- icons = {
+    --   hint = "h",
+    --   info = "i",
+    --   warning = "w",
+    --   error = "e",
+    -- },
+  },
+  update_focused_file = {
+    enable = false,
+    update_cwd = true,
+    ignore_list = {},
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
+  view = {
+    width = 50,
+    height = 30,
+    hide_root_folder = true,
+    side = "left",
+    auto_resize = true,
+    number = false,
+    relativenumber = false,
+  },
+  quit_on_open = 0,
+  git_hl = 1,
+  disable_window_picker = 0,
+  root_folder_modifier = ":t",
+  -- show_icons = {} see above
+})
 EOF
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "" END NVIM TREE CONFIG """"""""""""""""""""""""""
