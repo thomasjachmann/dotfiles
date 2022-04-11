@@ -207,6 +207,9 @@
   stage = D !rm -i %(file)
   main = 7 !git diff --ignore-space-change %(commit)^ %(commit)
   diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
+  # same as 7 but without context (to make searching changes easier - fewer false positives)
+  main = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
+  diff = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
   status = A !git add --intent-to-add %(file)
   stash = D ![[ "%(promptDrop-y/n:)" == "y" ]] && echo %(stash)
 
