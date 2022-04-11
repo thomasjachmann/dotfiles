@@ -50,3 +50,15 @@ alias.m=mod
 
 uda.notes.type=string
 uda.notes.label=Notes
+
+report.details.description=List of details for tasks used to work on them
+report.details.columns=id,project,tags,description.combined,notes
+report.details.labels=ID,Proj,Tags,Desc,Notes
+report.details.sort=urgency-
+report.details.filter=status:pending -WAITING
+
+report.notes.description=Output the notes only
+report.notes.columns=notes
+report.notes.labels=Notes
+# report.notes.sort=
+# report.notes.filter=notes
