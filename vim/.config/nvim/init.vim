@@ -430,7 +430,11 @@ function! RunIt(startline, endline) range
   setlocal buftype=nofile bufhidden=hide noswapfile nobuflisted
   nmap <buffer> q <C-w>q
   " exec "silent r ".file
-  exec "silent r !bundle exec ruby ".file
+  if filereadable("Gemfile")
+    exec "silent r !bundle exec ruby ".file
+  else
+    exec "silent r !ruby ".file
+  endif
   setlocal nomodifiable
 
   " TODO:
