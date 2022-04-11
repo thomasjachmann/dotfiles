@@ -879,10 +879,10 @@ set smarttab                           " also delete all spaces on <BS>
 " see http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set timeoutlen=1000 ttimeoutlen=0
 
-" shorten updatetime, mainly needed for gitgutter to enable real time git
+" shorten updatetime, mainly needed for gitgutter/signify to enable real time git
 " status signs
-set updatetime=250
 "let g:gitgutter_highlight_lines=1 " make gitgutter highlight lines on hunks
+set updatetime=100
 
 " allow me to comment stuff, see https://github.com/amix/vimrc
 iab meee <c-r>=strftime("[thomas, %Y-%m-%d]")<cr>
