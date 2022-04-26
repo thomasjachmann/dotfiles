@@ -23,7 +23,7 @@ Plug 'freeo/vim-kalisi'
 Plug 'joshdick/onedark.vim'
 
 " visuals
-" Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim' lighter alternative to airline?
@@ -518,14 +518,6 @@ endif
 
 colorscheme kalisi
 set background=dark
-
-" " for the character, see http://www.unicode.org/charts/PDF/U2500.pdf (u2502)
-" let g:indentLine_color_term = 237
-" let g:indentLine_color_gui = '#3a3a3a' " see https://gist.github.com/MicahElliott/719710
-" let g:indentLine_char = '│'
-" " without this, conceallevel is set to 2 which messes with json files
-" " but with this, the indentlines aren't shown any more - d'oh
-" let g:indentLine_conceallevel = 0
 
 " configure YouCompleteMe to complete from/into strings/comments
 " let g:ycm_min_num_of_chars_for_completion = 5 " to avoid auto popups while typing but still have them on semantic triggers (.)
