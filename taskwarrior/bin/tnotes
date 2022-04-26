@@ -12,7 +12,7 @@ end
 data = read_tasks(ARGV.map {|arg| "\"#{arg}\""}.join(" "))
 
 data.each do |task|
-  notes = task["notes"] || ""
+  notes = task["notes"]
 
   file = Tempfile.new(["task_notes_#{task["uuid"]}", ".md"])
   begin
@@ -20,12 +20,16 @@ data.each do |task|
     IO.write(file.path, "#{header}#{notes}")
     system "$EDITOR #{file.path}"
 
-    new_description, new_notes = IO.read(file.path).split("\n----\n").map(&:strip)
+    new_description, new_notes = IO.read(file.path).split(/\n----\n+/).map(&:strip)
     if new_description != "" && (new_description != task["description"] || new_notes != notes)
       # reload to not overwrite parallel changes
       task = read_tasks("uuid:#{task["uuid"]}").first
       task["description"] = new_description
-      task["notes"] = new_notes
+      if new_notes
+        task["notes"] = new_notes
+      else
+        task.delete("notes")
+      end
       IO.write(file.path, task.to_json)
       `task import #{file.path}`
     end
