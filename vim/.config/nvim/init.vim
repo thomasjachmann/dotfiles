@@ -555,6 +555,7 @@ runtime macros/matchit.vim        " Load the matchit plugin.
 " make auto completion more zsh like instead of completing the first match
 set wildmenu
 set wildmode=list:longest
+set wildignorecase
 
 " highlight invisible characters
 " (NonText: eol/extends/precedes, SpecialKey: nbsp/tab/trail)
