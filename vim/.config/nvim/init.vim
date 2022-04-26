@@ -236,6 +236,11 @@ Plug 'junegunn/gv.vim'
 "Plug 'mhinz/vim-signify' " signify is asynchronous now, as well, check it!
 Plug 'airblade/vim-gitgutter' " async alternative to vim-signify
 
+" Plug 'codeindulgence/vim-tig'
+Plug 'thomasjachmann/vim-tig', { 'branch': 'more_complex_parameters' }
+let g:tig_open_command = 'tabnew'
+let g:tig_default_command = 'main'
+
 " other
 Plug 'tpope/vim-abolish' " tpope's multi variants abbreviation/substitution plugin
 Plug 'rizzatti/dash.vim' " integration with Dash.app
@@ -656,10 +661,20 @@ nmap <C-S-Tab> gT
 nmap <Leader><Leader> :b#<CR>
 
 " git stuff
-map <Leader>gs :Gstatus<CR>
-map <Leader>gb :Git blame<CR>
-map <Leader>gco :Gread<CR>
-map <Leader>ga :Gwrite<CR>
+map <Leader>gs :Tig status<CR>
+map <Leader>gt :Tig stash<CR>
+
+map <Leader>gm :Tig main<CR>
+map <Leader>gM :Tig main --first-parent<CR>
+
+map <Leader>gb :Tig! blame +<CR>
+map <Leader>gf :Tig! main<CR>
+map <Leader>gF :Tig! main --first-parent<CR>
+
+augroup tig
+  au FileType tig tnoremap <C-w><C-c> <C-\><C-n>
+augroup END
+
 " open objects on the git remote in the browser
 nmap <Leader>gB :.GBrowse<CR>
 vmap <Leader>gB :'<,'>GBrowse<CR>
@@ -673,7 +688,7 @@ function! OpenGitModified()
     execute 'tabe ' . file
   endfor
 endfunction
-map <Leader>gm :call OpenGitModified()<CR>
+map <Leader>go :call OpenGitModified()<CR>
 
 " TODO: expand strings with wildcards
 function! TabOpen(...)
