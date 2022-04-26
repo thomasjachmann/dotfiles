@@ -354,7 +354,7 @@ highlight NvimTreeFolderIcon guibg=blue
 lua <<EOF
 -- see https://www.youtube.com/watch?v=SpexCBrZ1pQ
 require'nvim-tree'.setup({
-  disable_netrw = true,
+  disable_netrw = false, -- don't disable, or GBrowse won't work anymore... https://githubhot.com/repo/kyazdani42/nvim-tree.lua/issues/559
   hijack_netrw = true,
   open_on_setup = false,
   -- auto_close = true,
