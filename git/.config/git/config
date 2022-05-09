@@ -113,6 +113,13 @@
   rbcoo = !sh -c 'git show :3:$1 > $1' -
   reabsorb = absorb --and-rebase
 
+  # bisect stuff
+  bi = bisect
+  bis = bisect start
+  big = bisect good
+  bib = bisect bad
+  bir = bisect reset
+
   # remote stuff
   f = fetch
   pl = pull
