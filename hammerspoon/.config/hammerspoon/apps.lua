@@ -43,14 +43,22 @@ function apps.hideCurrent()
   if (app) then; app:hide(); end
 end
 
-function apps.showCurrentTitle()
-  local app = hs.application.frontmostApplication()
-  if (app) then; hs.alert(app:title()); end
-end
+function apps.showAppAndWindowInfo()
+  local infos = {}
 
-function apps.showCurrentBundleID()
   local app = hs.application.frontmostApplication()
-  if (app) then; hs.alert(app:bundleID()); end
+  if (app) then
+    table.insert(infos, "App Title: " .. app:title())
+    table.insert(infos, "App Bundle-ID: " .. app:bundleID())
+  end
+
+  local win = hs.window.focusedWindow()
+  if (win) then
+    table.insert(infos, "Window Title: " .. win:title())
+    table.insert(infos, "Window Info: " .. hs.inspect(win))
+  end
+
+  if next(infos) then; hs.alert(table.concat(infos, "\n")); end
 end
 
 return apps

@@ -10,8 +10,7 @@ local ticktrack = require "apps.ticktrack"
 local devdocs = require "apps.devdocs"
 
 local hyperMappings = {
-  f2 = apps.showCurrentTitle,
-  f3 = apps.showCurrentBundleID,
+  f2 = apps.showAppAndWindowInfo,
 
   ["tab"] = scrn.moveToNext,
 
