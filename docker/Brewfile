@@ -1,0 +1,2 @@
+cask "rancher"
+brew "rancher-cli"
