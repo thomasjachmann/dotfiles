@@ -76,7 +76,7 @@
 
   # branch stuff
   b = branch
-  br = branch -vv
+  br = branch -vv --sort=-committerdate
   cp = cherry-pick
   # taken from http://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
   # NOT NEEDED ANYMORE git merge-base does the same
