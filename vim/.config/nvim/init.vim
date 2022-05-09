@@ -740,8 +740,10 @@ map <Leader>nf :Neotree reveal_file=%<CR>
 map <Leader>nc :Neotree close<CR>
 
 " see https://shapeshed.com/vim-netrw/
+" tree view
 let g:netrw_liststyle = 3
-" let g:netrw_banner = 0
+" hide top banner with help
+let g:netrw_banner = 0
 
 " configure airline
 let g:airline_theme = 'kalisi'
