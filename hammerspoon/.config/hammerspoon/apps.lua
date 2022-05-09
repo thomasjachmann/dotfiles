@@ -38,6 +38,34 @@ function apps.launch(appName, opts)
   end
 end
 
+function apps.launchOrNewWindow(appName, opts)
+  local opts = opts or {}
+  local newWindowFn = opts.newWindowFn
+  local raiseWindow = opts.raiseWindow
+  return function()
+    app = hs.application.get(appName)
+    if (app) then
+      if (newWindowFn) then
+        -- watcher needs to be declared outside the if in order to be available
+        -- inside of the handler function
+        local watcher
+        if (raiseWindow) then
+          watcher = app:newWatcher(function(win, event)
+            win:focus()
+            win:raise()
+            watcher:stop()
+          end)
+          watcher:start({hs.uielement.watcher.windowCreated})
+        end
+
+        newWindowFn(app)
+      end
+    else
+      hs.application.launchOrFocus(appName)
+    end
+  end
+end
+
 function apps.hideCurrent()
   local app = hs.application.frontmostApplication()
   if (app) then; app:hide(); end

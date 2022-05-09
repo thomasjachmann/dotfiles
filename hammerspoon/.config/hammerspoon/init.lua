@@ -41,6 +41,12 @@ local hyperMappings = {
 
   a = apps.launch("Adium"),
   b = apps.launch("Firefox"), -- b for browser
+  [{"shift", "b"}] = apps.launchOrNewWindow("Firefox", {
+      newWindowFn=function(app)
+        app:selectMenuItem({"File", "New Window"})
+      end,
+      raiseWindow=true
+    }),
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"), -- d for dates
   e = tmux.launch("nvim", {noToggle=true}), -- e for editor
@@ -54,6 +60,9 @@ local hyperMappings = {
   r = tmux.activate("ruby"), -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal
+  [{"shift", "t"}] = apps.launchOrNewWindow("kitty", {newWindowFn=function()
+    os.execute("/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock launch --type=os-window")
+  end}),
   [{"shift", "w"}] = function()
     hs.wifi.setPower(hs.wifi.currentNetwork() == nil)
   end,
