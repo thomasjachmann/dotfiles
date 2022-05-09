@@ -191,7 +191,8 @@ augroup vimwiki_custom_mappings
 augroup END
 
 " Plug 'tbabej/taskwiki', { 'do': 'pip3 install --upgrade -r requirements.txt' }
-Plug 'blindFS/vim-taskwarrior'
+
+" Plug 'blindFS/vim-taskwarrior'
 
 " linting
 " Plug 'w0rp/ale'
