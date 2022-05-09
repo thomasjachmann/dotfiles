@@ -255,7 +255,7 @@ xmap ac <plug>(signify-motion-outer-visual)
 
 " Plug 'codeindulgence/vim-tig'
 Plug 'thomasjachmann/vim-tig', { 'branch': 'more_complex_parameters' }
-let g:tig_open_command = 'tabnew'
+let g:tig_open_command = '-1tabnew'
 let g:tig_default_command = 'main'
 
 " other
