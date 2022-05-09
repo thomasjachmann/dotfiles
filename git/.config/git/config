@@ -51,11 +51,14 @@
   sp = stash pop
   sd = stash drop
   ssh = stash show
-  sdrop = !sh -c 'git stash drop stash@{$1}' -
-  sshow = !sh -c 'git stash show -v stash@{$1}' -
-  su = stash save --keep-index
-  tmp = stash save --include-untracked 'tmp'
-  untmp = stash pop
+  sdrop = !sh -c 'git sd stash@{$1}' -
+  sshow = !sh -c 'git ssh -v stash@{$1}' -
+  # _s_tash _s_ave _a_ll
+  ssa = ss --include-untracked
+  # _s_tash _s_ave _u_ntracked
+  ssu = ss --keep-index
+  tmp = ssa 'tmp'
+  untmp = sp
 
   # checkout/commit stuff
   co = checkout
