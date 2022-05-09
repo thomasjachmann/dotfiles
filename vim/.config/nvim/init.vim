@@ -478,7 +478,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,unix,winsize
 
 " define how soft wrapping works
 set linebreak " wrap lines at characters in breakat instead of on line length, supposed not to work with list set, but does
-" add two spaces before soft wrapped line continuations
+" add contination character before soft wrapped line continuations
 set showbreak=↪
 " make lists be indented properly when soft wrapping
 set breakindent
