@@ -6,7 +6,7 @@ tmux_opts=(-n $(basename $1))
 nvim_opts=()
 if [[ -d $file_or_dir ]]; then
   tmux_opts=("${tmux_opts[@]}" -c $file_or_dir)            # set working directory to directory
-  nvim_opts=("${nvim_opts[@]}" -c "InitDir")               # init nvim for a directory, eg show NERDTree
+  nvim_opts=("${nvim_opts[@]}" -c "InitDir")               # init nvim for a directory, eg show NeoTree
 else
   tmux_opts=("${tmux_opts[@]}" -c $(dirname $file_or_dir)) # set working directory to file's directory
 fi

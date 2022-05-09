@@ -51,9 +51,12 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug '/usr/local/opt/fzf' " set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim or https://github.com/junegunn/fzf/blob/master/README-VIM.md
 
-" tree (setup needs https://www.nerdfonts.com/ patched font)
-Plug 'kyazdani42/nvim-web-devicons' " for file icons in nvim-tree
-Plug 'kyazdani42/nvim-tree.lua'
+let g:neo_tree_remove_legacy_commands = 1
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons' " optional
+Plug 'MunifTanjim/nui.nvim'
+Plug 's1n7ax/nvim-window-picker' " optional
+Plug 'nvim-neo-tree/neo-tree.nvim',
 
 Plug 'artnez/vim-wipeout'
 "Plug 'bogado/file-line'
@@ -298,127 +301,10 @@ endif
 
 call plug#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NVIM TREE CONFIG """"""""""""""""""""""""""""""
-"" https://github.com/kyazdani42/nvim-tree.lua """
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
-let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-" let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
-let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
-let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath.
-"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
-"but this will not work when you set indent_markers (because of UI conflict)
-
-" default will show icon by default if no icon is provided
-" default shows no icon by default
-let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-
-" nnoremap <C-n> :NvimTreeToggle<CR>
-" nnoremap <leader>r :NvimTreeRefresh<CR>
-" nnoremap <leader>n :NvimTreeFindFile<CR>
-" More available functions:
-" NvimTreeOpen
-" NvimTreeClose
-" NvimTreeFocus
-" NvimTreeFindFileToggle
-" NvimTreeResize
-" NvimTreeCollapse
-" NvimTreeCollapseKeepBuffers
-
-" set termguicolors " this variable must be enabled for colors to be applied properly
-
-" a list of groups can be found at `:help nvim_tree_highlight`
-highlight NvimTreeFolderIcon guibg=blue
 
 lua <<EOF
--- see https://www.youtube.com/watch?v=SpexCBrZ1pQ
-require'nvim-tree'.setup({
-  disable_netrw = false, -- don't disable, or GBrowse won't work anymore... https://githubhot.com/repo/kyazdani42/nvim-tree.lua/issues/559
-  hijack_netrw = true,
-  open_on_setup = false,
-  -- auto_close = true,
-  open_on_tab = true,
-  hijack_cursor = true,
-  diagnostics = {
-    enable = true,
-    -- icons = {
-    --   hint = "h",
-    --   info = "i",
-    --   warning = "w",
-    --   error = "e",
-    -- },
-  },
-  update_focused_file = {
-    enable = false,
-    update_cwd = true,
-    ignore_list = {},
-  },
-  git = {
-    enable = true,
-    ignore = true,
-    timeout = 500,
-  },
-  view = {
-    width = 50,
-    height = 30,
-    hide_root_folder = true,
-    side = "left",
-    auto_resize = true,
-    number = false,
-    relativenumber = false,
-  },
-  renderer = {
-    indent_markers = {
-      enable = true
-    }
-  },
-  quit_on_open = 0,
-  git_hl = 1,
-  disable_window_picker = 0,
-  root_folder_modifier = ":t",
-  -- show_icons = {} see above
-})
+  require('window-picker').setup()
 EOF
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"" END NVIM TREE CONFIG """"""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " yanking
 vmap gy "*y
@@ -849,9 +735,12 @@ augroup quickfix_navigation_mappings
   au FileType qf nnoremap <buffer> <Esc> :ccl<CR>
 augroup END
 
-" configure nvim_tree mappings
-map <Leader>nt :NvimTreeToggle<CR>
-map <Leader>nf :NvimTreeFindFile<CR>
+" configure NeoTree mappings
+map <Leader>nt :Neotree source=filesystem<CR>
+map <Leader>ns :Neotree source=git_status<CR>
+map <Leader>nb :Neotree source=buffers position=float<CR>
+map <Leader>nf :Neotree reveal_file=%<CR>
+map <Leader>nc :Neotree close<CR>
 
 " see https://shapeshed.com/vim-netrw/
 let g:netrw_liststyle = 3
@@ -962,7 +851,7 @@ function! InitDir()
   tabnew
   tabonly
   Wipeout
-  NvimTreeToggle
+  Neotree source=filesystem
 endfunction
 command! InitDir call InitDir()
 
