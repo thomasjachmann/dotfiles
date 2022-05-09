@@ -132,6 +132,9 @@ Plug 'editorconfig/editorconfig-vim'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 Plug 'mbbill/undotree'
 nmap <Leader>u :UndotreeShow<CR>:UndotreeFocus<CR>
+" analogous to gg and G uu and U go to the oldes/newest change
+nmap guu 999u
+nmap gU 999<C-r>
 Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_prefix = '<Leader>'
 let g:peekaboo_ins_prefix = '<C-x>'
