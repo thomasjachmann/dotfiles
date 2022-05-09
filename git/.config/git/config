@@ -219,7 +219,7 @@
   # same as 7 but without context (to make searching changes easier - fewer false positives)
   main = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
   diff = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
-  status = A !git add --intent-to-add %(file)
+  status = A !sh -c 'git add --intent-to-add %(file) && git add -e %(file)'
   stash = D ![[ "%(promptDrop-y/n:)" == "y" ]] && echo %(stash)
 
 [tig "color"]
