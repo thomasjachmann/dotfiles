@@ -221,6 +221,7 @@
   diff = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
   status = A !sh -c 'git add --intent-to-add %(file) && git add -e %(file)'
   status = P !git add -p %(file)
+  status = d !git diff %(file)
   stash = D ![[ "%(promptDrop-y/n:)" == "y" ]] && echo %(stash)
 
 [tig "color"]
