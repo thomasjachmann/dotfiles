@@ -18,18 +18,17 @@ function apps.launch(appName, opts)
   return function()
     app = hs.application.get(appName)
     if (app) then
-      windows = app:visibleWindows()
-      if not noToggle and (#windows == 1 or forceToggle) and app == hs.application.frontmostApplication() then
-        app:hide()
-        return
-      elseif (#windows > 1) then
-        focusedWindow = hs.window.focusedWindow()
-        for _, window in pairs(windows) do
-          if (window == focusedWindow) then
-            windows[#windows]:focus()
-            if (fn) then; fn(); end
-            return
-          end
+      if app:isFrontmost() then
+        -- frontmost: we need to decide whether to toggle or cycle through windows
+        windows = app:visibleWindows()
+        -- only toggle if it's not forbidden and either we only have one window or are forced to toggle
+        if not noToggle and (#windows == 1 or forceToggle) then
+          app:hide()
+          return
+        elseif (#windows > 0) then
+          windows[#windows]:focus()
+          if (fn) then; fn(); end
+          return
         end
       end
     end
