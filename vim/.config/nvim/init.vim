@@ -221,13 +221,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-markdown'
-let g:markdown_fenced_languages = ['sh', 'ruby', 'sql']
-" this seems to be better for github flavored markdown but fails miserable
-" for automatic list formatting/word wrap - check tpope's plugin flp setting
-" Plug 'gabrielelana/vim-markdown'
-" let g:markdown_mapping_switch_status = '<Leader><Space>'
-" let g:markdown_enable_mappings = 0
 "Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
