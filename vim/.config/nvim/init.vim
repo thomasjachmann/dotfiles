@@ -37,7 +37,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim' lighter alternative to airline?
 Plug 'ap/vim-css-color'
-Plug 'bronson/vim-trailing-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 
 " ASYNC stuff: http://hew.tools/blog/posts/asynchronous-neovim-in-2016/
 
