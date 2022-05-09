@@ -260,7 +260,6 @@ let g:tig_default_command = 'main'
 
 " other
 Plug 'tpope/vim-abolish' " tpope's multi variants abbreviation/substitution plugin
-Plug 'rizzatti/dash.vim' " integration with Dash.app
 "Plug 'nelstrom/vim-markdown-preview'
 "Plug 'wikimatze/hammer.vim' " alternative to the above? needs installed gems, though
 "Plug 'reedes/vim-pencil' " various prose modes
@@ -827,8 +826,6 @@ iab meee <c-r>=strftime("[thomas, %Y-%m-%d]")<cr>
   set guicursor+=i-ci-ve:ver25-iCursor-blinkwait500-blinkon500-blinkoff50
   set guicursor+=r-cr-o:hor20-iCursor-blinkwait500-blinkon500-blinkoff50
 " endif
-
-nmap <Leader>d :Dash<CR>
 
 " color the desired end of the first line of git commit messages
 " so that it's easier to know how much space is left
