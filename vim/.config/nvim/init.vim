@@ -119,6 +119,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise' " insert end statements wisely in ruby
 Plug 'tpope/vim-speeddating' " allow C-a/C-x on date strings
+Plug 'machakann/vim-swap'
 "Plug 'p0deje/vim-ruby-interpolation'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'junegunn/vim-easy-align'
