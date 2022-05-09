@@ -47,6 +47,13 @@ local hyperMappings = {
       end,
       raiseWindow=true
     }),
+  [{"alt", "b"}] = apps.launch("Tor Browser"),
+  [{{"shift", "alt"}, "b"}] = apps.launchOrNewWindow("Tor Browser", {
+      newWindowFn=function(app)
+        app:selectMenuItem({"File", "New Private Window"})
+      end,
+      raiseWindow=true
+    }),
   c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"), -- d for dates
   e = tmux.launch("nvim", {noToggle=true}), -- e for editor
