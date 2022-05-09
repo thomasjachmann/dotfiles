@@ -245,8 +245,12 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 let g:fugitive_gitlab_domains = ['https://gitlab.sumcumo.net']
 Plug 'gregsexton/gitv'
 Plug 'junegunn/gv.vim'
-"Plug 'mhinz/vim-signify' " signify is asynchronous now, as well, check it!
-Plug 'airblade/vim-gitgutter' " async alternative to vim-signify
+Plug 'mhinz/vim-signify'
+" chunk text objects
+omap ic <plug>(signify-motion-inner-pending)
+xmap ic <plug>(signify-motion-inner-visual)
+omap ac <plug>(signify-motion-outer-pending)
+xmap ac <plug>(signify-motion-outer-visual)
 
 " Plug 'codeindulgence/vim-tig'
 Plug 'thomasjachmann/vim-tig', { 'branch': 'more_complex_parameters' }
@@ -508,7 +512,7 @@ set synmaxcol=255 " only syntax highlight the first 255 characters of a line, sh
 
 set spelllang= "empty for now to prevent spell checking, later: en,de
 
-"let g:signify_vcs_list = ['git']
+let g:signify_skip = { 'vcs': { 'allow': ['git'] } }
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -903,9 +907,8 @@ set smarttab                           " also delete all spaces on <BS>
 " see http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set timeoutlen=1000 ttimeoutlen=0
 
-" shorten updatetime, mainly needed for gitgutter/signify to enable real time git
-" status signs
-"let g:gitgutter_highlight_lines=1 " make gitgutter highlight lines on hunks
+" shorten updatetime, mainly needed for signify to enable real time git status
+" signs
 set updatetime=100
 
 " allow me to comment stuff, see https://github.com/amix/vimrc
