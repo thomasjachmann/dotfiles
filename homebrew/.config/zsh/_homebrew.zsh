@@ -21,3 +21,6 @@ export HOMEBREW_DISPLAY_INSTALL_TIMES=1
 # always use the internal tools instead of the system ones
 export HOMEBREW_FORCE_VENDOR_RUBY=1
 export HOMEBREW_FORCE_BREWED_GIT=1
+
+# I want to see what's new
+export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1
