@@ -191,38 +191,61 @@
   ;main = <Esc> none
   main = B !@git branch "%(promptBranchname:)" %(commit)
   main = W !git diff --color-words %(commit)^1..%(commit)
+
   # TODO https://github.com/jonas/tig/issues/65 no need for git pbcopy anymore?
   main = c !@git pbcopy %(commit)
   log = c !@git pbcopy %(commit)
   diff = c !@git pbcopy %(commit)
+
   main = C !@git pbcopymessage %(commit)
   log = C !@git pbcopymessage %(commit)
   diff = C !@git pbcopymessage %(commit)
+
   main = I !git rebase --interactive %(commit)^
   log = I !git rebase --interactive %(commit)^
+
   main = g !@git open-commit %(commit) # masking revision graph toggling
   log = g !@git open-commit %(commit) # masking revision graph toggling
+
   status = a !git commit --amend
   stage = a !git commit --amend
+
   status = O !git mdo %(file)
+  stage = O !git mdo %(file)
+
   status = T !git mdt %(file)
+  stage = T !git mdt %(file)
+
   main = S :toggle vertical-split
   status = S :toggle vertical-split
   stage = S :toggle vertical-split
   diff = S :toggle vertical-split
+
   status = c !@git pbcopy %(file)
+
   status = C !git commit
   stage = C !git commit
+
   status = D !rm -i %(file)
   stage = D !rm -i %(file)
+
   main = 7 !git diff --ignore-space-change %(commit)^ %(commit)
+  log = 7 !git diff --ignore-space-change %(commit)^ %(commit)
   diff = 7 !git diff --ignore-space-change %(commit)^ %(commit)
   # same as 7 but without context (to make searching changes easier - fewer false positives)
   main = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
+  log = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
   diff = 0 !git diff --ignore-space-change -U0 %(commit)^ %(commit)
+
   status = A !sh -c 'git add --intent-to-add %(file) && git add -e %(file)'
+  stage = A !sh -c 'git add --intent-to-add %(file) && git add -e %(file)'
+
   status = P !git add -p %(file)
+  stage = P !git add -p %(file)
+
   status = d !git diff %(file)
+  stage = d !git diff %(file)
+
   stash = D ![[ "%(promptDrop-y/n:)" == "y" ]] && echo %(stash)
 
 [tig "color"]
