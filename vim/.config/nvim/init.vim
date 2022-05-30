@@ -697,12 +697,12 @@ let g:fzf_files_options = '--preview "(highlight -O ansi {} || cat {}) 2> /dev/n
 let g:fzf_preview_window = ['right:90%:hidden', 'ctrl-o']
 
 " fzf mapping
+" all _f_files everywhere (also ignored ones)
+map <Leader>tf :FzfFiles<CR>
 " _f_iles known to git
-map <Leader>tf :FzfGitFiles<CR>
+map <Leader>tg :FzfGitFiles<CR>
 " _d_dirty files
 map <Leader>td :FzfGitFiles?<CR>
-" all _F_files everywhere (also ignored ones)
-map <Leader>tF :FzfFiles<CR>
 " _l_ines in the current buffer
 map <Leader>tl :FzfBLines<CR>
 " all _L_ines everywhere (all open buffers)
