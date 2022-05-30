@@ -682,6 +682,7 @@ let g:fzf_action = {
       \ 'ctrl-t': 'tabe'
       \ }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'relative': v:true } }
 
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>', '<2-LeftMouse>']
