@@ -16,10 +16,11 @@
   line-numbers = true
   hyperlinks = true
   light = true
-  side-by-side = true
+  ; side-by-side = true
 
 [diff]
-  colorMoved = default
+  colormoved = default
+  colormovedws = allow-indentation-change
 
 [rebase]
   instructionFormat = "%s (%an <%ae>)"
