@@ -301,6 +301,26 @@ call plug#end()
 
 lua <<EOF
   require('window-picker').setup()
+  require('neo-tree').setup({
+    close_if_last_window = true,
+    default_component_configs = {
+      name = {
+        trailing_slash = true,
+      },
+    },
+    window = {
+      width = 60,
+    },
+    filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+      },
+      group_empty_dirs = true,
+    },
+    buffers = {
+      group_empty_dirs = true,
+    },
+  })
 EOF
 
 " yanking
