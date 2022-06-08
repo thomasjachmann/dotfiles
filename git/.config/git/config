@@ -8,6 +8,9 @@
 
   pager = delta
 
+[init]
+  defaultBranch = main
+
 [interactive]
   diffFilter = delta --color-only
 
@@ -251,5 +254,3 @@
 [tig "color"]
   # taken vom vim-kalisi/colors/kalisi.vim (search: "Normal ctermGB")
   default = 252 238
-[init]
-  defaultBranch = main
