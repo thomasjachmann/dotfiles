@@ -81,7 +81,7 @@
   # branch stuff
   b = branch
   br = branch -vv --sort=-committerdate
-  cp = cherry-pick
+  ch = cherry-pick
   # taken from http://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
   # NOT NEEDED ANYMORE git merge-base does the same
   # oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
