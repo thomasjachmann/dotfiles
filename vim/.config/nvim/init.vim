@@ -310,6 +310,12 @@ lua <<EOF
     },
     window = {
       width = 60,
+      mappings = {
+        -- some commands may take optional config options, see `:h neo-tree-mappings` for details
+        ["a"] = { "add",  config = { show_path = "relative" } },
+        ["c"] = { "copy", config = { show_path = "relative" } },
+        ["m"] = { "move", config = { show_path = "relative" } },
+      },
     },
     filesystem = {
       filtered_items = {
