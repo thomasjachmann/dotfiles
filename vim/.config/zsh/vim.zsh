@@ -1,6 +1,3 @@
-export EDITOR='nvim -f'
-export BUNDLER_EDITOR='tabvim'
-
 # default to nvim
 alias vi='nvim'
 alias vim='nvim'

@@ -1,8 +1,8 @@
 # extend path for homebrew (/usr/local/bin is already in)
-PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
-# and for brew's npm
-PATH=/usr/local/share/npm/bin:$PATH
+# and for brew's npm (if installed)
+[ -d /usr/local/share/npm/bin ] && export PATH=/usr/local/share/npm/bin:$PATH
 
 # prevent homebrew from sending data home
 export HOMEBREW_NO_ANALYTICS=1

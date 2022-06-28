@@ -3,4 +3,4 @@
 # to override executables.
 
 # include ~/bin for local executables
-PATH=~/bin:$PATH
+export PATH=$HOME/bin:$PATH
