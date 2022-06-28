@@ -35,6 +35,7 @@ home)
 install)
   cd $dotfiles
   for package in "$@"; do
+    green "installing $package"
     [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
     stowpackage --restow $package
     [ -x ./$package/install ] && ./$package/install
@@ -48,6 +49,7 @@ install)
 uninstall)
   cd $dotfiles
   for package in "$@"; do
+    green "uninstalling $package"
     stowpackage --delete $package
     sed "/^${package//\//\\/}$/d" ~/.local/dotfiles > ~/.local/dotfiles.new
     mv ~/.local/dotfiles.new ~/.local/dotfiles
@@ -70,6 +72,7 @@ resymlink)
   cd $dotfiles
   packages=$(perl -pe 's/\n/ / unless eof' ~/.local/dotfiles)
   for package in $packages; do
+    green "symlinking $package"
     stowpackage --restow $package
   done
   green "symlinked packages $packages"
@@ -80,6 +83,7 @@ adopt)
   confirm
   cd $dotfiles
   for package in "$@"; do
+    green "adopting $package"
     stowpackage --adopt $package
   done
   green "adopted changes from packages $*"
