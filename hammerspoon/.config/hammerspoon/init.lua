@@ -1,5 +1,7 @@
 hs.hotkey.setLogLevel("warning")
 
+local spoons = require "spoons"
+
 local apps = require "apps"
 local grid = require "grid"
 local hyper = require "hyper"
