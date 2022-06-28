@@ -110,7 +110,7 @@ class CustomKarabiner < Karabiner
     end
     {
       conditions: variable_is(:tmux_modifier, 1),
-      from: from(from_letter, modifiers),
+      from: from(from_letter, **modifiers),
       to: to(*tos)
     }
   end
