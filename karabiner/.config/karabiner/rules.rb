@@ -84,6 +84,7 @@ rule(
   ctrl_b(:v),
   ctrl_b(:v, modifier: :left_control, optional_any: true),
   *%i[h j k l d].map { |letter| ctrl_b(letter) },
+  *%i[h j k l d].map { |letter| ctrl_b(letter, modifier: :shift) },
 )
 
 def parenthesis(key_code, modifier: nil, to_key_code:, to_modifier:, terminals_only: nil)
