@@ -91,6 +91,10 @@ function mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
+function mktcd() {
+  mkcd "$(dirname $1)/$(date +%Y-%m-%d)-$(basename $1)"
+}
+
 function touchx() {
   echo "#!/usr/bin/env bash" >> $1
   chmod 755 $1
