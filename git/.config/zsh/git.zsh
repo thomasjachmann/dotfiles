@@ -5,7 +5,6 @@
 # % means untracked files
 # export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-alias git="LANG=C git"
 alias gti="git"
 alias gut="git"
 alias got="git"

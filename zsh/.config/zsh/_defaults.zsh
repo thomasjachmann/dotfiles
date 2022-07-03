@@ -1,4 +1,5 @@
-LANG=de_DE.UTF-8
+export LANG=C.UTF-8
+export LC_ALL=$LANG
 
 # for tar: exclude ._ files (Mac OS X extended attributes)
 COPYFILE_DISABLE=true
