@@ -193,6 +193,13 @@
   ;generic = <Esc> view-close
   ;main = <Esc> none
   main = B !@git branch "%(promptBranchname:)" %(commit)
+  log = B !@git branch "%(promptBranchname:)" %(commit)
+  diff = B !@git branch "%(promptBranchname:)" %(commit)
+
+  main = T !git tag "%(promptTag:)" %(commit)
+  log = T !git tag "%(promptTag:)" %(commit)
+  diff = T !git tag "%(promptTag:)" %(commit)
+
   main = W !git diff --color-words %(commit)^1..%(commit)
 
   # TODO https://github.com/jonas/tig/issues/65 no need for git pbcopy anymore?
