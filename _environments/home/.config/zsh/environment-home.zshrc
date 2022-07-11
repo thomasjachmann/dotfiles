@@ -3,13 +3,13 @@ function backup-directory() {
 }
 
 function backup-photos() {
-  backup-directory --exclude 'Backups' --exclude 'Photos Previews.lrdata' --exclude 'Photos-2 Previews.lrdata' /Volumes/RedPiglet/Photos/ /Volumes/RedBackup/Photos
-  backup-directory /Volumes/RedPiglet/Ultraschall/ /Volumes/RedBackup/Ultraschall
-  backup-directory /Volumes/RedPiglet/Susen/ /Volumes/RedBackup/Susen
+  backup-directory --exclude 'Backups' --exclude 'Photos Previews.lrdata' --exclude 'Photos-2 Previews.lrdata' /Volumes/RedPiglet/Photos/ /Volumes/OrangeBackup/Photos
+  backup-directory /Volumes/RedPiglet/Ultraschall/ /Volumes/OrangeBackup/Ultraschall
+  backup-directory /Volumes/RedPiglet/Susen/ /Volumes/OrangeBackup/Susen
 }
 
 function backup-dump() {
-  backup-directory /Volumes/RedPiglet/Dump/ /Volumes/RedBackup/Dump
+  backup-directory /Volumes/RedPiglet/Dump/ /Volumes/OrangeBackup/Dump
 }
 
 function backup() {
