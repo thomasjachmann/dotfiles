@@ -363,12 +363,7 @@ function! RunIt(startline, endline) range
   vnew
   setlocal buftype=nofile bufhidden=hide noswapfile nobuflisted
   nmap <buffer> q <C-w>q
-  " exec "silent r ".file
-  if filereadable("Gemfile")
-    exec "silent r !bundle exec ruby ".file
-  else
-    exec "silent r !ruby ".file
-  endif
+  exec "silent r !bundle exec ruby ".file." || ruby ".file
   setlocal nomodifiable
 
   " TODO:
