@@ -1,7 +1,7 @@
 # TODO: Check of fzf-cd-widget can be activated somehow.
 
-# source all zsh files in ~/.config/zsh (sorted alphabetically, no . files)
-for file in ~/.config/zsh/*.zsh; do
+# source all zshrc files in ~/.config/zsh (sorted alphabetically, no . files)
+for file in ~/.config/zsh/*.zshrc; do
   source $file
 done
 
