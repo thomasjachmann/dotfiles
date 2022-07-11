@@ -19,529 +19,112 @@
 	</dict>
 	<key>disabledItems</key>
 	<array>
-		<string>ODLBSearchTemplateItem:http://web.ask.com/web?q=*</string>
-		<string>ODLBSearchTemplateItem:http://developer.apple.com/cgi-bin/search.pl?q=*</string>
+		<string>ODLBSearchTemplateItem:E5035145-1FDD-41E3-A9DA-AE6188624B63</string>
+		<string>ODLBSearchTemplateItem:2DA31B53-BAC7-4479-888F-D43F5D023621</string>
+		<string>ODLBSearchTemplateItem:1503BD7E-DC1E-49D8-8139-A6F1447AA832</string>
+		<string>ODLBSearchTemplateItem:96C00D63-66CD-4AB0-AD9C-48F35767F03F</string>
+		<string>ODLBSearchTemplateItem:B4CAB5B4-DE86-415A-BDE1-E45331DDB252</string>
+		<string>ODLBSearchTemplateItem:75663EB6-1DEA-41B2-897B-EF29B5D3498E</string>
 		<string>ODLBPathItem:~/Library</string>
+		<string>ODLBSearchTemplateItem:081FFCFF-5B19-4656-B1B1-088461F9E16B</string>
+		<string>ODLBSearchTemplateItem:990C35B3-B52B-4813-8ADB-BBE1DF2DB523</string>
 		<string>ODLBPathItem:~/Sites</string>
-		<string>ODLBSearchTemplateItem:http://www.last.fm/music/?q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.cuil.com/search?q=*</string>
-		<string>ODLBSearchTemplateItem:x-man-page://*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://search.msn.com/news/results.aspx?q=*</string>
-		<string>ODLBSearchTemplateItem:x-launchbar:select?abbreviation=*</string>
-		<string>ODLBSearchTemplateItem:http://groups.google.com/groups?q=*</string>
+		<string>ODLBSearchTemplateItem:C307D05D-9840-4C19-9B28-67554FB47E0F</string>
+		<string>ODLBSearchTemplateItem:FB7EBCE1-5CC7-434D-B25D-8DE8B7308552</string>
+		<string>ODLBSearchTemplateItem:0B529DE5-9F8F-4157-93C1-76F356D1F3DF</string>
+		<string>ODLBSearchTemplateItem:02534F88-0AEA-4ECA-8D04-7C6D7D701F4F</string>
+		<string>ODLBSearchTemplateItem:8F556692-C267-4977-824D-96C832110BA5</string>
 		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?composerTerm=*</string>
-		<string>ODLBSearchTemplateItem:http://search.yahoo.co.jp/search?ei=UTF-8&amp;p=*</string>
-		<string>ODLBSearchTemplateItem:http://www.technorati.com/tags/*</string>
+		<string>ODLBSearchTemplateItem:EC430309-6B3C-496D-8978-7A2C8CAC3B66</string>
 		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/search?term=*</string>
-		<string>ODLBSearchTemplateItem:http://images.google.com/images?imgtype=face&amp;q=*</string>
-		<string>ODLBSearchTemplateItem:http://search.msn.com/results.aspx?q=*</string>
-		<string>ODLBSearchTemplateItem:x-launchbar:select?file=*</string>
+		<string>ODLBSearchTemplateItem:C442FD98-6CCB-498E-8C4F-7E2D85551108</string>
+		<string>ODLBSearchTemplateItem:8BF6ECC9-1A7A-48F7-8EDC-CD7434E2763B</string>
+		<string>ODLBSearchTemplateItem:BDDBF240-3C4A-437D-A89D-521E0D66A6DB</string>
 		<string>ODLBPathItem:~/make</string>
+		<string>ODLBSearchTemplateItem:FED01FF7-CDD4-4CFF-8F5C-6F46E403B58F</string>
+		<string>ODLBSearchTemplateItem:3CE61296-FD82-47AE-84B5-A982B6B79D65</string>
+		<string>ODLBSearchTemplateItem:ED6DA4EF-D9C1-416B-A7C4-764FD40856E3</string>
+		<string>ODLBSearchTemplateItem:01D1199A-4FA3-4455-BB41-3D0F7CE0F4A8</string>
+		<string>ODLBSearchTemplateItem:C70AE711-04B5-432A-B129-52EB40737A99</string>
+		<string>ODLBSearchTemplateItem:6C5A7E10-EDE6-4A48-AC6A-93E7803124A0</string>
+		<string>ODLBSearchTemplateItem:E78AC52E-C7BA-4139-BC9B-5085C3F87B63</string>
+		<string>ODLBSearchTemplateItem:EC301A2F-AD0D-4409-B942-85C4651E1466</string>
 		<string>ODLBPathItem:~/bin</string>
-		<string>ODLBSearchTemplateItem:http://translate.google.de/#de|en|*</string>
-		<string>ODLBSearchTemplateItem:http://www.php.net/*</string>
+		<string>ODLBSearchTemplateItem:5B148375-C713-478B-A4F8-B38957871117</string>
+		<string>ODLBSearchTemplateItem:79425581-D288-460A-A5A8-14BC9FE66B23</string>
+		<string>ODLBSearchTemplateItem:3210098C-9980-4ABF-8388-77A3F4CEA6DB</string>
 		<string>ODLBPathItem:~/Desktop</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://www.macupdate.com/search.php?keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://images.search.yahoo.com/search/images?p=*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:44010AF2-87EC-4BE8-B56B-0E4177819276</string>
+		<string>ODLBSearchTemplateItem:F7946864-10BB-419B-B07C-3B999316B7B8</string>
+		<string>ODLBSearchTemplateItem:CCCD903D-638D-4A24-B630-EF8A7609FDAD</string>
+		<string>ODLBSearchTemplateItem:EBED918D-725F-4642-91C2-70109B79C0EE</string>
 		<string>ODLBSearchTemplateItem:http://www.meriam-webster.com/cgi-bin/dictionary?book=Dictionary&amp;va=*</string>
-		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=vid&amp;q=*</string>
 		<string>ODLBSearchTemplateItem:http://www.meriam-webster.com/cgi-bin/thesaurus?book=Thesaurus&amp;va=*</string>
-		<string>ODLBSearchTemplateItem:http://www.technorati.com/explore/*</string>
+		<string>ODLBSearchTemplateItem:4F52DC96-612C-45BE-B6D3-81270CFC4F3E</string>
 		<string>ODLBPathItem:~/Pictures</string>
-		<string>ODLBSearchTemplateItem:http://search.lycos.com/?query=*</string>
-		<string>ODLBSearchTemplateItem:http://www.cocoabuilder.com/search/archive/cocoa?words=*</string>
+		<string>ODLBSearchTemplateItem:BF058FA7-65DD-4DD7-832F-E1E0C6DFD96A</string>
+		<string>ODLBSearchTemplateItem:6E14FA2F-1443-4581-BDAD-A0F0494713A6</string>
+		<string>ODLBSearchTemplateItem:C2DADCA7-42B9-4205-A1FB-C45185652129</string>
+		<string>ODLBSearchTemplateItem:4F77C31A-A5FD-48D5-A599-8D2412B08D82</string>
+		<string>ODLBSearchTemplateItem:2BACB491-CB5F-4A04-88B5-AE180FFE62DF</string>
 		<string>ODLBPathItem:~/backup-test</string>
-		<string>ODLBSearchTemplateItem:afp://*.local</string>
 		<string>ODLBPathItem:~/iPhone</string>
-		<string>ODLBSearchTemplateItem:http://www.altavista.com/audio/results?q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.google.com/search?q=%22*%22</string>
-		<string>ODLBSearchTemplateItem:http://search.ebay.com/*</string>
+		<string>ODLBSearchTemplateItem:8FBE7C8D-F3CC-4AF2-9964-01C3683119F4</string>
+		<string>ODLBSearchTemplateItem:C446B332-9D31-443F-80DC-88DDCCCBFBFA</string>
+		<string>ODLBSearchTemplateItem:2C22AAA1-6EC4-4F60-91E4-C21997F057EA</string>
 		<string>ODLBSearchTemplateItem:http://msxml.excite.com/info.xcite/search/web/*</string>
-		<string>ODLBSearchTemplateItem:http://www.google.co.jp/search?q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.a9.com/*</string>
+		<string>ODLBSearchTemplateItem:6658F0C5-DD3A-4A0E-8EDD-EAB391AA05D8</string>
+		<string>ODLBSearchTemplateItem:2D3F3405-E2C2-4353-BC40-46A4A97D6D4B</string>
+		<string>ODLBSearchTemplateItem:B7829306-7BD5-4329-9055-3452F6CB1179</string>
+		<string>ODLBSearchTemplateItem:EF552FB9-C003-4FD0-BBD1-7C9F354A1026</string>
+		<string>ODLBSearchTemplateItem:A6B9342F-2F64-42CF-83F2-DB92B3FC0150</string>
+		<string>ODLBSearchTemplateItem:166BFD78-5527-47B7-9C10-E334C9A94735</string>
+		<string>ODLBSearchTemplateItem:EF3656D2-4C4F-454C-848C-444B59A5BB5E</string>
 		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm=*</string>
 		<string>ODLBPathItem:~/Music</string>
 		<string>ODLBSearchTemplateItem:http://www.google.com/search?btnI&amp;q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.oanda.com/convert/classic?exch=USD&amp;expr=EUR&amp;value=*</string>
-		<string>ODLBSearchTemplateItem:http://www.youtube.com/results?search_query=*</string>
-		<string>ODLBSearchTemplateItem:http://translate.google.de/#en|de|*</string>
-		<string>ODLBSearchTemplateItem:http://www.cocoabuilder.com/search/archive/xcode?words=*</string>
-		<string>ODLBSearchTemplateItem:http://www.oanda.com/convert/classic?exch=EUR&amp;expr=USD&amp;value=*</string>
-		<string>ODLBSearchTemplateItem:http://search.msn.com/images/results.aspx?q=*</string>
-		<string>ODLBSearchTemplateItem:http://audio.search.yahoo.com/search/audio?p=*</string>
+		<string>ODLBSearchTemplateItem:CEE3EE22-FD58-4006-BB2E-7C9C7787B6CE</string>
+		<string>ODLBSearchTemplateItem:C1E4F03D-0106-44BC-BD37-67B18D8698F9</string>
+		<string>ODLBSearchTemplateItem:EAA54B2E-8B53-4746-8B34-377F902C50FE</string>
+		<string>ODLBSearchTemplateItem:A5F9CF8B-7A8D-4DAE-A90A-34FE4C8CA2E1</string>
 		<string>ODLBPathItem:/Volumes/Macintosh HD</string>
-		<string>ODLBSearchTemplateItem:http://www.technorati.com/blogs/*</string>
-		<string>ODLBSearchTemplateItem:http://video.search.yahoo.com/search/video?p=*</string>
 		<string>ODLBSearchTemplateItem:http://www.macosxhints.com/search.php?query=*&amp;type=stories&amp;mode=search&amp;keyType=all</string>
-		<string>ODLBSearchTemplateItem:http://video.google.com/videosearch?q=*</string>
-		<string>ODLBSearchTemplateItem:http://vivisimo.com/search?query=*</string>
 		<string>ODLBSearchTemplateItem:http://blogsearch.google.com/blogsearch?q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=web&amp;q=*</string>
-		<string>ODLBSearchTemplateItem:http://search.yahoo.com/search?p=*</string>
-		<string>ODLBSearchTemplateItem:http://ja.wiktionary.org/?search=*</string>
+		<string>ODLBSearchTemplateItem:9704C512-3D96-4C30-9D7E-6B41CF72B7A4</string>
+		<string>ODLBSearchTemplateItem:68D96BE1-9D5C-4AC0-B10F-F0B319BDCC14</string>
+		<string>ODLBSearchTemplateItem:64A86411-FCF0-40E9-BC34-5E7FA2202381</string>
 		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?songTerm=*</string>
-		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=img&amp;q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.alltheweb.com/search?cat=mp3&amp;q=*</string>
-		<string>ODLBSearchTemplateItem:http://ja.wikipedia.org/?search=*</string>
-		<string>ODLBSearchTemplateItem:http://www.flickr.com/search/?q=*</string>
+		<string>ODLBSearchTemplateItem:EC14BC18-6AF3-4651-916E-D01EDB6CAF65</string>
+		<string>ODLBSearchTemplateItem:FD6EBE1C-5639-4F3D-80D4-30A1DC9A8CB8</string>
 		<string>ODLBPathItem:~/swap</string>
-		<string>ODLBSearchTemplateItem:http://finance.yahoo.com/q?s=*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.de/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://www.altavista.com/web/results?q=*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
-		<string>ODLBSearchTemplateItem:http://www.versiontracker.com/php/qs.php?str=*</string>
-		<string>ODLBSearchTemplateItem:http://www.amazon.com/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
+		<string>ODLBSearchTemplateItem:75DB44F5-BA50-4372-A18C-87F4207B659F</string>
+		<string>ODLBSearchTemplateItem:182D6B94-BDA7-45F4-9BD0-46589D00F766</string>
 		<string>ODLBSearchTemplateItem:http://www.technorati.com/search/*</string>
-		<string>ODLBSearchTemplateItem:http://dict.leo.org/?search=*</string>
-		<string>ODLBSearchTemplateItem:http://www.altavista.com/image/results?q=*</string>
 		<string>ODLBPathItem:~/Movies</string>
-		<string>ODLBSearchTemplateItem:http://www.openthesaurus.de/overview.php?search=1&amp;word=*</string>
-		<string>ODLBSearchTemplateItem:http://tinyurl.com/create.php?url=*</string>
 		<string>ODLBSearchTemplateItem:itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?albumTerm=*</string>
+		<string>ODLBSearchTemplateItem:B0F37E0F-7857-4346-8D65-7FDA78A2CE69</string>
 	</array>
 	<key>itemIdentifierVersion</key>
-	<integer>5</integer>
+	<integer>4294967303</integer>
 	<key>rules</key>
 	<array>
 		<dict>
-			<key>aliasName</key>
-			<string>Search Templates (UTF-8)</string>
-			<key>className</key>
-			<string>ODLBSearchTemplatesRule</string>
-			<key>templates</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>A9</string>
-					<key>templateURL</key>
-					<string>http://www.a9.com/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Abbreviation Search</string>
-					<key>templateURL</key>
-					<string>x-launchbar:select?abbreviation=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Amazon Deutschland</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.de/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Amazon Deutschland (Bücher)</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.de/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Amazon Deutschland (DVDs)</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.de/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Amazon Deutschland (Musik)</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.de/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Ask Jeeves</string>
-					<key>templateURL</key>
-					<string>http://web.ask.com/web?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Convert EUR to USD</string>
-					<key>templateURL</key>
-					<string>http://www.oanda.com/convert/classic?exch=EUR&amp;expr=USD&amp;value=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Convert USD to EUR</string>
-					<key>templateURL</key>
-					<string>http://www.oanda.com/convert/classic?exch=USD&amp;expr=EUR&amp;value=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Cuil</string>
-					<key>templateURL</key>
-					<string>http://www.cuil.com/search?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>dict.cc</string>
-					<key>templateURL</key>
-					<string>http://www.dict.cc/?s=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>ebay</string>
-					<key>templateURL</key>
-					<string>http://search.ebay.com/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Flickr</string>
-					<key>templateURL</key>
-					<string>http://www.flickr.com/search/?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Go to</string>
-					<key>templateURL</key>
-					<string>x-launchbar:select?file=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Blog Search</string>
-					<key>templateURL</key>
-					<string>http://blogsearch.google.com/blogsearch?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Exact Phrase</string>
-					<key>templateURL</key>
-					<string>http://www.google.com/search?q=%22*%22</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Face Search</string>
-					<key>templateURL</key>
-					<string>http://images.google.com/images?imgtype=face&amp;q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Groups</string>
-					<key>templateURL</key>
-					<string>http://groups.google.com/groups?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Images</string>
-					<key>templateURL</key>
-					<string>http://images.google.com/images?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Japan</string>
-					<key>templateURL</key>
-					<string>http://www.google.co.jp/search?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Maps</string>
-					<key>templateURL</key>
-					<string>http://maps.google.com/maps?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Video</string>
-					<key>templateURL</key>
-					<string>http://video.google.com/videosearch?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>last.fm</string>
-					<key>templateURL</key>
-					<string>http://www.last.fm/music/?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>LEO English-German Dictionary</string>
-					<key>templateURL</key>
-					<string>http://dict.leo.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Lucky Google</string>
-					<key>templateURL</key>
-					<string>http://www.google.com/search?btnI&amp;q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Lycos</string>
-					<key>templateURL</key>
-					<string>http://search.lycos.com/?query=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Mac OS X Hints</string>
-					<key>templateURL</key>
-					<string>http://www.macosxhints.com/search.php?query=*&amp;type=stories&amp;mode=search&amp;keyType=all</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>MacUpdate</string>
-					<key>templateURL</key>
-					<string>http://www.macupdate.com/search.php?keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Manual Page</string>
-					<key>templateURL</key>
-					<string>x-man-page://*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>OpenThesaurus</string>
-					<key>templateURL</key>
-					<string>http://www.openthesaurus.de/overview.php?search=1&amp;word=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search Amazon for Books</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.com/s?ie=UTF8&amp;index=books&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search Amazon for DVDs</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.com/s?ie=UTF8&amp;index=dvd&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search Amazon for Music</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.com/s?ie=UTF8&amp;index=music&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search Amazon.com</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.com/s?ie=UTF8&amp;index=blended&amp;keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search iTunes Store</string>
-					<key>templateURL</key>
-					<string>itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/search?term=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search iTunes Store for Album</string>
-					<key>templateURL</key>
-					<string>itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?albumTerm=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search iTunes Store for Artist</string>
-					<key>templateURL</key>
-					<string>itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search iTunes Store for Composer</string>
-					<key>templateURL</key>
-					<string>itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?composerTerm=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search iTunes Store for Song</string>
-					<key>templateURL</key>
-					<string>itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?songTerm=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search MSN</string>
-					<key>templateURL</key>
-					<string>http://search.msn.com/results.aspx?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search MSN Images</string>
-					<key>templateURL</key>
-					<string>http://search.msn.com/images/results.aspx?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Search MSN News</string>
-					<key>templateURL</key>
-					<string>http://search.msn.com/news/results.aspx?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Technorati Blog Finder</string>
-					<key>templateURL</key>
-					<string>http://www.technorati.com/blogs/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Technorati Explore</string>
-					<key>templateURL</key>
-					<string>http://www.technorati.com/explore/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Technorati Search</string>
-					<key>templateURL</key>
-					<string>http://www.technorati.com/search/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Technorati Tags</string>
-					<key>templateURL</key>
-					<string>http://www.technorati.com/tags/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Vivisimo</string>
-					<key>templateURL</key>
-					<string>http://vivisimo.com/search?query=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Wikipedia Deutsch</string>
-					<key>templateURL</key>
-					<string>http://de.wikipedia.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Wikipedia Japan</string>
-					<key>templateURL</key>
-					<string>http://ja.wikipedia.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Wiktionary</string>
-					<key>templateURL</key>
-					<string>http://en.wiktionary.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Wiktionary Deutsch</string>
-					<key>templateURL</key>
-					<string>http://de.wiktionary.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Wiktionary Japan</string>
-					<key>templateURL</key>
-					<string>http://ja.wiktionary.org/?search=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Wolfram Alpha</string>
-					<key>templateURL</key>
-					<string>http://www.wolframalpha.com/input/?i=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Yahoo!</string>
-					<key>templateURL</key>
-					<string>http://search.yahoo.com/search?p=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Yahoo! Audio</string>
-					<key>templateURL</key>
-					<string>http://audio.search.yahoo.com/search/audio?p=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Yahoo! Images</string>
-					<key>templateURL</key>
-					<string>http://images.search.yahoo.com/search/images?p=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Yahoo! Japan</string>
-					<key>templateURL</key>
-					<string>http://search.yahoo.co.jp/search?ei=UTF-8&amp;p=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Yahoo! Stock Quotes</string>
-					<key>templateURL</key>
-					<string>http://finance.yahoo.com/q?s=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Yahoo! Video</string>
-					<key>templateURL</key>
-					<string>http://video.search.yahoo.com/search/video?p=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>YouTube</string>
-					<key>templateURL</key>
-					<string>http://www.youtube.com/results?search_query=*</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
 			<key>abbreviatedPath</key>
-			<string>~/Projects</string>
+			<string>~/Pictures</string>
 			<key>className</key>
 			<string>ODLBFolderContentsRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>_firefoxHistoryPath</string>
-			<key>aliasName</key>
-			<string>Firefox History</string>
-			<key>className</key>
-			<string>ODLBHistoryRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBCategoriesRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBServicesRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBMusicRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>includeLovedSongsInBestOfLists</key>
-			<integer>0</integer>
-			<key>removeFormationFromArtistName</key>
-			<integer>0</integer>
-			<key>removeParenthesizedTextFromArtistName</key>
-			<integer>0</integer>
-			<key>splitArtists</key>
-			<integer>0</integer>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBWorkflowsRule</string>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBCloudDocumentsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBSnippetsRule</string>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
+			<key>excludeQualifiers</key>
+			<array>
+				<string>iPhoto Library</string>
+			</array>
+			<key>skipQualifiers</key>
+			<array>
+				<string>iPhoto Library</string>
+			</array>
+			<key>typeCollectionIdentifier</key>
+			<string>@image</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
@@ -554,35 +137,41 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>aliasName</key>
-			<string>Unix Directories</string>
 			<key>className</key>
-			<string>ODLBListRule</string>
+			<string>ODLBWorkflowsRule</string>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBUserAccountsRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
-			<key>list</key>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>skipQualifiers</key>
 			<array>
-				<string>/bin</string>
-				<string>/etc</string>
-				<string>/sbin</string>
-				<string>/tmp</string>
-				<string>/usr</string>
-				<string>/usr/bin</string>
-				<string>/usr/local</string>
-				<string>/usr/local/bin</string>
-				<string>/usr/sbin</string>
-				<string>/var</string>
+				<string>./backup-test</string>
+				<string>./Pictures</string>
+				<string>./bin</string>
+				<string>./Movies</string>
+				<string>./iPhone</string>
+				<string>./Library</string>
+				<string>./make</string>
+				<string>./Music</string>
+				<string>./Public</string>
+				<string>./swap</string>
+				<string>./Sites</string>
+				<string>./mindmatters/archiv</string>
+				<string>./Projects</string>
+				<string>./mindmatters/Scheidung/backoffice</string>
+				<string>./Downloads</string>
+				<string>./src</string>
 			</array>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBTagsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBDockRule</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
@@ -597,8 +186,441 @@
 			</array>
 		</dict>
 		<dict>
+			<key>abbreviatedPath</key>
+			<string>_safariHistoryPath</string>
 			<key>className</key>
-			<string>ODLBDevelopmentResourcesRule</string>
+			<string>ODLBHistoryRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBCustomSearchTemplatesRule</string>
+			<key>templates</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>AlltheWeb</string>
+					<key>templateURL</key>
+					<string>http://www.alltheweb.com/search?cat=web&amp;q=*</string>
+					<key>uuid</key>
+					<string>4F52DC96-612C-45BE-B6D3-81270CFC4F3E</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>AlltheWeb Audio</string>
+					<key>templateURL</key>
+					<string>http://www.alltheweb.com/search?cat=mp3&amp;q=*</string>
+					<key>uuid</key>
+					<string>E78AC52E-C7BA-4139-BC9B-5085C3F87B63</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>AlltheWeb Images</string>
+					<key>templateURL</key>
+					<string>http://www.alltheweb.com/search?cat=img&amp;q=*</string>
+					<key>uuid</key>
+					<string>75DB44F5-BA50-4372-A18C-87F4207B659F</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>AlltheWeb Video</string>
+					<key>templateURL</key>
+					<string>http://www.alltheweb.com/search?cat=vid&amp;q=*</string>
+					<key>uuid</key>
+					<string>FB7EBCE1-5CC7-434D-B25D-8DE8B7308552</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>AltaVista Images</string>
+					<key>templateURL</key>
+					<string>http://www.altavista.com/image/results?q=*</string>
+					<key>uuid</key>
+					<string>C1E4F03D-0106-44BC-BD37-67B18D8698F9</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>AltaVista MP3/Audio</string>
+					<key>templateURL</key>
+					<string>http://www.altavista.com/audio/results?q=*</string>
+					<key>uuid</key>
+					<string>01D1199A-4FA3-4455-BB41-3D0F7CE0F4A8</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>AltaVista Web</string>
+					<key>templateURL</key>
+					<string>http://www.altavista.com/web/results?q=*</string>
+					<key>uuid</key>
+					<string>9704C512-3D96-4C30-9D7E-6B41CF72B7A4</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Cocoa Mailing List Archive</string>
+					<key>templateURL</key>
+					<string>http://www.cocoabuilder.com/search/archive/cocoa?words=*</string>
+					<key>uuid</key>
+					<string>2DA31B53-BAC7-4479-888F-D43F5D023621</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Internet Movie Database</string>
+					<key>templateURL</key>
+					<string>http://www.imdb.com/Find?*</string>
+					<key>uuid</key>
+					<string>142BFACC-5DF4-4717-97B1-4D61FAEB492A</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>VersionTracker</string>
+					<key>templateURL</key>
+					<string>http://www.versiontracker.com/php/qs.php?str=*</string>
+					<key>uuid</key>
+					<string>6C5A7E10-EDE6-4A48-AC6A-93E7803124A0</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Xcode Mailing List Archive</string>
+					<key>templateURL</key>
+					<string>http://www.cocoabuilder.com/search/archive/xcode?words=*</string>
+					<key>uuid</key>
+					<string>166BFD78-5527-47B7-9C10-E334C9A94735</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>A9</string>
+					<key>templateURL</key>
+					<string>http://www.a9.com/*</string>
+					<key>uuid</key>
+					<string>B4CAB5B4-DE86-415A-BDE1-E45331DDB252</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Ask Jeeves</string>
+					<key>templateURL</key>
+					<string>http://web.ask.com/web?q=*</string>
+					<key>uuid</key>
+					<string>EF552FB9-C003-4FD0-BBD1-7C9F354A1026</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Convert EUR to USD</string>
+					<key>templateURL</key>
+					<string>http://www.oanda.com/convert/classic?exch=EUR&amp;expr=USD&amp;value=*</string>
+					<key>uuid</key>
+					<string>F7946864-10BB-419B-B07C-3B999316B7B8</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Convert USD to EUR</string>
+					<key>templateURL</key>
+					<string>http://www.oanda.com/convert/classic?exch=USD&amp;expr=EUR&amp;value=*</string>
+					<key>uuid</key>
+					<string>44010AF2-87EC-4BE8-B56B-0E4177819276</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Cuil</string>
+					<key>templateURL</key>
+					<string>http://www.cuil.com/search?q=*</string>
+					<key>uuid</key>
+					<string>C2DADCA7-42B9-4205-A1FB-C45185652129</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>dict.cc</string>
+					<key>templateURL</key>
+					<string>http://www.dict.cc/?s=*</string>
+					<key>uuid</key>
+					<string>59CDD5F1-280F-47FF-ACC3-73443E77707E</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Google Video</string>
+					<key>templateURL</key>
+					<string>http://video.google.com/videosearch?q=*</string>
+					<key>uuid</key>
+					<string>B7829306-7BD5-4329-9055-3452F6CB1179</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Lycos</string>
+					<key>templateURL</key>
+					<string>http://search.lycos.com/?query=*</string>
+					<key>uuid</key>
+					<string>3CE61296-FD82-47AE-84B5-A982B6B79D65</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>MacUpdate</string>
+					<key>templateURL</key>
+					<string>http://www.macupdate.com/search.php?keywords=*</string>
+					<key>uuid</key>
+					<string>2C22AAA1-6EC4-4F60-91E4-C21997F057EA</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Search MSN</string>
+					<key>templateURL</key>
+					<string>http://search.msn.com/results.aspx?q=*</string>
+					<key>uuid</key>
+					<string>CEE3EE22-FD58-4006-BB2E-7C9C7787B6CE</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Search MSN Images</string>
+					<key>templateURL</key>
+					<string>http://search.msn.com/images/results.aspx?q=*</string>
+					<key>uuid</key>
+					<string>990C35B3-B52B-4813-8ADB-BBE1DF2DB523</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Search MSN News</string>
+					<key>templateURL</key>
+					<string>http://search.msn.com/news/results.aspx?q=*</string>
+					<key>uuid</key>
+					<string>0B529DE5-9F8F-4157-93C1-76F356D1F3DF</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Technorati Blog Finder</string>
+					<key>templateURL</key>
+					<string>http://www.technorati.com/blogs/*</string>
+					<key>uuid</key>
+					<string>BDDBF240-3C4A-437D-A89D-521E0D66A6DB</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Technorati Explore</string>
+					<key>templateURL</key>
+					<string>http://www.technorati.com/explore/*</string>
+					<key>uuid</key>
+					<string>E5035145-1FDD-41E3-A9DA-AE6188624B63</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Technorati Tags</string>
+					<key>templateURL</key>
+					<string>http://www.technorati.com/tags/*</string>
+					<key>uuid</key>
+					<string>4F77C31A-A5FD-48D5-A599-8D2412B08D82</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Vivisimo</string>
+					<key>templateURL</key>
+					<string>http://vivisimo.com/search?query=*</string>
+					<key>uuid</key>
+					<string>C307D05D-9840-4C19-9B28-67554FB47E0F</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Wikipedia Deutsch</string>
+					<key>templateURL</key>
+					<string>http://de.wikipedia.org/?search=*</string>
+					<key>uuid</key>
+					<string>FFD08EAC-CED9-45A6-8ABF-9A16A67BC993</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Wikipedia Japan</string>
+					<key>templateURL</key>
+					<string>http://ja.wikipedia.org/?search=*</string>
+					<key>uuid</key>
+					<string>6E14FA2F-1443-4581-BDAD-A0F0494713A6</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Wiktionary</string>
+					<key>templateURL</key>
+					<string>http://en.wiktionary.org/?search=*</string>
+					<key>uuid</key>
+					<string>2C95E49B-2005-4D3D-93C4-B00ADBF672C4</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Wiktionary Deutsch</string>
+					<key>templateURL</key>
+					<string>http://de.wiktionary.org/?search=*</string>
+					<key>uuid</key>
+					<string>527D52D9-F908-4245-921E-2294406793D4</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Wiktionary Japan</string>
+					<key>templateURL</key>
+					<string>http://ja.wiktionary.org/?search=*</string>
+					<key>uuid</key>
+					<string>A5F9CF8B-7A8D-4DAE-A90A-34FE4C8CA2E1</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Yahoo! Audio</string>
+					<key>templateURL</key>
+					<string>http://audio.search.yahoo.com/search/audio?p=*</string>
+					<key>uuid</key>
+					<string>C442FD98-6CCB-498E-8C4F-7E2D85551108</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Amazon MP3</string>
+					<key>templateURL</key>
+					<string>http://www.amazon.de/s?ie=UTF8&amp;url=search-alias%3Ddigital-music&amp;field-keywords=*</string>
+					<key>uuid</key>
+					<string>704C7154-0C78-4AD7-844C-B04ECD3FDE06</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>bam</string>
+					<key>templateURL</key>
+					<string>https://bam.sumcumo.net/*</string>
+					<key>uuid</key>
+					<string>461A405F-343A-41CE-A36C-9D8E0E76DD28</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Google Translate DE-&gt;EN</string>
+					<key>templateURL</key>
+					<string>http://translate.google.de/#de|en|*</string>
+					<key>uuid</key>
+					<string>8FBE7C8D-F3CC-4AF2-9964-01C3683119F4</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Google Translate EN-&gt;DE</string>
+					<key>templateURL</key>
+					<string>http://translate.google.de/#en|de|*</string>
+					<key>uuid</key>
+					<string>BF058FA7-65DD-4DD7-832F-E1E0C6DFD96A</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Man Page (Bwana)</string>
+					<key>templateURL</key>
+					<string>man://*</string>
+					<key>uuid</key>
+					<string>E36D89A4-15BC-415B-A05E-054D77FBCF04</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>railsapi 2.3.4</string>
+					<key>templateURL</key>
+					<string>http://railsapi.com/doc/rails-v2.3.4/?q=*</string>
+					<key>uuid</key>
+					<string>F7E938C1-5D79-41E5-8D4C-54D74F06E680</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>RubyGems.org (exact)</string>
+					<key>templateURL</key>
+					<string>https://rubygems.org/gems/*</string>
+					<key>uuid</key>
+					<string>D962FE10-3189-4247-AFA7-3BE288E7859B</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>RubyGems.org (search)</string>
+					<key>templateURL</key>
+					<string>https://rubygems.org/search?utf8=✓&amp;query=*</string>
+					<key>uuid</key>
+					<string>3AEC5705-209F-4F59-958D-25B56E2EBE90</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>The Ruby Toolbox</string>
+					<key>templateURL</key>
+					<string>https://www.ruby-toolbox.com/search?utf8=✓&amp;q=*</string>
+					<key>uuid</key>
+					<string>2958A121-A244-45A1-836F-101DE57F2DF1</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBSafariCloudTabsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBCategoriesRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBEmojiRule</string>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBPrefPanesRule</string>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Library/Favorites</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBActionsRule</string>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Movies</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>typeCollectionIdentifier</key>
+			<string>@movie</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBCalendarsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>_firefoxHistoryPath</string>
+			<key>aliasName</key>
+			<string>Firefox History</string>
+			<key>className</key>
+			<string>ODLBHistoryRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>_firefoxBookmarksPath</string>
+			<key>aliasName</key>
+			<string>Firefox Bookmarks</string>
+			<key>className</key>
+			<string>ODLBBookmarksRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>abbreviatedPath</key>
+			<string>~/Projects</string>
+			<key>className</key>
+			<string>ODLBFolderContentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBServicesRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
 		</dict>
@@ -631,6 +653,54 @@
 		</dict>
 		<dict>
 			<key>className</key>
+			<string>ODLBNetworkLocationsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBThemesRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBMusicRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+			<key>includeLovedSongsInBestOfLists</key>
+			<integer>0</integer>
+			<key>removeFormationFromArtistName</key>
+			<integer>0</integer>
+			<key>removeParenthesizedTextFromArtistName</key>
+			<integer>0</integer>
+			<key>splitArtists</key>
+			<integer>0</integer>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBListRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBTagsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBCloudDocumentsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBDockRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
 			<string>ODLBContactsRule</string>
 			<key>includeBuddies</key>
 			<integer>1</integer>
@@ -648,88 +718,8 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>abbreviatedPath</key>
-			<string>_firefoxBookmarksPath</string>
-			<key>aliasName</key>
-			<string>Firefox Bookmarks</string>
-			<key>className</key>
-			<string>ODLBBookmarksRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Library/Favorites</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBCalendarsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBNetworkLocationsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBUserAccountsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Pictures</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-			<key>excludeQualifiers</key>
-			<array>
-				<string>iPhoto Library</string>
-			</array>
-			<key>skipQualifiers</key>
-			<array>
-				<string>iPhoto Library</string>
-			</array>
-			<key>typeCollectionIdentifier</key>
-			<string>@image</string>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBThemesRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBEmojiRule</string>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>className</key>
 			<string>ODLBSafariTopSitesRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBPrefPanesRule</string>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBListRule</string>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBReminderListsRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
 		</dict>
@@ -760,14 +750,10 @@
 			<string>@folder</string>
 		</dict>
 		<dict>
-			<key>abbreviatedPath</key>
-			<string>~/Movies</string>
 			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
+			<string>ODLBDevelopmentResourcesRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
-			<key>typeCollectionIdentifier</key>
-			<string>@movie</string>
 		</dict>
 		<dict>
 			<key>abbreviatedPath</key>
@@ -784,176 +770,29 @@
 			<string>@audio</string>
 		</dict>
 		<dict>
+			<key>aliasName</key>
+			<string>Unix Directories</string>
 			<key>className</key>
-			<string>ODLBSafariReadingListRule</string>
+			<string>ODLBListRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
+			<key>list</key>
+			<array>
+				<string>/bin</string>
+				<string>/etc</string>
+				<string>/sbin</string>
+				<string>/tmp</string>
+				<string>/usr</string>
+				<string>/usr/bin</string>
+				<string>/usr/local</string>
+				<string>/usr/local/bin</string>
+				<string>/usr/sbin</string>
+				<string>/var</string>
+			</array>
 		</dict>
 		<dict>
 			<key>className</key>
 			<string>ODLBCyberduckRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBSafariCloudTabsRule</string>
-			<key>enabled</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>~</string>
-			<key>className</key>
-			<string>ODLBFolderContentsRule</string>
-			<key>skipQualifiers</key>
-			<array>
-				<string>./backup-test</string>
-				<string>./Pictures</string>
-				<string>./bin</string>
-				<string>./Movies</string>
-				<string>./iPhone</string>
-				<string>./Library</string>
-				<string>./make</string>
-				<string>./Music</string>
-				<string>./Public</string>
-				<string>./swap</string>
-				<string>./Sites</string>
-				<string>./mindmatters/archiv</string>
-				<string>./Projects</string>
-				<string>./mindmatters/Scheidung/backoffice</string>
-				<string>./Downloads</string>
-				<string>./src</string>
-			</array>
-		</dict>
-		<dict>
-			<key>className</key>
-			<string>ODLBMountedVolumesRule</string>
-		</dict>
-		<dict>
-			<key>aliasName</key>
-			<string>Search Templates (ISO Latin 1)</string>
-			<key>className</key>
-			<string>ODLBSearchTemplatesRule</string>
-			<key>defaultStringEncoding</key>
-			<integer>5</integer>
-			<key>templates</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>AlltheWeb</string>
-					<key>templateURL</key>
-					<string>http://www.alltheweb.com/search?cat=web&amp;q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>AlltheWeb Audio</string>
-					<key>templateURL</key>
-					<string>http://www.alltheweb.com/search?cat=mp3&amp;q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>AlltheWeb Images</string>
-					<key>templateURL</key>
-					<string>http://www.alltheweb.com/search?cat=img&amp;q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>AlltheWeb Video</string>
-					<key>templateURL</key>
-					<string>http://www.alltheweb.com/search?cat=vid&amp;q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>AltaVista Images</string>
-					<key>templateURL</key>
-					<string>http://www.altavista.com/image/results?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>AltaVista MP3/Audio</string>
-					<key>templateURL</key>
-					<string>http://www.altavista.com/audio/results?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>AltaVista Web</string>
-					<key>templateURL</key>
-					<string>http://www.altavista.com/web/results?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Apple Developer Connection</string>
-					<key>templateURL</key>
-					<string>http://developer.apple.com/cgi-bin/search.pl?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Cocoa Mailing List Archive</string>
-					<key>templateURL</key>
-					<string>http://www.cocoabuilder.com/search/archive/cocoa?words=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Connect to Local AFP Server</string>
-					<key>templateURL</key>
-					<string>afp://*.local</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Excite</string>
-					<key>templateURL</key>
-					<string>http://msxml.excite.com/info.xcite/search/web/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Internet Movie Database</string>
-					<key>templateURL</key>
-					<string>http://www.imdb.com/Find?*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Make TinyURL</string>
-					<key>templateURL</key>
-					<string>http://tinyurl.com/create.php?url=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Merriam-Webster Dictionary</string>
-					<key>templateURL</key>
-					<string>http://www.merriam-webster.com/cgi-bin/dictionary?book=Dictionary&amp;va=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Merriam-Webster Thesaurus</string>
-					<key>templateURL</key>
-					<string>http://www.merriam-webster.com/cgi-bin/thesaurus?book=Thesaurus&amp;va=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>PHP Documentation</string>
-					<key>templateURL</key>
-					<string>http://www.php.net/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>VersionTracker</string>
-					<key>templateURL</key>
-					<string>http://www.versiontracker.com/php/qs.php?str=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Xcode Mailing List Archive</string>
-					<key>templateURL</key>
-					<string>http://www.cocoabuilder.com/search/archive/xcode?words=*</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>abbreviatedPath</key>
-			<string>_safariHistoryPath</string>
-			<key>className</key>
-			<string>ODLBHistoryRule</string>
 			<key>enabled</key>
 			<integer>0</integer>
 		</dict>
@@ -969,77 +808,42 @@
 			<string>ODLBApplicationsRule</string>
 		</dict>
 		<dict>
-			<key>aliasName</key>
-			<string>TJ Search Templates (UTF-8)</string>
 			<key>className</key>
-			<string>ODLBSearchTemplatesRule</string>
-			<key>templates</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>Amazon MP3</string>
-					<key>templateURL</key>
-					<string>http://www.amazon.de/s?ie=UTF8&amp;url=search-alias%3Ddigital-music&amp;field-keywords=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>bam</string>
-					<key>templateURL</key>
-					<string>https://bam.sumcumo.net/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Translate DE-&gt;EN</string>
-					<key>templateURL</key>
-					<string>http://translate.google.de/#de|en|*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Google Translate EN-&gt;DE</string>
-					<key>templateURL</key>
-					<string>http://translate.google.de/#en|de|*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Man Page (Bwana)</string>
-					<key>templateURL</key>
-					<string>man://*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>railsapi 2.3.4</string>
-					<key>templateURL</key>
-					<string>http://railsapi.com/doc/rails-v2.3.4/?q=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>RubyGems.org (exact)</string>
-					<key>templateURL</key>
-					<string>https://rubygems.org/gems/*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>RubyGems.org (search)</string>
-					<key>templateURL</key>
-					<string>https://rubygems.org/search?utf8=✓&amp;query=*</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>The Ruby Toolbox</string>
-					<key>templateURL</key>
-					<string>https://www.ruby-toolbox.com/search?utf8=✓&amp;q=*</string>
-				</dict>
-			</array>
+			<string>ODLBSnippetsRule</string>
+			<key>subsearchOnly</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>className</key>
-			<string>ODLBActionsRule</string>
-			<key>subsearchOnly</key>
-			<integer>1</integer>
+			<string>ODLBReminderListsRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBManagedSearchTemplatesRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBMountedVolumesRule</string>
+		</dict>
+		<dict>
+			<key>className</key>
+			<string>ODLBSafariReadingListRule</string>
+			<key>enabled</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>typeCollections</key>
 	<array>
+		<dict>
+			<key>definition</key>
+			<string>htm, html, htmld</string>
+			<key>identifier</key>
+			<string>1</string>
+			<key>name</key>
+			<string>HTML Files</string>
+		</dict>
 		<dict>
 			<key>definition</key>
 			<string>'CWWP', cwk</string>
@@ -1058,14 +862,6 @@
 		</dict>
 		<dict>
 			<key>definition</key>
-			<string>htm, html, htmld</string>
-			<key>identifier</key>
-			<string>1</string>
-			<key>name</key>
-			<string>HTML Files</string>
-		</dict>
-		<dict>
-			<key>definition</key>
 			<string>c, cpp, h, java, m, nib, php, php3, php4, pl</string>
 			<key>identifier</key>
 			<string>2</string>
@@ -1074,6 +870,6 @@
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>18</integer>
+	<integer>19</integer>
 </dict>
 </plist>
