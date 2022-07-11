@@ -1,6 +1,28 @@
-set half_page_scroll=1
-set overlap=1
+# see "Other configuration variables"
+# on https://raw.githubusercontent.com/andmarti1424/sc-im/freeze/src/doc
 
+# automatically recalculate values, not just after execution of an '@' command
+set autocalc
+
+# make typing digit start numeric value entry instead of actinnng as command multiplier
+set numeric
+
+# what do do after entry: 0 nothing, j move down, l move right
+# set newline_action=?
+
+# let long text overflow into next cell, otherwise displayed as *
+set overlap
+
+# let long text be truncated, otherwise displayed as *
+# set truncate
+
+# scroll half instead of full page
+set half_page_scroll
+
+# ignore case in searches with /
+set ignorecase
+
+# key mappings
 nmap ",w" ":w<CR>"
 nmap "ZZ" ":x<CR>"
 nmap "<C-u>" "<PGUP>"
