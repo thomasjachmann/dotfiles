@@ -7,5 +7,5 @@ set -e
 
 nvim -c PlugInstall -c qall
 
-cp -pr $(dirname $0)/support/OpenInNvim.app /Applications
-cp -pr $(dirname $0)/support/VimWiki.app /Applications
+cp -prf $(dirname $0)/support/OpenInNvim.app /Applications
+cp -prf $(dirname $0)/support/VimWiki.app /Applications
