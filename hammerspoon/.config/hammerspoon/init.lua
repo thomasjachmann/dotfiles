@@ -39,6 +39,7 @@ local hyperMappings = {
   ["9"] = hs.grid.pushWindowRight,
 
   ["0"] = ticktrack.toggle,
+  [{"shift", "0"}] = ticktrack.permanent,
   ["ß"] = devdocs.toggle, -- ? for help
 
   a = apps.launch("Adium"),

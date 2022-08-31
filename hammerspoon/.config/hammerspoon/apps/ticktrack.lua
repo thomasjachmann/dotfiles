@@ -1,8 +1,14 @@
 local ticktrack = {}
 
 local webview = nil
+local storedKeepOpen = nil
 
-function ticktrack.toggle()
+function ticktrack.permanent()
+  ticktrack.toggle({keepOpen=true})
+end
+
+function ticktrack.toggle(keepOpen)
+  storedKeepOpen = keepOpen
   if webview == nil then
     rect = hs.screen.primaryScreen():frame()
     rect.x = rect.w - 560
@@ -11,7 +17,7 @@ function ticktrack.toggle()
     webview:url("https://ticktrack.herokuapp.com")
     webview:behavior(hs.drawing.windowBehaviors.moveToActiveSpace)
     webview:windowCallback(function(event, webview, state)
-      if event == "focusChange" and state == false then
+      if not storedKeepOpen and event == "focusChange" and state == false then
         webview:hide()
       end
     end)
