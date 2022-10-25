@@ -1,14 +1,5 @@
 " The following settings are taken from the example .vimrc (see end of file)
 
-" see http://neovim.io/news/2022/04#filetypelua
-" TODO: might be obsolete (because the default) in NVIM 0.8
-if has('nvim-0.8')
-  " err is not a method, but it succeeds in displaying the message properly...
-  err "CHECK g:do_filetype_lua necessity in your init.vim"
-endif
-let g:do_filetype_lua = 1
-let g:did_load_filetypes = 0
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -325,6 +316,10 @@ lua <<EOF
     },
     buffers = {
       group_empty_dirs = true,
+    },
+    source_selector = {
+      winbar = true,
+      statusline = false
     },
   })
 EOF
@@ -756,8 +751,8 @@ augroup END
 
 " configure NeoTree mappings
 map <Leader>nt :Neotree source=filesystem<CR>
-map <Leader>ns :Neotree source=git_status<CR>
-map <Leader>nb :Neotree source=buffers position=float<CR>
+map <Leader>ng :Neotree source=git_status<CR>
+map <Leader>nb :Neotree source=buffers<CR>
 map <Leader>nf :Neotree reveal_file=%<CR>
 map <Leader>nc :Neotree close<CR>
 
