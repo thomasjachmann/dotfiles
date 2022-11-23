@@ -18,7 +18,6 @@
   navigate = true
   line-numbers = true
   hyperlinks = true
-  light = true
   ; side-by-side = true
 
 [diff]
