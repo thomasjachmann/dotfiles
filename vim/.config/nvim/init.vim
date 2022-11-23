@@ -410,7 +410,7 @@ lua <<EOF
       },
     },
     window = {
-      width = 60,
+      width = 50,
       mappings = {
         -- some commands may take optional config options, see `:h neo-tree-mappings` for details
         ["a"] = { "add",  config = { show_path = "relative" } },
