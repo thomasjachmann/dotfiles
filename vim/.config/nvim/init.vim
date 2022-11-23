@@ -763,10 +763,14 @@ let g:grep_cmd_options = '--with-filename --no-heading --vimgrep --hidden --sort
 
 " project wide search
 let g:grepper = {}            " initialize g:grepper with empty dictionary
-let g:grepper.prompt_text = '$t> '
+let g:grepper.highlight = 1
+let g:grepper.simple_prompt = 1
 " TODO use g:grepper configuration for this, see grepper-tools
-map <Leader>f :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --hidden --sort-files --smart-case<CR>
-map <Leader>F :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --hidden --sort-files --case-sensitive<CR>
+map <Leader>f :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --max-columns 160 --max-columns-preview --hidden --sort-files --smart-case<CR>
+map <Leader>F :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --max-columns 160 --max-columns-preview --hidden --sort-files --case-sensitive<CR>
+map <Leader>a :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --max-columns 160 --max-columns-preview --hidden --sort-files --smart-case --no-ignore<CR>
+map <Leader>r :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --max-columns 160 --max-columns-preview --hidden --sort-files --smart-case --type ruby<CR>
+map <Leader>R :Grepper -tool rg -highlight -grepprg rg -H --no-heading --vimgrep --max-columns 160 --max-columns-preview --hidden --sort-files --case-sensitive --type ruby<CR>
 " not needed, just hit return with an empty prompt and it will search cword: map <Leader>* :Grepper -tool rg -highlight -cword -noprompt<CR>
 " TODO see help grepper
 " nmap gs  <plug>(GrepperOperator)
