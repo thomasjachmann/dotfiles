@@ -1,4 +1,4 @@
-alias reload="say-and-execute source ~/.zshrc"
+alias reload="exec zsh"
 function edit() {
   if [[ "$1" != "" && -f ~/.config/zsh/$1.zsh ]]; then
     say-and-execute vi ~/.config/zsh/$1.zsh
