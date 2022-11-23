@@ -123,7 +123,7 @@ function return-code() {
 }
 
 function current-time() {
-  echo "%{%F{$offwhite}%K{$mid}%} %* %{%b%f%k%}"
+  echo "%{%F{$dark}%K{$light}%} %* %{%b%f%k%}"
 }
 
 function current-user() {
@@ -140,5 +140,23 @@ function mode-prompt() {
   echo "${${KEYMAP/vicmd/$zsh_theme_mode_prompt_normal}/(main|viins)/}"
 }
 
-PROMPT='$(return-code)$(current-time)$(current-user)$(current-path)
+PROMPT='$(return-code)$(current-time)$(current-path)
 $(git-prompt)$(mode-prompt)$ '
+
+# TODO: This is just temporary to create a clean terminal for presentations.
+function present() {
+  # deactivate general status
+  tmux set status off
+  # deactivate pane status
+  tmux set pane-border-status off
+  # don't highlight active pane border
+  tmux set pane-active-border-style "bg=#a0a0a0 fg=#a0a0a0"
+  # undim inactive tmux pane(s) in current window
+  tmux set window-style "bg=#404042,fg=#b5b5b5"
+  # define minimal prompt
+  export PROMPT="%(?..%{%F{$white}%K{$red}%} ⚡ %?  %{%b%f%k%})%(?.%{%F{$green}%}.%{%F{$red}%})❯%{%b%f%k%} "
+  # deactivate right prompt
+  unset RPROMPT
+  clear
+  tmux clear-history
+}
