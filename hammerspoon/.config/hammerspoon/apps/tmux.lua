@@ -1,6 +1,7 @@
 local tmux = {}
 
 local apps = require "apps"
+local kitty = require "apps.kitty"
 
 -- TODO: Use python to script iTerm2: https://iterm2.com/python-api/
 
@@ -13,8 +14,7 @@ function exec(cmd)
   return output:match("(.-)%s*$")
 end
 
-local tmux_cmd = "/usr/local/bin/tmux -L kitty "
-local kitty_cmd = "/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock "
+tmux.cmd = "/usr/local/bin/tmux -L kitty"
 
 -- Returns a multiline string where each line is a tmux pane with the requested
 -- command as main process in the format:
@@ -27,12 +27,12 @@ local kitty_cmd = "/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock "
 -- * tmux pane ID
 -- * main process
 function find(cmd)
-  local found = exec(tmux_cmd .. "list-panes -a -F '#{session_id}:#{window_active}#{pane_active} #{window_id} #{pane_id} #{pane_current_command}' | grep " .. cmd)
+  local found = exec(tmux.cmd .. " list-panes -a -F '#{session_id}:#{window_active}#{pane_active} #{window_id} #{pane_id} #{pane_current_command}' | grep " .. cmd)
 
   clientPids = {}
   return found:gsub("($%d+)", function(sessionID)
     if clientPids[sessionID] == nil then
-      clientPids[sessionID] = exec(tmux_cmd .. "list-clients -t '" .. sessionID .. "' -F '#{client_pid}'")
+      clientPids[sessionID] = exec(tmux.cmd .. " list-clients -t '" .. sessionID .. "' -F '#{client_pid}'")
     end
     return clientPids[sessionID]
   end)
@@ -49,7 +49,7 @@ function tmux.activate(cmd, opts)
       return false
     end
 
-    activePid = exec(kitty_cmd .. "ls | /usr/local/bin/jq '.[].tabs | .[].windows | map(select(.is_focused)) | .[].pid'")
+    activePid = exec(kitty.cmd .. " ls | /usr/local/bin/jq '.[].tabs | .[].windows | map(select(.is_focused)) | .[].pid'")
     local panes = {}
     local total = 0
     local active = nil
@@ -102,8 +102,8 @@ function tmux.activate(cmd, opts)
     end
 
     panes[active]:gsub("(.*):[01][01] (@[0-9]+) (%%[0-9]+)", function(clientPid, windowID, paneID)
-      exec(kitty_cmd .. "focus-window --no-response --match pid:" .. clientPid)
-      exec(tmux_cmd .. "select-window -t '" .. windowID .. "' && " .. tmux_cmd .. "select-pane -t '" .. paneID .. "'")
+      exec(kitty.cmd .. " focus-window --no-response --match pid:" .. clientPid)
+      exec(tmux.cmd .. " select-window -t '" .. windowID .. "' && " .. tmux.cmd .. " select-pane -t '" .. paneID .. "'")
     end)
 
     return true

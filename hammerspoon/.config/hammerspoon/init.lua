@@ -8,6 +8,7 @@ local hyper = require "hyper"
 local scrn = require "scrn"
 
 local tmux = require "apps.tmux"
+local kitty = require "apps.kitty"
 local ticktrack = require "apps.ticktrack"
 local devdocs = require "apps.devdocs"
 
@@ -70,9 +71,8 @@ local hyperMappings = {
   r = tmux.activate("ruby"), -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal
-  [{"shift", "t"}] = apps.launchOrNewWindow("kitty", {newWindowFn=function()
-    os.execute("/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock launch --type=os-window")
-  end}),
+  [{"shift", "t"}] = kitty.focusOrLaunch(),
+  [{"alt", "t"}] = kitty.focusOrLaunch{shell=true},
   [{"shift", "w"}] = function()
     hs.wifi.setPower(hs.wifi.currentNetwork() == nil)
   end,
