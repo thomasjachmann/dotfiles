@@ -166,6 +166,7 @@
 
 [push]
   autoSetupRemote = true
+  followTags = true
 
 [pager]
   stash = false
