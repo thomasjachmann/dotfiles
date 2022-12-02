@@ -165,7 +165,7 @@
   conflictstyle = diff3
 
 [push]
-  default = tracking
+  autoSetupRemote = true
 
 [pager]
   stash = false
