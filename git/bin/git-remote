@@ -13,6 +13,10 @@
 
 set -e
 
+default-branch() {
+  git config --get init.defaultBranch || echo -n "main"
+}
+
 usage() {
   cat << EOF
 usage: git $GIT_REMOTE_NAME command [command arg]
@@ -24,7 +28,7 @@ COMMANDS:
   finish,fin            finishes a feature branch:
                         * push to remote "origin"
                         * open the web UI to create a pull-request
-                        * checkout branch "master"
+                        * checkout branch "$(default-branch)"
                         * delete the feature branch
 EOF
 }
@@ -34,7 +38,7 @@ function remote() {
   set -e
   # just to make sure we're inside a git repository and exit accordingly if not
   git remote -v show > /dev/null
-  local remote=$(git remote -v show | grep "@$GIT_REMOTE_REMOTE.* (fetch)$" | head -n 1 | sed "s/^.*@$GIT_REMOTE_REMOTE:\(.*\)\(\.git\).*$/\1/")
+  local remote=$(git remote -v show | grep "@$GIT_REMOTE_REMOTE.* (fetch)$" | head -n 1 | sed "s/^.*@\($GIT_REMOTE_REMOTE\):\(.*\)\(\.git\).*$/\1\/\2/")
   [ -z "$remote" ] && (echo "fatal: No remote pointing to $GIT_REMOTE_REMOTE:" 1>&2; git remote -v show 1>&2; exit 1)
   echo $remote
 }
@@ -76,13 +80,13 @@ open-file|file|f)
   ;;
 
 finish|fin)
-  url=${GIT_REMOTE_CREATE_PULL_REQUEST_URL/\$target/master}
+  url=${GIT_REMOTE_CREATE_PULL_REQUEST_URL/\$target/$(default-branch)}
 
   remote=$(remote)
   url=${url/\$remote/$remote}
 
   branch=$(git rev-parse --abbrev-ref HEAD)
-  [ "$branch" == "master" ] && (echo "fatal: cannot create pull request from master branch" 1>&2; exit 1)
+  [ "$branch" == "$(default-branch)" ] && (echo "fatal: cannot create pull request from $(default-branch) branch" 1>&2; exit 1)
   url=${url/\source/$branch}
 
   # TODO prepopulate title, description and maybe some more?
@@ -91,7 +95,7 @@ finish|fin)
   git push -u origin $branch
   open $url
 
-  git checkout master
+  git checkout $(default-branch)
   git branch -d $branch || git checkout $branch
   ;;
 

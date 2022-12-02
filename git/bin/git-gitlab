@@ -1,0 +1,7 @@
+#!/bin/bash
+GIT_REMOTE_NAME=gitlab \
+GIT_REMOTE_REMOTE="gitlab.*" \
+GIT_REMOTE_OPEN_COMMIT_URL='https://$remote/-/commit/$sha1' \
+GIT_REMOTE_OPEN_FILE_URL='https://$remote/-/blob/$sha1/$path' \
+GIT_REMOTE_CREATE_PULL_REQUEST_URL='https://$server/$remote/-/merge_requests/new?merge_request%5Bsource_branch%5D=$source' \
+$(dirname $0)/git-remote "$@"

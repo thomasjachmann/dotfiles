@@ -131,9 +131,9 @@
   ps-f = push --force-with-lease
   pso = !sh -c 'git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD):$(git rev-parse --abbrev-ref HEAD)'
   finish = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "master" ]] && git push -u origin $BRANCH && hub pull-request -o && git co master && git b -d $BRANCH'
-  open-commit = !sh -c 'git github open-commit $0 || git bitbucket open-commit $0'
+  open-commit = !sh -c 'git gitlab open-commit $0 || git github open-commit $0 || git bitbucket open-commit $0'
   # open-file doesn't work yet
-  open-file = !sh -c 'git github open-file $0 || git bitbucket open-file $0'
+  open-file = !sh -c 'git gitlab open-file $0 || git github open-file $0 || git bitbucket open-file $0'
 
   # miscellany
   fs = !git fetch && git s
@@ -151,8 +151,9 @@
   open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
 
   # custom command integration
-  bb = bitbucket
   gh = github
+  gl = gitlab
+  bb = bitbucket
 
 [color]
   status = auto

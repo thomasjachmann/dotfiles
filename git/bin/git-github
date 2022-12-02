@@ -1,8 +1,8 @@
 #!/bin/bash
 GIT_REMOTE_NAME=github \
 GIT_REMOTE_REMOTE=github.com \
-GIT_REMOTE_OPEN_COMMIT_URL='https://github.com/$remote/commit/$sha1' \
-GIT_REMOTE_OPEN_FILE_URL='https://github.com/$remote/blob/$sha1/$path' \
+GIT_REMOTE_OPEN_COMMIT_URL='https://$remote/commit/$sha1' \
+GIT_REMOTE_OPEN_FILE_URL='https://$remote/blob/$sha1/$path' \
 GIT_REMOTE_CREATE_PULL_REQUEST_URL='https://github.com/$remote/compare/$source?expand=1' \
 $(dirname $0)/git-remote "$@"
 
