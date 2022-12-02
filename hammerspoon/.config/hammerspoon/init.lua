@@ -68,6 +68,8 @@ local hyperMappings = {
   n = apps.launch("Tweetbot"), -- n for noise
   o = apps.launch("Opera"),
   p = apps.launch("Trello"), -- p for project management (temporary until I've figured out how to do working SSBs)
+  q = kitty.focusOrLaunch{title="taskwarrior-tui", cmd="taskwarrior-tui"},
+  [{"shift", "q"}] = kitty.focusOrLaunch{title="taskwarrior", cmd="tasksh", text="next\n"},
   r = tmux.activate("ruby"), -- r anything that's running ruby (rails server, guard, formeman, rails console)
   s = apps.launch("Skype"),
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal

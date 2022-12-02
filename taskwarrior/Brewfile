@@ -1,2 +1,3 @@
 brew "task"
 brew "tasksh"
+brew "taskwarrior-tui"
