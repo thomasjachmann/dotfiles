@@ -1,2 +1,5 @@
 cask "rancher"
 brew "rancher-cli"
+
+tap "ykursadkaya/openlens"
+cask "openlens"

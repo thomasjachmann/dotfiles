@@ -75,6 +75,7 @@ local hyperMappings = {
   t = apps.launch("kitty", {noToggle=true}), -- t for terminal
   [{"shift", "t"}] = kitty.focusOrLaunch(),
   [{"alt", "t"}] = kitty.focusOrLaunch{shell=true},
+  u = apps.launch("OpenLens"), -- u for U got to be kidding me: last free shortcut!
   [{"shift", "w"}] = function()
     hs.wifi.setPower(hs.wifi.currentNetwork() == nil)
   end,
