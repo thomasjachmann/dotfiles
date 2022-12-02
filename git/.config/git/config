@@ -216,6 +216,7 @@
 
   main = g !@git open-commit %(commit) # masking revision graph toggling
   log = g !@git open-commit %(commit) # masking revision graph toggling
+  blame = g !@git open-commit %(commit) # masking grep
 
   status = a !git commit --amend
   stage = a !git commit --amend
