@@ -316,8 +316,8 @@ augroup END
 Plug 'AndrewRadev/splitjoin.vim'
 
 " snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" TODO: Plug 'SirVer/ultisnips'
+" TODO: Plug 'honza/vim-snippets'
 
 " syntaxes
 Plug 'cakebaker/scss-syntax.vim'
