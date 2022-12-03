@@ -32,6 +32,8 @@ nnoremap <Leader>ct :ColorToggle<CR>
 vnoremap <Leader>ct :'<,'>ColorToggle<CR>
 Plug 'ntpeters/vim-better-whitespace'
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 " ASYNC stuff: http://hew.tools/blog/posts/asynchronous-neovim-in-2016/
 
 " navigation
