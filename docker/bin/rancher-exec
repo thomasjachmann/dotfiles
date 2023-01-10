@@ -1,0 +1,93 @@
+#!/bin/bash
+
+data_dir=${XDG_DATA_HOME-~/.local/share}/rancher-exec
+mkdir -p $data_dir
+
+function get_data() {
+  local data=$(cat $data_dir/$1 2>/dev/null)
+  [ -z "$data" ] && data=$2
+  echo $data
+}
+
+function set_data() {
+  echo "$2" > $data_dir/$1
+}
+
+function rke() {
+  set -x
+  rancher kubectl exec \
+    --stdin \
+    --tty \
+    -n $namespace \
+    $pod \
+    -- "$@"
+}
+
+##################################################
+## select namespace ##############################
+##################################################
+previous_namespace=$(get_data previous_namespace "")
+namespace=$(
+  rancher namespace list |
+  awk 'NR > 1 { print $1; }' |
+  fzf --prompt="namespace> " --query="$previous_namespace"
+)
+set -e
+[ -z "$namespace" ] && (echo "no namespace selected" 1>&2; exit 1)
+set +e
+set_data previous_namespace "$namespace"
+
+##################################################
+## select pod ####################################
+##################################################
+previous_pod=$(get_data previous_pod backoffice)
+pod=$(
+  rancher kubectl get pods -n $namespace |
+  awk 'NR > 1 { print $1; }' |
+  fzf --prompt="pod> " --query="$previous_pod"
+)
+set -e
+[ -z "$pod" ] && (echo "no pod selected" 1>&2; exit 1)
+set +e
+set_data previous_pod "$pod"
+
+##################################################
+## select command ################################
+##################################################
+cmd=$1
+[ -z "$cmd" ] && cmd=$(
+  previous_cmd=$(get_data previous_cmd "")
+  echo -e "sh\nbash\nconsole\nsandbox" |
+  fzf --prompt="exec> " --query="$previous_cmd"
+)
+set -e
+[ -z "$cmd" ] && (echo "no command selected" 1>&2; exit 1)
+set +e
+set_data previous_cmd "$cmd"
+
+case $cmd in
+  sh)
+    echo "starting sh on pod $pod in namespace $namespace"
+    rke /bin/sh
+    ;;
+
+  bash | b)
+    echo "starting bash on pod $pod in namespace $namespace"
+    rke /bin/bash
+    ;;
+
+  console | c)
+    echo "starting rails console on pod $pod in namespace $namespace"
+    rke /bin/bash -c '[ -x bin/rails ] && bin/rails c || bundle exec rails c'
+    ;;
+
+  sandbox | s)
+    echo "starting rails sandbox console on pod $pod in namespace $namespace"
+    rke /bin/bash -c '[ -x bin/rails ] && bin/rails c -s || bundle exec rails c -s'
+    ;;
+
+  *)
+    echo "unknown command $cmd" 1>&2
+    exit 1
+    ;;
+esac

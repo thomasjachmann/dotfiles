@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+require "open3"
+
+Project = Struct.new(:cluster, :id, :name, :desc)
+
+# read in current cluster
+cluster = `rancher cluster | grep '^*'`.chomp.split(/ +/)[1]
+
+# read in projects
+projects = []
+Open3.popen3("rancher context switch") do |stdin, stdout, stderr, wait_thr|
+  line = nil
+  while line != "Select a Project:"
+    line = ""
+    while line != "Select a Project:" && (char = stdout.getc) != "\n"
+      line << char
+    end
+    projects << Project.new(*line.split(/ {2,}/)[1..].map(&:strip)) if line =~ /^[0-9]/
+  end
+  wait_thr.kill
+end
+
+# generate tabular data
+lengths = { id: 0, cluster: 0, name: 0, desc: 0 }
+projects.each do |project|
+  lengths.keys.each do |attr|
+    lengths[attr] = [lengths[attr], project.send(attr)&.length].compact.max
+  end
+end
+tabular = projects.to_h do |project|
+  [
+    lengths.map do |attr, length|
+      (project.send(attr) || "").ljust(length)
+    end.join(" | "),
+    project
+  ]
+end
+
+# let user make a choice
+choice = `echo "#{tabular.keys.join("\n").gsub(/"/, '\"')}" | fzf --prompt="project (current cluster preselected)> " --query="#{cluster}"`.chomp
+
+# switch context
+if choice != ""
+  project = tabular[choice]
+  cmd = "rancher context switch #{project.id}"
+  puts cmd
+  `#{cmd}`
+end

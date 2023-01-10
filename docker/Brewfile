@@ -9,6 +9,8 @@ brew "docker-compose"
 brew "k3d"
 brew "kubernetes-cli"
 
+# used for ~/bin/rancher-*
+# TODO: replace with pure kubectl
 brew "rancher-cli"
 
 tap "ykursadkaya/openlens"
