@@ -1,4 +1,14 @@
-cask "rancher"
+# runtime, comes with `lima nerdctl ...`
+brew "colima"
+
+# docker CLI tools
+brew "docker"
+brew "docker-compose"
+
+# k8s CLI tools
+brew "k3d"
+brew "kubernetes-cli"
+
 brew "rancher-cli"
 
 tap "ykursadkaya/openlens"
