@@ -296,7 +296,7 @@ function! CommitAndPush()
 endfunction
 augroup vimwiki_custom_mappings
   autocmd!
-  autocmd FileType vimwiki noremap <Leader>d :VimwikiMakeDiaryNote<CR>
+  autocmd FileType vimwiki noremap <Leader>d :VimwikiTabMakeDiaryNote<CR>
   autocmd FileType vimwiki noremap <Leader>c :call ToggleCalendar()<CR>
   autocmd FileType vimwiki noremap <Leader>gp :call CommitAndPush()<CR>
 augroup END
