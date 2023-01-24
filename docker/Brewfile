@@ -3,6 +3,7 @@ brew "colima"
 
 # docker CLI tools
 brew "docker"
+brew "docker-credential-helper"
 brew "docker-compose"
 
 # k8s CLI tools
