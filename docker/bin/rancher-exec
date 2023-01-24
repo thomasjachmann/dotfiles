@@ -30,7 +30,7 @@ previous_namespace=$(get_data previous_namespace "")
 namespace=$(
   rancher namespace list |
   awk 'NR > 1 { print $1; }' |
-  fzf --prompt="namespace> " --query="$previous_namespace"
+  fzf --prompt="Loading...> " --bind "load:change-prompt:namespace> " --query="$previous_namespace"
 )
 set -e
 [ -z "$namespace" ] && (echo "no namespace selected" 1>&2; exit 1)
@@ -44,7 +44,7 @@ previous_pod=$(get_data previous_pod backoffice)
 pod=$(
   rancher kubectl get pods -n $namespace |
   awk 'NR > 1 { print $1; }' |
-  fzf --prompt="pod> " --query="$previous_pod"
+  fzf --prompt="Loading...> " --bind "load:change-prompt:pod> " --query="$previous_pod"
 )
 set -e
 [ -z "$pod" ] && (echo "no pod selected" 1>&2; exit 1)
