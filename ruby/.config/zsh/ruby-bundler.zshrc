@@ -45,7 +45,7 @@ function b() {
 }
 
 function bi() {
-  _bundle_command config set --local path '.bundle/gems'
+  _bundle_command config --local path '.bundle/gems'
   b install
 }
 alias bu="b update"
