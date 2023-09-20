@@ -1,5 +1,12 @@
 local apps = {}
 
+-- try and launch an app either by name or by bundle id
+function launchOrFocus(appName)
+  if (hs.application.launchOrFocus(appName)) then return true end
+  if (hs.application.launchOrFocusByBundleID(appName)) then return true end
+  return false
+end
+
 -- TODO Allow to specify multiple apps that are cycled:
 -- * cycle through all the windows if active
 -- * switch to the most recently active of the apps if inactive
@@ -32,7 +39,7 @@ function apps.launch(appName, opts)
         end
       end
     end
-    hs.application.launchOrFocus(appName)
+    launchOrFocus(appName)
     if (fn) then; fn(); end
   end
 end
@@ -60,7 +67,7 @@ function apps.launchOrNewWindow(appName, opts)
         newWindowFn(app)
       end
     else
-      hs.application.launchOrFocus(appName)
+      launchOrFocus(appName)
     end
   end
 end

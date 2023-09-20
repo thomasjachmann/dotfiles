@@ -25,7 +25,7 @@ end
 function kitty.focusOrLaunch(options)
   if not options then options = {} end
 
-  return apps.launchOrNewWindow("kitty", {raiseWindow=true, newWindowFn=function()
+  return apps.launchOrNewWindow("net.kovidgoyal.kitty", {raiseWindow=true, newWindowFn=function()
     if options.title then matcher = "--match 'title:^" .. options.title .. "$'" end
     existing = options.title and kitty.remote("focus-window " .. matcher)
     if not existing then
