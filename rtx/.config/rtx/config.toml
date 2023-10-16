@@ -1,0 +1,15 @@
+[settings]
+experimental = true
+
+[tools]
+ruby = "latest"
+node = "latest"
+bun = "latest"
+yarn = "latest"
+pnpm = "latest"
+go = "latest"
+rust = "latest"
+python = "latest"
+
+[env]
+RTX_HIDE_UPDATE_WARNING = "1" # I'll update using homebrew anyway
