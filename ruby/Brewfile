@@ -1,4 +1,1 @@
-brew "ruby-install"
-brew "ruby-build"
-
 # TODO add ~/.bundle/config but without the sensitive parts
