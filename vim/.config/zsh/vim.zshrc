@@ -1,7 +1,3 @@
-# default to nvim
-alias vi='nvim'
-alias vim='nvim'
-
 # vanilla vim and self contained profiles
 function vvim() {
   if [[ $# == 0 ]]; then
@@ -27,9 +23,6 @@ function _vvim() {
   compadd $(ls $XDG_CONFIG_HOME/nvim-profiles/)
 }
 compdef _vvim vvim
-
-# update vim plug and all plugins
-alias vim-upgrade="vim -c PlugUpgrade -c qall && vim -c PlugUpdate -c only -c PlugDiff"
 
 # open vim w/o parameter, with a file or a directory
 function v() {
