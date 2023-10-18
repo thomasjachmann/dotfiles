@@ -8,6 +8,9 @@
 # EVAL: cask "remember-the-milk"
 # TODO: cask "spotify" hm... geht nicht
 
+# EVAL: brew "broot"
+# EVAL: cask "shellcheck" # TODO vim-syntastic?
+
 #{{{ Communication
 # OBSOLETE: cask "telegram"
 # OBSOLETE: cask "skype"
@@ -27,6 +30,7 @@
 
 #{{{ Development
 # ADD: cask "sequel-pro"
+# ADD: cask "sequel-ace"
 # OPTIONAL: cask "pgadmin4"
 # OPTIONAL: cask "xscope"
 # OPTIONAL: cask "postman"
@@ -46,6 +50,7 @@
 # TODO: also check tj, more flexible but needs configuration
 
 # TODO: check fselect
+# OPTIONAL: cask "altair-graphql-client"
 #}}}
 
 #{{{ System/Network/Security
@@ -53,6 +58,7 @@
 # OPTIONAL: cask "tunnelblick"
 # OPTIONAL: cask "little-snitch"
 # OPTIONAL: cask "macpass"
+# ADD: brew "pwgen"
 #}}}
 
 #{{{ Browsers
@@ -129,5 +135,6 @@
 # brew "ddgr"
 # brew "navi"
 # brew "ttyplot"
+# cask "qlmarkdown"
 
 # vim: :filetype=ruby:foldmethod=marker:foldlevel=0
