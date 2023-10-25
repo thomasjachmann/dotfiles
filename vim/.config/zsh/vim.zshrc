@@ -2,8 +2,31 @@
 alias vi='nvim'
 alias vim='nvim'
 
-# vanilla vim
-alias vvim='vim -u NONE -N'
+# vanilla vim and self contained profiles
+function vvim() {
+  if [[ $# == 0 ]]; then
+    vim -u NONE -N
+  else
+    local profile=$1 && shift
+    local profile_dir="$XDG_CONFIG_HOME/nvim-profiles/$profile"
+    local nvim_dir="$profile_dir/nvim"
+
+    mkdir -p "$nvim_dir"
+    local init_file="$nvim_dir/init.vim"
+    [[ ! -f "$init_file" ]] && init_file="$nvim_dir/init.lua"
+    [[ ! -f "$init_file" ]] && touch "$init_file"
+
+    XDG_CONFIG_HOME="$profile_dir" \
+    XDG_CACHE_HOME="$profile_dir/.cache" \
+    XDG_DATA_HOME="$profile_dir/.local/share" \
+    XDG_STATE_HOME="$profile_dir/.local/state" \
+    vim "$@"
+  fi
+}
+function _vvim() {
+  compadd $(ls $XDG_CONFIG_HOME/nvim-profiles/)
+}
+compdef _vvim vvim
 
 # update vim plug and all plugins
 alias vim-upgrade="vim -c PlugUpgrade -c qall && vim -c PlugUpdate -c only -c PlugDiff"
