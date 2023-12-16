@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+require "json"
+
+target_dir = File.join(Dir.home, ".ssh", "op")
+FileUtils.mkdir_p(target_dir)
+
+JSON
+  .parse(`op item list --format=json`)
+  .select { |k| k["category"] == "SSH_KEY" }
+  .map { |k| [k["id"], k["title"]] }
+  .each do |id, title|
+    puts title
+    public_key_file = File.join(target_dir, "#{title}.pub")
+    public_key = `op item get #{id} --fields "public key"`
+    File.write(public_key_file, public_key)
+  end

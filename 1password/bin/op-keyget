@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+keyname=$1
+[ -z "$keyname" ] && (echo "fatal: Please specify the key name you're trying to get!" 1>&2; exit 1)
+
+publickey=$(op item get "$keyname" --field "public key")
+
+if [ -t 1 ]; then
+  echo "$publickey $keyname"
+else
+  # no newline for piping
+  echo -n "$publickey $keyname"
+fi

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+system=$1
+[ -z "$system" ] && (echo "fatal: Please specify a system you're generating a key for!" 1>&2; exit 1)
+
+keyname="id_ed25519_${system}_thomasjachmann_$(date +%Y-%m-%d)"
+op item get "$keyname" >/dev/null 2>&1 && (echo "fatal: Key named $keyname already exists!" 1>&2; exit 1)
+
+echo "generating key named $keyname"
+op item create --category ssh --title "$keyname"
+
+echo "copying public key into clipboard"
+op-keyget "$keyname" | pbcopy
+
+echo "done"
