@@ -6,13 +6,30 @@ require "json"
 target_dir = File.join(Dir.home, ".ssh", "op")
 FileUtils.mkdir_p(target_dir)
 
+def color(color, text)
+  puts "\e[#{color}m#{text}\e[0m"
+end
+
 JSON
   .parse(`op item list --format=json`)
   .select { |k| k["category"] == "SSH_KEY" }
   .map { |k| [k["id"], k["title"]] }
   .each do |id, title|
-    puts title
     public_key_file = File.join(target_dir, "#{title}.pub")
+    exists = File.exist?(public_key_file)
+
     public_key = `op item get #{id} --fields "public key"`
-    File.write(public_key_file, public_key)
+    same = exists && File.read(public_key_file) == public_key
+
+    $stdout.write title
+    if !exists
+      File.write(public_key_file, public_key)
+      color "0;32", " created"
+    elsif !same
+      FileUtils.mv(public_key_file, public_key_file.sub(/\.pub$/, ".bak"))
+      File.write(public_key_file, public_key)
+      color "0;31", " changed"
+    else
+      color "1;33", " already ok"
+    end
   end
