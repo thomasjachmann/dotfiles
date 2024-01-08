@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-mise plugin add ruby
-mise plugin add node
-mise plugin add bun
 mise plugin add yarn
 mise plugin add pnpm
-mise plugin add go
 mise plugin add rust
-mise plugin add python
 
 mise install
