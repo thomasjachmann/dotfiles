@@ -12,5 +12,5 @@ rust = "latest"
 python = "latest"
 
 [env]
-RTX_HIDE_UPDATE_WARNING = "1" # I'll update using homebrew anyway
+MISE_HIDE_UPDATE_WARNING = "1" # I'll update using homebrew anyway
 RUBY_ENV = "development"
