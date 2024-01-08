@@ -1,6 +1,3 @@
-[settings]
-experimental = true
-
 [tools]
 ruby = "latest"
 node = "latest"
