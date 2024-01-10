@@ -2,9 +2,9 @@
 
 mise plugins update
 mise list
-if read -qs "CHOICE?Should I run \`mise install\` now? (y/N) "; then
+if read -qs "CHOICE?Should I run \`mise upgrade\` now? (y/N) "; then
   echo
-  mise install
+  mise upgrade
 else
   echo
 fi
