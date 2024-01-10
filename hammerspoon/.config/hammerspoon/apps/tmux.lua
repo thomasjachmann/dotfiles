@@ -1,6 +1,6 @@
 local tmux = {}
 
-local apps = require "apps"
+local apps = require "lib.apps"
 local kitty = require "apps.kitty"
 
 -- TODO: Use python to script iTerm2: https://iterm2.com/python-api/

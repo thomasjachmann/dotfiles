@@ -1,11 +1,10 @@
 hs.hotkey.setLogLevel("warning")
 
-local spoons = require "spoons"
 
-local apps = require "apps"
-local grid = require "grid"
-local hyper = require "hyper"
-local scrn = require "scrn"
+local apps = require "lib.apps"
+local grid = require "lib.grid"
+local hyper = require "lib.hyper"
+local scrn = require "lib.scrn"
 
 local tmux = require "apps.tmux"
 local kitty = require "apps.kitty"

@@ -1,6 +1,6 @@
 local kitty = {}
 
-local apps = require "apps"
+local apps = require "lib.apps"
 
 kitty.cmd = "/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock"
 
