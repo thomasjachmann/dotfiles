@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[[ -d ./.dirtasks ]] && export TASKDATA=./.dirtasks
+
+exec task "$@"
