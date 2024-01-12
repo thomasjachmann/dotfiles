@@ -19,6 +19,7 @@ function stowpackage {
     --ignore=Brewfile \
     --ignore=Brewfile.lock.json \
     --ignore=install \
+    --ignore=README.md \
     $action \
     "$pkg"
 }
