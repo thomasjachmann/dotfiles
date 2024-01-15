@@ -1,2 +1,1 @@
 experimental = true
-python_compile = true # TODO remove this when prebuilt binaries are available
