@@ -6,36 +6,16 @@ local hyper = require "lib.hyper"
 
 local tmux = require "apps.tmux"
 local kitty = require "apps.kitty"
-local ticktrack = require "apps.ticktrack"
-local devdocs = require "apps.devdocs"
 
 require "config.window_management"
+require "config.default_apps"
 
 local hyperMappings = {
 
-  ["0"] = ticktrack.toggle,
-  [{"shift", "0"}] = ticktrack.permanent,
-  ["ß"] = devdocs.toggle, -- ? for help
 
   a = apps.launch("Adium"),
-  b = apps.launch("Firefox"), -- b for browser
-  [{"shift", "b"}] = apps.launchOrNewWindow("Firefox", {
-      newWindowFn=function(app)
-        app:selectMenuItem({"File", "New Window"})
-      end,
-      raiseWindow=true
-    }),
-  [{"alt", "b"}] = apps.launch("Tor Browser"),
-  [{{"shift", "alt"}, "b"}] = apps.launchOrNewWindow("Tor Browser", {
-      newWindowFn=function(app)
-        app:selectMenuItem({"File", "New Private Window"})
-      end,
-      raiseWindow=true
-    }),
-  c = apps.launch("Google Chrome"),
   d = apps.launch("Calendar"), -- d for dates
   e = tmux.launch("nvim", {noToggle=true}), -- e for editor
-  f = apps.launch("Finder"),
   g = apps.launch("GitX"),
   i = apps.launch("Textual"), -- i for irc
   m = apps.launch("Thunderbird"),
