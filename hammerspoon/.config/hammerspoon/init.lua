@@ -8,6 +8,7 @@ local hyper = require "lib.hyper"
 require "config.window_management"
 require "config.default_apps"
 require "config.terminal"
+require "config.spoon"
 
 local hyperMappings = {
 
