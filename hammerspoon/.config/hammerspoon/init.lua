@@ -9,6 +9,7 @@ require "config.window_management"
 require "config.default_apps"
 require "config.terminal"
 require "config.spoon"
+require "config.project_chooser"
 
 local hyperMappings = {
 
