@@ -72,9 +72,16 @@ function apps.launchOrNewWindow(appName, opts)
   end
 end
 
+-- Cmd-H
 function apps.hideCurrent()
   local app = hs.application.frontmostApplication()
   if (app) then; app:hide(); end
+end
+
+-- Cmd-M
+function apps.minimizeCurrentWindow()
+  local win = hs.window.focusedWindow()
+  if (win) then; win:minimize(); end
 end
 
 function apps.showAppAndWindowInfo()
