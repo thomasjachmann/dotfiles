@@ -5,7 +5,9 @@ function local_files.each(dir, prefix, fn)
     local name = path:match("^(" .. prefix ..".*)%.lua$")
     if name then
       local data = require(dir .. "." .. name)
-      fn(data)
+      if fn then
+        fn(data)
+      end
     end
   end
 end
