@@ -17,7 +17,7 @@ local projectChooser = hs.chooser.new(function(choice)
     -- TODO: Or at least make the editor backgroundable with Ctrl-z?
     kitty.focusOrLaunch{title=choice.text, cmd="cd " .. choice.subText .. " && nvim || sleep 5"}()
   end
-end):choices(projects):placeholderText("Projekt")
+end):choices(projects):placeholderText("Projekt"):searchSubText(true)
 
 local mappings = {
   -- p = kitty.focusOrLaunch{cmd="open-project"},
