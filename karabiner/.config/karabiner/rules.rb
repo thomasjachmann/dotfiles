@@ -38,19 +38,6 @@ rule(
   end
 )
 
-{
-  v: "Change hyper + v to old hyper v for Launchbar clipboard paste menu",
-  backslash: "Change hyper + # to old hyper # for 1Password browser extension",
-  hyphen: "Change hyper + ß to old hyper ß for Dash"
-}.each do |letter, description|
-  rule(
-    description,
-    conditions: variable_is(:hyper_modifier, 1),
-    from: from(letter),
-    to: to(key_code: letter, modifiers: %i[right_control right_option right_shift right_command])
-  )
-end
-
 rule(
   "Change right_command to right_control",
   from: from(:right_command),
