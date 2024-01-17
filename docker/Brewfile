@@ -16,3 +16,5 @@ brew "rancher-cli"
 
 tap "ykursadkaya/openlens"
 cask "openlens"
+
+brew "k9s"
