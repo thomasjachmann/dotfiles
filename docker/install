@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+dir=$(dirname $0)
+
+[[ -f ~/.docker/config.json ]] || cp -pr $dir/support/config.json ~/.docker/config.json
