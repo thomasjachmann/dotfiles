@@ -20,7 +20,7 @@ function vvim() {
   fi
 }
 function _vvim() {
-  compadd $(ls $XDG_CONFIG_HOME/nvim-profiles/ 2>/dev/null)
+  compadd $(fd -t d -d 1 "" $XDG_CONFIG_HOME/nvim-profiles/ -X printf '%s ' {/} 2>/dev/null)
 }
 compdef _vvim vvim
 
