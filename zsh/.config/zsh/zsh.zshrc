@@ -88,10 +88,12 @@ function unlimit-bandwidth() {
 }
 
 function mkcd() {
+  [ -z "$1" ] && echo "no directory specified" >&2 && return 1
   mkdir -p "$1" && cd "$1"
 }
 
 function mktcd() {
+  [ -z "$1" ] && echo "no directory specified" >&2 && return 1
   mkcd "$(dirname $1)/$(date +%Y-%m-%d)-$(basename $1)"
 }
 
