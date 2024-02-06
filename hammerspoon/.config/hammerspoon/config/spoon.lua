@@ -28,7 +28,17 @@ local actions = {
     url = "https://www.google.com/search?tbm=isch&tbs=isz%3Al&q=${query}", -- TODO url escape multi word queries
     icon = "favicon",
     keyword = "gi"
-  }
+  },
+  ["search gem on ruby-toolbox.com"] = {
+    url = "https://www.ruby-toolbox.com/search?utf8=✓&q=${query}",
+    icon = "favicon",
+    keyword = "rtb"
+  },
+  ["search wikipedia"] = {
+    url = "http://de.wikipedia.org/?search={}",
+    icon = "favicon",
+    keyword = "wiki"
+  },
 }
 local_files.each("config", "spoon_", function(locals)
   for name, action in pairs(locals) do
