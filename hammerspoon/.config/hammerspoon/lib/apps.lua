@@ -6,6 +6,16 @@ function inspect(data)
   return hs.inspect(data, {newline=" ", indent=""})
 end
 
+-- filter out non-visible windows, eg "Microsoft Teams-Benachrichtigung"
+function visibleWindows(app)
+  local allWindows = app:visibleWindows()
+  local windows = {}
+  for _, win in ipairs(allWindows) do
+    if win:size().w > 0 and win:size().h > 0 then windows[#windows+1] = win end
+  end
+  return windows
+end
+
 -- try and launch an app either by name or by bundle id
 function launchOrFocus(appName)
   if (hs.application.launchOrFocus(appName)) then return true end
@@ -35,7 +45,7 @@ function apps.launch(appName, opts)
       logger.d("  found")
       if app:isFrontmost() then
         -- frontmost: we need to decide whether to toggle or cycle through windows
-        windows = app:visibleWindows()
+        local windows = visibleWindows(app)
         logger.d("  is frontmost and has", #windows, "windows:")
         for i, win in ipairs(windows) do
           logger.d("   ", win:id(), win)
