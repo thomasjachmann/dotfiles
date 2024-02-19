@@ -2,6 +2,7 @@ local hyper = require "lib.hyper"
 local ticktrack = require "apps.ticktrack"
 local devdocs = require "apps.devdocs"
 local apps = require "lib.apps"
+local browser = require "lib.browser"
 
 local newWindow = {
   newWindowFn = function(app)
@@ -16,14 +17,14 @@ local mappings = {
 
   ["ß"] = devdocs.toggle, -- ? for help
 
-  b = apps.launch("Firefox"), -- b for browser
-  [{"shift", "b"}] = apps.launchOrNewWindow("Firefox", newWindow),
+  b = apps.launch(browser.browsers.default),
+  [{"shift", "b"}] = apps.launchOrNewWindow(browser.browsers.default, newWindow),
 
-  [{"alt", "b"}] = apps.launch("Tor Browser"),
-  [{{"shift", "alt"}, "b"}] = apps.launchOrNewWindow("Tor Browser", newWindow),
+  [{"alt", "b"}] = apps.launch(browser.browsers.tor),
+  [{{"shift", "alt"}, "b"}] = apps.launchOrNewWindow(browser.browsers.tor, newWindow),
 
-  c = apps.launch("Google Chrome"),
-  [{"shift", "c"}] = apps.launchOrNewWindow("Google Chrome", newWindow),
+  c = apps.launch(browser.browsers.chrome),
+  [{"shift", "c"}] = apps.launchOrNewWindow(browser.browsers.chrome, newWindow),
 
   f = apps.launch("Finder"),
 }

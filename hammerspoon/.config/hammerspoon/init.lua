@@ -9,6 +9,8 @@ require "config.spoon"
 require "config.project_chooser"
 require "lib.local_files".requireEach("config", "local_")
 
+require "lib.browser".start()
+
 local mappings = {
   [{"shift", "w"}] = function()
     hs.wifi.setPower(hs.wifi.currentNetwork() == nil)
