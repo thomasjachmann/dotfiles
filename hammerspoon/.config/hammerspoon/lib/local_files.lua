@@ -1,6 +1,6 @@
 local local_files = {}
 
-function local_files.each(dir, prefix, fn)
+function local_files.requireEach(dir, prefix, fn)
   for path in hs.fs.dir(hs.configdir .. "/" .. dir) do
     local name = path:match("^(" .. prefix ..".*)%.lua$")
     if name then

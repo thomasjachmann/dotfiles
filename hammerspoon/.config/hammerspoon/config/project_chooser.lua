@@ -5,7 +5,7 @@ local kitty = require "apps.kitty"
 local projects = {
   {text=".config/dotfiles", subText="~/.config/dotfiles"},
 }
-local_files.each("config", "project_chooser_", function(locals)
+local_files.requireEach("config", "project_chooser_", function(locals)
   for _, project in pairs(locals) do
     table.insert(projects, project)
   end

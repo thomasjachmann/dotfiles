@@ -1,6 +1,5 @@
 hs.hotkey.setLogLevel("warning")
 
-local local_files = require "lib.local_files"
 local hyper = require "lib.hyper"
 
 require "config.window_management"
@@ -8,7 +7,7 @@ require "config.default_apps"
 require "config.terminal"
 require "config.spoon"
 require "config.project_chooser"
-local_files.each("config", "local_")
+require "lib.local_files".requireEach("config", "local_")
 
 local mappings = {
   [{"shift", "w"}] = function()

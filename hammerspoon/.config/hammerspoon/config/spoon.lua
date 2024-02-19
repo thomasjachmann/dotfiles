@@ -40,7 +40,7 @@ local actions = {
     keyword = "wiki"
   },
 }
-local_files.each("config", "spoon_", function(locals)
+local_files.requireEach("config", "spoon_", function(locals)
   for name, action in pairs(locals) do
     actions[name] = action
   end
