@@ -4,10 +4,10 @@ local devdocs = require "apps.devdocs"
 local apps = require "lib.apps"
 
 local newWindow = {
-  newWindowFn=function(app)
+  newWindowFn = function(app)
     hs.eventtap.keyStroke({"cmd"}, "n", 200, app)
   end,
-  raiseWindow=true
+  raiseWindow = true
 }
 
 local mappings = {
