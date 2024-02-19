@@ -1,5 +1,11 @@
 local apps = {}
 
+local logger = require'lib.logging'.new(apps, 'lib.apps')
+
+function inspect(data)
+  return hs.inspect(data, {newline=" ", indent=""})
+end
+
 -- try and launch an app either by name or by bundle id
 function launchOrFocus(appName)
   if (hs.application.launchOrFocus(appName)) then return true end
@@ -23,22 +29,36 @@ function apps.launch(appName, opts)
   local forceToggle = opts.forceToggle
   local noToggle = opts.noToggle
   return function()
-    app = hs.application.get(appName)
+    logger.d("Launching app", appName, inspect({forceToggle=forceToggle, noToggle=noToggle}))
+    local app = hs.application.get(appName)
     if (app) then
+      logger.d("  found")
       if app:isFrontmost() then
         -- frontmost: we need to decide whether to toggle or cycle through windows
         windows = app:visibleWindows()
+        logger.d("  is frontmost and has", #windows, "windows:")
+        for i, win in ipairs(windows) do
+          logger.d("   ", win:id(), win)
+          logger.d("     ", inspect({isStandard=win:isStandard(), isVisible=win:isVisible(), role=win:role(), subrole=win:subrole(), width=win:size().w, height=win:size().h}))
+          logger.d("     ", inspect(win:frame()))
+        end
         -- only toggle if it's not forbidden and either we only have one window or are forced to toggle
         if not noToggle and (#windows == 1 or forceToggle) then
+          logger.d("  hiding app")
           app:hide()
           return
         elseif (#windows > 0) then
-          windows[#windows]:focus()
+          local nextWin = windows[#windows]
+          logger.d("  selecting window", nextWin:id(), nextWin)
+          nextWin:focus()
           if (fn) then; fn(); end
           return
         end
       end
+    else
+      logger.d("  not found")
     end
+    logger.d("  launching/focussing app")
     launchOrFocus(appName)
     if (fn) then; fn(); end
   end
@@ -49,7 +69,7 @@ function apps.launchOrNewWindow(appName, opts)
   local newWindowFn = opts.newWindowFn
   local raiseWindow = opts.raiseWindow
   return function()
-    app = hs.application.get(appName)
+    local app = hs.application.get(appName)
     if (app) then
       if (newWindowFn) then
         -- watcher needs to be declared outside the if in order to be available
