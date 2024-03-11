@@ -14,6 +14,7 @@ local mappings = {
   t = apps.launch("net.kovidgoyal.kitty", {noToggle=true}), -- t for terminal
   [{"shift", "t"}] = kitty.focusOrLaunch(), -- always a new terminal window
   [{"alt", "t"}] = kitty.focusOrLaunch{shell=true}, -- terminal without tmux
+  [{"ctrl", "t"}] = kitty.focusOrLaunch{shell=true, zdotdir="${HOME}/.config/zsh/blank"}, -- blank zsh
 
   x = kitty.focusOrLaunch{title="vimwiki", cmd="nvim -c 'call VimwikiOpen()'"},
 }
