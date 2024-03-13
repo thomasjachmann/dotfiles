@@ -7,7 +7,13 @@ function vvim() {
     local profile_dir="$XDG_CONFIG_HOME/nvim-profiles/$profile"
     local nvim_dir="$profile_dir/nvim"
 
-    mkdir -p "$nvim_dir"
+    if [ ! -d "$nvim_dir" ]; then
+      if read -qs "CHOICE?Non-existant nvim profile, should I create \`${profile}\` now? (y/N) "; then
+        mkdir -p "$nvim_dir"
+      else
+        return
+      fi
+    fi
     local init_file="$nvim_dir/init.vim"
     [[ ! -f "$init_file" ]] && init_file="$nvim_dir/init.lua"
     [[ ! -f "$init_file" ]] && touch "$init_file"
