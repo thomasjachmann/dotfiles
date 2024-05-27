@@ -11,3 +11,4 @@ python = "latest"
 [env]
 MISE_HIDE_UPDATE_WARNING = "1" # I'll update using homebrew anyway
 RUBY_ENV = "development"
+RUSTUP_INIT_SKIP_PATH_CHECK = "yes" # to avoid complaints about rust being installed while installing via rustup
