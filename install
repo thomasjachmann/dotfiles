@@ -40,11 +40,6 @@ else
   dotfiles_dir=$(dirname $0)
 fi
 
-# make sure we can store our installed packages
-mkdir -p ~/.local
-chmod 700 ~/.local
-touch ~/.local/dotfiles
-
 yellow "installing zsh and homebrew dotfile packages"
 $dotfiles_dir/zsh/bin/dotfiles install homebrew zsh
 

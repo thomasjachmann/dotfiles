@@ -3,6 +3,8 @@
 set -e
 
 dotfiles=$(grealpath $(dirname $(grealpath $0))/../..)
+data_dir=${XDG_DATA_HOME:-$HOME/.local/share}/dotfiles
+mkdir -p $data_dir
 
 source $dotfiles/_helpers.zsh
 
@@ -40,9 +42,9 @@ install)
     [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
     stowpackage --restow $package
     [ -x ./$package/install ] && ./$package/install
-    echo $package >> ~/.local/dotfiles
-    sort --unique ~/.local/dotfiles > ~/.local/dotfiles.new
-    mv ~/.local/dotfiles.new ~/.local/dotfiles
+    echo $package >> $data_dir/installed
+    sort --unique $data_dir/installed > $data_dir/installed.new
+    mv $data_dir/installed.new $data_dir/installed
   done
   green "installed packages $*"
   ;;
@@ -52,26 +54,25 @@ uninstall)
   for package in "$@"; do
     green "uninstalling $package"
     stowpackage --delete $package
-    sed "/^${package//\//\\/}$/d" ~/.local/dotfiles > ~/.local/dotfiles.new
-    mv ~/.local/dotfiles.new ~/.local/dotfiles
+    sed "/^${package//\//\\/}$/d" $data_dir/installed > $data_dir/installed.new
+    mv $data_dir/installed.new $data_dir/installed
   done
   green "uninstalled packages $*"
   yellow "be aware that none of the Brewfile dependencies or custom install steps have been uninstalled or reverted"
   ;;
 
 list)
-  cd $dotfiles
-  cat ~/.local/dotfiles
+  cat $data_dir/installed
   ;;
 
 reinstall)
-  packages=$(perl -pe 's/\n/ / unless eof' ~/.local/dotfiles)
+  packages=$(perl -pe 's/\n/ / unless eof' $data_dir/installed)
   $0 install $packages
   ;;
 
 resymlink)
   cd $dotfiles
-  packages=$(perl -pe 's/\n/ / unless eof' ~/.local/dotfiles)
+  packages=$(perl -pe 's/\n/ / unless eof' $data_dir/installed)
   for package in $packages; do
     green "symlinking $package"
     stowpackage --restow $package
