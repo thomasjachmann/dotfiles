@@ -33,8 +33,9 @@ available grealpath || brew install coreutils
 available stow || brew install stow
 
 if (($piped)); then
-  read -p "where to install homebrew to [~/.config/dotfiles]: " dotfiles_dir
-  dotfiles_dir=${dotfiles_dir:-~/.config/dotfiles}
+  default=${XDG_DATA_HOME:-$HOME/.local/share}/dotfiles/vault
+  read -p "where to install homebrew to [$default]: " dotfiles_dir
+  dotfiles_dir=${dotfiles_dir:-$default}
   git clone https://github.com/thomasjachmann/dotfiles.git $dotfiles_dir
 else
   dotfiles_dir=$(dirname $0)

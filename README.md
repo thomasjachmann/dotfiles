@@ -14,8 +14,8 @@ curl -fsSL https://raw.githubusercontent.com/thomasjachmann/dotfiles/master/inst
 ```
 
 If you don't like piping stuff into shells, clone this repository somewhere
-into your system (recommended: `.config/dotfiles`) and then call `./install`
-script there.
+into your system (recommended: `$XDG_DATA_HOME/dotfiles/vault` aka
+`~/.local/share/dotfiles/vault`) and then call the `./install` script there.
 
 ## Usage
 

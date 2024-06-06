@@ -35,6 +35,11 @@ home)
   echo $dotfiles
   ;;
 
+edit)
+  cd $dotfiles
+  $EDITOR
+  ;;
+
 install)
   cd $dotfiles
   for package in "$@"; do
@@ -112,6 +117,9 @@ add)
 Available commands:
 
     home                   displays the home of this dotfiles install
+
+    edit                   open this dotfile home (the vault) in the editor
+                           configured in \$EDITOR ($EDITOR)
 
     install [package(s)]   installs given package(s)
                            1. install dependencies via Brewfile

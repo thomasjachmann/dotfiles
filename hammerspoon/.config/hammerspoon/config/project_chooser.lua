@@ -3,7 +3,7 @@ local local_files = require "lib.local_files"
 local kitty = require "apps.kitty"
 
 local projects = {
-  {text=".config/dotfiles", subText="~/.config/dotfiles"},
+  {text="dotfiles vault", subText=hs.execute("~/bin/dotfiles home", true):match("(.-)%s*$")},
 }
 local_files.requireEach("config", "project_chooser_", function(locals)
   for _, project in pairs(locals) do
