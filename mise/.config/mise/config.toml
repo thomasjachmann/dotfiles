@@ -2,7 +2,7 @@
 ruby = "latest"
 node = "latest"
 bun = "latest"
-yarn = "1.22.19" # see https://github.com/twuni/asdf-yarn/issues/33
+yarn = "latest"
 pnpm = "latest"
 go = "latest"
 rust = "latest"
