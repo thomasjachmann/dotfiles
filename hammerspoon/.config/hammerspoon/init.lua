@@ -8,6 +8,7 @@ require "config.project_chooser"
 require "lib.local_files".requireEach("config", "local_")
 
 require "lib.browser".start()
+require "lib.local_files".requireEach("config", "browser_")
 
 local hyper = require "lib.hyper"
 local mappings = {
