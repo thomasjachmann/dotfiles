@@ -1,17 +1,33 @@
 function maintain() {
-  for file in $ZDOTDIR/.maintain.d/*; do
+  file=$ZDOTDIR/.maintain.d/$1.zsh
+  if [ -x "$file" ]; then
     echo "######################################################################"
     echo "# $file"
     echo "######################################################################"
     $file
-  done
+  else
+    for file in $ZDOTDIR/.maintain.d/*; do
+      echo "######################################################################"
+      echo "# $file"
+      echo "######################################################################"
+      $file
+    done
+  fi
 }
 
 function upgrade() {
-  for file in $ZDOTDIR/.upgrade.d/*; do
+  file=$ZDOTDIR/.upgrade.d/$1.zsh
+  if [ -x "$file" ]; then
     echo "######################################################################"
     echo "# $file"
     echo "######################################################################"
     $file
-  done
+  else
+    for file in $ZDOTDIR/.upgrade.d/*; do
+      echo "######################################################################"
+      echo "# $file"
+      echo "######################################################################"
+      $file
+    done
+  fi
 }
