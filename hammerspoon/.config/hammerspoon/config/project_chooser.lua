@@ -19,8 +19,4 @@ local projectChooser = hs.chooser.new(function(choice)
   end
 end):choices(projects):placeholderText("Projekt"):searchSubText(true)
 
-local mappings = {
-  -- p = kitty.focusOrLaunch{cmd="open-project"},
-  p = function() projectChooser:show() end,
-}
-hyper.bindAll(mappings)
+hyper.bind("p", function() projectChooser:show() end)
