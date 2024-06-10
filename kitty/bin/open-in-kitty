@@ -3,6 +3,7 @@
 set -e
 
 cmd=
+tab=false
 exit_after=false
 
 while [ "$#" -ne "0" ]; do
@@ -10,6 +11,9 @@ while [ "$#" -ne "0" ]; do
     -c|--command)
       cmd=$2
       shift
+      ;;
+    -t|--tab)
+      tab=true
       ;;
     -x|--exit-after)
       exit_after=true
@@ -25,11 +29,20 @@ done
 [ $exit_after = true ] && cmd="exec $cmd"
 
 if [ -S /tmp/kitty.sock ]; then
-  /usr/local/bin/kitty @ \
+  window_count=$(/usr/local/bin/kitty @ \
     --to=unix:/tmp/kitty.sock \
-    new-window \
-    --window-type=os \
-    > /dev/null
+    ls | jq ". | length")
+  if [ $tab = true ] && [ "$window_count" != "0" ]; then
+    /usr/local/bin/kitty @ \
+      --to=unix:/tmp/kitty.sock \
+      send-key ctrl+b c
+  else
+    /usr/local/bin/kitty @ \
+      --to=unix:/tmp/kitty.sock \
+      launch \
+      --type=os-window \
+      > /dev/null
+  fi
   sleep_time=1
 else
   open -a kitty
