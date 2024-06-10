@@ -8,9 +8,7 @@ local kitty = require "apps.kitty"
 -- Executes a shell command and returns the result (without trailing whitespace)
 function exec(cmd)
   -- TODO use hs.task
-  local handle = io.popen(cmd, "r")
-  local output = handle:read("*a")
-  handle:close()
+  local output = hs.execute(cmd)
   return output:match("(.-)%s*$")
 end
 
