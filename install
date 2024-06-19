@@ -29,8 +29,8 @@ function available() {
 available brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # bin/dotfiles needs grealpath to determine the dotfiles home dir
 available grealpath || brew install coreutils
-# bin/dotfiles needs stow to symlink config files
-available stow || brew install stow
+# bin/dotfiles needs chezmoi to symlink config files
+available chezmoi || brew install chezmoi
 
 if (($piped)); then
   default=${XDG_DATA_HOME:-$HOME/.local/share}/dotfiles/vault

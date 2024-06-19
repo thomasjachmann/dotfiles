@@ -20,3 +20,10 @@ function loginitem {
     open -a $path
   fi
 }
+
+function homebrew_shellenv {
+  eval $(brew shellenv 2>/dev/null ||
+    /opt/homebrew/bin/brew shellenv 2>/dev/null ||
+    /usr/local/bin/brew shellenv 2>/dev/null ||
+    echo "echo \"\033[0;31mbrew cannot be found in one of the standard locations\033[0m\" 1>&2")
+}

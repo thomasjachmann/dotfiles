@@ -124,6 +124,6 @@ function unhide() {
 # taken from the homebrew zsh install info
 unalias run-help
 autoload run-help
-HELPDIR=/usr/local/share/zsh/help
+HELPDIR=$HOMEBREW_PREFIX/share/zsh/help
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

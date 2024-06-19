@@ -1,8 +1,15 @@
-# extend path for homebrew (/usr/local/bin is already in)
-export PATH=/usr/local/sbin:$PATH
+{{ $homebrew := or (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin")) "---no-homebrew---" -}}
+# initialize HOMEBREW shell variables for prefix etc.
+eval $({{ $homebrew }} shellenv)
+
+# extend XDG data dirs
+export XDG_DATA_DIRS=$HOMEBREW_PREFIX/share:$XDG_DATA_DIRS
+
+# extend path for homebrew
+export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
 
 # and for brew's npm (if installed)
-[ -d /usr/local/share/npm/bin ] && export PATH=/usr/local/share/npm/bin:$PATH
+[ -d $HOMEBREW_PREFIX/share/npm/bin ] && export PATH=$HOMEBREW_PREFIX/share/npm/bin:$PATH
 
 # prevent homebrew from sending data home
 export HOMEBREW_NO_ANALYTICS=1
