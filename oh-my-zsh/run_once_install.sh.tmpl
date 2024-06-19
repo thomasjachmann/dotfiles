@@ -1,8 +1,10 @@
 #!/bin/bash
 
-set -e
+brew bundle --no-lock --file=/dev/stdin <<EOB
+brew "git"
+EOB
 
-source $(dirname $0)/../_helpers.zsh
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
 
 if [ -d ~/.config/oh-my-zsh ]; then
   green "oh-my-zsh is already installed"
