@@ -42,6 +42,6 @@ else
 fi
 
 yellow "installing zsh and homebrew dotfile packages"
-$dotfiles_dir/zsh/bin/dotfiles install homebrew zsh
+$dotfiles_dir/zsh/bin/dotfiles install homebrew zsh oh-my-zsh
 
 green "done"
