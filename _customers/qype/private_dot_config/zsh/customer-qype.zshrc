@@ -15,7 +15,7 @@ alias q-open-api="s ~/Projects/qype/main/main-qype-api.sublime-project"
 function q-start() {
   say-and-execute sudo /usr/libexec/ApplicationFirewall/socketfilterfw -t nginx
   say-and-execute sudo nginx -c ~/Projects/qype/tech/infra/nginx.conf
-  say-and-execute redis-server /usr/local/etc/redis.conf
+  say-and-execute redis-server $HOMEBREW_PREFIX/etc/redis.conf
   say-and-execute memcached -d
   say-and-execute mysql.server start
 }
