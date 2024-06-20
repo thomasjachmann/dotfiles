@@ -13,7 +13,7 @@ if [ -n "$TMUX" ]; then
   tmux set window-active-style "bg=#404042,fg=#b5b5b5"
 
   # We need reattach-to-user-namespace for UseKeychain to work since Sierra
-  /usr/local/bin/reattach-to-user-namespace /usr/bin/ssh "$@"
+  $HOMEBREW_PREFIX/bin/reattach-to-user-namespace /usr/bin/ssh "$@"
 else
   /usr/bin/ssh "$@"
 fi
