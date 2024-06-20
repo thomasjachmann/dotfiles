@@ -1,28 +1,29 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
 # setup shell and terminal configuration
-set -g default-shell "/usr/local/bin/zsh"
-set -g default-command "/usr/local/bin/reattach-to-user-namespace -l $SHELL"
+set -g default-shell "{{ $homebrewPrefix }}/bin/zsh"
+set -g default-command "{{ $homebrewPrefix }}/bin/reattach-to-user-namespace -l $SHELL"
 set -g default-terminal "screen-256color"
 
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.4" ]]' 'source-file $HOME/.config/tmux/3.4.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.3a" ]]' 'source-file $HOME/.config/tmux/3.3a.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.3" ]]' 'source-file $HOME/.config/tmux/3.3.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.2a" ]]' 'source-file $HOME/.config/tmux/3.2a.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.2" ]]' 'source-file $HOME/.config/tmux/3.2.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.1c" ]]' 'source-file $HOME/.config/tmux/3.1c.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.1b" ]]' 'source-file $HOME/.config/tmux/3.1b.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.1a" ]]' 'source-file $HOME/.config/tmux/3.1a.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.1" ]]' 'source-file $HOME/.config/tmux/3.1.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 3.0a" ]]' 'source-file $HOME/.config/tmux/3.0a.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.9a" ]]' 'source-file $HOME/.config/tmux/2.9a.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.8" ]]' 'source-file $HOME/.config/tmux/2.8.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.7" ]]' 'source-file $HOME/.config/tmux/2.7.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.6" ]]' 'source-file $HOME/.config/tmux/2.6.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.5" ]]' 'source-file $HOME/.config/tmux/2.5.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.4" ]]' 'source-file $HOME/.config/tmux/2.4.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.3" ]]' 'source-file $HOME/.config/tmux/2.3.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.2" ]]' 'source-file $HOME/.config/tmux/2.2.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.1" ]]' 'source-file $HOME/.config/tmux/2.1.conf'
-if-shell '[[ "$(/usr/local/bin/tmux -V)" == "tmux 2.0" ]]' 'source-file $HOME/.config/tmux/2.0.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.4" ]]' 'source-file $HOME/.config/tmux/3.4.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.3a" ]]' 'source-file $HOME/.config/tmux/3.3a.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.3" ]]' 'source-file $HOME/.config/tmux/3.3.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.2a" ]]' 'source-file $HOME/.config/tmux/3.2a.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.2" ]]' 'source-file $HOME/.config/tmux/3.2.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.1c" ]]' 'source-file $HOME/.config/tmux/3.1c.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.1b" ]]' 'source-file $HOME/.config/tmux/3.1b.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.1a" ]]' 'source-file $HOME/.config/tmux/3.1a.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.1" ]]' 'source-file $HOME/.config/tmux/3.1.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.0a" ]]' 'source-file $HOME/.config/tmux/3.0a.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.9a" ]]' 'source-file $HOME/.config/tmux/2.9a.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.8" ]]' 'source-file $HOME/.config/tmux/2.8.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.7" ]]' 'source-file $HOME/.config/tmux/2.7.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.6" ]]' 'source-file $HOME/.config/tmux/2.6.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.5" ]]' 'source-file $HOME/.config/tmux/2.5.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.4" ]]' 'source-file $HOME/.config/tmux/2.4.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.3" ]]' 'source-file $HOME/.config/tmux/2.3.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.2" ]]' 'source-file $HOME/.config/tmux/2.2.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.1" ]]' 'source-file $HOME/.config/tmux/2.1.conf'
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 2.0" ]]' 'source-file $HOME/.config/tmux/2.0.conf'
 
 # general settings
 set -sg escape-time 0         # allow vim to receive ESC key presses quicker
@@ -81,7 +82,7 @@ bind Left swap-window -t -1
 bind Right swap-window -t +1
 
 # window renaming
-bind \; run-shell '/usr/local/bin/tmux rename-window "$(basename #{pane_current_path})"'
+bind \; run-shell '{{ $homebrewPrefix }}/bin/tmux rename-window "$(basename #{pane_current_path})"'
 
 # pane creation
 bind s split-window -v -c '#{pane_current_path}'
