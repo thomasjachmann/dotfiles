@@ -1,0 +1,6 @@
+---
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
+BUNDLE_DISABLE_VERSION_CHECK: "true"
+BUNDLE_BUILD__THIN: "--with-cflags=-Wno-error=implicit-function-declaration"
+BUNDLE_BUILD__MYSQL2: "--with-ldflags=-L{{ $homebrewPrefix }}/opt/openssl/lib --with-cppflags=-I{{ $homebrewPrefix }}/opt/openssl/include"
+# TODO: make this auto update in parts (without storing/breaking the auth stuff)
