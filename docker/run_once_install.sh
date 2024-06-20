@@ -1,7 +1,7 @@
 #!/bin/bash
 
 brew bundle --no-lock --file=/dev/stdin <<EOB
-# runtime, comes with `lima nerdctl ...`
+# runtime, comes with lima nerdctl ...
 brew "colima"
 
 # docker CLI tools
