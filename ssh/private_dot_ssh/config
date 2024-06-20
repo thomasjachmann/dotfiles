@@ -1,7 +1,7 @@
 # environment/customer specific settings
 # these can contain sensitive data, so they're extracted into specific files
 # that may or may not be included in my dotfiles
-Include ~/.ssh/config.d/*
+Include ~/.ssh/config.d/*.conf
 
 # general settings
 Host *
