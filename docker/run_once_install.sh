@@ -17,8 +17,8 @@ brew "kubernetes-cli"
 # TODO: replace with pure kubectl
 brew "rancher-cli"
 
-tap "ykursadkaya/openlens"
-cask "openlens"
+# tap "ykursadkaya/openlens"
+# cask "openlens"
 
 brew "k9s"
 EOB
