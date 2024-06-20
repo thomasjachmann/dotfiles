@@ -43,7 +43,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " TODO: check https://github.com/jhawthorn/fzy
 " TODO: check floating windows: https://github.com/junegunn/fzf.vim/issues/664
 
-Plug '/usr/local/opt/fzf' " set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' " see https://devhub.io/repos/junegunn-fzf.vim or https://github.com/junegunn/fzf/blob/master/README-VIM.md
 
 let g:neo_tree_remove_legacy_commands = 1

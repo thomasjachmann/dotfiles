@@ -1,0 +1,25 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+brew "python"
+brew "python3"
+brew "ctags"
+brew "fzf"
+brew "fd"
+brew "ripgrep"
+
+brew "cmake" # for ycm
+
+brew "neovim"
+
+# TODO: configure this and test it and whatever
+# cask "oni"
+EOB
+
+[ -x "$(command -v pip)" ] && pip install neovim
+[ -x "$(command -v pip3)" ] && pip3 install neovim
+
+nvim -c PlugInstall -c qall
+
+cp -prf {{ .chezmoi.sourceDir }}/support/OpenInNvim.app /Applications
+cp -prf {{ .chezmoi.sourceDir }}/support/VimWiki.app /Applications

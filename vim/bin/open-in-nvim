@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ "$#" -eq "1" ] && [ -f $1 ]; then
-  args=$(/usr/local/bin/grealpath $1)
+  args=$($HOMEBREW_PREFIX/bin/grealpath $1)
 elif [ "$#" -eq "1" ] && [ -d $1 ]; then
-  pre="cd $(/usr/local/bin/grealpath $1); "
+  pre="cd $($HOMEBREW_PREFIX/bin/grealpath $1); "
 else
   args=$@
 fi
 
-~/bin/open-in-kitty --command "$pre/usr/local/bin/nvim $args" --exit-after
+~/bin/open-in-kitty --command "$pre$HOMEBREW_PREFIX/bin/nvim $args" --exit-after
