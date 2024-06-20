@@ -1,4 +1,0 @@
-cask "hammerspoon"
-
-# for determining which is the currently focused kitty window in apps/tmux.lua
-brew "jq"

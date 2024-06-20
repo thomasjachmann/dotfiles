@@ -1,8 +1,9 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
 local kitty = {}
 
 local apps = require "lib.apps"
 
-kitty.cmd = "/usr/local/bin/kitty @ --to=unix:/tmp/kitty.sock"
+kitty.cmd = "{{ $homebrewPrefix }}/bin/kitty @ --to=unix:/tmp/kitty.sock"
 
 function kitty.remote(args)
   return os.execute(kitty.cmd .. " " .. args)
@@ -15,7 +16,7 @@ function kitty.launch(options)
   if options.title then args = args .. " --title='" .. options.title .. "'" end
   if options.shell or options.cmd then
     zdotdir = options.zdotdir or "${HOME}/.config/zsh"
-    args = args .. " --env \"ZDOTDIR=" .. zdotdir .. "\" -- /usr/local/bin/zsh"
+    args = args .. " --env \"ZDOTDIR=" .. zdotdir .. "\" -- {{ $homebrewPrefix }}/bin/zsh"
   end
   if options.cmd then args = args .. " -c \"" .. options.cmd .. "\"" end
 

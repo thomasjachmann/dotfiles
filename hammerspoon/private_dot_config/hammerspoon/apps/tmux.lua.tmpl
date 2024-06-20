@@ -1,3 +1,4 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
 local tmux = {}
 
 local apps = require "lib.apps"
@@ -12,7 +13,7 @@ function exec(cmd)
   return output:match("(.-)%s*$")
 end
 
-tmux.cmd = "/usr/local/bin/tmux -L kitty"
+tmux.cmd = "{{ $homebrewPrefix }}/bin/tmux -L kitty"
 
 -- Returns a multiline string where each line is a tmux pane with the requested
 -- command as main process in the format:
@@ -47,7 +48,7 @@ function tmux.activate(cmd, opts)
       return false
     end
 
-    activePid = exec(kitty.cmd .. " ls | /usr/local/bin/jq '.[].tabs | .[].windows | map(select(.is_focused)) | .[].pid'")
+    activePid = exec(kitty.cmd .. " ls | {{ $homebrewPrefix }}/bin/jq '.[].tabs | .[].windows | map(select(.is_focused)) | .[].pid'")
     local panes = {}
     local total = 0
     local active = nil
