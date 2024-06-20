@@ -1,3 +1,4 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
 # [Created by task 2.5.1 8/1/2018 10:15:11]
 # Taskwarrior program configuration file.
 # For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
@@ -14,20 +15,20 @@
 data.location=$XDG_DATA_HOME/task
 
 # Color theme (uncomment one to use)
-# include /usr/local/opt/task/share/doc/task/rc/light-16.theme
-# include /usr/local/opt/task/share/doc/task/rc/light-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-16.theme
-include /usr/local/opt/task/share/doc/task/rc/dark-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-red-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-green-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-blue-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-violets-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-yellow-green.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-gray-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/dark-gray-blue-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/solarized-dark-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/solarized-light-256.theme
-# include /usr/local/opt/task/share/doc/task/rc/no-color.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/light-16.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/light-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-16.theme
+include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-red-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-green-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-blue-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-violets-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-yellow-green.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-gray-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/dark-gray-blue-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/solarized-dark-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/solarized-light-256.theme
+# include {{ $homebrewPrefix }}/opt/task/share/doc/task/rc/no-color.theme
 
 default.command=next
 weekstart=Monday
