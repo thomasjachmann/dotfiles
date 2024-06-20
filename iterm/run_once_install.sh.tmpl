@@ -3,8 +3,7 @@
 brew bundle --no-lock --file=/dev/stdin <<EOB
 cask "iterm2"
 
-tap "homebrew/cask-fonts"
-cask "font-hack"
+cask "font-hack-nerd-font"
 EOB
 
 source {{ .chezmoi.sourceDir }}/../_helpers.zsh
