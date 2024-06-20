@@ -1,10 +1,15 @@
 #!/bin/bash
 
-set -e
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "iterm2"
 
-source $(dirname $0)/../_helpers.zsh
+tap "homebrew/cask-fonts"
+cask "font-hack"
+EOB
 
-yellow "you need to adjust your settings and import color preset $(grealpath $(dirname $0))/support/tja.itermcolors"
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+yellow "you need to adjust your settings and import color preset {{ .chezmoi.sourceDir }}/tja.itermcolors"
 
 # TODO make configuration reproducible
 #
