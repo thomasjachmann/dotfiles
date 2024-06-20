@@ -10,7 +10,7 @@ packages.
 Quick and easy:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/thomasjachmann/dotfiles/master/install) | /bin/bash
+curl -fsSL https://raw.githubusercontent.com/thomasjachmann/dotfiles/main/install) | /bin/bash
 ```
 
 If you don't like piping stuff into shells, clone this repository somewhere
