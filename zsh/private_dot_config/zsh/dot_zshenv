@@ -5,10 +5,6 @@
 #
 # see https://unix.stackexchange.com/a/71258
 
-if [ "$ZSHENV_LOADED" != "1" ]; then
-  for file in ~/.config/zsh/*.zshenv(N); do
-    source $file
-  done
-fi
-
-export ZSHENV_LOADED=1
+for file in ~/.config/zsh/*.zshenv(N); do
+  source $file
+done
