@@ -34,9 +34,9 @@ All configuration is also zsh based so you should be willing to use this
 shell.
 
 It is assumed that Homebrew is installed into the standard location
-`/usr/local`. Calling `brew --prefix <package>` just takes too long to be
-included in the dotfiles. This would slow down shell initialization
-dramatically. So we're using the hard coded path for now.
+`opt/homebrew` or `/usr/local`. Calling `brew --prefix <package>` just takes
+too long to be included in the dotfiles. This would slow down shell
+initialization dramatically. So we're using the hard coded path for now.
 
 ## Background
 
