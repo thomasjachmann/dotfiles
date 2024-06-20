@@ -2,5 +2,5 @@
 function nvm_init() {
   export NVM_DIR=~/.nvm
   # source $(brew --prefix nvm)/nvm.sh
-  source /usr/local/opt/nvm/nvm.sh
+  source $HOMEBREW_PREFIX/opt/nvm/nvm.sh
 }
