@@ -5,11 +5,11 @@ if [ -S /tmp/kitty.sock ]; then
     -F '(#{session_attached}) #{session_name} #{window_width} #{window_height}' \
     | grep '(0)' \
     | while read attached name width height; do
-    /usr/local/bin/kitty @ \
+    $HOMEBREW_PREFIX/bin/kitty @ \
       --to=unix:/tmp/kitty.sock \
       new-window \
       --window-type=os \
-      /usr/local/bin/tmux -L kitty attach -t $name \
+      $HOMEBREW_PREFIX/bin/tmux -L kitty attach -t $name \
       > /dev/null
     # TODO width/height
   done

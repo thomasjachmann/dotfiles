@@ -1,9 +1,10 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
 # see https://sw.kovidgoyal.net/kitty/conf.html
 
 # The distinct socket name (-L) has to be set so that it doesn't clash with a
 # tmux server started in another terminal.
 # see https://github.com/kovidgoyal/kitty/issues/306
-shell /usr/local/bin/tmux -L kitty
+shell {{ $homebrewPrefix }}/bin/tmux -L kitty
 
 
 ##################################################
