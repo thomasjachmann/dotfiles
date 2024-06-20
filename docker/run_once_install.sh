@@ -1,3 +1,6 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
 # runtime, comes with `lima nerdctl ...`
 brew "colima"
 
@@ -18,3 +21,4 @@ tap "ykursadkaya/openlens"
 cask "openlens"
 
 brew "k9s"
+EOB
