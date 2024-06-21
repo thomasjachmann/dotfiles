@@ -1,0 +1,65 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
+# see https://sw.kovidgoyal.net/kitty/conf.html
+
+# The distinct socket name (-L) has to be set so that it doesn't clash with a
+# tmux server started in another terminal.
+# see https://github.com/kovidgoyal/kitty/issues/306
+shell {{ $homebrewPrefix }}/bin/tmux -L kitty
+
+
+##################################################
+## WINDOW BEHAVIOR ###############################
+##################################################
+
+window_border_width 4pt
+
+tab_bar_style slant
+tab_separator ""
+tab_title_template "{index}({num_windows}):{title}"
+
+remember_window_size no
+initial_window_width 1022
+initial_window_height 763
+resize_draw_strategy size
+
+scrollback_lines 9999
+
+enable_audio_bell no
+
+allow_remote_control yes
+
+
+##################################################
+## APPEARANCE (FONTS & COLORS) ###################
+##################################################
+
+font_family Hack Nerd Font
+# default: 11.0
+# wanted bigger - 12.5 seems smoother on lowdpi display than 12.0
+font_size 14
+modify_font cell_height 130%
+disable_ligatures always
+
+
+# BEGIN_KITTY_THEME
+# Argonaut
+include current-theme.conf
+# END_KITTY_THEME
+
+cursor_blink_interval 0.25
+cursor_stop_blinking_after 1
+
+mouse_hide_wait 0
+
+
+##################################################
+## KEYBOARD SETTINGS #############################
+##################################################
+
+map cmd+0 change_font_size current 0
+map cmd+plus change_font_size current +1.0
+map cmd+minus change_font_size current -1.0
+map cmd+shift+plus change_font_size current +0.1
+map cmd+shift+minus change_font_size current -0.1
+
+map cmd+shift+. kitty_shell window

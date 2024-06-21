@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+red "This is deprecated! Use mise instead." 1>&2
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+brew "chruby"
+
+# ruby installers
+brew "ruby-install"
+brew "ruby-build"
+EOB

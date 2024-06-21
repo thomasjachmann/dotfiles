@@ -1,5 +1,0 @@
-brew "chruby"
-
-# ruby installers
-brew "ruby-install"
-brew "ruby-build"

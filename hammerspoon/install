@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-
-source $(dirname $0)/../_helpers.zsh
-
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
-
-loginitem "Hammerspoon" "/Applications/Hammerspoon.app"

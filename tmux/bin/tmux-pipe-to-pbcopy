@@ -1,14 +1,14 @@
 #!/bin/bash
 
 tmp=$(mktemp -t tmux-pipe-to-pbcopy) || exit 1
-/usr/local/bin/tmux display-message "piping to $tmp for later transfer into clipboard"
+$HOMEBREW_PREFIX/bin/tmux display-message "piping to $tmp for later transfer into clipboard"
 
 function finish() {
   # taken from http://unix.stackexchange.com/questions/140251/strip-color-on-os-x-with-bsd-sed-or-any-other-tool
   # TODO still leaves some weird characters in
   sed $'s/\x1b\\[[0-9;]*[a-zA-Z]//g' $tmp | col -bx | pbcopy
   rm $tmp
-  /usr/local/bin/tmux display-message "copied into clipboard"
+  $HOMEBREW_PREFIX/bin/tmux display-message "copied into clipboard"
   exit 0
 }
 

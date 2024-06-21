@@ -1,0 +1,19 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "iterm2"
+
+cask "font-hack-nerd-font"
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+yellow "you need to adjust your settings and import color preset {{ .chezmoi.sourceDir }}/tja.itermcolors"
+
+# TODO make configuration reproducible
+#
+# Just adding ~/Library/Preferences/com.googlecode.iterm2.plist here doesn't do
+# the trick. There are values in there that are more volatile than mere
+# settings (eg the last working directory), so it would change all the time.
+# Plus, iTerm recreates the file on each change, deleting the symlink and
+# creating a new file, so changes made in the app wouldn't show up in here.

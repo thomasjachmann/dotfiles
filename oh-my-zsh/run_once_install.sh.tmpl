@@ -1,0 +1,14 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+brew "git"
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+if [ -d ~/.config/oh-my-zsh ]; then
+  green "oh-my-zsh is already installed"
+else
+  yellow "oh-my-zsh is missing, cloning"
+  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.config/oh-my-zsh
+fi

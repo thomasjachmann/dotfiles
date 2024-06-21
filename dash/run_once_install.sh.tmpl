@@ -1,0 +1,10 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "dash"
+# see zealdocs.org or devdocs.io
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+loginitem "Dash" "/Applications/Dash.app"

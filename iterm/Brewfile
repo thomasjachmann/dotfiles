@@ -1,6 +1,0 @@
-brew "coreutils" # just for using grealpath in ./install
-
-cask "iterm2"
-
-tap "homebrew/cask-fonts"
-cask "font-hack"

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -e
-
-source $(dirname $0)/../_helpers.zsh
-
-loginitem "AppTrap" "$HOME/Library/PreferencePanes/AppTrap.prefPane/Contents/Resources/AppTrap.app"

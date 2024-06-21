@@ -1,2 +1,0 @@
-# somehow, this doesn't work when sourced from .zshrc, we need to eval this
-. /usr/local/opt/fzf/shell/key-bindings.zsh

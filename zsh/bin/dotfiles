@@ -2,28 +2,44 @@
 
 set -e
 
-dotfiles=$(grealpath $(dirname $(grealpath $0))/../..)
+source_dir=$(grealpath $(dirname $(grealpath $0))/../..)
+destination_dir=$HOME
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}/dotfiles
 mkdir -p $data_dir
 
-source $dotfiles/_helpers.zsh
+source $source_dir/_helpers.zsh
 
-function stowpackage {
-  local action=$1
-  local dir=$(dirname $2)
-  local pkg=$(basename $2)
+function checkpackage {
+  local package=$1
 
-  stow \
-    --dir=$dir \
-    --target=$HOME \
-    --ignore=support \
-    --ignore=.gitignore \
-    --ignore=Brewfile \
-    --ignore=Brewfile.lock.json \
-    --ignore=install \
-    --ignore=README.md \
-    $action \
-    "$pkg"
+  local package_dir=$source_dir/$package
+  [ -d $package_dir ] || (red "package \"$package\" does not exist" 1>&2 && exit 1)
+}
+
+function chezmoipackage {
+  local package=$1
+  shift
+
+  checkpackage "$package"
+  local package_dir=$source_dir/$package
+
+  chezmoi \
+    --source="$package_dir" \
+    --destination="$destination_dir" \
+    --mode=symlink \
+    "$@"
+}
+
+function cleanuppackage {
+  local package=$1
+
+  # TODO implement uninstallation
+  # 1. use this to see if there are changes in the destination that might be destroyed
+  #    chezmoipackage $package diff | grep "^diff" | sed 's/.* a\/\(.*\) b\/.*/\1/'
+  # 2. use this to remove files/symlinks and optionally empty directories
+  #    chezmoipackage $package managed
+
+  red "uninstall not implemented yet" 1>&2 && exit 1
 }
 
 command=$1
@@ -32,83 +48,88 @@ command=$1
 case $command in
 
 home)
-  echo $dotfiles
+  echo "$source_dir"
   ;;
 
 edit)
-  cd $dotfiles
-  $EDITOR
+  if [ "$#" == "0" ]; then
+    cd "$source_dir"
+    $EDITOR
+  else
+    # TODO This will open the editor in the root, not in the package directory
+    # since chezmoi seems to go to the git repo root instead of the given
+    # source directory, but --apply or --watch switches still work
+    package=$1
+    shift
+    chezmoipackage "$package" edit "$@"
+  fi
   ;;
 
 install)
-  cd $dotfiles
   for package in "$@"; do
     green "installing $package"
-    [ -f ./$package/Brewfile ] && brew bundle --file=./$package/Brewfile
-    stowpackage --restow $package
-    [ -x ./$package/install ] && ./$package/install
-    echo $package >> $data_dir/installed
-    sort --unique $data_dir/installed > $data_dir/installed.new
-    mv $data_dir/installed.new $data_dir/installed
+    chezmoipackage "$package" apply
+    echo "$package" >> "$data_dir/installed"
+    sort --unique "$data_dir/installed" > "$data_dir/installed.new"
+    mv "$data_dir/installed.new" "$data_dir/installed"
   done
   green "installed packages $*"
   ;;
 
 uninstall)
-  cd $dotfiles
   for package in "$@"; do
     green "uninstalling $package"
-    stowpackage --delete $package
-    sed "/^${package//\//\\/}$/d" $data_dir/installed > $data_dir/installed.new
-    mv $data_dir/installed.new $data_dir/installed
+    cleanuppackage "$package"
+    sed "/^${package//\//\\/}$/d" "$data_dir/installed" > "$data_dir/installed.new"
+    mv "$data_dir/installed.new" "$data_dir/installed"
   done
   green "uninstalled packages $*"
   yellow "be aware that none of the Brewfile dependencies or custom install steps have been uninstalled or reverted"
   ;;
 
 list)
-  cat $data_dir/installed
+  if [ "$#" == "0" ]; then
+    cat "$data_dir/installed"
+  else
+    result=0
+    for package in "$@"; do
+      checkpackage "$package"
+      if grep "^$package$" "$data_dir/installed" > /dev/null 2>&1; then
+        green "package $package is installed"
+      else
+        yellow "package $package is not installed"
+        result=1
+      fi
+    done
+    exit $result
+  fi
   ;;
 
 reinstall)
-  packages=$(perl -pe 's/\n/ / unless eof' $data_dir/installed)
+  packages=$(perl -pe 's/\n/ / unless eof' "$data_dir/installed")
   $0 install $packages
-  ;;
-
-resymlink)
-  cd $dotfiles
-  packages=$(perl -pe 's/\n/ / unless eof' $data_dir/installed)
-  for package in $packages; do
-    green "symlinking $package"
-    stowpackage --restow $package
-  done
-  green "symlinked packages $packages"
-  ;;
-
-adopt)
-  red "this will adopt changes made outside of this directory (eg by overwriting the stowed symlinks) by overwriting the local files - please make sure you don't have any local changes"
-  confirm
-  cd $dotfiles
-  for package in "$@"; do
-    green "adopting $package"
-    stowpackage --adopt $package
-  done
-  green "adopted changes from packages $*"
-  yellow "please check if there are any changes that should be commited to version control"
   ;;
 
 add)
   package=$1
-  [ -z "$package" ] && $(echo "you need to specify a package to add the file to" 1>&2) && exit 1
-  file=$2
-  [ -z "$file" ] && $(echo "you need to specify a file to add to the package" 1>&2) && exit 1
+  shift
+  chezmoipackage "$package" add "$@"
+  $0 list "$package" > /dev/null 2>&1 && chezmoipackage "$package" apply
+  ;;
 
-  dir=$(dirname "$file")
-  mkdir -p "$dotfiles/$package/$dir"
+diff)
+  if [ "$#" == "0" ]; then
+    packages=$(perl -pe 's/\n/ / unless eof' "$data_dir/installed")
+    $0 diff $packages
+  else
+    for package in "$@"; do
+      chezmoipackage "$package" diff --pager=cat
+    done
+  fi
+  ;;
 
-  mv "$2" "$dotfiles/$package/$file" # this might leave an empty directory behind that affects symlinking by stow
-
-  $0 install $package
+chezmoi|cm)
+  chezmoipackage "$@"
   ;;
 
 *)
@@ -118,30 +139,38 @@ Available commands:
 
     home                   displays the home of this dotfiles install
 
-    edit                   open this dotfile home (the vault) in the editor
+    edit [package [opts]]  open this dotfile home (the vault) in the editor
                            configured in \$EDITOR ($EDITOR)
+                           When a package is given, you can pass in all args
+                           chezmoi edit accepts, eg:
+                           $0 edit homebrew .config/zsh/_homebrew.zshenv --watch
 
-    install [package(s)]   installs given package(s)
-                           1. install dependencies via Brewfile
-                           2. symlink all of the package's files
-                           3. run a custom install script if present
+    install [package(s)]   installs given package(s), symlinking files and
+                           running install scripts
 
     uninstall [package(s)] uninstalls given package(s)
                            This doesn't remove dependencies installed via
-                           Brewfile or changes done by the install script!
+                           install scripts!
 
-    list                   lists all installed packages
+    list [package(s)]      lists all installed packages or checks whether given
+                           packages are installed, fails if one isn't
 
     reinstall              reinstalls all installed packages (see list command)
 
-    resymlink              symlink all installed package's files
-
     add [package] [file]   adds a file to a package
-                           This converts a real file to a symlinked file.
+                           If the package is installed already, it is installed
+                           again to convert the added file to a symlink. You can also
+                           pass in all args chezmoi add accepts, eg:
+                           $0 add pkg .config/pkg/config --template
 
-    adopt [package(s)]     adopt changes made to the given package(s) outside
-                           of the dotfiles directory, eg after someone replaced
-                           the symlink with a new file"
+    diff [package(s)]      shows what differs between source and destination
+                           If no package is given, then all installed packages
+                           will be diffed.
+
+    chezmoi package [opts] run arbitrary chezmoi commands within the context of
+                           a package, also aliased to cm"
+
   exit 1
+  ;;
 
 esac

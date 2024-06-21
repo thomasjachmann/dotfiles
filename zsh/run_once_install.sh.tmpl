@@ -1,0 +1,33 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+brew "zsh"
+brew "chezmoi"
+brew "coreutils"
+brew "zsh-syntax-highlighting"
+brew "pstree"
+EOB
+
+# TODO: zplug or any zsh plugin manager? zplug is meant to work in the spirit of vim-plug.
+# TODO: https://invidio.us/watch?v=eLEo4OQ-cuQ tipps on vi mode, cursor change etc
+
+set -e
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+homebrew_shellenv
+
+# check availability of zsh as login shell
+if grep --quiet -e "^$HOMEBREW_PREFIX/bin/zsh$" /etc/shells; then
+  green "zsh is already available as login shell"
+else
+  yellow "zsh is not available as login shell, adding it to /etc/shells"
+  echo -e "\n# make current zsh installed via homebrew available as login shell\n$HOMEBREW_PREFIX/bin/zsh" \
+    | sudo tee -a /etc/shells > /dev/null
+fi
+
+# check user's shell
+if [ "$SHELL" == "$HOMEBREW_PREFIX/bin/zsh" ]; then
+  green "your user already uses zsh"
+else
+  yellow "you should set your user's shell to use zsh: chsh -s $HOMEBREW_PREFIX/bin/zsh"
+fi

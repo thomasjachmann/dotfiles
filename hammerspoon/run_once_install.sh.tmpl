@@ -1,0 +1,14 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "hammerspoon"
+
+# for determining which is the currently focused kitty window in apps/tmux.lua
+brew "jq"
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+
+loginitem "Hammerspoon" "/Applications/Hammerspoon.app"

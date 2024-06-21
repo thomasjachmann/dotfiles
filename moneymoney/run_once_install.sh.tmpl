@@ -1,0 +1,17 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "moneymoney"
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+loginitem "MoneyMoney" "/Applications/MoneyMoney.app" "true"
+
+# TODO: preferences/data?
+#
+# ~/Library/Containers/com.moneymoney-app.retail/Data/Library/Preferences/com.moneymoney-app.retail.plist
+# ~/Library/Containers/com.moneymoney-app.retail/Data/Library/Application Support/MoneyMoney
+#
+# Wie können die Einstellungen hierüber wiederhergestellt werden, wenn das
+# Container-Verzeichnis erst nach dem ersten Start verfügbar ist?

@@ -1,0 +1,2 @@
+# somehow, this doesn't work when sourced from .zshrc, we need to eval this
+. $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh

@@ -1,8 +1,0 @@
-brew "zsh"
-brew "stow"
-brew "coreutils"
-brew "zsh-syntax-highlighting"
-brew "pstree"
-
-# TODO: zplug or any zsh plugin manager? zplug is meant to work in the spirit of vim-plug.
-# TODO: https://invidio.us/watch?v=eLEo4OQ-cuQ tipps on vi mode, cursor change etc

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "apptrap"
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+loginitem "AppTrap" "$HOME/Library/PreferencePanes/AppTrap.prefPane/Contents/Resources/AppTrap.app"

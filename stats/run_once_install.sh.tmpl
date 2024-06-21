@@ -1,0 +1,9 @@
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOB
+cask "stats"
+EOB
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+loginitem "Stats" "/Applications/Stats.app"

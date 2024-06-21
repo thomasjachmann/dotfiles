@@ -1,0 +1,34 @@
+# environment/customer specific settings
+# these can contain sensitive data, so they're extracted into specific files
+# that may or may not be included in my dotfiles
+Include ~/.ssh/config.d/*.conf
+
+# general settings
+Host *
+  # set an insane default, but still better than the local user name
+  User root
+
+  # disable vulnerable protocol 1
+  Protocol 2
+
+  # better don't forward too much - if needed, set it to yes in host specific
+  # settings or via command args
+  ForwardAgent no
+  ForwardX11 no
+
+  # keep the connection alive
+  ServerAliveInterval 30
+
+  # save the session initiation on parallel/immediately consecutive logins
+  # use `-S none` to override individually
+  ControlMaster auto
+  ControlPath ~/.ssh/master-%r@%h:%p
+  ControlPersist 10s
+
+  AddressFamily inet
+
+  # prevent connection losses
+  TcpKeepAlive yes
+
+  # set the language of the remote session for umlauts to work
+  SendEnv LANG
