@@ -35,7 +35,7 @@ function ticktrack.toggle(keepOpen)
     webview:frame(rect)
     webview:show()
     webview:hswindow():application():activate()
-    webview:evaluateJavaScript("$('.navigation-item:first').click();window.setTimeout(function() { $('input:first').focus(); }, 100);") -- TODO this is too early when opening view for the first time
+    webview:evaluateJavaScript("$('.navigation-item:first').click();window.setTimeout(function() { $('input.data').focus(); }, 100);") -- TODO this is too early when opening view for the first time
   end
 end
 
