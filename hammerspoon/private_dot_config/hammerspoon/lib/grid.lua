@@ -24,7 +24,7 @@ hs.timer.doEvery(60, cleanupWindowData)
 
 function focusedWindowData()
   local win = hs.window.focusedWindow()
-  if win ~= hs.window:desktop() then
+  if (win and win ~= hs.window:desktop()) then
     data = dataByWindowId[win:id()]
     if not data then
       data = {
