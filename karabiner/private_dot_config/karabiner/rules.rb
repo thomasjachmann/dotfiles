@@ -74,46 +74,6 @@ rule(
   *%i[h j k l d].map { |letter| ctrl_b(letter, modifier: :shift) },
 )
 
-def parenthesis(key_code, modifier: nil, to_key_code:, to_modifier:, terminals_only: nil)
-  from_params = {}
-  from_params[:mandatory] = modifier if modifier
-  to_params = { key_code: key_code }
-  to_params[:modifiers] = modifier if modifier
-  rule = {
-    from: from(key_code, **from_params),
-    parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
-    to: to(**to_params),
-    to_if_alone: to(key_code: to_key_code.to_s, modifiers: [to_modifier])
-  }
-  rule[:conditions] = app_is(TERMINALS) if terminals_only == true
-  rule[:conditions] = app_is_not(TERMINALS) if terminals_only == false
-  rule
-end
-
-rule(
-  "Change left/right_shift to opening/closing parenthesis",
-  parenthesis(:left_shift, to_key_code: 8, to_modifier: :shift),
-  parenthesis(:right_shift, to_key_code: 9, to_modifier: :shift),
-)
-
-rule(
-  "Change left_command + left/right_shift to opening/closing square brackets",
-  parenthesis(:left_shift, modifier: :left_command, to_key_code: 5, to_modifier: :option),
-  parenthesis(:right_shift, modifier: :left_command, to_key_code: 6, to_modifier: :option),
-)
-
-rule(
-  "Change right_command + left/right_shift to opening/closing curly brackets in non-terminals",
-  parenthesis(:left_shift, modifier: :right_command, to_key_code: 8, to_modifier: :option, terminals_only: false),
-  parenthesis(:right_shift, modifier: :right_command, to_key_code: 9, to_modifier: :option, terminals_only: false),
-)
-
-rule(
-  "Change right_control + left/right_shift to opening/closing curly brackets in terminals",
-  parenthesis(:left_shift, modifier: :right_control, to_key_code: 8, to_modifier: :option, terminals_only: true),
-  parenthesis(:right_shift, modifier: :right_control, to_key_code: 9, to_modifier: :option, terminals_only: true),
-)
-
 rule(
   "Change alt space (nonbreaking space) to space",
   from: from(:spacebar, mandatory: %i[option]),
