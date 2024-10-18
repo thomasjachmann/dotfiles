@@ -123,6 +123,7 @@ diff)
     $0 diff $packages
   else
     for package in "$@"; do
+      yellow "diffing package ${package}"
       chezmoipackage "$package" diff --pager=cat
     done
   fi
