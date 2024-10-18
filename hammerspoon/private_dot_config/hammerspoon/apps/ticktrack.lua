@@ -20,7 +20,10 @@ function ticktrack.toggle(keepOpen)
     webview:behavior(hs.drawing.windowBehaviors.moveToActiveSpace)
     webview:windowCallback(function(event, webview, state)
       if not storedKeepOpen and event == "focusChange" and state == false then
-        webview:hide()
+        local newWin = hs.window.focusedWindow()
+        if not newWin or newWin:role() ~= "AXSheet" then -- keep open if it's a JS dialog
+          webview:hide()
+        end
       end
     end)
   end
