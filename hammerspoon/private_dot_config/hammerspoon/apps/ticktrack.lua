@@ -9,10 +9,12 @@ end
 
 function ticktrack.toggle(keepOpen)
   storedKeepOpen = keepOpen
+
+  rect = hs.screen.primaryScreen():frame()
+  rect.x = rect.w - 560
+  rect.w = 560
+
   if webview == nil then
-    rect = hs.screen.primaryScreen():frame()
-    rect.x = rect.w - 560
-    rect.w = 560
     webview = hs.webview.newBrowser(rect, {developerExtrasEnabled=true})
     webview:url("https://ticktrack.coderei.de")
     webview:behavior(hs.drawing.windowBehaviors.moveToActiveSpace)
@@ -27,6 +29,7 @@ function ticktrack.toggle(keepOpen)
   if win and win:application():isFrontmost() then
     webview:hide()
   else
+    webview:frame(rect)
     webview:show()
     webview:hswindow():application():activate()
     webview:evaluateJavaScript("$('.navigation-item:first').click();window.setTimeout(function() { $('input:first').focus(); }, 100);") -- TODO this is too early when opening view for the first time
