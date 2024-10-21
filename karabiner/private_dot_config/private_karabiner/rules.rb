@@ -19,7 +19,7 @@ rule(
     key_code: :f20
   ),
   to_after_key_up: to(set_variable(:hyper_modifier, 0)),
-  to_if_alone: to(key_code: :escape)
+  to_if_alone: to(key_code: :escape, hold_down_milliseconds: 10)
 )
 
 rule(
