@@ -19,7 +19,7 @@ rule(
     key_code: :f20
   ),
   to_after_key_up: to(set_variable(:hyper_modifier, 0)),
-  to_if_alone: to(key_code: :escape, hold_down_milliseconds: 10)
+  to_if_alone: to(key_code: :escape, hold_down_milliseconds: 50)
 )
 
 rule(
@@ -57,7 +57,7 @@ rule(
   parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
   to: to(set_variable(:tmux_modifier, 1)),
   to_after_key_up: to(set_variable(:tmux_modifier, 0)),
-  to_if_alone: to(key_code: :tab)
+  to_if_alone: to(key_code: :tab, hold_down_milliseconds: 50)
 )
 
 rule(

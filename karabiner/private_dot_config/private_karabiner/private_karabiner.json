@@ -47,7 +47,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "hold_down_milliseconds": 10,
+                                        "hold_down_milliseconds": 50,
                                         "key_code": "escape"
                                     }
                                 ],
@@ -182,7 +182,12 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "tab" }],
+                                "to_if_alone": [
+                                    {
+                                        "hold_down_milliseconds": 50,
+                                        "key_code": "tab"
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
