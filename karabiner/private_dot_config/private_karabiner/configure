@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 class Karabiner
-  CONFIG_FILE_PATH = File.expand_path("../karabiner.json", __FILE__)
+  CONFIG_FILE_PATH = Dir.glob(File.expand_path("../*karabiner.json", __FILE__)).first
 
   def self.configure(&block)
     instance = new(&block)

@@ -12,14 +12,14 @@ rule(
   "Change caps_lock to f20 (hyper key) and set hyper_modifier or esc if pressed alone",
   from: from(:caps_lock, optional: %i[any]),
   parameters: {
-    "basic.to_if_alone_timeout_milliseconds" => 200
+    "basic.to_if_alone_timeout_milliseconds" => 1000
   },
   to: to(
     set_variable(:hyper_modifier, 1),
     key_code: :f20
   ),
   to_after_key_up: to(set_variable(:hyper_modifier, 0)),
-  to_if_alone: to(key_code: :escape, hold_down_milliseconds: 50)
+  to_if_alone: to(key_code: :escape, hold_down_milliseconds: 100)
 )
 
 rule(
@@ -54,10 +54,10 @@ rule(
   "Change tab to tmux_modifier or tab if pressed alone in tmux terminals",
   conditions: [app_is(TMUX_TERMINALS), variable_unless(:hyper_modifier, 1)],
   from: from(:tab, optional: %i[any]),
-  parameters: { "basic.to_if_alone_timeout_milliseconds" => 200 },
+  parameters: { "basic.to_if_alone_timeout_milliseconds" => 1000 },
   to: to(set_variable(:tmux_modifier, 1)),
   to_after_key_up: to(set_variable(:tmux_modifier, 0)),
-  to_if_alone: to(key_code: :tab, hold_down_milliseconds: 50)
+  to_if_alone: to(key_code: :tab, hold_down_milliseconds: 100)
 )
 
 rule(
