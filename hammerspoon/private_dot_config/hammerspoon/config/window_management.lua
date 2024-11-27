@@ -9,6 +9,8 @@ local mappings = {
   ["tab"] = scrn.moveToNext,
 
   ["^"] = grid.show,
+  [{"shift", "^"}] = grid.resetWindowData,
+  [{"alt", "^"}] = function() grid.resetWindowData(hs.window.focusedWindow()) end,
   ["1"] = grid.move({"0,0,12x12"}),
 
   -- vertically oriented window moves

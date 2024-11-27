@@ -12,6 +12,14 @@ hs.window.animationDuration = 0
 
 local dataByWindowId = {}
 
+function grid.resetWindowData(win)
+  if win then
+    dataByWindowId[win:id()] = nil
+  else
+    dataByWindowId = {}
+  end
+end
+
 function cleanupWindowData()
   for id, data in pairs(dataByWindowId) do
     if data.win:role() == '' then
