@@ -1,1 +1,1 @@
-alias ssh-pw=ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no
+alias ssh-pw="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
