@@ -23,7 +23,7 @@ JSON
 
     $stdout.write title
     if !exists
-      File.write(public_key_file, public_key)
+      File.write(public_key_file, public_key, perm: 0600)
       color "0;32", " created"
     elsif !same
       FileUtils.mv(public_key_file, public_key_file.sub(/\.pub$/, ".bak"))
