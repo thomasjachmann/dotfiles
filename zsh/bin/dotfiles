@@ -129,6 +129,18 @@ diff)
   fi
   ;;
 
+apply)
+  if [ "$#" == "0" ]; then
+    packages=$(perl -pe 's/\n/ / unless eof' "$data_dir/installed")
+    $0 apply $packages
+  else
+    for package in "$@"; do
+      yellow "applying package ${package}"
+      chezmoipackage "$package" apply
+    done
+  fi
+  ;;
+
 chezmoi|cm)
   chezmoipackage "$@"
   ;;
@@ -167,6 +179,10 @@ Available commands:
     diff [package(s)]      shows what differs between source and destination
                            If no package is given, then all installed packages
                            will be diffed.
+
+    apply [package(s)]     applies the changes shown by diff to the destintion
+                           If no package is given, then all installed packages
+                           will be applied.
 
     chezmoi package [opts] run arbitrary chezmoi commands within the context of
                            a package, also aliased to cm"
