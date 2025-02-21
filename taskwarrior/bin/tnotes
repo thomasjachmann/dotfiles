@@ -6,7 +6,7 @@ require "json"
 require "tempfile"
 
 def read_tasks(args)
-  JSON.parse(`task #{args} export`)
+  JSON.parse(`dirtasks #{args} export`)
 end
 
 data = read_tasks(ARGV.map {|arg| "\"#{arg}\""}.join(" "))
@@ -31,7 +31,7 @@ data.each do |task|
         task.delete("notes")
       end
       IO.write(file.path, task.to_json)
-      `task import #{file.path}`
+      `dirtasks import #{file.path}`
     end
   ensure
     file.close
