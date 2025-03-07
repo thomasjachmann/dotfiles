@@ -74,47 +74,63 @@ function grid.move(grids)
   end
 end
 
+function configure4by4()
+  hs.grid.setGrid("4x4")
+  hs.grid.HINTS = {
+    {"0", "0", "0", "0"}, -- this is ignored
+    {"4", "5", "6", "7"},
+    {"R", "T", "Z", "U"},
+    {"F", "G", "H", "J"},
+    {"V", "B", "N", "M"}
+  }
+end
+
+function configure3by3()
+  hs.grid.setGrid("3x3")
+  hs.grid.HINTS = {
+    {"0", "0", "0"}, -- this is ignored
+    {"0", "0", "0"}, -- this is ignored
+    {"R", "T", "Z"},
+    {"F", "G", "H"},
+    {"V", "B", "N"}
+  }
+end
+
+function configure4by3()
+  hs.grid.setGrid("4x3")
+  hs.grid.HINTS = {
+    {"0", "0", "0", "0"}, -- this is ignored
+    {"0", "0", "0", "0"}, -- this is ignored
+    {"R", "T", "Z", "U"},
+    {"F", "G", "H", "J"},
+    {"V", "B", "N", "M"}
+  }
+end
+
+function configure3by4()
+  hs.grid.setGrid("3x4")
+  hs.grid.HINTS = {
+    {"0", "0", "0"}, -- this is ignored
+    {"4", "5", "6"},
+    {"R", "T", "Z"},
+    {"F", "G", "H"},
+    {"V", "B", "N"}
+  }
+end
+
 function grid.show()
   grid = hs.grid.getGrid()
   hs.grid.hide() -- in case it was open already, but only after we got our current grid size
 
-  if grid._w == 12 or (grid._w == 3 and grid._h == 4) then
-    hs.grid.setGrid("4x4")
-    hs.grid.HINTS = {
-      {"0", "0", "0", "0"}, -- this is ignored
-      {"4", "5", "6", "7"},
-      {"R", "T", "Z", "U"},
-      {"F", "G", "H", "J"},
-      {"V", "B", "N", "M"}
-    }
-  elseif grid._w == 4 and grid._h == 4 then
-    hs.grid.setGrid("3x3")
-    hs.grid.HINTS = {
-      {"0", "0", "0"}, -- this is ignored
-      {"0", "0", "0"}, -- this is ignored
-      {"R", "T", "Z"},
-      {"F", "G", "H"},
-      {"V", "B", "N"}
-    }
-  elseif grid._w == 3 and grid._h == 3 then
-    hs.grid.setGrid("4x3")
-    hs.grid.HINTS = {
-      {"0", "0", "0", "0"}, -- this is ignored
-      {"0", "0", "0", "0"}, -- this is ignored
-      {"R", "T", "Z", "U"},
-      {"F", "G", "H", "J"},
-      {"V", "B", "N", "M"}
-    }
-  elseif grid._w == 4 and grid._h == 3 then
-    hs.grid.setGrid("3x4")
-    hs.grid.HINTS = {
-      {"0", "0", "0"}, -- this is ignored
-      {"4", "5", "6"},
-      {"R", "T", "Z"},
-      {"F", "G", "H"},
-      {"V", "B", "N"}
-    }
-  end
+    if grid._w == 12 or (grid._w == 3 and grid._h == 4) then
+      configure4by4()
+    elseif grid._w == 4 and grid._h == 4 then
+      configure3by3()
+    elseif grid._w == 3 and grid._h == 3 then
+      configure4by3()
+    elseif grid._w == 4 and grid._h == 3 then
+      configure3by4()
+    end
 
   hs.grid.show(resetGrid)
 end
