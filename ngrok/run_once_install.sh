@@ -1,5 +1,5 @@
 #!/bin/bash
 
-brew bundle --no-lock --file=/dev/stdin <<EOB
+brew bundle --file=/dev/stdin <<EOB
 cask "ngrok"
 EOB
