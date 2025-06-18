@@ -32,7 +32,7 @@ rule(
   }.map do |letter, mapping|
     {
       conditions: variable_is(:hyper_modifier, 1),
-      from: from(letter),
+      from: from(letter, optional: %i[any]),
       to: to(key_code: mapping)
     }
   end
