@@ -117,15 +117,6 @@ bind C-v display-panes\; command-prompt -p "pane to move current pane after (ver
 # clear pane for non readline (tail, rails server, etc)
 bind -n C-l send-keys -R \; clear-history
 
-# d: development window mode (big on the right, three small ones on the left)
-# this assumes we've only got one pane before, we have to always go back to
-# pane 1 in order to being able to use pane_current_path since the newly
-# created panes don't have a path yet when we split the next one
-bind d \
-  split-window -b   -h -p 25 -c '#{pane_current_path}'\; select-pane -t 2\;\
-  split-window -t 1 -v -p 35 -c '#{pane_current_path}'\; select-pane -t 3\;\
-  split-window -t 2 -v -p 60 -c '#{pane_current_path}'\; select-pane -t 4
-
 # since this file is in version control and used on multiple computers, allow
 # to customize tmux for a local machine by creating .config/tmux/local.conf
 if-shell '[[ -f $HOME/.config/tmux/local.conf ]]' 'source-file $HOME/.config/tmux/local.conf'
