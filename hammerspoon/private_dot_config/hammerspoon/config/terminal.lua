@@ -16,6 +16,6 @@ local mappings = {
   [{"alt", "t"}] = kitty.focusOrLaunch{shell=true}, -- terminal without tmux
   [{"ctrl", "t"}] = kitty.focusOrLaunch{shell=true, zdotdir="${HOME}/.config/zsh/blank"}, -- blank zsh
 
-  x = kitty.focusOrLaunch{title="vimwiki", cmd="nvim -c 'call VimwikiOpen()'"},
+  x = kitty.focusOrLaunch{title="vimwiki", cmd="NVIM_APPNAME='' nvim -c 'call VimwikiOpen()'"},
 }
 hyper.bindAll(mappings)
