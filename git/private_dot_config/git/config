@@ -24,6 +24,9 @@
   colormoved = default
   colormovedws = allow-indentation-change
 
+[diff "plist"]
+  textconv = plutil -convert xml1 -o -
+
 [rebase]
   instructionFormat = "%s (%an <%ae>)"
 
