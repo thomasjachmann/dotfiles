@@ -185,6 +185,7 @@
   ; TODO make tig use ~/.config/tig/history instead of ~/.tig_history
   refresh-mode = auto
   show-changes = false          # don't show changes at top of main view
+  line-graphics = utf-8
   tab-size = 2
   split-view-height = 65%
   split-view-width = 65%
