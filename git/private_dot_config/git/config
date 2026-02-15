@@ -155,8 +155,6 @@
   changes = !git diff --name-status $(git rev-parse --abbrev-ref HEAD) $(git tracking) | cat
   fsx = !git fetch && git s && gitx
   rdiff = log -p master..origin/master
-  pbcopy = !sh -c 'printf "$1" | pbcopy' -
-  pbcopymessage = !sh -c 'git log $1 -1 --pretty=%B | pbcopy' -
   # -z -0 are needed to handle file names with spaces properly
   open-modified = !git ls-files -z --modified --other --exclude-standard | xargs -0 subl
 
@@ -213,14 +211,13 @@
 
   main = W !git diff --color-words %(commit)^1..%(commit)
 
-  # TODO https://github.com/jonas/tig/issues/65 no need for git pbcopy anymore?
-  main = c !@git pbcopy %(commit)
-  log = c !@git pbcopy %(commit)
-  diff = c !@git pbcopy %(commit)
+  main = c @sh -c 'printf "%(commit)" | pbcopy'
+  log = c @sh -c 'printf "%(commit)" | pbcopy'
+  diff = c @sh -c 'printf "%(commit)" | pbcopy'
 
-  main = C !@git pbcopymessage %(commit)
-  log = C !@git pbcopymessage %(commit)
-  diff = C !@git pbcopymessage %(commit)
+  main = C @sh -c 'git log %(commit) -1 --pretty=%B | git stripspace | pbcopy' # masking cherry-pick
+  log = C @sh -c 'git log %(commit) -1 --pretty=%B | git stripspace | pbcopy'
+  diff = C @sh -c 'git log %(commit) -1 --pretty=%B | git stripspace | pbcopy'
 
   main = I !git rebase --interactive %(commit)^
   log = I !git rebase --interactive %(commit)^
@@ -243,7 +240,7 @@
   stage = S :toggle vertical-split
   diff = S :toggle vertical-split
 
-  status = c !@git pbcopy %(file)
+  status = c @sh -c 'printf "%(file)" | pbcopy'
 
   status = C !git commit
   stage = C !git commit
