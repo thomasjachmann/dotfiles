@@ -126,6 +126,13 @@
   bib = bisect bad
   bir = bisect reset
 
+  # worktree stuff
+  wt = worktree
+  wtl = worktree list
+  wta = worktree add
+  wtr = worktree remove
+  wtb = !sh -c 'git worktree add "../${0//\\//_}" "$0"'
+
   # remote stuff
   f = fetch
   pl = pull
