@@ -1,0 +1,8 @@
+{{ $homebrewPrefix := or (trimSuffix "/bin/brew" (findExecutable "brew" (list "/opt/homebrew/bin" "/usr/local/bin"))) "---no-homebrew---" -}}
+{
+  "auths": {},
+  "credsStore": "osxkeychain",
+  "cliPluginsExtraDirs": [
+    "{{ $homebrewPrefix }}/lib/docker/cli-plugins"
+  ]
+}
