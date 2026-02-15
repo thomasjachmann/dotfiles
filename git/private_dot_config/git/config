@@ -185,11 +185,6 @@
   ; TODO make tig use ~/.config/tig/history instead of ~/.tig_history
   refresh-mode = auto
   show-changes = false          # don't show changes at top of main view
-  ;set date view column options
-  ;show-date = relative
-  ;set author view column options
-  ;author-width = 3
-  # show-author = abbreviated
   tab-size = 2
   split-view-height = 65%
   split-view-width = 65%
@@ -198,9 +193,7 @@
 
 [tig "bind"]
   generic = F !git ftp
-  ;find out how to map ESC
-  ;generic = <Esc> view-close
-  ;main = <Esc> none
+
   main = B !@git branch "%(promptBranchname:)" %(commit)
   log = B !@git branch "%(promptBranchname:)" %(commit)
   diff = B !@git branch "%(promptBranchname:)" %(commit)
@@ -222,9 +215,11 @@
   main = I !git rebase --interactive %(commit)^
   log = I !git rebase --interactive %(commit)^
 
-  main = g !@git open-commit %(commit) # masking revision graph toggling
-  log = g !@git open-commit %(commit) # masking revision graph toggling
+  main = g !@git open-commit %(commit) # masking grep
+  log = g !@git open-commit %(commit) # masking grep
   blame = g !@git open-commit %(commit) # masking grep
+  pager = g !@git open-commit %(commit) # masking grep
+  diff = g !@git open-commit %(commit) # masking grep
 
   status = a !git commit --amend
   stage = a !git commit --amend
