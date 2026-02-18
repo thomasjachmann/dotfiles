@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+# move to vault
+cd $(dotfiles home)
+
+# first fetch everything
+git ftp origin && git ftp coderei &&
+  # review remote changes
+  (tig main..origin/main || true) &&
+  # then upgrade to stuff fetched (this might fail with conflicts - just fix them, `git rbc` and then rerun)
+  git wip && git rebase origin/main &&
+  # push WIP state to private repo
+  git psf coderei sumcumo:sumcumo &&
+  # now restore the uncommitted state
+  git unwip && git restore --staged . &&
+  # and push stuff changed locally to main and both public and private repos
+  git branch -f main HEAD && git ps origin main:main && git ps coderei main:main &&
+  # show changes to allow control
+  tig status && tig --all
+
+# move back to $HOME and show diff
+cd
+dotfiles diff
