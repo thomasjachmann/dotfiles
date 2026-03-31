@@ -1,7 +1,34 @@
 #!/bin/bash
 
+set -e
+
 data_dir="${XDG_DATA_HOME-~/.local/share}/k"
 mkdir -p "$data_dir"
+
+function config_file() {
+  set -e
+
+  local path="$data_dir/$1"
+  [ -f "$path" ] || (echo "no config defined in $path" 1>&2 && return 1)
+  [ -s "$path" ] || (echo "config file in $path is empty" 1>&2 && return 1)
+
+  echo "$path"
+}
+
+function ask() {
+  local what=$1
+  shift
+
+  # TODO: can one:accept be achieved with -1?
+  # TODO: also: --layout=list-reverse
+  fzf \
+    --highlight-line \
+    --delimiter ";" \
+    --bind "load:change-prompt:$what> " \
+    --ghost "choose a $what" \
+    "$@" ||
+    (echo "no $what selected" 1>&2 && exit 1)
+}
 
 function get_data() {
   local data=$(cat "$data_dir/$1" 2>/dev/null)
@@ -16,29 +43,17 @@ function set_data() {
 ##################################################
 ## select config #################################
 ##################################################
-configs=$(get_data configs "----------")
-set -e
-[ "$configs" == "----------" ] && (
-  echo "no configs defined in $data_dir/configs"
-  exit 1
-)
-set +e
-
-config=$(
-  echo -e "$configs" |
-    awk '{ print $1 }' |
-    fzf \
-      --bind "load:change-prompt:config> " \
+configs_file=$(config_file configs)
+response=$(
+  cat "$configs_file" |
+    ask config \
+      --with-nth "{n}: {1} - {3}" \
+      --accept-nth "{1};{2}" \
       --bind "one:accept"
 )
-set -e
-[ -z "$config" ] && (
-  echo "no config selected" 1>&2
-  exit 1
-)
-set +e
+config=$(echo $response | cut -d ';' -f1)
+configfile=$(echo $response | cut -d ';' -f2)
 
-configfile=$(echo -e "$configs" | rg "^$config " | awk '{ print $2 }' | xargs)
 export KUBECONFIG="${configfile/#\~/$HOME}"
 
 ##################################################
@@ -52,56 +67,40 @@ else
   previous_context=$(get_data "previous_context_$config" "")
   context=$(
     echo -e "$contexts" |
-      fzf \
-        --bind "load:change-prompt:context> " \
+      ask context \
+        --with-nth "{n}: {1}" \
         --query="$previous_context"
   )
-  set -e
-  [ -z "$context" ] && (
-    echo "no context selected" 1>&2
-    exit 1
-  )
-  set +e
   set_data "previous_context_$config" "$context"
 fi
 
 ##################################################
 ## select namespace ##############################
 ##################################################
-namespaces=$(get_data "namespaces" "----------")
-set -e
-[ "$namespaces" == "----------" ] && (
-  echo "no namespaces defined in $data_dir/namespaces"
-  exit 1
-)
-set +e
-
-config_namespaces=$(echo "$namespaces" | rg "^$config " | awk '{ print $2 }')
+namespaces_file=$(config_file namespaces)
+config_namespaces=$(rg "^${config};" "$namespaces_file" | cut -d ';' -f2 -f3)
+with_nth="{1} - {2}"
 if [ "$config_namespaces" == "" ]; then
   config_namespaces=$(
     kubectl get namespaces \
       --no-headers \
       -o custom-columns=NAME:.metadata.name
   )
+  with_nth="{1}"
 fi
 
 # need to use awk in the next line to strip off leading spaces
 if [ "$(echo "$config_namespaces" | wc -l | awk '{ print $1 }')" == "1" ]; then
-  namespace="$namespaces"
+  namespace=$(echo $config_namespaces | cut -d ';' -f1)
 else
   previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
   namespace=$(
     echo -e "$config_namespaces" |
-      fzf \
-        --bind "load:change-prompt:namespace> " \
+      ask namespace \
+        --with-nth "{n}: $with_nth" \
+        --accept-nth 1 \
         --query="$previous_namespace"
   )
-  set -e
-  [ -z "$namespace" ] && (
-    echo "no namespace selected" 1>&2
-    exit 1
-  )
-  set +e
   set_data "previous_namespace_${config}_${context}" "$namespace"
 fi
 
@@ -110,38 +109,42 @@ fi
 ##################################################
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
 command=$(
-  echo -e "pods\ndeployments\nshell" |
-    fzf \
-      --bind "load:change-prompt:command> " \
+  echo -e "pods;k9s\ndeployments;k9s\nshell;kubectl" |
+    ask command \
+      --with-nth "{n}: {1} ({2})" \
+      --accept-nth 1 \
       --query="$previous_command"
 )
-set -e
-[ -z "$command" ] && (
-  echo "no command selected" 1>&2
-  exit 1
-)
-set +e
 set_data "previous_command_${config}_${context}_${namespace}" "$command"
 
 case $command in
+pods | deployments)
+  set -x
+  k9s --context "$context" --namespace "$namespace" --command "$command"
+  ;;
+
 shell)
-  previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
-  pod=$(
+  pods=$(
     kubectl get pods \
       --no-headers \
       -o custom-columns=NAME:.metadata.name \
-      --namespace "$namespace" |
-      fzf \
-        --bind "load:change-prompt:pod> " \
-        --query="$previous_pod"
+      --namespace "$namespace"
   )
-  set -e
-  [ -z "$pod" ] && (
-    echo "no pod selected" 1>&2
-    exit 1
-  )
-  set +e
-  set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
+
+  # need to use awk in the next line to strip off leading spaces
+  if [ "$(echo "$pods" | wc -l | awk '{ print $1 }')" == "1" ]; then
+    pod="$pods"
+  else
+    previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
+    pod=$(
+      echo -e "$pods" |
+        ask pod \
+          --with-nth "{n}: {1}" \
+          --accept-nth 1 \
+          --query="$previous_pod"
+    )
+    set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
+  fi
 
   containers=$(
     kubectl get pods \
@@ -159,24 +162,20 @@ shell)
     previous_container=$(get_data "previous_container_${config}_${context}_${namespace}" "")
     container=$(
       echo -e "$containers" |
-        fzf \
-          --bind "load:change-prompt:container> " \
+        ask container \
+          --with-nth "{n}: {1}" \
+          --accept-nth 1 \
           --query="$previous_container"
     )
-    set -e
-    [ -z "$container" ] && (
-      echo "no container selected" 1>&2
-      exit 1
-    )
-    set +e
     set_data "previous_container_${config}_${context}_${namespace}" "$container"
   fi
 
   set -x
   kubectl exec -it --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
   ;;
+
 *)
-  set -x
-  k9s --context "$context" --namespace "$namespace" --command "$command"
+  echo "unknown command" 1>&2
+  exit 1
   ;;
 esac
