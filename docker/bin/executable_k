@@ -1,0 +1,182 @@
+#!/bin/bash
+
+data_dir="${XDG_DATA_HOME-~/.local/share}/k"
+mkdir -p "$data_dir"
+
+function get_data() {
+  local data=$(cat "$data_dir/$1" 2>/dev/null)
+  [ -z "$data" ] && data="$2"
+  echo "$data"
+}
+
+function set_data() {
+  echo "$2" >"$data_dir/$1"
+}
+
+##################################################
+## select config #################################
+##################################################
+configs=$(get_data configs "----------")
+set -e
+[ "$configs" == "----------" ] && (
+  echo "no configs defined in $data_dir/configs"
+  exit 1
+)
+set +e
+
+config=$(
+  echo -e "$configs" |
+    awk '{ print $1 }' |
+    fzf \
+      --bind "load:change-prompt:config> " \
+      --bind "one:accept"
+)
+set -e
+[ -z "$config" ] && (
+  echo "no config selected" 1>&2
+  exit 1
+)
+set +e
+
+configfile=$(echo -e "$configs" | rg "^$config " | awk '{ print $2 }' | xargs)
+export KUBECONFIG="${configfile/#\~/$HOME}"
+
+##################################################
+## select context ################################
+##################################################
+contexts=$(kubectl config get-contexts -o name)
+# need to use awk in the next line to strip off leading spaces
+if [ "$(echo "$contexts" | wc -l | awk '{ print $1 }')" == "1" ]; then
+  context="$contexts"
+else
+  previous_context=$(get_data "previous_context_$config" "")
+  context=$(
+    echo -e "$contexts" |
+      fzf \
+        --bind "load:change-prompt:context> " \
+        --query="$previous_context"
+  )
+  set -e
+  [ -z "$context" ] && (
+    echo "no context selected" 1>&2
+    exit 1
+  )
+  set +e
+  set_data "previous_context_$config" "$context"
+fi
+
+##################################################
+## select namespace ##############################
+##################################################
+namespaces=$(get_data "namespaces" "----------")
+set -e
+[ "$namespaces" == "----------" ] && (
+  echo "no namespaces defined in $data_dir/namespaces"
+  exit 1
+)
+set +e
+
+config_namespaces=$(echo "$namespaces" | rg "^$config " | awk '{ print $2 }')
+if [ "$config_namespaces" == "" ]; then
+  config_namespaces=$(
+    kubectl get namespaces \
+      --no-headers \
+      -o custom-columns=NAME:.metadata.name
+  )
+fi
+
+# need to use awk in the next line to strip off leading spaces
+if [ "$(echo "$config_namespaces" | wc -l | awk '{ print $1 }')" == "1" ]; then
+  namespace="$namespaces"
+else
+  previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
+  namespace=$(
+    echo -e "$config_namespaces" |
+      fzf \
+        --bind "load:change-prompt:namespace> " \
+        --query="$previous_namespace"
+  )
+  set -e
+  [ -z "$namespace" ] && (
+    echo "no namespace selected" 1>&2
+    exit 1
+  )
+  set +e
+  set_data "previous_namespace_${config}_${context}" "$namespace"
+fi
+
+##################################################
+## select command ################################
+##################################################
+previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
+command=$(
+  echo -e "pods\ndeployments\nshell" |
+    fzf \
+      --bind "load:change-prompt:command> " \
+      --query="$previous_command"
+)
+set -e
+[ -z "$command" ] && (
+  echo "no command selected" 1>&2
+  exit 1
+)
+set +e
+set_data "previous_command_${config}_${context}_${namespace}" "$command"
+
+case $command in
+shell)
+  previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
+  pod=$(
+    kubectl get pods \
+      --no-headers \
+      -o custom-columns=NAME:.metadata.name \
+      --namespace "$namespace" |
+      fzf \
+        --bind "load:change-prompt:pod> " \
+        --query="$previous_pod"
+  )
+  set -e
+  [ -z "$pod" ] && (
+    echo "no pod selected" 1>&2
+    exit 1
+  )
+  set +e
+  set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
+
+  containers=$(
+    kubectl get pods \
+      --no-headers \
+      -o jsonpath='{.spec.containers[*].name}' \
+      --namespace "$namespace" \
+      "$pod" |
+      tr -s '[[:space:]]' '\n'
+  )
+
+  # need to use awk in the next line to strip off leading spaces
+  if [ "$(echo "$containers" | wc -l | awk '{ print $1 }')" == "1" ]; then
+    container="$containers"
+  else
+    previous_container=$(get_data "previous_container_${config}_${context}_${namespace}" "")
+    container=$(
+      echo -e "$containers" |
+        fzf \
+          --bind "load:change-prompt:container> " \
+          --query="$previous_container"
+    )
+    set -e
+    [ -z "$container" ] && (
+      echo "no container selected" 1>&2
+      exit 1
+    )
+    set +e
+    set_data "previous_container_${config}_${context}_${namespace}" "$container"
+  fi
+
+  set -x
+  kubectl exec -it --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
+  ;;
+*)
+  set -x
+  k9s --context "$context" --namespace "$namespace" --command "$command"
+  ;;
+esac
