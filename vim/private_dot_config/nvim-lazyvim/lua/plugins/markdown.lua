@@ -16,6 +16,7 @@ return {
       },
       checkbox = {
         enabled = true,
+        bullet = true, -- don't hide the bullet point before a checkbox for less wiggle
       },
       pipe_table = {
         border_enabled = false, -- disable top bottom borders for less wiggle
