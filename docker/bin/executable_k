@@ -26,6 +26,7 @@ function ask() {
     --delimiter ";" \
     --bind "load:change-prompt:$what> " \
     --ghost "choose a $what" \
+    --bind "change:first" \
     "$@" ||
     (echo "no $what selected" 1>&2 && exit 1)
 }
