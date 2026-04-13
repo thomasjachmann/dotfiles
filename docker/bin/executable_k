@@ -108,9 +108,15 @@ fi
 ##################################################
 ## select command ################################
 ##################################################
+commands="
+pods;k9s
+deployments;k9s
+shell;kubectl -> bash
+"
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
 command=$(
-  echo -e "pods;k9s\ndeployments;k9s\nshell;kubectl" |
+  echo -e "$commands" |
+    awk NF | # to strip whitespace (the empty lines from the string creation above)
     ask command \
       --with-nth "{n}: {1} ({2})" \
       --accept-nth 1 \
