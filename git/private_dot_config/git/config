@@ -138,7 +138,7 @@
   pl = pull
   plr = pull --rebase
   ps = push
-  ps-f = push --force-with-lease
+  psf = push --force-with-lease
   pso = !sh -c 'git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD):$(git rev-parse --abbrev-ref HEAD) "$@"'
   finish = !sh -c 'BRANCH=$(git rev-parse --abbrev-ref HEAD) && [[ "$BRANCH" != "master" ]] && git push -u origin $BRANCH && hub pull-request -o && git co master && git b -d $BRANCH'
   open-commit = !sh -c 'git gitlab open-commit $0 || git github open-commit $0 || git bitbucket open-commit $0'
