@@ -66,11 +66,12 @@ if [ "$(echo "$contexts" | wc -l | awk '{ print $1 }')" == "1" ]; then
   context="$contexts"
 else
   previous_context=$(get_data "previous_context_$config" "")
+  pos=$(echo -e "$contexts" | awk "/^$previous_context/{ print NR; exit }")
   context=$(
     echo -e "$contexts" |
       ask context \
         --with-nth "{n}: {1}" \
-        --query="$previous_context"
+        --bind "load:pos($pos)"
   )
   set_data "previous_context_$config" "$context"
 fi
@@ -95,12 +96,13 @@ if [ "$(echo "$config_namespaces" | wc -l | awk '{ print $1 }')" == "1" ]; then
   namespace=$(echo $config_namespaces | cut -d ';' -f1)
 else
   previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
+  pos=$(echo -e "$config_namespaces" | awk "/^$previous_namespace/{ print NR; exit }")
   namespace=$(
     echo -e "$config_namespaces" |
       ask namespace \
         --with-nth "{n}: $with_nth" \
         --accept-nth 1 \
-        --query="$previous_namespace"
+        --bind "load:pos($pos)"
   )
   set_data "previous_namespace_${config}_${context}" "$namespace"
 fi
@@ -114,13 +116,14 @@ deployments;k9s
 shell;kubectl -> bash
 "
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
+pos=$(echo -e "$commands" | awk NF | awk "/^$previous_command/{ print NR; exit }")
 command=$(
   echo -e "$commands" |
     awk NF | # to strip whitespace (the empty lines from the string creation above)
     ask command \
       --with-nth "{n}: {1} ({2})" \
       --accept-nth 1 \
-      --query="$previous_command"
+      --bind "load:pos($pos)"
 )
 set_data "previous_command_${config}_${context}_${namespace}" "$command"
 
@@ -143,12 +146,13 @@ shell)
     pod="$pods"
   else
     previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
+    pos=$(echo -e "$pods" | awk "/^$previous_pod/{ print NR; exit }")
     pod=$(
       echo -e "$pods" |
         ask pod \
           --with-nth "{n}: {1}" \
           --accept-nth 1 \
-          --query="$previous_pod"
+          --bind "load:pos($pos)"
     )
     set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
   fi
@@ -167,12 +171,13 @@ shell)
     container="$containers"
   else
     previous_container=$(get_data "previous_container_${config}_${context}_${namespace}" "")
+    pos=$(echo -e "$containers" | awk "/^$previous_container/{ print NR; exit }")
     container=$(
       echo -e "$containers" |
         ask container \
           --with-nth "{n}: {1}" \
           --accept-nth 1 \
-          --query="$previous_container"
+          --bind "load:pos($pos)"
     )
     set_data "previous_container_${config}_${context}_${namespace}" "$container"
   fi
