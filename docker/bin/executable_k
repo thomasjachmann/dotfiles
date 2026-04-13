@@ -120,6 +120,7 @@ pods;k9s
 deployments;k9s
 shell;kubectl -> bash;pod_container
 console;kubectl -> rails console;pod_container
+upload;kubectl (upload a local file);pod_container
 "
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
 pos=$(echo -e "$commands" | awk NF | awk "/^$previous_command/{ print NR; exit }")
@@ -203,6 +204,14 @@ shell)
 console)
   set -x
   kubectl --kubeconfig "$KUBECONFIG" exec -it --namespace "$namespace" "$pod" --container "$container" -- bin/rails c
+  ;;
+
+upload)
+  path=$(ask file)
+  file=$(basename "$path")
+
+  set -x
+  kubectl --kubeconfig "$KUBECONFIG" cp --namespace=$namespace --container=$container --no-preserve "$file" "$namespace/$pod:$file"
   ;;
 
 *)
