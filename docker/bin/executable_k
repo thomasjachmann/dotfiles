@@ -187,20 +187,22 @@ pod_container)
   ;;
 esac
 
+# FYI: `--kubeconfig "$KUBECONFIG"` is added for commands after `set -x` so that this output can
+# be copy/pasted to repeat that command although it is not necessary to the `KUBECONFIG` variable
 case $command in
 pods | deployments)
   set -x
-  k9s --context "$context" --namespace "$namespace" --command "$command"
+  k9s --kubeconfig "$KUBECONFIG" --context "$context" --namespace "$namespace" --command "$command"
   ;;
 
 shell)
   set -x
-  kubectl exec -it --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
+  kubectl --kubeconfig "$KUBECONFIG" exec -it --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
   ;;
 
 console)
   set -x
-  kubectl exec -it --namespace "$namespace" "$pod" --container "$container" -- bin/rails c
+  kubectl --kubeconfig "$KUBECONFIG" exec -it --namespace "$namespace" "$pod" --container "$container" -- bin/rails c
   ;;
 
 *)
