@@ -118,27 +118,25 @@ fi
 commands="
 pods;k9s
 deployments;k9s
-shell;kubectl -> bash
+shell;kubectl -> bash;pod_container
+console;kubectl -> rails console;pod_container
 "
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
 pos=$(echo -e "$commands" | awk NF | awk "/^$previous_command/{ print NR; exit }")
-command=$(
+response=$(
   echo -e "$commands" |
     awk NF | # to strip whitespace (the empty lines from the string creation above)
     ask command \
-      --with-nth "{n}: {1} ({2})" \
-      --accept-nth 1 \
+      --with-nth "{n}: {1} - {2}" \
+      --accept-nth "{1};{3}" \
       --bind "load:pos($pos)"
 )
+command=$(echo $response | cut -d ';' -f1)
+preparation=$(echo $response | cut -d ';' -f2)
 set_data "previous_command_${config}_${context}_${namespace}" "$command"
 
-case $command in
-pods | deployments)
-  set -x
-  k9s --context "$context" --namespace "$namespace" --command "$command"
-  ;;
-
-shell)
+case $preparation in
+pod_container)
   pods=$(
     kubectl get pods \
       --no-headers \
@@ -186,9 +184,23 @@ shell)
     )
     set_data "previous_container_${config}_${context}_${namespace}" "$container"
   fi
+  ;;
+esac
 
+case $command in
+pods | deployments)
+  set -x
+  k9s --context "$context" --namespace "$namespace" --command "$command"
+  ;;
+
+shell)
   set -x
   kubectl exec -it --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
+  ;;
+
+console)
+  set -x
+  kubectl exec -it --namespace "$namespace" "$pod" --container "$container" -- bin/rails c
   ;;
 
 *)
