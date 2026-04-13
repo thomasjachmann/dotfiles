@@ -5,21 +5,53 @@ set -e
 # move to vault
 cd $(dotfiles home)
 
-# first fetch everything
-git ftp origin && git ftp coderei &&
-  # review remote changes
-  (tig main..origin/main || true) &&
-  # then upgrade to stuff fetched (this might fail with conflicts - just fix them, `git rbc` and then rerun)
-  git wip && git rebase origin/main &&
-  # push WIP state to private repo
-  git psf coderei sumcumo:sumcumo &&
-  # now restore the uncommitted state
-  git unwip && git restore --staged . &&
-  # and push stuff changed locally to main and both public and private repos
-  git branch -f main HEAD && git ps origin main:main && git ps coderei main:main &&
-  # show changes to allow control
-  tig status && tig --all
+( # first fetch everything
+  set -x
+  git ftp origin
+  git ftp coderei
+)
 
-# move back to $HOME and show diff
-cd
-dotfiles diff
+( # review remote changes
+  set -x
+  tig main..origin/main
+) || true
+
+( # then upgrade to stuff fetched (this might fail with conflicts - just fix them, `git rbc` and then rerun)
+  set -x
+  git wip
+  git rebase origin/main
+) || (
+  code=$?
+  echo "please go to $(dotfiles home), fix the conflicts and run $(git rbc), then run $($0) again"
+  exit $code
+)
+
+( # push WIP state to private repo
+  set -x
+  git psf coderei sumcumo:sumcumo
+)
+
+( # now restore the uncommitted state
+  set -x
+  git unwip
+  git restore --staged .
+)
+
+( # and push stuff changed locally to main and both public and private repos
+  set -x
+  git branch -f main HEAD
+  git ps origin main:main
+  git ps coderei main:main
+)
+
+( # show changes to allow control
+  set -x
+  tig status
+  tig --all
+)
+
+( # move back to $HOME and show diff
+  set -x
+  cd
+  dotfiles diff
+)
