@@ -45,15 +45,20 @@ function set_data() {
 ## select config #################################
 ##################################################
 configs_file=$(config_file configs)
+configs=$(cat "$configs_file")
+previous_config=$(get_data "previous_config" "")
+pos=$(echo -e "$configs" | awk "/^$previous_config/{ print NR; exit }")
 response=$(
-  cat "$configs_file" |
+  echo -e "$configs" |
     ask config \
       --with-nth "{n}: {1} - {3}" \
       --accept-nth "{1};{2}" \
+      --bind "load:pos($pos)" \
       --bind "one:accept"
 )
 config=$(echo $response | cut -d ';' -f1)
 configfile=$(echo $response | cut -d ';' -f2)
+set_data "previous_config" "$config"
 
 export KUBECONFIG="${configfile/#\~/$HOME}"
 
