@@ -91,7 +91,8 @@ if [ "$config_namespaces" == "" ]; then
   config_namespaces=$(
     kubectl get namespaces \
       --no-headers \
-      -o custom-columns=NAME:.metadata.name
+      -o custom-columns=NAME:.metadata.name \
+      --context "$context"
   )
   with_nth="{1}"
 fi
@@ -144,6 +145,7 @@ pod_container)
     kubectl get pods \
       --no-headers \
       -o custom-columns=NAME:.metadata.name \
+      --context "$context" \
       --namespace "$namespace"
   )
 
@@ -168,6 +170,7 @@ pod_container)
     kubectl get pods \
       --no-headers \
       -o jsonpath='{.spec.containers[*].name}' \
+      --context "$context" \
       --namespace "$namespace" \
       "$pod" |
       tr -s '[[:space:]]' '\n'
@@ -202,12 +205,12 @@ pods | deployments)
 
 shell)
   set -x
-  kubectl --kubeconfig "$KUBECONFIG" exec -it --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
+  kubectl --kubeconfig "$KUBECONFIG" exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- /bin/bash
   ;;
 
 console)
   set -x
-  kubectl --kubeconfig "$KUBECONFIG" exec -it --namespace "$namespace" "$pod" --container "$container" -- bin/rails c
+  kubectl --kubeconfig "$KUBECONFIG" exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- bin/rails c
   ;;
 
 upload)
@@ -215,7 +218,7 @@ upload)
   file=$(basename "$path")
 
   set -x
-  kubectl --kubeconfig "$KUBECONFIG" cp --namespace=$namespace --container=$container --no-preserve "$file" "$namespace/$pod:$file"
+  kubectl --kubeconfig "$KUBECONFIG" cp --context "$context" --namespace=$namespace --container=$container --no-preserve "$file" "$namespace/$pod:$file"
   ;;
 
 *)
