@@ -19,7 +19,6 @@ function ask() {
   local what=$1
   shift
 
-  # TODO: can one:accept be achieved with -1?
   # TODO: also: --layout=list-reverse
   fzf \
     --highlight-line \
@@ -76,7 +75,8 @@ else
     echo -e "$contexts" |
       ask context \
         --with-nth "{n}: {1}" \
-        --bind "load:pos($pos)"
+        --bind "load:pos($pos)" \
+        --bind "one:accept"
   )
   set_data "previous_context_$config" "$context"
 fi
@@ -107,7 +107,8 @@ else
       ask namespace \
         --with-nth "{n}: $with_nth" \
         --accept-nth 1 \
-        --bind "load:pos($pos)"
+        --bind "load:pos($pos)" \
+        --bind "one:accept"
   )
   set_data "previous_namespace_${config}_${context}" "$namespace"
 fi
@@ -130,7 +131,8 @@ response=$(
     ask command \
       --with-nth "{n}: {1} - {2}" \
       --accept-nth "{1};{3}" \
-      --bind "load:pos($pos)"
+      --bind "load:pos($pos)" \
+      --bind "one:accept"
 )
 command=$(echo $response | cut -d ';' -f1)
 preparation=$(echo $response | cut -d ';' -f2)
@@ -156,7 +158,8 @@ pod_container)
         ask pod \
           --with-nth "{n}: {1}" \
           --accept-nth 1 \
-          --bind "load:pos($pos)"
+          --bind "load:pos($pos)" \
+          --bind "one:accept"
     )
     set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
   fi
@@ -181,7 +184,8 @@ pod_container)
         ask container \
           --with-nth "{n}: {1}" \
           --accept-nth 1 \
-          --bind "load:pos($pos)"
+          --bind "load:pos($pos)" \
+          --bind "one:accept"
     )
     set_data "previous_container_${config}_${context}_${namespace}" "$container"
   fi
