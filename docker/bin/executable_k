@@ -159,6 +159,9 @@ k9s_subcommand)
   ;;
 
 pod_container)
+  ##################################################
+  ## select pod ####################################
+  ##################################################
   pods=$(
     kubectl get pods \
       --no-headers \
@@ -184,6 +187,9 @@ pod_container)
     set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
   fi
 
+  ##################################################
+  ## select container within pod ###################
+  ##################################################
   containers=$(
     kubectl get pods \
       --no-headers \
