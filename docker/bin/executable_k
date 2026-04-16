@@ -5,16 +5,6 @@ set -e
 data_dir="${XDG_DATA_HOME-~/.local/share}/k"
 mkdir -p "$data_dir"
 
-function config_file() {
-  set -e
-
-  local path="$data_dir/$1"
-  [ -f "$path" ] || (echo "no config defined in $path" 1>&2 && return 1)
-  [ -s "$path" ] || (echo "config file in $path is empty" 1>&2 && return 1)
-
-  echo "$path"
-}
-
 function ask() {
   local what=$1
   shift
@@ -43,8 +33,8 @@ function set_data() {
 ##################################################
 ## select config #################################
 ##################################################
-configs_file=$(config_file configs)
-configs=$(cat "$configs_file")
+configs_file="$data_dir/configs"
+configs=$([ -f "$configs_file" ] && cat "$configs_file" || echo "")
 previous_config=$(get_data "previous_config" "")
 pos=$(echo -e "$configs" | awk "/^$previous_config/{ print NR; exit }")
 response=$(
@@ -84,8 +74,8 @@ fi
 ##################################################
 ## select namespace ##############################
 ##################################################
-namespaces_file=$(config_file namespaces)
-config_namespaces=$(rg "^${config};" "$namespaces_file" | cut -d ';' -f2 -f3)
+namespaces_file="$data_dir/namespaces"
+config_namespaces=$([ -f "$namespaces_file" ] && (rg "^${config};" "$namespaces_file" | cut -d ';' -f2 -f3) || echo "")
 with_nth="{1} - {2}"
 if [ "$config_namespaces" == "" ]; then
   config_namespaces=$(
