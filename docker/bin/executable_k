@@ -108,8 +108,7 @@ fi
 ## select command ################################
 ##################################################
 commands="
-pods;k9s
-deployments;k9s
+k9s;cluster client;k9s_subcommand
 shell;kubectl -> bash;pod_container
 console;kubectl -> rails console;pod_container
 upload;kubectl (upload a local file);pod_container
@@ -129,7 +128,36 @@ command=$(echo $response | cut -d ';' -f1)
 preparation=$(echo $response | cut -d ';' -f2)
 set_data "previous_command_${config}_${context}_${namespace}" "$command"
 
+##################################################
+## optional preparation ##########################
+##################################################
 case $preparation in
+k9s_subcommand)
+  ##################################################
+  ## select k9s subcommand #########################
+  ##################################################
+  k9s_subcommands="
+  configmaps
+  deployments
+  ingresses
+  pods
+  secrets
+  services
+  "
+  previous_k9s_subcommand=$(get_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "")
+  pos=$(echo -e "$k9s_subcommands" | awk NF | awk "/^$previous_k9s_subcommand/{ print NR; exit }")
+  k9s_subcommand=$(
+    echo -e "$k9s_subcommands" |
+      awk NF | # to strip whitespace (the empty lines from the string creation above)
+      ask k9s_subcommand \
+        --with-nth "{n}: {1}" \
+        --accept-nth "{1}" \
+        --bind "load:pos($pos)" \
+        --bind "one:accept"
+  )
+  set_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "$k9s_subcommand"
+  ;;
+
 pod_container)
   pods=$(
     kubectl get pods \
@@ -188,9 +216,9 @@ esac
 # FYI: `--kubeconfig "$KUBECONFIG"` is added for commands after `set -x` so that this output can
 # be copy/pasted to repeat that command although it is not necessary to the `KUBECONFIG` variable
 case $command in
-pods | deployments)
+k9s)
   set -x
-  k9s --kubeconfig "$KUBECONFIG" --context "$context" --namespace "$namespace" --command "$command"
+  k9s --kubeconfig "$KUBECONFIG" --context "$context" --namespace "$namespace" --command "$k9s_subcommand"
   ;;
 
 shell)
