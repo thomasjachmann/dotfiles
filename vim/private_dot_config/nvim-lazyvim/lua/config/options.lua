@@ -6,3 +6,6 @@ vim.o.relativenumber = false
 
 -- disable automatic system clipboard sync
 vim.o.clipboard = ""
+
+-- set the languages I want ot accept for spell checking
+vim.o.spelllang = 'de,en_us'
