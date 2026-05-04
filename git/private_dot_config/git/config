@@ -2,6 +2,79 @@
   name = Thomas Jachmann
   email = self@thomasjachmann.com
 
+# from YouTube video "Configure your Git" by codingjerk:
+; [core]
+;   compression = 9 # save network bandwidth and storage
+;   whitespace = error # fail on committing trailing whitespace
+;   preloadindex = true # TODO: check what this actually does
+; [url "git@github.com:thomasjachmann/"]
+;   insteadOf = "tj:"
+; [url "git@github.com:"]
+;   insteadOf = "gh:"
+; [status]
+;   branch = true # TODO: already seems to be the default?
+;   showStash = true # show single line of number of stashes at the end
+;   showUntrackedFiles = all # also shows all files, even if their whole directory is new
+; [diff]
+;   context = 3
+;   renames = copies # TODO: check what this does to renames
+; [pager]
+;   diff = diff-so-fancy | $PAGER
+; [diff-so-fancy]
+;   markEmptyLines = false
+; [color "diff"]
+;   meta = black bold
+;   frag = magenta
+;   context = white
+;   whitespace = yellow reverse
+;   old = red
+; # use git add --patch
+; # with keys y (add) n (don't) s (split hunk) and e (edit hunk before adding)
+; # then use git diff --staged to check what is about to be committed
+; [interactive]
+;   diffFilter = diff-so-fancy --patch
+;   singlekey = true # no need to confirm with enter after y/n above
+; # committing:
+; # - use "verbose" (TODO: is this setting or a parameter?) to add full diff in commit template
+; # - use .git/config/template with preconfigured standard text that can just be uncommented (emoji and such)
+; [push]
+;   autoSetupRemote = true # already got that
+;   default = current # only push current branch - TODO: I already got something like that somewhere
+;   followTags = true # already got that
+; [pull]
+;   default = current # see above
+;   rebase = true # TODO: don't know whether I'd want that done automatically or chosen deliberately each time
+; [rebase]
+;   autoStash = true # TODO: don't know whether I want that - often, a WIP commit is better than a stash for conflict resolution
+;   missingCommitsCheck = warn # for manual rebases, warns when a commit is dropped
+; # git log --all --graph --pretty=format:'%C(magenty)%h %C(white) %an  %ar%C(auto) %D%n%s%n'
+; # %h commit hash %an author name %ar commit time (time passed since) %D ref names %n new line %s commit message
+; [log]
+;   abbrevCommit = true
+;   graphColors = blue,yellow,cyan,magenta,green,red
+; [color "decorate"]
+;   HEAD = read
+;   branch = blue
+;   tag = yellow
+;   remoteBranch = magenta
+; [color "branch"]
+;   current = magenta
+;   local = default
+;   upstream = green
+;   plain = blue
+; [branch]
+;   sort = -committerdate
+; [tag]
+;   sort = -taggerdate # already did this by version in `tags` alias
+; [pager]
+;   branch = false
+;   tag = false
+; [user]
+;   signingkey = asdfasdfadsff
+; [commit]
+;   gpgSign = true
+
+
 [core]
   excludesfile = ~/.config/git/ignore
   precomposeunicode = true # for Mac OS X
