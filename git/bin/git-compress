@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+# taken from https://superuser.com/questions/1435762/fix-dangling-commits-and-tags-in-a-git-repository
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+git repack -a -d
