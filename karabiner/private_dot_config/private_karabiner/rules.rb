@@ -65,7 +65,7 @@ rule(
   ctrl_b(:b, to_letter: nil),
   *%i[1 2 3 4 5 6 7 8 9].map { |letter| ctrl_b(letter) },
   ctrl_b(:period, modifier: :shift),
-  *%i[comma r y i z c p n left_arrow right_arrow].map { |letter| ctrl_b(letter) },
+  *%i[comma period r y i z c p n left_arrow right_arrow].map { |letter| ctrl_b(letter) },
   ctrl_b(:s),
   ctrl_b(:s, modifier: :left_control, optional_any: true),
   ctrl_b(:v),
