@@ -84,6 +84,12 @@ bind C-n next-window
 bind Left swap-window -t -1
 bind Right swap-window -t +1
 
+# session renaming
+set -g set-titles on
+set -g set-titles-string '#S :: #W'
+set -g allow-rename off
+bind . command-prompt -I "#S" "rename-session '%%'"
+
 # window renaming
 bind \; run-shell '{{ $homebrewPrefix }}/bin/tmux rename-window "$(basename #{pane_current_path})"'
 
