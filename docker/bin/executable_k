@@ -122,6 +122,7 @@ commands=$(cleanup "
   shell;kubectl -> bash;pod_container
   console;kubectl -> rails console;pod_container
   upload;kubectl (upload a local file);pod_container
+  download;kubectl (download a remote file);pod_container
 ")
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
 pos=$(get_pos "$commands" "$previous_command")
@@ -251,6 +252,15 @@ upload)
 
   set -x
   kubectl --kubeconfig "$KUBECONFIG" cp --context "$context" --namespace=$namespace --container=$container --no-preserve "$file" "$namespace/$pod:$file"
+  ;;
+
+download)
+  files=$(kubectl exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- find . -printf '%P\n' | tr -d '\r')
+  path=$(echo -e "$files" | ask file)
+  file=$(basename "$path")
+
+  set -x
+  kubectl cp --kubeconfig "$KUBECONFIG" --context "$context" --namespace=$namespace --container=$container --no-preserve "$namespace/$pod:$path" "$file"
   ;;
 
 *)
