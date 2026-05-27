@@ -247,7 +247,7 @@ upload)
   file=$(basename "$path")
 
   set -x
-  kubectl --kubeconfig "$KUBECONFIG" cp --context "$context" --namespace=$namespace --container=$container --no-preserve "$file" "$namespace/$pod:$file"
+  kubectl --kubeconfig "$KUBECONFIG" cp --context "$context" --namespace=$namespace --container=$container --no-preserve "$path" "$namespace/$pod:$file"
   ;;
 
 download)
