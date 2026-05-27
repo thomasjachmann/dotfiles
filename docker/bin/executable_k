@@ -220,7 +220,7 @@ upload)
   ;;
 
 download)
-  files=$(kubectl exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- find . -printf '%P\n' | tr -d '\r')
+  files=$(kubectl exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- find . -mindepth 1 -printf '%P\n' | tr -d '\r')
   path=$(ask file "$files" "REMOTE_FILE")
   file=$(basename "$path")
 
