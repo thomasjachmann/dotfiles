@@ -18,19 +18,32 @@ function get_pos() {
 function ask() {
   local what="$1"
   local list="$2"
+  local headers="$3"
+  shift
   shift
   shift
 
-  # TODO: also: --layout=list-reverse
+  numbered_list=$(echo -e "$list" | nl -s ';' -w 1)
+  set -e
+  selected_line=$(
+    echo -e "#;$headers\n$numbered_list" |
+      column -t -s ';' |
+      fzf \
+        --style full \
+        --reverse \
+        --header-lines 1 \
+        --header-first \
+        --header-lines-border inline \
+        --highlight-line \
+        --bind "load:change-prompt:$what> " \
+        --ghost "choose a $what" \
+        --bind "change:first" \
+        --accept-nth 1 \
+        "$@" ||
+      (echo "no $what selected" 1>&2 && exit 1)
+  )
   echo -e "$list" |
-    fzf \
-      --highlight-line \
-      --delimiter ";" \
-      --bind "load:change-prompt:$what> " \
-      --ghost "choose a $what" \
-      --bind "change:first" \
-      "$@" ||
-    (echo "no $what selected" 1>&2 && exit 1)
+    sed -n "${selected_line}p"
 }
 
 function get_data() {
@@ -51,9 +64,7 @@ configs=$([ -f "$configs_file" ] && cat "$configs_file" || echo "")
 previous_config=$(get_data "previous_config" "")
 pos=$(get_pos "$configs" "$previous_config")
 response=$(
-  ask config "$configs" \
-    --with-nth "{n}: {1} - {3}" \
-    --accept-nth "{1};{2}" \
+  ask config "$configs" "CONFIG;PATH;DESCRIPTION" \
     --bind "load:pos($pos)" \
     --bind "one:accept"
 )
@@ -74,8 +85,7 @@ else
   previous_context=$(get_data "previous_context_$config" "")
   pos=$(get_pos "$contexts" "$previous_context")
   context=$(
-    ask context "$contexts" \
-      --with-nth "{n}: {1}" \
+    ask context "$contexts" "CONTEXT" \
       --bind "load:pos($pos)" \
       --bind "one:accept"
   )
@@ -87,7 +97,7 @@ fi
 ##################################################
 namespaces_file="$data_dir/namespaces"
 config_namespaces=$([ -f "$namespaces_file" ] && (rg "^${config};" "$namespaces_file" | cut -d ';' -f2 -f3) || echo "")
-with_nth="{1} - {2}"
+headers="NAMESPACE;DESCRIPTION"
 if [ "$config_namespaces" == "" ]; then
   config_namespaces=$(
     kubectl get namespaces \
@@ -95,7 +105,7 @@ if [ "$config_namespaces" == "" ]; then
       -o custom-columns=NAME:.metadata.name \
       --context "$context"
   )
-  with_nth="{1}"
+  headers="NAMESPACE"
 fi
 
 # need to use awk in the next line to strip off leading spaces
@@ -105,11 +115,10 @@ else
   previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
   pos=$(get_pos "$config_namespaces" "$previous_namespace")
   namespace=$(
-    ask namespace "$config_namespaces" \
-      --with-nth "{n}: $with_nth" \
-      --accept-nth 1 \
+    ask namespace "$config_namespaces" "$headers" \
       --bind "load:pos($pos)" \
-      --bind "one:accept"
+      --bind "one:accept" |
+      cut -d ';' -f1
   )
   set_data "previous_namespace_${config}_${context}" "$namespace"
 fi
@@ -127,14 +136,12 @@ commands=$(cleanup "
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
 pos=$(get_pos "$commands" "$previous_command")
 response=$(
-  ask command "$commands" \
-    --with-nth "{n}: {1} - {2}" \
-    --accept-nth "{1};{3}" \
+  ask command "$commands" "COMMAND;DESCRIPTION;TYPE" \
     --bind "load:pos($pos)" \
     --bind "one:accept"
 )
 command=$(echo $response | cut -d ';' -f1)
-preparation=$(echo $response | cut -d ';' -f2)
+preparation=$(echo $response | cut -d ';' -f3)
 set_data "previous_command_${config}_${context}_${namespace}" "$command"
 
 ##################################################
@@ -156,9 +163,7 @@ k9s_subcommand)
   previous_k9s_subcommand=$(get_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "")
   pos=$(get_pos "$k9s_subcommands" "$previous_k9s_subcommand")
   k9s_subcommand=$(
-    ask k9s_subcommand "$k9s_subcommands" \
-      --with-nth "{n}: {1}" \
-      --accept-nth "{1}" \
+    ask k9s_subcommand "$k9s_subcommands" "SUBCOMMAND" \
       --bind "load:pos($pos)" \
       --bind "one:accept"
   )
@@ -184,9 +189,7 @@ pod_container)
     previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
     pos=$(get_pos "$pods" "$previous_pod")
     pod=$(
-      ask pod "$pods" \
-        --with-nth "{n}: {1}" \
-        --accept-nth 1 \
+      ask pod "$pods" "POD" \
         --bind "load:pos($pos)" \
         --bind "one:accept"
     )
@@ -213,9 +216,7 @@ pod_container)
     previous_container=$(get_data "previous_container_${config}_${context}_${namespace}" "")
     pos=$(get_pos "$containers" "$previous_container")
     container=$(
-      ask container "$containers" \
-        --with-nth "{n}: {1}" \
-        --accept-nth 1 \
+      ask container "$containers" "CONTAINER" \
         --bind "load:pos($pos)" \
         --bind "one:accept"
     )
@@ -243,7 +244,7 @@ console)
   ;;
 
 upload)
-  path=$(ask file "$(fd .)")
+  path=$(ask file "$(fd .)" "LOCAL_FILE")
   file=$(basename "$path")
 
   set -x
@@ -252,7 +253,7 @@ upload)
 
 download)
   files=$(kubectl exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- find . -printf '%P\n' | tr -d '\r')
-  path=$(ask file "$files")
+  path=$(ask file "$files" "REMOTE_FILE")
   file=$(basename "$path")
 
   set -x
