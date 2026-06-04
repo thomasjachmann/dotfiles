@@ -81,11 +81,14 @@ ZSH_THEME_GIT_PROMPT_MODIFIED=" %{${fg[yellow]}%}modified%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_ADDED=" %{${fg[green]}%}added%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{${fg[white]}%}untracked%{$reset_color%}"
 
+GIT_PROMPT_FORMAT='%(refname:short)%(if)%(upstream)%(then)...%(upstream:short)%(end)'\
+' at %(objectname:short)'\
+'%(if)%(upstream:track)%(then) %(upstream:track)%(end)'
+
 function git-prompt() {
-  gitstatus=$(git status --short --branch 2> /dev/null) || return
-  gitstatus=$(echo $gitstatus | head -n 1)
-  echo "%{%F{$light}%}± git on ${gitstatus/\#\# /} at $(git_prompt_short_sha)$(git_prompt_status)
-%{%b%f%k%}"
+  head=$(git symbolic-ref HEAD 2> /dev/null) || return
+  gitstatus=$(git for-each-ref --format="$GIT_PROMPT_FORMAT" $head)
+  echo "%{%F{$light}%}± git on ${gitstatus/\#\# /}\n%{%b%f%k%}"
 }
 
 # see for colors:
