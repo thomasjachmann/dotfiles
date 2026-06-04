@@ -8,4 +8,5 @@ brew "git-delta"
 brew "git-extras"
 brew "tig"
 brew "hub"
+brew "phantom" # seamless git worktree management
 EOB

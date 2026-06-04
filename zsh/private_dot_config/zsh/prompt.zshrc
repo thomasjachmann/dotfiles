@@ -81,6 +81,11 @@ ZSH_THEME_GIT_PROMPT_MODIFIED=" %{${fg[yellow]}%}modified%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_ADDED=" %{${fg[green]}%}added%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{${fg[white]}%}untracked%{$reset_color%}"
 
+function phantom-prompt() {
+  [ "$PHANTOM" = "1" ] || return
+  echo "👻 %{%F{$light}%}$PHANTOM_NAME\n%{%b%f%k%}"
+}
+
 GIT_PROMPT_FORMAT='%(refname:short)%(if)%(upstream)%(then)...%(upstream:short)%(end)'\
 ' at %(objectname:short)'\
 '%(if)%(upstream:track)%(then) %(upstream:track)%(end)'
@@ -144,7 +149,7 @@ function mode-prompt() {
 }
 
 PROMPT='$(return-code)$(current-time)$(current-path)
-$(git-prompt)$(mode-prompt)$ '
+$(phantom-prompt)$(git-prompt)$(mode-prompt)$ '
 
 # TODO: This is just temporary to create a clean terminal for presentations.
 function present() {
