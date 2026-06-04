@@ -2,6 +2,14 @@
   name = Thomas Jachmann
   email = self@thomasjachmann.com
 
+# TODO: https://spin.atomicobject.com/2020/05/05/git-configurations-default/
+# [pull]
+#   rebase = true
+# [fetch]
+#   prune = true
+# [diff]
+#   colorMoved zebra
+
 # from YouTube video "Configure your Git" by codingjerk:
 ; [core]
 ;   compression = 9 # save network bandwidth and storage
