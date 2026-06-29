@@ -20,5 +20,27 @@ return {
       },
     },
     cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+    ft = { "csv" },
+    config = function(_, opts)
+      require("csvview").setup(opts)
+
+      Snacks.toggle({
+        name = "CSV View",
+        get = function()
+          return require("csvview").is_enabled(0)
+        end,
+        set = function(state)
+          if state then
+            -- see https://github.com/hat0uma/csvview.nvim/blob/5c22774c3ecc7f8883af5d143b366e45b1f0875d/plugin/csvview.lua#L4
+            require("csvview").enable(0, {
+              parser = { delimiter = "," },
+              view = { display_mode = "border" },
+            })
+          else
+            require("csvview").disable(0)
+          end
+        end,
+      }):map("<leader>uv")
+    end,
   },
 }
