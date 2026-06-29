@@ -4,6 +4,7 @@ set -g default-shell "{{ $homebrewPrefix }}/bin/zsh"
 set -g default-command "{{ $homebrewPrefix }}/bin/reattach-to-user-namespace -l $SHELL"
 set -g default-terminal "screen-256color"
 
+if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.7" ]]' 'source-file $HOME/.config/tmux/3.7.conf'
 if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.6b" ]]' 'source-file $HOME/.config/tmux/3.6b.conf'
 if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.6a" ]]' 'source-file $HOME/.config/tmux/3.6a.conf'
 if-shell '[[ "$({{ $homebrewPrefix }}/bin/tmux -V)" == "tmux 3.6" ]]' 'source-file $HOME/.config/tmux/3.6.conf'
