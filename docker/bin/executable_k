@@ -32,7 +32,6 @@ function ask() {
         --style full \
         --reverse \
         --header-lines 1 \
-        --header-first \
         --header-lines-border inline \
         --highlight-line \
         --bind "load:change-prompt:$what> " \
