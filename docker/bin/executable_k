@@ -16,14 +16,11 @@ function get_pos() {
 }
 
 function ask() {
-  local what="$1"
-  local list="$2"
-  local headers="$3"
-  local previous="$4"
-  shift
-  shift
-  shift
-  shift
+  local what="$1" && shift
+  local list="$1" && shift
+  local headers="$1" && shift
+  local previous="$1" && shift
+  local footer="$1" && shift
 
   [ -n "$previous" ] && pos=$(get_pos "$list", "$previous") || pos="0"
   numbered_list=$(echo -e "$list" | nl -s ';' -w 1)
@@ -43,6 +40,7 @@ function ask() {
         --bind "load:pos($pos)" \
         --bind "change:first" \
         --accept-nth 1 \
+        --footer "$footer" \
         "$@" ||
       (echo "no $what selected" 1>&2 && exit 1)
   )
@@ -66,10 +64,11 @@ function set_data() {
 configs_file="$data_dir/configs"
 configs=$([ -f "$configs_file" ] && cat "$configs_file" || echo "")
 previous_config=$(get_data "previous_config" "")
-response=$(ask config "$configs" "CONFIG;PATH;DESCRIPTION" "$previous_config" --bind "one:accept")
+response=$(ask config "$configs" "CONFIG;PATH;DESCRIPTION" "$previous_config" "" --bind "one:accept")
 config=$(echo $response | cut -d ';' -f1)
 configfile=$(echo $response | cut -d ';' -f2)
 set_data "previous_config" "$config"
+footer="cnf:$config"
 
 export KUBECONFIG="${configfile/#\~/$HOME}"
 
@@ -82,9 +81,10 @@ if [ "$(echo "$contexts" | wc -l | awk '{ print $1 }')" == "1" ]; then
   context="$contexts"
 else
   previous_context=$(get_data "previous_context_$config" "")
-  context=$(ask context "$contexts" "CONTEXT" "$previous_context" --bind "one:accept")
+  context=$(ask context "$contexts" "CONTEXT" "$previous_context" "$footer" --bind "one:accept")
   set_data "previous_context_$config" "$context"
 fi
+footer="$footer ctx:$context"
 
 ##################################################
 ## select namespace ##############################
@@ -107,7 +107,8 @@ if [ "$(echo "$config_namespaces" | wc -l | awk '{ print $1 }')" == "1" ]; then
   namespace=$(echo $config_namespaces | cut -d ';' -f1)
 else
   previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
-  namespace=$(ask namespace "$config_namespaces" "$headers" "$previous_namespace" --bind "one:accept" | cut -d ';' -f1)
+  namespace=$(ask namespace "$config_namespaces" "$headers" "$previous_namespace" "$footer" --bind "one:accept" | cut -d ';' -f1)
+  footer="$footer ns:$namespace"
   set_data "previous_namespace_${config}_${context}" "$namespace"
 fi
 
@@ -122,8 +123,9 @@ commands=$(cleanup "
   download;kubectl (download a remote file);pod_container
 ")
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
-response=$(ask command "$commands" "COMMAND;DESCRIPTION;TYPE" "$previous_command" --bind "one:accept")
+response=$(ask command "$commands" "COMMAND;DESCRIPTION;TYPE" "$previous_command" "$footer" --bind "one:accept")
 command=$(echo $response | cut -d ';' -f1)
+footer="$footer cmd:$command"
 preparation=$(echo $response | cut -d ';' -f3)
 set_data "previous_command_${config}_${context}_${namespace}" "$command"
 
@@ -144,7 +146,8 @@ k9s_subcommand)
     services
   ")
   previous_k9s_subcommand=$(get_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "")
-  k9s_subcommand=$(ask k9s_subcommand "$k9s_subcommands" "SUBCOMMAND" "$previous_k9s_subcommand" --bind "one:accept")
+  k9s_subcommand=$(ask k9s_subcommand "$k9s_subcommands" "SUBCOMMAND" "$previous_k9s_subcommand" "$footer" --bind "one:accept")
+  footer="$footer sub:$k9s_subcommand"
   set_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "$k9s_subcommand"
   ;;
 
@@ -165,7 +168,8 @@ pod_container)
     pod="$pods"
   else
     previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
-    pod=$(ask pod "$pods" "POD" "$previous_pod" --bind "one:accept")
+    pod=$(ask pod "$pods" "POD" "$previous_pod" "$footer" --bind "one:accept")
+    footer="$footer pod:$pod"
     set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
   fi
 
@@ -187,7 +191,8 @@ pod_container)
     container="$containers"
   else
     previous_container=$(get_data "previous_container_${config}_${context}_${namespace}" "")
-    container=$(ask container "$containers" "CONTAINER" "$previous_container" --bind "one:accept")
+    container=$(ask container "$containers" "CONTAINER" "$previous_container" "$footer" --bind "one:accept")
+    footer="$footer cnt:$container"
     set_data "previous_container_${config}_${context}_${namespace}" "$container"
   fi
   ;;
@@ -212,7 +217,7 @@ console)
   ;;
 
 upload)
-  path=$(ask file "$(fd .)" "LOCAL_FILE")
+  path=$(ask file "$(fd .)" "LOCAL_FILE" "" "$footer")
   file=$(basename "$path")
 
   set -x
@@ -221,7 +226,7 @@ upload)
 
 download)
   files=$(kubectl exec -it --context "$context" --namespace "$namespace" "$pod" --container "$container" -- find . -mindepth 1 -printf '%P\n' | tr -d '\r')
-  path=$(ask file "$files" "REMOTE_FILE")
+  path=$(ask file "$files" "REMOTE_FILE" "" "$footer")
   file=$(basename "$path")
 
   set -x
