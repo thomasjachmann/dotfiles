@@ -118,10 +118,32 @@ function configure3by4()
   }
 end
 
+function configure6by8()
+  hs.grid.setGrid("6x8")
+  hs.grid.HINTS = {
+    {"1", "2", "3", "4", "5", "6"},
+    {"q", "w", "e", "r", "t", "z"},
+    {"a", "s", "d", "f", "g", "h"},
+    {"y", "x", "c", "v", "b", "n"},
+    {"7", "8", "9", "u", "i", "o"},
+    {"Q", "W", "E", "R", "T", "Z"},
+    {"A", "S", "D", "F", "G", "H"},
+    {"Y", "X", "C", "V", "B", "N"},
+  }
+end
+
+function portrait()
+  local frame = hs.screen.mainScreen():frame()
+  return frame._w < frame._h
+end
+
 function grid.show()
   grid = hs.grid.getGrid()
   hs.grid.hide() -- in case it was open already, but only after we got our current grid size
 
+  -- if portrait() then
+  --   configure6by8()
+  -- else
     if grid._w == 12 or (grid._w == 3 and grid._h == 4) then
       configure4by4()
     elseif grid._w == 4 and grid._h == 4 then
@@ -131,6 +153,7 @@ function grid.show()
     elseif grid._w == 4 and grid._h == 3 then
       configure3by4()
     end
+  -- end
 
   hs.grid.show(resetGrid)
 end
