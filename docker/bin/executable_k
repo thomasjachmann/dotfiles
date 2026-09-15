@@ -103,10 +103,11 @@ fi
 
 # need to use awk in the next line to strip off leading spaces
 if [ "$(echo "$config_namespaces" | wc -l | awk '{ print $1 }')" == "1" ]; then
-  namespace=$(echo $config_namespaces | cut -d ';' -f1)
+  namespace=$(echo "$config_namespaces" | cut -d ';' -f1)
 else
   previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
-  namespace=$(ask namespace "$config_namespaces" "$headers" "$previous_namespace" "$footer" --bind "one:accept" | cut -d ';' -f1)
+  namespace=$(ask namespace "$config_namespaces" "$headers" "$previous_namespace" "$footer" --bind "one:accept")
+  namespace=$(echo "$namespace" | cut -d ';' -f1)
   footer="$footer ns:$namespace"
   set_data "previous_namespace_${config}_${context}" "$namespace"
 fi
@@ -197,8 +198,9 @@ pod_container)
   ;;
 esac
 
-# FYI: `--kubeconfig "$KUBECONFIG"` is added for commands after `set -x` so that this output can
-# be copy/pasted to repeat that command although it is not necessary to the `KUBECONFIG` variable
+# FYI: `--kubeconfig "$KUBECONFIG"` is added to commands after `set -x` so that the output can
+# be copy/pasted to repeat that command without going through this wizard again although the
+# parameter would not strictly be necessary due to the `KUBECONFIG` environment variable
 case $command in
 k9s)
   set -x
