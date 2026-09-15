@@ -17,14 +17,14 @@ local mappings = {
 
   ["ß"] = devdocs.toggle, -- ? for help
 
-  b = apps.launch(browser.browsers.default),
-  [{"shift", "b"}] = apps.launchOrNewWindow(browser.browsers.default, newWindow),
+  b = function() apps.launch(browser.browsers.default)() end,
+  [{"shift", "b"}] = function() apps.launchOrNewWindow(browser.browsers.default, newWindow)() end,
 
-  [{"alt", "b"}] = apps.launch(browser.browsers.tor),
-  [{{"shift", "alt"}, "b"}] = apps.launchOrNewWindow(browser.browsers.tor, newWindow),
+  [{"alt", "b"}] = function() apps.launch(browser.browsers.tor)() end,
+  [{{"shift", "alt"}, "b"}] = function() apps.launchOrNewWindow(browser.browsers.tor, newWindow)() end,
 
-  c = apps.launch(browser.browsers.chrome),
-  [{"shift", "c"}] = apps.launchOrNewWindow(browser.browsers.chrome, newWindow),
+  c = function() apps.launch(browser.browsers.chrome)() end,
+  [{"shift", "c"}] = function() apps.launchOrNewWindow(browser.browsers.chrome, newWindow)() end,
 
   f = apps.launch("Finder"),
 }
