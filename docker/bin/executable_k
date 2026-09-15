@@ -80,7 +80,7 @@ if [ "$(echo "$contexts" | wc -l | awk '{ print $1 }')" == "1" ]; then
   context="$contexts"
 else
   previous_context=$(get_data "previous_context_$config" "")
-  context=$(ask context "$contexts" "CONTEXT" "$previous_context" "$footer" --bind "one:accept")
+  context=$(ask context "$contexts" "CONTEXT" "$previous_context" "$footer")
   set_data "previous_context_$config" "$context"
 fi
 footer="$footer ctx:$context"
@@ -106,7 +106,7 @@ if [ "$(echo "$config_namespaces" | wc -l | awk '{ print $1 }')" == "1" ]; then
   namespace=$(echo "$config_namespaces" | cut -d ';' -f1)
 else
   previous_namespace=$(get_data "previous_namespace_${config}_${context}" "")
-  namespace=$(ask namespace "$config_namespaces" "$headers" "$previous_namespace" "$footer" --bind "one:accept")
+  namespace=$(ask namespace "$config_namespaces" "$headers" "$previous_namespace" "$footer")
   namespace=$(echo "$namespace" | cut -d ';' -f1)
   footer="$footer ns:$namespace"
   set_data "previous_namespace_${config}_${context}" "$namespace"
@@ -123,7 +123,7 @@ commands=$(cleanup "
   download;kubectl (download a remote file);pod_container
 ")
 previous_command=$(get_data "previous_command_${config}_${context}_${namespace}" "")
-response=$(ask command "$commands" "COMMAND;DESCRIPTION;TYPE" "$previous_command" "$footer" --bind "one:accept")
+response=$(ask command "$commands" "COMMAND;DESCRIPTION;TYPE" "$previous_command" "$footer")
 command=$(echo $response | cut -d ';' -f1)
 footer="$footer cmd:$command"
 preparation=$(echo $response | cut -d ';' -f3)
@@ -146,7 +146,7 @@ k9s_subcommand)
     services
   ")
   previous_k9s_subcommand=$(get_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "")
-  k9s_subcommand=$(ask k9s_subcommand "$k9s_subcommands" "SUBCOMMAND" "$previous_k9s_subcommand" "$footer" --bind "one:accept")
+  k9s_subcommand=$(ask k9s_subcommand "$k9s_subcommands" "SUBCOMMAND" "$previous_k9s_subcommand" "$footer")
   footer="$footer sub:$k9s_subcommand"
   set_data "previous_k9s_subcommand_${config}_${context}_${namespace}" "$k9s_subcommand"
   ;;
@@ -168,7 +168,7 @@ pod_container)
     pod="$pods"
   else
     previous_pod=$(get_data "previous_pod_${config}_${context}_${namespace}" "")
-    pod=$(ask pod "$pods" "POD" "$previous_pod" "$footer" --bind "one:accept")
+    pod=$(ask pod "$pods" "POD" "$previous_pod" "$footer")
     footer="$footer pod:$pod"
     set_data "previous_pod_${config}_${context}_${namespace}" "$pod"
   fi
@@ -191,7 +191,7 @@ pod_container)
     container="$containers"
   else
     previous_container=$(get_data "previous_container_${config}_${context}_${namespace}" "")
-    container=$(ask container "$containers" "CONTAINER" "$previous_container" "$footer" --bind "one:accept")
+    container=$(ask container "$containers" "CONTAINER" "$previous_container" "$footer")
     footer="$footer cnt:$container"
     set_data "previous_container_${config}_${context}_${namespace}" "$container"
   fi
