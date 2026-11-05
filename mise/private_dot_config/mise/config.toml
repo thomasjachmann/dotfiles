@@ -1,10 +1,10 @@
 [tools]
-ruby = "latest"
 node = "latest"
-yarn = "latest"
 pnpm = "latest"
-rust = "latest"
 python = "latest"
+ruby = "latest"
+rust = "latest"
+yarn = "latest"
 
 [env]
 MISE_HIDE_UPDATE_WARNING = "1" # I'll update using homebrew anyway
