@@ -1,0 +1,89 @@
+#!/bin/bash
+
+brew bundle --file=/dev/stdin <<EOB
+brew "pirj/noclamshell/noclamshell"
+brew "jq" # for noclamshell installation in ./install
+EOB
+
+function set-defaults() {
+  message=$1
+  domain=$2
+  key=$3
+  shift; shift; shift
+
+  previous=$(defaults read $domain "$key")
+  oneline_previous=${previous//[[:space:]]/}
+  yellow "$message: from ${oneline_previous:0:32} to $*" # limit previous length and store it somewhere?
+  defaults write $domain "$key" "$*"
+}
+
+function add-to-dock() {
+  if [ -d $1 ]; then
+    yellow "adding $1 to the dock"
+    defaults write com.apple.dock \
+      persistent-apps \
+      -array-add \
+      "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+  else
+    red "$1 couldn't be added to the dock since it's not there"
+  fi
+}
+
+source {{ .chezmoi.sourceDir }}/../_helpers.zsh
+
+
+##################################################
+# Dock ###########################################
+##################################################
+# TODO: it's not bool anymore but number
+# but still, this doesn't work although it doesn't change anything in the plist...
+set-defaults "setting the dock to auto hide" com.apple.dock autohide 1
+
+set-defaults "removing everything from the dock" com.apple.dock persistent-apps -array
+add-to-dock /Applications/OpenInNvim.app
+
+killall Dock
+
+
+##################################################
+# Desktop Background #############################
+##################################################
+osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"{{ .chezmoi.sourceDir }}/fractal_2880x1800.jpg\" as POSIX file"
+
+
+##################################################
+# Keyboard Shortcuts #############################
+##################################################
+# TODO set Cmd-< to cycle through windows of same app (default: Cmd-`)
+# manually set in System Preferences -> Tastatur -> Tastaturkurzbefehle... -> Tastatur -> Fokus in nächstes Fenster
+
+
+##################################################
+# noclamshell ####################################
+##################################################
+noclamshell_loaded=$(brew services info noclamshell --json | jq ".[0].loaded")
+[ "$noclamshell_loaded" == "true" ] || brew services start noclamshell
+
+# Siri
+# set-defaults "disabling siri" com.apple.assistant.support "Assistant Enabled" -bool false
+# set-defaults "hiding siri from menu" com.apple.Siri StatusMenuVisible -bool false
+
+# TouchBar ControlStrip
+# see https://blog.eriknicolasgomez.com/2016/11/28/managing-or-setting-the-mini-touchbar-control-strip/
+# set-defaults "setting up touch bar control strip" com.apple.controlstrip MiniCustomized "(com.apple.system.brightness, com.apple.system.volume, com.apple.system.mute, com.apple.system.screen-lock)"
+# killall ControlStrip
+
+# TODO:
+# - enable Zoom: https://appleinsider.com/articles/21/06/27/how-to-magnify-your-screen-with-the-zoom-feature-in-macos
+# - set default screenshot directory to ~/Desktop/Bildschirmfotos
+
+# https://github.com/webpro/awesome-dotfiles#tools
+# https://github.com/zero-sh/apply-user-defaults
+
+# https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+# https://github.com/bramus/freshinstall/blob/master/steps/1.macos-settings.sh
+# https://medium.com/@notrab/friendly-os-x-defaults-d7f0cc39f2b3
+
+
+# https://docs.microsoft.com/de-de/outlook/troubleshoot/connectivity/how-to-suppress-microsoft-365-autodiscover-redirect-warning
+# defaults write com.microsoft.Outlook TrustO365AutodiscoverRedirect -bool true
